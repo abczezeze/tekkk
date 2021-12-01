@@ -4,16 +4,14 @@ onready var PlayIntegration = get_node("/root/PlayIntegration")
 
 var time_start = 0
 var time_now = 0
-var total_scores = 0
-var mno_scores = 0
-var olay_scores = 0
-var speng_scores = 0
-var ichuen_scores = 0
 
 func _ready():
-	PlayIntegration.sign_in()
 	time_start = OS.get_unix_time()
-	set_process(true)
+	$HomeBT.disabled = true
+	$VBoxContainer/ClickMno.text = "Mno#Bass : " + str(Global.mno_scores)
+	$VBoxContainer/ClickOlay.text = "Olay#Drum : " + str(Global.olay_scores)
+	$VBoxContainer/ClickIchuen.text = "Ichuen#Turntable : " + str(Global.ichuen_scores)
+	$VBoxContainer/ClickSpeng.text = "Speng#Guitar : " + str(Global.speng_scores)
 	
 func _process(delta):
 	time_now = OS.get_unix_time()
@@ -23,41 +21,55 @@ func _process(delta):
 	var str_elapsed = "%02d : %02d" % [mins,secs]
 	
 	if $Tek_abc3dz_mno.hit_mno == true :
-		$Tek_abc3dz_mno.clicks_mno += 1
-		$VBoxContainer/ClickMno.text = "Mno#Bass : " + str($Tek_abc3dz_mno.clicks_mno)
-		mno_scores = $Tek_abc3dz_mno.clicks_mno
-		PlayIntegration.achievementsStepsMno(mno_scores*10)
-		submit_total_score(total_scores*10)
+		Global.mno_scores += 1
+		$VBoxContainer/ClickMno.text = "Mno#Bass : " + str(Global.mno_scores)
+		$HomeBT/TextureProgress.value+=10
+#		PlayIntegration.achievementsStepsMno(Global.mno_scores*10)
+#		submit_total_score(Global.total_scores*10)
 
 	if $Tek_abc3dz_olay.hit_olay == true :
-		$Tek_abc3dz_olay.clicks_olay += 1
-		$VBoxContainer/ClickOlay.text = "Olay#Drum : " + str($Tek_abc3dz_olay.clicks_olay)
-		olay_scores = $Tek_abc3dz_olay.clicks_olay
-		PlayIntegration.achievementsStepsOlay(olay_scores*10)
-		submit_total_score(total_scores*10)
+		Global.olay_scores += 1
+		$VBoxContainer/ClickOlay.text = "Olay#Drum : " + str(Global.olay_scores)
+		$HomeBT/TextureProgress.value+=10
+#		PlayIntegration.achievementsStepsOlay(Global.olay_scores*10)
+#		submit_total_score(Global.total_scores*10)
 		
 	if $Tek_abc3dz_ichuen.hit_ichuen == true :
-		$Tek_abc3dz_ichuen.clicks_ichuen += 1
-		$VBoxContainer/ClickIchuen.text = "Ichuen#Turntable : " + str($Tek_abc3dz_ichuen.clicks_ichuen)
-		ichuen_scores = $Tek_abc3dz_ichuen.clicks_ichuen
-		PlayIntegration.achievementsStepsIchuen(ichuen_scores*10)
-		submit_total_score(total_scores*10)
+		Global.ichuen_scores += 1
+		$VBoxContainer/ClickIchuen.text = "Ichuen#Turntable : " + str(Global.ichuen_scores)
+		$HomeBT/TextureProgress.value+=10
+#		PlayIntegration.achievementsStepsIchuen(Global.ichuen_scores*10)
+#		submit_total_score(Global.total_scores*10)
 		
 	if $Tek_abc3dz_speng.hit_speng == true :
-		$Tek_abc3dz_speng.clicks_speng += 1
-		$VBoxContainer/ClickSpeng.text = "Speng#Guitar : " + str($Tek_abc3dz_speng.clicks_speng)
-		speng_scores = $Tek_abc3dz_speng.clicks_speng
-		PlayIntegration.achievementsStepsSpeng(speng_scores*10)
-		submit_total_score(total_scores*10)
+		Global.speng_scores += 1
+		$VBoxContainer/ClickSpeng.text = "Speng#Guitar : " + str(Global.speng_scores)
+		$HomeBT/TextureProgress.value+=10
+#		PlayIntegration.achievementsStepsSpeng(Global.speng_scores*10)
+#		submit_total_score(Global.total_scores*10)
 				
 	$Tek_abc3dz_olay.hit_olay = false 
 	$Tek_abc3dz_mno.hit_mno = false 
 	$Tek_abc3dz_ichuen.hit_ichuen = false 
 	$Tek_abc3dz_speng.hit_speng = false 
-	total_scores = $Tek_abc3dz_speng.clicks_speng + $Tek_abc3dz_olay.clicks_olay + $Tek_abc3dz_ichuen.clicks_ichuen + $Tek_abc3dz_mno.clicks_mno
-	$VBoxContainer/ClickT.text = "Total : "+ str(total_scores)
+	Global.total_scores = Global.speng_scores+Global.ichuen_scores+Global.olay_scores+Global.mno_scores
+	$VBoxContainer/ClickT.text = "Total : "+ str(Global.total_scores)
 	$DTLabel.text = "Time : "+ str(str_elapsed)
+	
+	if Global.total_scores >= 10:
+		$HomeBT.disabled = false
 
 func submit_total_score(score : int):
 	PlayIntegration.unlock_achievements(score)
 	PlayIntegration.achievementsSteps(score)
+
+func _on_HomeBT_pressed():
+	get_tree().change_scene("res://Scene/MainMenu.tscn")
+
+func _on_Timer_timeout():
+	if Global.total_scores >= 10:
+		$Timer.queue_free()
+	$HomeBT/TextureProgress.value -= 1
+	if $HomeBT/TextureProgress.value == 0:
+		$Timer.queue_free()
+	

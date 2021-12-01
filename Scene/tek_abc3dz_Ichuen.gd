@@ -6,7 +6,6 @@ var width_ichuen
 var height_ichuen
 var hit_ichuen = false
 var lose_ichuen = false
-var clicks_ichuen = 0
 
 func _ready():
 	$Sprite2_ichuen.hide()

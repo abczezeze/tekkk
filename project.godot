@@ -15,12 +15,13 @@ _global_script_class_icons={
 [application]
 
 config/name="tek"
-run/main_scene="res://Scene/Main.tscn"
+run/main_scene="res://Scene/MainMenu.tscn"
 config/icon="res://ปก512x512.png"
 
 [autoload]
 
 PlayIntegration="*res://PlayIntegration.gd"
+Global="*res://global.gd"
 
 [display]
 
@@ -29,8 +30,7 @@ window/size/height=1280
 window/size/test_width=360
 window/size/test_height=640
 window/handheld/orientation="portrait"
-window/stretch/mode="viewport"
-window/stretch/aspect="keep"
+window/stretch/mode="2d"
 
 [input_devices]
 

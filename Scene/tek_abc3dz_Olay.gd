@@ -6,7 +6,6 @@ var width_olay
 var height_olay
 var hit_olay = false
 var lose_olay = false
-var clicks_olay = 0
 
 func _ready():
 	$Sprite2_olay.hide()

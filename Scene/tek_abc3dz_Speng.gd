@@ -6,7 +6,6 @@ var width_speng
 var height_speng
 var hit_speng = false
 var lose_speng = false
-var clicks_speng = 0
 
 func _ready():
 	$Sprite2_speng.hide()

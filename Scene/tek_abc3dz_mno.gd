@@ -6,7 +6,6 @@ var width_mno
 var height_mno
 var hit_mno = false
 var lose_mno = false
-var clicks_mno = 0
 
 func _ready():
 	$Sprite2_mno.hide()
