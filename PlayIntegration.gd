@@ -9,10 +9,9 @@ func _ready():
 	var request_profile := true
 	var request_token := ""
 
-	play_games_services.init(show_popups, request_email, request_profile, request_token)
-	play_games_services.connect("_on_sign_in_success", self, "_on_sign_in_success") # account_id: String
-	play_games_services.connect("_on_sign_in_failed", self, "_on_sign_in_failed") # error_code: int
-	  
+#	play_games_services.connect("_on_sign_in_success", self, "_on_sign_in_success")
+#	play_games_services.connect("_on_sign_in_failed", self, "_on_sign_in_failed")
+#	play_games_services.init(show_popups, request_email, request_profile, request_token)	  
 
 func sign_in():
 	if play_games_services:
@@ -21,9 +20,9 @@ func sign_in():
 func _on_sign_in_success(userProfile_json: String) -> void:
 	var userProfile = parse_json(userProfile_json)
 
-	userProfile["displayName"] # The user's display name
-	userProfile["email"] # The user's email
-	userProfile["id"] # The user's id
+	userProfile["displayName"]
+	userProfile["email"]
+	userProfile["id"]
 
 func _on_sign_in_failed(error_code: int) -> void:
 	pass
@@ -74,5 +73,8 @@ func achievementsStepsIchuen(score : int):
 	play_games_services.setAchievementSteps(Ichuen_Turnable_Bronze, score)
 	play_games_services.setAchievementSteps(Ichuen_Turnable_Silver, score)
 	play_games_services.setAchievementSteps(Ichuen_Turnable_Gold, score)
+	
+func showAchievement():
+	play_games_services.showAchievements()
 	
 
