@@ -3,7 +3,8 @@ Click Or Touch Cartoon head
 
 ## Sound
 Main menu : https://soundcloud.com/abczezeze/2018-01-05hny<br>
-BGM : https://soundcloud.com/abczezeze/my-frist-game
+BGM Floating: https://soundcloud.com/abczezeze/my-frist-game<br>
+BGM Dragging: https://soundcloud.com/abczezeze/2017-12-20skbanimation
 
 ## Mobile game
 
