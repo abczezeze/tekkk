@@ -1,0 +1,135 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://Scene/Drag/DragSpeng.gd" type="Script" id=1]
+[ext_resource path="res://Image/tekgameHead_mno.png" type="Texture" id=2]
+[ext_resource path="res://Image/body_speng.png" type="Texture" id=3]
+[ext_resource path="res://Image/home.png" type="Texture" id=4]
+[ext_resource path="res://Image/bg720x1280.jpg" type="Texture" id=5]
+[ext_resource path="res://Image/tekgameHead_olayzzz.png" type="Texture" id=6]
+[ext_resource path="res://Image/tekgameHead_Ichuen.png" type="Texture" id=7]
+[ext_resource path="res://Image/tekgameHead_Speng.png" type="Texture" id=8]
+[ext_resource path="res://Font/Unique.ttf" type="DynamicFontData" id=9]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 25.5708
+
+[sub_resource type="Curve" id=2]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.326996, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=3]
+curve = SubResource( 2 )
+
+[sub_resource type="ParticlesMaterial" id=4]
+flag_disable_z = true
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale_curve = SubResource( 3 )
+
+[sub_resource type="CapsuleShape2D" id=5]
+radius = 29.0598
+height = 134.654
+
+[sub_resource type="DynamicFont" id=6]
+size = 33
+font_data = ExtResource( 9 )
+
+[node name="DragMno" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="bg720x1280" type="Sprite" parent="."]
+modulate = Color( 0.745098, 0.8, 0.101961, 1 )
+position = Vector2( 360, 640 )
+texture = ExtResource( 5 )
+
+[node name="MnoRigidBody2D" type="RigidBody2D" parent="." groups=[
+"Mno",
+]]
+position = Vector2( 369.685, 150.956 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MnoRigidBody2D"]
+shape = SubResource( 1 )
+
+[node name="tekgameHead_mno" type="Sprite" parent="MnoRigidBody2D/CollisionShape2D"]
+texture = ExtResource( 2 )
+
+[node name="OlayRigidBody2D" type="RigidBody2D" parent="." groups=[
+"Olay",
+]]
+position = Vector2( 154.293, 116.738 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OlayRigidBody2D"]
+shape = SubResource( 1 )
+
+[node name="OlayHead" type="Sprite" parent="OlayRigidBody2D/CollisionShape2D"]
+texture = ExtResource( 6 )
+
+[node name="SpengRigidBody2D" type="RigidBody2D" parent="." groups=[
+"Speng",
+]]
+position = Vector2( 294.085, 29.184 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpengRigidBody2D"]
+shape = SubResource( 1 )
+
+[node name="Pic" type="Sprite" parent="SpengRigidBody2D/CollisionShape2D"]
+texture = ExtResource( 8 )
+
+[node name="Particles2D" type="Particles2D" parent="SpengRigidBody2D"]
+process_material = SubResource( 4 )
+texture = ExtResource( 8 )
+
+[node name="IchuenRigidBody2D" type="RigidBody2D" parent="." groups=[
+"Ichuen",
+]]
+position = Vector2( 457.965, 29.184 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="IchuenRigidBody2D"]
+shape = SubResource( 1 )
+
+[node name="Pic" type="Sprite" parent="IchuenRigidBody2D"]
+texture = ExtResource( 7 )
+
+[node name="BodyArea2D" type="Area2D" parent="."]
+position = Vector2( 60, 1250 )
+
+[node name="body" type="Sprite" parent="BodyArea2D"]
+position = Vector2( 24.0158, -78.7135 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BodyArea2D"]
+position = Vector2( 23.9729, -80.3892 )
+shape = SubResource( 5 )
+
+[node name="HomeBT" type="TextureButton" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 320.0
+margin_top = 1170.0
+margin_right = 448.0
+margin_bottom = 1298.0
+texture_normal = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Scores" type="Label" parent="."]
+margin_left = 17.7551
+margin_top = 42.4492
+margin_right = 207.755
+margin_bottom = 81.4492
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0.701961, 0.756863, 0.901961, 1 )
+custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
+text = "Olay : 0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="body_entered" from="BodyArea2D" to="." method="_on_MnoArea2D_body_entered"]
+[connection signal="input_event" from="BodyArea2D" to="." method="_on_Area2D_input_event"]
+[connection signal="pressed" from="HomeBT" to="." method="_on_HomeBT_pressed"]

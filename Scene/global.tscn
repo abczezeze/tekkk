@@ -1,0 +1,32 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Sound/SFX_home.ogg" type="AudioStream" id=1]
+[ext_resource path="res://Scene/global.gd" type="Script" id=2]
+[ext_resource path="res://Sound/SFX_receive.ogg" type="AudioStream" id=3]
+[ext_resource path="res://Sound/SFX_unreceive.ogg" type="AudioStream" id=4]
+[ext_resource path="res://Sound/BGM_TekGame.mp3" type="AudioStream" id=5]
+[ext_resource path="res://Sound/BGM_SkbAnimation.mp3" type="AudioStream" id=6]
+[ext_resource path="res://Sound/SFX_Scene.ogg" type="AudioStream" id=7]
+
+[node name="Node" type="Node"]
+script = ExtResource( 2 )
+
+[node name="HomeAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+
+[node name="Accurate" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+pitch_scale = 2.0
+
+[node name="Failed" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
+volume_db = 10.0
+
+[node name="OneToFive" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+
+[node name="SixToNine" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+
+[node name="SceneSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 7 )

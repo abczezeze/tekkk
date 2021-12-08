@@ -3,7 +3,7 @@
 [ext_resource path="res://Image/mainmenu720x1280.jpg" type="Texture" id=1]
 [ext_resource path="res://Font/Unique.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Image/achievement.png" type="Texture" id=3]
-[ext_resource path="res://Sound/4JaTuRus.mp3" type="AudioStream" id=4]
+[ext_resource path="res://Sound/BGM_4JaTuRus.mp3" type="AudioStream" id=4]
 [ext_resource path="res://Scene/MainMenu.gd" type="Script" id=5]
 
 [sub_resource type="DynamicFont" id=1]
@@ -12,9 +12,7 @@ outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=2]
-size = 77
-outline_size = 3
-outline_color = Color( 0, 0, 0, 1 )
+size = 55
 font_data = ExtResource( 2 )
 
 [node name="MainMenu" type="Control"]
@@ -26,15 +24,15 @@ __meta__ = {
 }
 
 [node name="bg" type="TextureRect" parent="."]
-margin_right = 723.0
-margin_bottom = 1281.0
+margin_right = 720.0
+margin_bottom = 1280.0
 texture = ExtResource( 1 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="."]
+[node name="TekLabel" type="Label" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -55.5
@@ -46,22 +44,6 @@ custom_colors/font_color = Color( 1, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "Tek"
 align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="StartBT" type="Button" parent="."]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -100.0
-margin_top = -160.0
-margin_right = 100.0
-margin_bottom = -65.0
-custom_fonts/font = SubResource( 2 )
-text = "Start"
-flat = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -83,5 +65,120 @@ __meta__ = {
 stream = ExtResource( 4 )
 autoplay = true
 
-[connection signal="pressed" from="StartBT" to="." method="_on_Button_pressed"]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -310.0
+margin_top = -180.0
+margin_right = 206.0
+margin_bottom = -36.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_right = 516.0
+margin_bottom = 70.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="lv1" type="Button" parent="VBoxContainer/HBoxContainer"]
+modulate = Color( 0, 1, 0, 1 )
+margin_right = 100.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 100, 70 )
+custom_fonts/font = SubResource( 2 )
+text = "1"
+
+[node name="lv2" type="Button" parent="VBoxContainer/HBoxContainer"]
+modulate = Color( 0, 1, 0, 1 )
+margin_left = 104.0
+margin_right = 204.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 100, 70 )
+custom_fonts/font = SubResource( 2 )
+text = "2"
+
+[node name="lv3" type="Button" parent="VBoxContainer/HBoxContainer"]
+modulate = Color( 0, 1, 0, 1 )
+margin_left = 208.0
+margin_right = 308.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 100, 70 )
+custom_fonts/font = SubResource( 2 )
+text = "3"
+
+[node name="lv4" type="Button" parent="VBoxContainer/HBoxContainer"]
+modulate = Color( 0, 1, 0, 1 )
+margin_left = 312.0
+margin_right = 412.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 100, 70 )
+custom_fonts/font = SubResource( 2 )
+text = "4"
+
+[node name="lv5" type="Button" parent="VBoxContainer/HBoxContainer"]
+modulate = Color( 0, 1, 0, 1 )
+margin_left = 416.0
+margin_right = 516.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 100, 70 )
+custom_fonts/font = SubResource( 2 )
+text = "5"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 74.0
+margin_right = 516.0
+margin_bottom = 144.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="lv6" type="Button" parent="VBoxContainer/HBoxContainer2"]
+modulate = Color( 0, 1, 0, 1 )
+margin_right = 100.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 100, 70 )
+custom_fonts/font = SubResource( 2 )
+text = "6"
+
+[node name="lv7" type="Button" parent="VBoxContainer/HBoxContainer2"]
+modulate = Color( 0, 1, 0, 1 )
+margin_left = 104.0
+margin_right = 204.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 100, 70 )
+custom_fonts/font = SubResource( 2 )
+text = "7"
+
+[node name="lv8" type="Button" parent="VBoxContainer/HBoxContainer2"]
+modulate = Color( 0, 1, 0, 1 )
+margin_left = 208.0
+margin_right = 308.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 100, 70 )
+custom_fonts/font = SubResource( 2 )
+text = "8"
+
+[node name="lv9" type="Button" parent="VBoxContainer/HBoxContainer2"]
+modulate = Color( 0, 1, 0, 1 )
+margin_left = 312.0
+margin_right = 412.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 100, 70 )
+custom_fonts/font = SubResource( 2 )
+text = "9"
+
 [connection signal="pressed" from="AchievementBT" to="." method="_on_AchievementBT_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/lv1" to="." method="_on_lv1_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/lv2" to="." method="_on_lv2_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/lv3" to="." method="_on_lv3_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/lv4" to="." method="_on_lv4_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/lv5" to="." method="_on_lv5_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer2/lv6" to="." method="_on_lv6_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer2/lv7" to="." method="_on_lv7_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer2/lv8" to="." method="_on_lv8_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer2/lv9" to="." method="_on_lv9_pressed"]
