@@ -16,6 +16,8 @@ _global_script_class_icons={
 
 config/name="tek"
 run/main_scene="res://Scene/MainMenu.tscn"
+boot_splash/image="res://Image/splashScreen.png"
+boot_splash/bg_color=Color( 0.454902, 0.772549, 0.980392, 1 )
 config/icon="res://Image/ปก512x512.png"
 
 [autoload]
@@ -31,6 +33,7 @@ window/size/test_width=360
 window/size/test_height=640
 window/handheld/orientation="portrait"
 window/stretch/mode="2d"
+window/stretch/aspect="keep"
 
 [input]
 
