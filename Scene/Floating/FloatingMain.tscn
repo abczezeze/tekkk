@@ -4,102 +4,107 @@
 [ext_resource path="res://Scene/HeadCartoon/tek_abc3dz_Speng.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scene/HeadCartoon/tek_abc3dz_Olay.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scene/HeadCartoon/tek_abc3dz_Mno.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Font/Unique.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://Font/FloatingMain.tres" type="DynamicFont" id=5]
 [ext_resource path="res://Scene/Floating/FloatingMain.gd" type="Script" id=6]
 [ext_resource path="res://Image/home.png" type="Texture" id=7]
-[ext_resource path="res://Image/tekgame_Bg1024x768.png" type="Texture" id=8]
+[ext_resource path="res://Image/bg2.jpg" type="Texture" id=8]
 [ext_resource path="res://Image/home - Copy.png" type="Texture" id=9]
-
-[sub_resource type="DynamicFont" id=1]
-size = 22
-font_data = ExtResource( 5 )
+[ext_resource path="res://Image/musical_consert.png" type="Texture" id=10]
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 6 )
 
 [node name="Bg" type="Sprite" parent="."]
-position = Vector2( 361.547, 644.333 )
-scale = Vector2( 0.706146, 1.67267 )
 texture = ExtResource( 8 )
+centered = false
+
+[node name="musical_consert" type="Sprite" parent="Bg"]
+modulate = Color( 1, 1, 1, 0.509804 )
+position = Vector2( 512.007, 936.945 )
+texture = ExtResource( 10 )
 
 [node name="Tek_abc3dz_mno" parent="." instance=ExtResource( 4 )]
-position = Vector2( 46.9017, 193.279 )
+position = Vector2( 58.0135, 198.041 )
 
 [node name="Tek_abc3dz_olay" parent="." instance=ExtResource( 3 )]
-position = Vector2( 48.4839, 294.538 )
+position = Vector2( 58.0083, 307.237 )
 
 [node name="Tek_abc3dz_ichuen" parent="." instance=ExtResource( 1 )]
-position = Vector2( 40.8346, 386.927 )
+position = Vector2( 171.001, 237.711 )
 
 [node name="Tek_abc3dz_speng" parent="." instance=ExtResource( 2 )]
-position = Vector2( 47.9637, 482.371 )
+position = Vector2( 167.019, 353.792 )
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.001
 autostart = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-margin_right = 190.0
-margin_bottom = 151.0
+[node name="ClickT" type="Label" parent="."]
+margin_left = 381.218
+margin_top = 1300.16
+margin_right = 631.218
+margin_bottom = 1347.16
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0.921875, 0.129639, 0.129639, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Total : 0"
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ClickOlay" type="Label" parent="VBoxContainer"]
-margin_right = 190.0
-margin_bottom = 27.0
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0.00390625, 0.1362, 1, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "Olay#Drum : 0"
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 15.1708
+margin_top = 810.359
+margin_right = 205.171
+margin_bottom = 1010.36
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ClickMno" type="Label" parent="VBoxContainer"]
-margin_top = 31.0
 margin_right = 190.0
-margin_bottom = 58.0
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0.789062, 0.442692, 0.0739746, 1 )
+margin_bottom = 47.0
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0.878431, 0.537255, 0, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "Mno#Bass : 0"
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ClickOlay" type="Label" parent="VBoxContainer"]
+margin_top = 51.0
+margin_right = 190.0
+margin_bottom = 98.0
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0.419608, 0.498039, 0.988235, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "0"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ClickSpeng" type="Label" parent="VBoxContainer"]
-margin_top = 62.0
+margin_top = 102.0
 margin_right = 190.0
-margin_bottom = 89.0
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 1, 0.960938, 0, 1 )
+margin_bottom = 149.0
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0.92549, 0.972549, 0.113725, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "Speng#Guitar : 0"
+text = "0"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ClickIchuen" type="Label" parent="VBoxContainer"]
-margin_top = 93.0
+margin_top = 153.0
 margin_right = 190.0
-margin_bottom = 120.0
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0.203125, 0.203125, 0.203125, 1 )
+margin_bottom = 200.0
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0.772549, 0, 0.882353, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "Ichuen#Turntable : 0"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ClickT" type="Label" parent="VBoxContainer"]
-margin_top = 124.0
-margin_right = 190.0
-margin_bottom = 151.0
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0.921875, 0.129639, 0.129639, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "Total : 0"
+text = "0"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -109,10 +114,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 320.0
-margin_top = 1170.0
-margin_right = 448.0
-margin_bottom = 1298.0
+margin_left = 500.0
+margin_top = 1793.63
+margin_right = 628.0
+margin_bottom = 1921.63
 texture_normal = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -128,5 +133,5 @@ __meta__ = {
 }
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
-[connection signal="pressed" from="HomeBT" to="." method="_on_Level_pressed"]
 [connection signal="pressed" from="HomeBT" to="." method="_on_HomeBT_pressed"]
+[connection signal="pressed" from="HomeBT" to="." method="_on_Level_pressed"]

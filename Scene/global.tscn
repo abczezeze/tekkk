@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Sound/SFX_home.ogg" type="AudioStream" id=1]
 [ext_resource path="res://Scene/global.gd" type="Script" id=2]
@@ -7,6 +7,11 @@
 [ext_resource path="res://Sound/BGM_TekGame.mp3" type="AudioStream" id=5]
 [ext_resource path="res://Sound/BGM_SkbAnimation.mp3" type="AudioStream" id=6]
 [ext_resource path="res://Sound/SFX_Scene.ogg" type="AudioStream" id=7]
+[ext_resource path="res://Sound/BGM_4JaTuRus.mp3" type="AudioStream" id=8]
+[ext_resource path="res://Sound/SFX_bass0.ogg" type="AudioStream" id=9]
+[ext_resource path="res://Sound/SFX_turntable0.ogg" type="AudioStream" id=10]
+[ext_resource path="res://Sound/SFX_guitar0.ogg" type="AudioStream" id=11]
+[ext_resource path="res://Sound/SFX__drum0.ogg" type="AudioStream" id=12]
 
 [node name="Node" type="Node"]
 script = ExtResource( 2 )
@@ -22,7 +27,7 @@ pitch_scale = 2.0
 stream = ExtResource( 4 )
 volume_db = 10.0
 
-[node name="OneToFive" type="AudioStreamPlayer" parent="."]
+[node name="Floating" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
 
 [node name="SixToNine" type="AudioStreamPlayer" parent="."]
@@ -30,3 +35,22 @@ stream = ExtResource( 6 )
 
 [node name="SceneSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 7 )
+
+[node name="MenuAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+
+[node name="BassSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 9 )
+volume_db = 10.0
+
+[node name="GuitarSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 11 )
+volume_db = 10.0
+
+[node name="DrumSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 12 )
+volume_db = 10.0
+
+[node name="TurntableSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 10 )
+volume_db = 10.0

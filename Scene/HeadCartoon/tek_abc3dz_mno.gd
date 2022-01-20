@@ -19,7 +19,7 @@ func _ready():
 func _process(delta):
 	position += direction_mno * speed_mno * delta
 	if position.x < 0:
-		direction_mno.x =- direction_mno.x
+		direction_mno.x = -direction_mno.x
 	if position.x > width_mno:
 		direction_mno.x = -direction_mno.x
 	if position.y < 0:

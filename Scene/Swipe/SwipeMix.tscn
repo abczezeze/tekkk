@@ -1,0 +1,266 @@
+[gd_scene load_steps=22 format=2]
+
+[ext_resource path="res://Scene/Swipe/SwipeMix.gd" type="Script" id=1]
+[ext_resource path="res://Image/tekgame_MusicalTurntable.png" type="Texture" id=2]
+[ext_resource path="res://Font/FloatingMain.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Image/bg1080x1920.jpg" type="Texture" id=4]
+[ext_resource path="res://Image/fullz-mno.png" type="Texture" id=5]
+[ext_resource path="res://Image/fullz-ichuen.png" type="Texture" id=6]
+[ext_resource path="res://Image/fullz-olay.png" type="Texture" id=7]
+[ext_resource path="res://Image/fullz-speng.png" type="Texture" id=8]
+[ext_resource path="res://Image/home.png" type="Texture" id=9]
+[ext_resource path="res://Image/tekgame_MusicalDrum.png" type="Texture" id=10]
+[ext_resource path="res://Image/tekgame_MusicalGuitar.png" type="Texture" id=11]
+[ext_resource path="res://Image/tekgameHead_mno.png" type="Texture" id=12]
+[ext_resource path="res://Image/tekgame_MusicalBass.png" type="Texture" id=13]
+[ext_resource path="res://Image/tekgameHead_Ichuen.png" type="Texture" id=14]
+[ext_resource path="res://Image/tekgameHead_Speng.png" type="Texture" id=15]
+[ext_resource path="res://Image/tekgameHead_olayzzz.png" type="Texture" id=16]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( -67.3611, 59.5225, 67.3611, -59.5225, 72.3857, 842.881, 0, 0, 0, 0, 481.026, 783.39, -51.8817, -68.1725, 51.8817, 68.1725, 1009.86, 843.884, 0, -61.4026, 0, 61.4026, 1052.28, 1070.16, 86.3647, -85.427, -86.3647, 85.427, 998.542, 1319.06, 0, 0, 0, 0, 517.088, 1370.56, 81.2715, 84.1635, -81.2715, -84.1635, 61.6022, 1325.61, 0, 0, 0, 0, 11.7728, 1071.86, -86.9237, 55.0452, 86.9237, -55.0452, 73.4862, 840.326 )
+}
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 50.5953
+
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 20.3898
+height = 30.7156
+
+[sub_resource type="CapsuleShape2D" id=4]
+radius = 25.1722
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 33.0919, 20.1341 )
+
+[node name="path2D" type="Path2D"]
+curve = SubResource( 1 )
+script = ExtResource( 1 )
+
+[node name="bg" type="Sprite" parent="."]
+position = Vector2( 2.99658, 0 )
+texture = ExtResource( 4 )
+centered = false
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+position = Vector2( 72.3857, 842.881 )
+rotate = false
+
+[node name="Area2DHead" type="Area2D" parent="PathFollow2D" groups=[
+"Mno",
+]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PathFollow2D/Area2DHead"]
+shape = SubResource( 2 )
+
+[node name="tekgameHead_mno" type="Sprite" parent="PathFollow2D/Area2DHead"]
+texture = ExtResource( 12 )
+
+[node name="PathFollow2DOlay" type="PathFollow2D" parent="."]
+position = Vector2( 713.558, 787.446 )
+offset = 649.55
+rotate = false
+
+[node name="Area2DHeadOlay" type="Area2D" parent="PathFollow2DOlay" groups=[
+"Olay",
+]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PathFollow2DOlay/Area2DHeadOlay"]
+shape = SubResource( 2 )
+
+[node name="tekgameHeadOlay" type="Sprite" parent="PathFollow2DOlay/Area2DHeadOlay"]
+texture = ExtResource( 16 )
+
+[node name="PathFollow2DSpeng" type="PathFollow2D" parent="."]
+position = Vector2( 1036.41, 1268.01 )
+offset = 1391.91
+rotate = false
+
+[node name="Area2DHeadSpeng" type="Area2D" parent="PathFollow2DSpeng" groups=[
+"Speng",
+]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PathFollow2DSpeng/Area2DHeadSpeng"]
+shape = SubResource( 2 )
+
+[node name="tekgameHeadSpeng" type="Sprite" parent="PathFollow2DSpeng/Area2DHeadSpeng"]
+texture = ExtResource( 15 )
+
+[node name="PathFollow2DIchuen" type="PathFollow2D" parent="."]
+position = Vector2( 423.769, 1377.29 )
+offset = 2041.46
+rotate = false
+
+[node name="Area2DHeadIchuen" type="Area2D" parent="PathFollow2DIchuen" groups=[
+"Ichuen",
+]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PathFollow2DIchuen/Area2DHeadIchuen"]
+shape = SubResource( 2 )
+
+[node name="tekgameHeadIchuen" type="Sprite" parent="PathFollow2DIchuen/Area2DHeadIchuen"]
+texture = ExtResource( 14 )
+
+[node name="fullz-ichuen" type="Sprite" parent="."]
+modulate = Color( 0.772549, 0, 0.882353, 1 )
+position = Vector2( 654.475, 1106.9 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 6 )
+
+[node name="fullz-mno" type="Sprite" parent="."]
+modulate = Color( 0.878431, 0.537255, 0, 1 )
+position = Vector2( 563.169, 1105.78 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 5 )
+
+[node name="fullz-olay" type="Sprite" parent="."]
+modulate = Color( 0.0666667, 0.670588, 1, 1 )
+position = Vector2( 470.404, 1106.45 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 7 )
+
+[node name="fullz-speng" type="Sprite" parent="."]
+modulate = Color( 0.92549, 0.972549, 0.113725, 1 )
+position = Vector2( 384.271, 1128.63 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 8 )
+
+[node name="Area2DMusicalBass" type="Area2D" parent="."]
+position = Vector2( 286.179, 76.553 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DMusicalBass"]
+shape = SubResource( 3 )
+
+[node name="tekgame_MusicalBass" type="Sprite" parent="Area2DMusicalBass"]
+texture = ExtResource( 13 )
+
+[node name="Area2DMusicalGuitar" type="Area2D" parent="."]
+position = Vector2( 185.712, 79.4954 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DMusicalGuitar"]
+shape = SubResource( 3 )
+
+[node name="tekgame_MusicalGuitar" type="Sprite" parent="Area2DMusicalGuitar"]
+texture = ExtResource( 11 )
+
+[node name="Area2DMusicalDrum" type="Area2D" parent="."]
+position = Vector2( 410.207, 127.55 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DMusicalDrum"]
+position = Vector2( 0, 5.99323 )
+shape = SubResource( 4 )
+
+[node name="tekgame_MusicalDrum" type="Sprite" parent="Area2DMusicalDrum"]
+texture = ExtResource( 10 )
+
+[node name="Area2DMusicalTurntable" type="Area2D" parent="."]
+position = Vector2( 527.093, 138.038 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DMusicalTurntable"]
+position = Vector2( 0, 5.99323 )
+shape = SubResource( 5 )
+
+[node name="tekgame_MusicalTurntable" type="Sprite" parent="Area2DMusicalTurntable"]
+position = Vector2( 0, 1.7818 )
+texture = ExtResource( 2 )
+
+[node name="ClickMno" type="Label" parent="."]
+margin_left = 520.981
+margin_top = 970.846
+margin_right = 583.981
+margin_bottom = 1017.85
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0.878431, 0.537255, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "999"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ClickOlay" type="Label" parent="."]
+margin_left = 429.82
+margin_top = 982.87
+margin_right = 492.82
+margin_bottom = 1029.87
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0.419608, 0.498039, 0.988235, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "999"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ClickSpeng" type="Label" parent="."]
+margin_left = 343.27
+margin_top = 1002.07
+margin_right = 406.27
+margin_bottom = 1049.07
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0.92549, 0.972549, 0.113725, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "999"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ClickIchuen" type="Label" parent="."]
+margin_left = 618.235
+margin_top = 984.576
+margin_right = 681.235
+margin_bottom = 1031.58
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0.772549, 0, 0.882353, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "999"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="ClickT" type="Label" parent="."]
+margin_left = 409.88
+margin_top = 1200.54
+margin_right = 599.88
+margin_bottom = 1247.54
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0.921875, 0.129639, 0.129639, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Total : 0"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HomeBT" type="TextureButton" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 915.657
+margin_top = 1575.88
+margin_right = 1043.66
+margin_bottom = 1703.88
+texture_normal = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="input_event" from="PathFollow2D/Area2DHead" to="." method="_on_Area2DHead_input_event"]
+[connection signal="input_event" from="PathFollow2DOlay/Area2DHeadOlay" to="." method="_on_Area2DHeadOlay_input_event"]
+[connection signal="input_event" from="PathFollow2DSpeng/Area2DHeadSpeng" to="." method="_on_Area2DHeadSpeng_input_event"]
+[connection signal="input_event" from="PathFollow2DIchuen/Area2DHeadIchuen" to="." method="_on_Area2DHeadIchuen_input_event"]
+[connection signal="area_entered" from="Area2DMusicalBass" to="." method="_on_Area2DMusicalBass_area_entered"]
+[connection signal="area_entered" from="Area2DMusicalGuitar" to="." method="_on_Area2DMusicalGuitar_area_entered"]
+[connection signal="area_entered" from="Area2DMusicalDrum" to="." method="_on_Area2DMusicalDrum_area_entered"]
+[connection signal="area_entered" from="Area2DMusicalTurntable" to="." method="_on_Area2DMusicalTurntable_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="pressed" from="HomeBT" to="." method="_on_HomeBT_pressed"]

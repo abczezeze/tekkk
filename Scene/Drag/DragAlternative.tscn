@@ -1,0 +1,59 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Image/Sc_DragScene.jpg" type="Texture" id=1]
+[ext_resource path="res://Scene/Drag/DragAlternative.gd" type="Script" id=2]
+[ext_resource path="res://Image/home.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 523.557, 208.25 )
+
+[node name="DragAlternative" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="BGDragScene" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+centered = false
+
+[node name="Area2DMno" type="Area2D" parent="."]
+position = Vector2( 540.987, 242.787 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DMno"]
+shape = SubResource( 1 )
+
+[node name="Area2DIchuen" type="Area2D" parent="."]
+position = Vector2( 535.324, 714.725 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DIchuen"]
+shape = SubResource( 1 )
+
+[node name="Area2DOlay" type="Area2D" parent="."]
+position = Vector2( 537.91, 1210.75 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DOlay"]
+shape = SubResource( 1 )
+
+[node name="Area2DSpeng" type="Area2D" parent="."]
+position = Vector2( 549.237, 1679 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DSpeng"]
+shape = SubResource( 1 )
+
+[node name="HomeBT" type="TextureButton" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 950.508
+margin_top = 1781.63
+margin_right = 1078.51
+margin_bottom = 1909.63
+texture_normal = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="input_event" from="Area2DMno" to="." method="_on_Area2DMno_input_event"]
+[connection signal="input_event" from="Area2DIchuen" to="." method="_on_Area2DIchuen_input_event"]
+[connection signal="input_event" from="Area2DOlay" to="." method="_on_Area2DOlay_input_event"]
+[connection signal="input_event" from="Area2DSpeng" to="." method="_on_Area2DSpeng_input_event"]
+[connection signal="pressed" from="HomeBT" to="." method="_on_HomeBT_pressed"]

@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Image/mainmenu720x1280.jpg" type="Texture" id=1]
+[ext_resource path="res://Image/mainmenu1080x1920.jpg" type="Texture" id=1]
 [ext_resource path="res://Font/Unique.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Image/achievement.png" type="Texture" id=3]
-[ext_resource path="res://Sound/BGM_4JaTuRus.mp3" type="AudioStream" id=4]
 [ext_resource path="res://Scene/MainMenu.gd" type="Script" id=5]
 
 [sub_resource type="DynamicFont" id=1]
@@ -24,10 +23,7 @@ __meta__ = {
 }
 
 [node name="bg" type="TextureRect" parent="."]
-margin_right = 720.0
-margin_bottom = 1280.0
 texture = ExtResource( 1 )
-expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -49,21 +45,20 @@ __meta__ = {
 }
 
 [node name="AchievementBT" type="TextureButton" parent="."]
+visible = false
 modulate = Color( 1, 0.321569, 0.00392157, 1 )
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -128.0
-margin_top = -128.0
+margin_left = -166.141
+margin_top = -157.665
+margin_right = -38.1406
+margin_bottom = -29.6648
 texture_normal = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="MenuAudio" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 4 )
-autoplay = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_left = 0.5
@@ -71,9 +66,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 margin_left = -310.0
-margin_top = -180.0
+margin_top = -130.0
 margin_right = 206.0
-margin_bottom = -36.0
+margin_bottom = -30.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -120,65 +115,8 @@ rect_min_size = Vector2( 100, 70 )
 custom_fonts/font = SubResource( 2 )
 text = "4"
 
-[node name="lv5" type="Button" parent="VBoxContainer/HBoxContainer"]
-modulate = Color( 0, 1, 0, 1 )
-margin_left = 416.0
-margin_right = 516.0
-margin_bottom = 70.0
-rect_min_size = Vector2( 100, 70 )
-custom_fonts/font = SubResource( 2 )
-text = "5"
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 74.0
-margin_right = 516.0
-margin_bottom = 144.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="lv6" type="Button" parent="VBoxContainer/HBoxContainer2"]
-modulate = Color( 0, 1, 0, 1 )
-margin_right = 100.0
-margin_bottom = 70.0
-rect_min_size = Vector2( 100, 70 )
-custom_fonts/font = SubResource( 2 )
-text = "6"
-
-[node name="lv7" type="Button" parent="VBoxContainer/HBoxContainer2"]
-modulate = Color( 0, 1, 0, 1 )
-margin_left = 104.0
-margin_right = 204.0
-margin_bottom = 70.0
-rect_min_size = Vector2( 100, 70 )
-custom_fonts/font = SubResource( 2 )
-text = "7"
-
-[node name="lv8" type="Button" parent="VBoxContainer/HBoxContainer2"]
-modulate = Color( 0, 1, 0, 1 )
-margin_left = 208.0
-margin_right = 308.0
-margin_bottom = 70.0
-rect_min_size = Vector2( 100, 70 )
-custom_fonts/font = SubResource( 2 )
-text = "8"
-
-[node name="lv9" type="Button" parent="VBoxContainer/HBoxContainer2"]
-modulate = Color( 0, 1, 0, 1 )
-margin_left = 312.0
-margin_right = 412.0
-margin_bottom = 70.0
-rect_min_size = Vector2( 100, 70 )
-custom_fonts/font = SubResource( 2 )
-text = "9"
-
 [connection signal="pressed" from="AchievementBT" to="." method="_on_AchievementBT_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/lv1" to="." method="_on_lv1_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/lv2" to="." method="_on_lv2_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/lv3" to="." method="_on_lv3_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/lv4" to="." method="_on_lv4_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/lv5" to="." method="_on_lv5_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer2/lv6" to="." method="_on_lv6_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer2/lv7" to="." method="_on_lv7_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer2/lv8" to="." method="_on_lv8_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer2/lv9" to="." method="_on_lv9_pressed"]

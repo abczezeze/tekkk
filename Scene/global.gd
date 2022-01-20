@@ -17,17 +17,31 @@ func FailedAudioPlay():
 	
 func SceneSoundPlay():
 	$SceneSound.play()
+	
+func MenuAudioP():
+	$MenuAudio.play()
+func MenuAudioS():
+	$MenuAudio.stop()
 
-func OneToFiveSound():
-	$OneToFive.play()
-func OneToFiveStop():
-	$OneToFive.stop()
+func FloatingPlay():
+	$Floating.play()
+func FloatingStop():
+	$Floating.stop()
 	
-func SixToNineSound():
+func DragP():
 	$SixToNine.play()
-func SixToNineStop():
+func DragS():
 	$SixToNine.stop()
-	
+
+func BassP():
+	$BassSound.play()
+func GuitarP():
+	$GuitarSound.play()
+func DrumP():
+	$DrumSound.play()
+func TurntableP():
+	$TurntableSound.play()
+
 func submit_total_score(score : int):
 	PlayIntegration.unlock_achievements(score)
 	PlayIntegration.achievementsSteps(score)
