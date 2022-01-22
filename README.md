@@ -12,5 +12,7 @@ BGM Dragging: https://soundcloud.com/abczezeze/2017-12-20skbanimation
 [Play store](https://play.google.com/store/apps/details?id=com.abczezeze.tek)
 
 ## screenshot
+<img src="https://github.com/abczezeze/tek-game/blob/main/ss/tek_floating.gif" width="180" height="360">
+<img src="https://github.com/abczezeze/tek-game/blob/main/ss/tek_darg.gif" width="180" height="360">
+<img src="https://github.com/abczezeze/tek-game/blob/main/ss/tek_swipe.gif" width="180" height="360">
 
-<img src="https://github.com/abczezeze/tek2d/blob/main/ss/tek.gif">
