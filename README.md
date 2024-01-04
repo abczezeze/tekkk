@@ -1,4 +1,4 @@
-# tek game 
+# tekkk game 
 Touch the floating cartoon head and drag a body image to a cartoon head falling.
 
 ## Sound
