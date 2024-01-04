@@ -14,7 +14,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="tek"
+config/name="tekkk"
 run/main_scene="res://Scene/MainMenu.tscn"
 boot_splash/image="res://Image/splashScreen.png"
 boot_splash/bg_color=Color( 0.454902, 0.772549, 0.980392, 1 )
@@ -23,7 +23,6 @@ config/windows_native_icon="res://Image/Yo.ico"
 
 [autoload]
 
-PlayIntegration="*res://PlayIntegration.gd"
 Global="*res://Scene/global.tscn"
 
 [display]
