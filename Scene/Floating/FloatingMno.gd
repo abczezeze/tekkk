@@ -10,8 +10,6 @@ func _process(delta):
 	if $Tek_abc3dz_mno.hit_mno == true :
 		Global.mno_scores += 1
 		$ClickMno.text = str(Global.mno_scores)
-#		PlayIntegration.achievementsStepsMno(Global.mno_scores*10)
-#		Global.submit_total_score(Global.total_scores*10)
 	if $Tek_abc3dz_mno2.hit_mno == true :
 		Global.mno_scores -= 1
 		$ClickMno.text = str(Global.mno_scores)

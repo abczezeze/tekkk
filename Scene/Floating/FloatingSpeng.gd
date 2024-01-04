@@ -10,8 +10,6 @@ func _process(delta):
 	if $Tek_abc3dz_speng.hit_speng == true :
 		Global.speng_scores += 1
 		$Click_.text = str(Global.speng_scores)
-#		PlayIntegration.achievementsStepsSpeng(Global.speng_scores*10)
-#		Global.submit_total_score(Global.total_scores*10)
 	if $Tek_abc3dz_speng2.hit_speng == true :
 		Global.speng_scores -= 1
 		$Click_.text = str(Global.speng_scores)

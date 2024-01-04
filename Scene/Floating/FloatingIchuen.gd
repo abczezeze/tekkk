@@ -10,8 +10,6 @@ func _process(delta):
 	if $Tek_abc3dz_ichuen.hit_ichuen == true :
 		Global.ichuen_scores += 1
 		$Click_.text = str(Global.ichuen_scores)
-#		PlayIntegration.achievementsStepsIchuen(Global.ichuen_scores*10)
-#		Global.submit_total_score(Global.total_scores*10)
 	if $Tek_abc3dz_ichuen2.hit_ichuen == true :
 		Global.ichuen_scores -= 1
 		$Click_.text = str(Global.ichuen_scores)

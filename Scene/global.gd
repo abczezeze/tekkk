@@ -41,7 +41,3 @@ func DrumP():
 	$DrumSound.play()
 func TurntableP():
 	$TurntableSound.play()
-
-func submit_total_score(score : int):
-	PlayIntegration.unlock_achievements(score)
-	PlayIntegration.achievementsSteps(score)

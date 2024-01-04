@@ -56,9 +56,9 @@ margin_left = 20.0
 margin_top = 960.0
 margin_right = 83.0
 margin_bottom = 1007.0
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.789062, 0.442692, 0.0739746, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "999"
 align = 1
 __meta__ = {
@@ -82,7 +82,7 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 487.66, 980.097 )
 frames = SubResource( 1 )
-frame = 5
+frame = 7
 playing = true
 
 [connection signal="pressed" from="HomeBT" to="." method="_on_HomeBT_pressed"]

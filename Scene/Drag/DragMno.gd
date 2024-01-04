@@ -49,8 +49,6 @@ func _on_MnoArea2D_body_entered(body):
 	if body.is_in_group("Mno"):
 		Global.mno_scores += 1
 		Global.AccurateAudioPlay()
-#		PlayIntegration.achievementsStepsMno(Global.mno_scores*10)
-#		Global.submit_total_score(Global.total_scores*10)
 	else:
 		Global.mno_scores -= 1
 		Global.FailedAudioPlay()

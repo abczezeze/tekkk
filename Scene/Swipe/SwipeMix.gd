@@ -5,7 +5,7 @@ var musicalGuitar_pos_y = []
 var musicalDrum_pos_y = []
 var musicalTurntable_pos_y = []
 
-var movecheck = true
+var movecheck = true #เพื่อไรฟะ
 var movecheckGuitar = true
 var movecheckDrum = true
 var movecheckTurntable = true
@@ -217,32 +217,24 @@ func _on_Area2DMusicalBass_area_entered(area):
 	if area.is_in_group("Mno"):
 		Global.mno_scores += 1
 		Global.BassP()
-#		PlayIntegration.achievementsStepsMno(Global.mno_scores*10)
-#		Global.submit_total_score(Global.total_scores*10)
 		$ClickMno.text = str(Global.mno_scores)
 
 func _on_Area2DMusicalGuitar_area_entered(area):
 	if area.is_in_group("Speng"):
 		Global.speng_scores += 1
 		Global.GuitarP()
-#		PlayIntegration.achievementsStepsSpeng(Global.speng_scores*10)
-#		Global.submit_total_score(Global.total_scores*10)
 		$ClickSpeng.text = str(Global.speng_scores)
 
 func _on_Area2DMusicalDrum_area_entered(area):
 	if area.is_in_group("Olay"):
 		Global.olay_scores += 1
 		Global.DrumP()
-#		PlayIntegration.achievementsStepsOlay(Global.olay_scores*10)
-#		Global.submit_total_score(Global.total_scores*10)
 		$ClickOlay.text = str(Global.olay_scores)
 
 func _on_Area2DMusicalTurntable_area_entered(area):
 	if area.is_in_group("Ichuen"):
 		Global.ichuen_scores += 1
 		Global.TurntableP()
-#		PlayIntegration.achievementsStepsIchuen(Global.ichuen_scores*10)		
-#		Global.submit_total_score(Global.total_scores*10)
 		$ClickIchuen.text = str(Global.ichuen_scores)
 
 func _on_HomeBT_pressed():

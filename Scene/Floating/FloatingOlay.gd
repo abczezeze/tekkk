@@ -10,8 +10,6 @@ func _process(delta):
 	if $Tek_abc3dz_olay.hit_olay == true :
 		Global.olay_scores += 1
 		$Click_.text = str(Global.olay_scores)
-#		PlayIntegration.achievementsStepsOlay(Global.olay_scores*10)
-#		Global.submit_total_score(Global.total_scores*10)
 	if $Tek_abc3dz_olay2.hit_olay == true :
 		Global.olay_scores -= 1
 		$Click_.text = str(Global.olay_scores)

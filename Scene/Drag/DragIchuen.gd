@@ -29,6 +29,7 @@ func _physics_process(delta):
 		
 	
 func _process(delta):
+	print(Global.ichuen_scores)
 	$Scores.text = str(Global.ichuen_scores)
 
 func _on_Area2D_input_event(viewport, event, shape_idx):
@@ -53,8 +54,6 @@ func _on_MnoArea2D_body_entered(body):
 	if body.is_in_group("Ichuen"):
 		Global.ichuen_scores += 1
 		Global.AccurateAudioPlay()
-#		PlayIntegration.achievementsStepsIchuen(Global.ichuen_scores*10)
-#		Global.submit_total_score(Global.total_scores*10)
 	else:
 		Global.ichuen_scores -= 1
 		Global.FailedAudioPlay()

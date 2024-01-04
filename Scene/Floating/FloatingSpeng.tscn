@@ -62,7 +62,7 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 510.453, 1012.38 )
 frames = SubResource( 1 )
-frame = 5
+frame = 7
 playing = true
 
 [node name="Tek_abc3dz_speng" parent="." instance=ExtResource( 2 )]

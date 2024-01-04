@@ -81,7 +81,7 @@ position = Vector2( 243.421, 289.754 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 544.395, 1068.95 )
 frames = SubResource( 1 )
-frame = 6
+frame = 5
 playing = true
 
 [connection signal="pressed" from="HomeBT" to="." method="_on_HomeBT_pressed"]

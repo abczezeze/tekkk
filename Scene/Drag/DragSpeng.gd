@@ -59,8 +59,6 @@ func _on_MnoArea2D_body_entered(body):
 	if body.is_in_group("Speng"):
 		Global.speng_scores += 1
 		Global.AccurateAudioPlay()
-#		PlayIntegration.achievementsStepsSpeng(Global.speng_scores*10)
-#		Global.submit_total_score(Global.total_scores*10)
 	else:
 		Global.speng_scores -= 1
 		Global.FailedAudioPlay()

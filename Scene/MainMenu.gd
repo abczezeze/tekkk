@@ -1,17 +1,17 @@
 extends Control
 
 func _ready():
-#	PlayIntegration.sign_in()
 	Global.MenuAudioP()
-
-func _on_AchievementBT_pressed():
-	if PlayIntegration.sign_in():
-		PlayIntegration.showAchievement()
+	if Global.total_scores > 0:
+		$CenterContainer/VBoxContainer/TotalLabel.text = str("Total : ",Global.total_scores)
+		$CenterContainer/VBoxContainer/TotalLabel.show()
+	else:
+		$CenterContainer/VBoxContainer/TotalLabel.hide()
 
 func _on_lv1_pressed():
 	Global.MenuAudioS()
 	Global.SceneSoundPlay()
-	get_tree().change_scene("res://Scene/Floating/FloatingMain.tscn")
+	get_tree().change_scene("res://Scene/Floating/FloatingMix.tscn")
 
 func _on_lv2_pressed():
 	Global.SceneSoundPlay()

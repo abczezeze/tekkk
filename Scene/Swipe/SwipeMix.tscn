@@ -48,9 +48,7 @@ centered = false
 position = Vector2( 72.3857, 842.881 )
 rotate = false
 
-[node name="Area2DHead" type="Area2D" parent="PathFollow2D" groups=[
-"Mno",
-]]
+[node name="Area2DHead" type="Area2D" parent="PathFollow2D" groups=["Mno"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PathFollow2D/Area2DHead"]
 shape = SubResource( 2 )
@@ -63,9 +61,7 @@ position = Vector2( 713.558, 787.446 )
 offset = 649.55
 rotate = false
 
-[node name="Area2DHeadOlay" type="Area2D" parent="PathFollow2DOlay" groups=[
-"Olay",
-]]
+[node name="Area2DHeadOlay" type="Area2D" parent="PathFollow2DOlay" groups=["Olay"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PathFollow2DOlay/Area2DHeadOlay"]
 shape = SubResource( 2 )
@@ -78,9 +74,7 @@ position = Vector2( 1036.41, 1268.01 )
 offset = 1391.91
 rotate = false
 
-[node name="Area2DHeadSpeng" type="Area2D" parent="PathFollow2DSpeng" groups=[
-"Speng",
-]]
+[node name="Area2DHeadSpeng" type="Area2D" parent="PathFollow2DSpeng" groups=["Speng"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PathFollow2DSpeng/Area2DHeadSpeng"]
 shape = SubResource( 2 )
@@ -93,9 +87,7 @@ position = Vector2( 423.769, 1377.29 )
 offset = 2041.46
 rotate = false
 
-[node name="Area2DHeadIchuen" type="Area2D" parent="PathFollow2DIchuen" groups=[
-"Ichuen",
-]]
+[node name="Area2DHeadIchuen" type="Area2D" parent="PathFollow2DIchuen" groups=["Ichuen"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PathFollow2DIchuen/Area2DHeadIchuen"]
 shape = SubResource( 2 )
@@ -171,9 +163,9 @@ margin_left = 520.981
 margin_top = 970.846
 margin_right = 583.981
 margin_bottom = 1017.85
-custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0.878431, 0.537255, 0, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 3 )
 text = "999"
 align = 1
 __meta__ = {
@@ -185,9 +177,9 @@ margin_left = 429.82
 margin_top = 982.87
 margin_right = 492.82
 margin_bottom = 1029.87
-custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0.419608, 0.498039, 0.988235, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 3 )
 text = "999"
 align = 1
 __meta__ = {
@@ -199,9 +191,9 @@ margin_left = 343.27
 margin_top = 1002.07
 margin_right = 406.27
 margin_bottom = 1049.07
-custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0.92549, 0.972549, 0.113725, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 3 )
 text = "999"
 align = 1
 __meta__ = {
@@ -213,9 +205,9 @@ margin_left = 618.235
 margin_top = 984.576
 margin_right = 681.235
 margin_bottom = 1031.58
-custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0.772549, 0, 0.882353, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 3 )
 text = "999"
 align = 1
 __meta__ = {
@@ -231,14 +223,11 @@ margin_left = 409.88
 margin_top = 1200.54
 margin_right = 599.88
 margin_bottom = 1247.54
-custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0.921875, 0.129639, 0.129639, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 3 )
 text = "Total : 0"
 align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="HomeBT" type="TextureButton" parent="."]
 anchor_left = 1.0
