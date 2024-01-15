@@ -1,6 +1,9 @@
 # tekkk game 
 Touch the floating cartoon head and drag a body image to a cartoon head falling.
 
+## Art
+https://sketchfab.com/3d-models/4jaturas-b2562554ff1d430498875bb6e4fe7430
+
 ## Sound
 Main menu : https://soundcloud.com/abczezeze/2018-01-05hny<br>
 BGM Floating: https://soundcloud.com/abczezeze/my-frist-game<br>
