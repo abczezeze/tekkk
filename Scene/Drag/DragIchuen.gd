@@ -4,11 +4,7 @@ var is_dragging = false
 
 func _ready():
 	Global.DragP()
-	$MnoRigidBody2D.position.x = rand_range(50,1000)
-	$OlayRigidBody2D.position.x = rand_range(50,1000)
-	$SpengRigidBody2D.position.x = rand_range(50,1000)
-	$IchuenRigidBody2D.position.x = rand_range(50,1000)
-	$Scores.text = str(Global.speng_scores)
+	$Scores.text = str(Global.ichuen_scores)
 
 func _physics_process(delta):
 	if $MnoRigidBody2D.position.y >= 1860:
@@ -27,9 +23,8 @@ func _physics_process(delta):
 		$IchuenRigidBody2D.position.x = rand_range(50,1000)
 		$IchuenRigidBody2D.global_position.y = 0
 		
-	
 func _process(delta):
-	print(Global.ichuen_scores)
+#	print(Global.ichuen_scores)
 	$Scores.text = str(Global.ichuen_scores)
 
 func _on_Area2D_input_event(viewport, event, shape_idx):
@@ -55,7 +50,6 @@ func _on_MnoArea2D_body_entered(body):
 		Global.ichuen_scores += 1
 		Global.AccurateAudioPlay()
 	else:
-		Global.ichuen_scores -= 1
 		Global.FailedAudioPlay()
 
 func _on_BackBT_pressed():

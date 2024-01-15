@@ -1,41 +1,28 @@
 extends Node2D
 
-onready var PlayIntegration = get_node("/root/PlayIntegration")
-
 func _ready():
 	Global.FloatingPlay()
 	$Click_.text = str(Global.olay_scores)
+	$AnimatedSprite.speed_scale=0
+	for n in 14:
+		var olay_add = $olay_right.duplicate()
+		add_child(olay_add)
 	
 func _process(delta):
-	if $Tek_abc3dz_olay.hit_olay == true :
-		Global.olay_scores += 1
-		$Click_.text = str(Global.olay_scores)
-	if $Tek_abc3dz_olay2.hit_olay == true :
-		Global.olay_scores -= 1
-		$Click_.text = str(Global.olay_scores)
-		$Tek_abc3dz_olay2/HitSound_olay.pitch_scale = 2.5
-	if $Tek_abc3dz_olay3.hit_olay == true :
-		Global.olay_scores -= 1
-		$Click_.text = str(Global.olay_scores)
-		$Tek_abc3dz_olay3/HitSound_olay.pitch_scale = 2.5
-	if $Tek_abc3dz_olay4.hit_olay == true :
-		Global.olay_scores -= 1
-		$Click_.text = str(Global.olay_scores)
-		$Tek_abc3dz_olay4/HitSound_olay.pitch_scale = 2.5
-	if $Tek_abc3dz_olay5.hit_olay == true :
-		Global.olay_scores -= 1
-		$Click_.text = str(Global.olay_scores)
-		$Tek_abc3dz_olay5/HitSound_olay.pitch_scale = 2.5
-
-	$Tek_abc3dz_olay.hit_olay = false 
-	$Tek_abc3dz_olay2.hit_olay = false 
-	$Tek_abc3dz_olay3.hit_olay = false 
-	$Tek_abc3dz_olay4.hit_olay = false 
-	$Tek_abc3dz_olay5.hit_olay = false 
+	if $olay_right.hit_olay == true :
+		press_right()
+	
+	$olay_right.hit_olay = false 
 
 func _on_HomeBT_pressed():
 	Global.FloatingStop()
 	Global.HomeAudioPlay()
 	Global.MenuAudioP()
-	get_tree().change_scene("res://Scene/Floating/FloatingAlternative.tscn")
+	get_tree().change_scene("res://Scene/MainMenu.tscn")
 	
+func press_right():
+	Global.olay_scores += 1
+	$Click_.text = str(Global.olay_scores)
+	$AnimatedSprite.speed_scale += 1
+	if $AnimatedSprite.speed_scale>=10:
+		_on_HomeBT_pressed()

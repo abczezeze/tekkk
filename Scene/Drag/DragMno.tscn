@@ -40,9 +40,7 @@ position = Vector2( 2.5199, 0 )
 texture = ExtResource( 5 )
 centered = false
 
-[node name="MnoRigidBody2D" type="RigidBody2D" parent="." groups=[
-"Mno",
-]]
+[node name="MnoRigidBody2D" type="RigidBody2D" parent="." groups=["Mno"]]
 position = Vector2( 369.685, 150.956 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MnoRigidBody2D"]
@@ -55,9 +53,7 @@ texture = ExtResource( 2 )
 process_material = SubResource( 4 )
 texture = ExtResource( 2 )
 
-[node name="OlayRigidBody2D" type="RigidBody2D" parent="." groups=[
-"Olay",
-]]
+[node name="OlayRigidBody2D" type="RigidBody2D" parent="." groups=["Olay"]]
 position = Vector2( 154.293, 116.738 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OlayRigidBody2D"]
@@ -66,9 +62,7 @@ shape = SubResource( 1 )
 [node name="OlayHead" type="Sprite" parent="OlayRigidBody2D/CollisionShape2D"]
 texture = ExtResource( 6 )
 
-[node name="SpengRigidBody2D" type="RigidBody2D" parent="." groups=[
-"Speng",
-]]
+[node name="SpengRigidBody2D" type="RigidBody2D" parent="." groups=["Speng"]]
 position = Vector2( 294.085, 29.184 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpengRigidBody2D"]
@@ -77,9 +71,7 @@ shape = SubResource( 1 )
 [node name="Pic" type="Sprite" parent="SpengRigidBody2D/CollisionShape2D"]
 texture = ExtResource( 8 )
 
-[node name="IchuenRigidBody2D" type="RigidBody2D" parent="." groups=[
-"Ichuen",
-]]
+[node name="IchuenRigidBody2D" type="RigidBody2D" parent="." groups=["Ichuen"]]
 position = Vector2( 457.965, 29.184 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="IchuenRigidBody2D"]
@@ -119,9 +111,9 @@ margin_left = 20.0
 margin_top = 640.0
 margin_right = 40.0
 margin_bottom = 687.0
-custom_fonts/font = ExtResource( 9 )
 custom_colors/font_color = Color( 0.992157, 0.831373, 0.658824, 1 )
 custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 9 )
 text = "0"
 __meta__ = {
 "_edit_use_anchors_": false

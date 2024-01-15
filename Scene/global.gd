@@ -5,9 +5,10 @@ var mno_scores = 0
 var olay_scores = 0
 var speng_scores = 0
 var ichuen_scores = 0
+#var wrong_scores = 0
 	
 func HomeAudioPlay():
-	$HomeAudio.play()
+	$HomeScene.play()
 
 func AccurateAudioPlay():
 	$Accurate.play()
@@ -24,14 +25,14 @@ func MenuAudioS():
 	$MenuAudio.stop()
 
 func FloatingPlay():
-	$Floating.play()
+	$FloatingScene.play()
 func FloatingStop():
-	$Floating.stop()
+	$FloatingScene.stop()
 	
 func DragP():
-	$SixToNine.play()
+	$DragScene.play()
 func DragS():
-	$SixToNine.stop()
+	$DragScene.stop()
 
 func BassP():
 	$BassSound.play()

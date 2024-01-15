@@ -16,41 +16,37 @@
 [node name="Node" type="Node"]
 script = ExtResource( 2 )
 
-[node name="HomeAudio" type="AudioStreamPlayer" parent="."]
+[node name="HomeScene" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 1 )
 
-[node name="Accurate" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 3 )
-pitch_scale = 2.0
-
-[node name="Failed" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 4 )
-volume_db = 10.0
-
-[node name="Floating" type="AudioStreamPlayer" parent="."]
+[node name="FloatingScene" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
 
-[node name="SixToNine" type="AudioStreamPlayer" parent="."]
+[node name="DragScene" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
-
-[node name="SceneSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 7 )
 
 [node name="MenuAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
 
-[node name="BassSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 9 )
+[node name="Accurate" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+
+[node name="Failed" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
 volume_db = 10.0
 
-[node name="GuitarSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 11 )
-volume_db = 10.0
+[node name="SceneSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
 
-[node name="DrumSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 12 )
-volume_db = 10.0
-
-[node name="TurntableSound" type="AudioStreamPlayer2D" parent="."]
+[node name="TurntableSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 10 )
+
+[node name="BassSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+
+[node name="GuitarSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+
+[node name="DrumSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
 volume_db = 10.0

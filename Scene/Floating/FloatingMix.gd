@@ -1,47 +1,55 @@
 extends Node2D
-
-onready var PlayIntegration = get_node("/root/PlayIntegration")
-
-var time_start = 0
-var time_now = 0
-
+var rgb=0.0 #add color when right click
 func _ready():
 	Global.FloatingPlay()
-#	$HomeBT.disabled = true
-	$VBoxContainer/ClickMno.text = str(Global.mno_scores)
-	$VBoxContainer/ClickOlay.text = str(Global.olay_scores)
-	$VBoxContainer/ClickIchuen.text = str(Global.ichuen_scores)
-	$VBoxContainer/ClickSpeng.text = str(Global.speng_scores)
+	$HBoxContainer/ClickMno.text = " "+str(Global.mno_scores)
+	$HBoxContainer/ClickOlay.text = " "+str(Global.olay_scores)
+	$HBoxContainer/ClickIchuen.text = " "+str(Global.ichuen_scores)
+	$HBoxContainer/ClickSpeng.text = " "+str(Global.speng_scores)
+	
+	for n in 2:
+		var mno_duplicate = $Tek_abc3dz_mno.duplicate()
+		add_child(mno_duplicate)
+		var olay_duplicate = $Tek_abc3dz_olay.duplicate()
+		add_child(olay_duplicate)
+		var ichuen_duplicate = $Tek_abc3dz_ichuen.duplicate()
+		add_child(ichuen_duplicate)
+		var speng_duplicate = $Tek_abc3dz_speng.duplicate()
+		add_child(speng_duplicate)
 	
 func _process(delta):
 	if $Tek_abc3dz_mno.hit_mno == true :
+		add_color()
 		Global.mno_scores += 1
-		$VBoxContainer/ClickMno.text = str(Global.mno_scores)
+		$HBoxContainer/ClickMno.text = " "+str(Global.mno_scores)
 
 	if $Tek_abc3dz_olay.hit_olay == true :
+		add_color()
 		Global.olay_scores += 1
-		$VBoxContainer/ClickOlay.text = str(Global.olay_scores)
+		$HBoxContainer/ClickOlay.text = " "+str(Global.olay_scores)
 		
 	if $Tek_abc3dz_ichuen.hit_ichuen == true :
+		add_color()
 		Global.ichuen_scores += 1
-		$VBoxContainer/ClickIchuen.text = str(Global.ichuen_scores)
+		$HBoxContainer/ClickIchuen.text = " "+str(Global.ichuen_scores)
 		
 	if $Tek_abc3dz_speng.hit_speng == true :
+		add_color()
 		Global.speng_scores += 1
-		$VBoxContainer/ClickSpeng.text = str(Global.speng_scores)
+		$HBoxContainer/ClickSpeng.text = " "+str(Global.speng_scores)
 				
 	$Tek_abc3dz_olay.hit_olay = false 
 	$Tek_abc3dz_mno.hit_mno = false 
 	$Tek_abc3dz_ichuen.hit_ichuen = false 
 	$Tek_abc3dz_speng.hit_speng = false 
 	Global.total_scores = Global.speng_scores+Global.ichuen_scores+Global.olay_scores+Global.mno_scores
-	$ClickT.text = "Total : "+ str(Global.total_scores)
-	
-#	if Global.total_scores >= 10:
-#		$HomeBT.disabled = false
-#		$HomeBT.modulate = 65500
+	$HBoxContainer/ClickT.text = " Total : "+ str(Global.total_scores)
 
 func _on_HomeBT_pressed():
 	get_tree().change_scene("res://Scene/MainMenu.tscn")
 	Global.FloatingStop()
-
+func add_color():
+	if rgb<1:
+		rgb+=0.1
+	$Bg/musical_consert.modulate = Color(rgb,rgb,rgb,0.3)
+	

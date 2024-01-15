@@ -1,41 +1,27 @@
 extends Node2D
 
-onready var PlayIntegration = get_node("/root/PlayIntegration")
-
 func _ready():
 	Global.FloatingPlay()
 	$ClickMno.text = str(Global.mno_scores)
+	$AnimatedSprite.speed_scale=0
+	for n in 14:
+		var mno_add = $mno_right.duplicate()
+		add_child(mno_add)
 	
 func _process(delta):
-	if $Tek_abc3dz_mno.hit_mno == true :
-		Global.mno_scores += 1
-		$ClickMno.text = str(Global.mno_scores)
-	if $Tek_abc3dz_mno2.hit_mno == true :
-		Global.mno_scores -= 1
-		$ClickMno.text = str(Global.mno_scores)
-		$Tek_abc3dz_mno2/HitSound_mno.pitch_scale = 2.5
-	if $Tek_abc3dz_mno3.hit_mno == true :
-		Global.mno_scores -= 1
-		$ClickMno.text = str(Global.mno_scores)
-		$Tek_abc3dz_mno3/HitSound_mno.pitch_scale = 2.5
-	if $Tek_abc3dz_mno4.hit_mno == true :
-		Global.mno_scores -= 1
-		$ClickMno.text = str(Global.mno_scores)
-		$Tek_abc3dz_mno4/HitSound_mno.pitch_scale = 2.5
-	if $Tek_abc3dz_mno5.hit_mno == true :
-		Global.mno_scores -= 1
-		$ClickMno.text = str(Global.mno_scores)
-		$Tek_abc3dz_mno5/HitSound_mno.pitch_scale = 2.5
-
-	$Tek_abc3dz_mno.hit_mno = false 
-	$Tek_abc3dz_mno2.hit_mno = false 
-	$Tek_abc3dz_mno3.hit_mno = false 
-	$Tek_abc3dz_mno4.hit_mno = false 
-	$Tek_abc3dz_mno5.hit_mno = false 
+	if $mno_right.hit_mno == true :
+		press_right()
+	$mno_right.hit_mno = false 
 	
 func _on_HomeBT_pressed():
 	Global.FloatingStop()
 	Global.HomeAudioPlay()
 	Global.MenuAudioP()
-	get_tree().change_scene("res://Scene/Floating/FloatingAlternative.tscn")
+	get_tree().change_scene("res://Scene/MainMenu.tscn")
 	
+func press_right():
+	Global.mno_scores += 1
+	$ClickMno.text = str(Global.mno_scores)
+	$AnimatedSprite.speed_scale += 1
+	if $AnimatedSprite.speed_scale>=10:
+		_on_HomeBT_pressed()

@@ -1,45 +1,31 @@
 extends Node2D
 
-onready var PlayIntegration = get_node("/root/PlayIntegration")
-
 func _ready():
 	Global.FloatingPlay()
+	$AnimatedSprite.speed_scale=0
 	$Click_.text = str(Global.ichuen_scores)
 	
-func _process(delta):
-	if $Tek_abc3dz_ichuen.hit_ichuen == true :
-		Global.ichuen_scores += 1
-		$Click_.text = str(Global.ichuen_scores)
-	if $Tek_abc3dz_ichuen2.hit_ichuen == true :
-		Global.ichuen_scores -= 1
-		$Click_.text = str(Global.ichuen_scores)
-		$Tek_abc3dz_ichuen2/HitSound_ichuen.pitch_scale = 2.5
-	if $Tek_abc3dz_ichuen3.hit_ichuen == true :
-		Global.ichuen_scores -= 1
-		$Click_.text = str(Global.ichuen_scores)
-		$Tek_abc3dz_ichuen3/HitSound_ichuen.pitch_scale = 2.5
-	if $Tek_abc3dz_ichuen4.hit_ichuen == true :
-		Global.ichuen_scores -= 1
-		$Click_.text = str(Global.ichuen_scores)
-		$Tek_abc3dz_ichuen4/HitSound_ichuen.pitch_scale = 2.5
-	if $Tek_abc3dz_ichuen5.hit_ichuen == true :
-		Global.ichuen_scores -= 1
-		$Click_.text = str(Global.ichuen_scores)
-		$Tek_abc3dz_ichuen5/HitSound_ichuen.pitch_scale = 2.5
-
-	$Tek_abc3dz_ichuen.hit_ichuen = false 
-	$Tek_abc3dz_ichuen2.hit_ichuen = false 
-	$Tek_abc3dz_ichuen3.hit_ichuen = false 
-	$Tek_abc3dz_ichuen4.hit_ichuen = false 
-	$Tek_abc3dz_ichuen5.hit_ichuen = false 
+	for n in 14:
+		var ichuen_add = $ichuen_right.duplicate()
+		add_child(ichuen_add)
 	
-func submit_total_score(score : int):
-	PlayIntegration.unlock_achievements(score)
-	PlayIntegration.achievementsSteps(score)
-
+func _process(delta):
+	if $ichuen_right.hit_ichuen == true :
+		press_right()
+	
+	$ichuen_right.hit_ichuen = false 
+	
 func _on_HomeBT_pressed():
 	Global.FloatingStop()
 	Global.HomeAudioPlay()
 	Global.MenuAudioP()
 	get_tree().change_scene("res://Scene/Floating/FloatingAlternative.tscn")
-	
+
+func press_right():
+	Global.ichuen_scores += 1
+	$Click_.text = str(Global.ichuen_scores)
+	$AnimatedSprite.speed_scale += 1
+	Global.TurntableP()
+	if $AnimatedSprite.speed_scale>=10:
+		_on_HomeBT_pressed()
+

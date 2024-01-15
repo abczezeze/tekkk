@@ -1,41 +1,67 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=18 format=2]
 
-[ext_resource path="res://Image/ArrowBack.png" type="Texture" id=1]
-[ext_resource path="res://Scene/HeadCartoon/tek_abc3dz_Ichuen.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Image/home.png" type="Texture" id=1]
+[ext_resource path="res://Scene/Floating/IchuenHead.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Image/bg1080x1920.jpg" type="Texture" id=3]
-[ext_resource path="res://Font/FloatingMain.tres" type="DynamicFont" id=4]
 [ext_resource path="res://Scene/Floating/FloatingIchuen.gd" type="Script" id=5]
-[ext_resource path="res://Image/SequeneIchuen/ichuen0019.png" type="Texture" id=6]
-[ext_resource path="res://Image/SequeneIchuen/ichuen0009.png" type="Texture" id=7]
-[ext_resource path="res://Image/SequeneIchuen/ichuen0005.png" type="Texture" id=8]
-[ext_resource path="res://Image/SequeneIchuen/ichuen0007.png" type="Texture" id=9]
-[ext_resource path="res://Image/SequeneIchuen/ichuen0013.png" type="Texture" id=10]
-[ext_resource path="res://Image/SequeneIchuen/ichuen0017.png" type="Texture" id=11]
-[ext_resource path="res://Image/SequeneIchuen/ichuen0003.png" type="Texture" id=12]
-[ext_resource path="res://Image/SequeneIchuen/ichuen0001.png" type="Texture" id=13]
-[ext_resource path="res://Image/SequeneIchuen/ichuen0011.png" type="Texture" id=14]
-[ext_resource path="res://Image/SequeneIchuen/ichuen0015.png" type="Texture" id=15]
-[ext_resource path="res://Image/SequeneMno/mno0017.png" type="Texture" id=16]
-[ext_resource path="res://Image/SequeneMno/mno0001.png" type="Texture" id=17]
-[ext_resource path="res://Image/SequeneMno/mno0007.png" type="Texture" id=18]
-[ext_resource path="res://Image/SequeneMno/mno0013.png" type="Texture" id=19]
-[ext_resource path="res://Image/SequeneMno/mno0019.png" type="Texture" id=20]
-[ext_resource path="res://Image/SequeneMno/mno0015.png" type="Texture" id=21]
-[ext_resource path="res://Image/SequeneMno/mno0011.png" type="Texture" id=22]
-[ext_resource path="res://Image/SequeneMno/mno0003.png" type="Texture" id=23]
-[ext_resource path="res://Image/SequeneMno/mno0005.png" type="Texture" id=24]
-[ext_resource path="res://Image/SequeneMno/mno0009.png" type="Texture" id=25]
+[ext_resource path="res://Image/SequeneIchuen/SC_Icuen-min.png" type="Texture" id=6]
+[ext_resource path="res://Font/Sanamdeklen_chaya_45.tres" type="DynamicFont" id=7]
 
-[sub_resource type="SpriteFrames" id=1]
+[sub_resource type="AtlasTexture" id=13]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 0, 0, 300, 300 )
+
+[sub_resource type="AtlasTexture" id=14]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 300, 0, 300, 300 )
+
+[sub_resource type="AtlasTexture" id=15]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 600, 0, 300, 300 )
+
+[sub_resource type="AtlasTexture" id=16]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 900, 0, 300, 300 )
+
+[sub_resource type="AtlasTexture" id=17]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 1200, 0, 300, 300 )
+
+[sub_resource type="AtlasTexture" id=18]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 1500, 0, 300, 300 )
+
+[sub_resource type="AtlasTexture" id=19]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 1800, 0, 300, 300 )
+
+[sub_resource type="AtlasTexture" id=20]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 2100, 0, 300, 300 )
+
+[sub_resource type="AtlasTexture" id=21]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 2400, 0, 300, 300 )
+
+[sub_resource type="AtlasTexture" id=22]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 2700, 0, 300, 300 )
+
+[sub_resource type="SpriteFrames" id=12]
 animations = [ {
-"frames": [ ExtResource( 13 ), ExtResource( 12 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 7 ), ExtResource( 14 ), ExtResource( 10 ), ExtResource( 15 ), ExtResource( 11 ), ExtResource( 6 ) ],
+"frames": [ SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ) ],
 "loop": true,
-"name": "IchuenAnim",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 17 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 18 ), ExtResource( 25 ), ExtResource( 22 ), ExtResource( 19 ), ExtResource( 21 ), ExtResource( 16 ), ExtResource( 20 ) ],
-"loop": true,
-"name": "MnoAnim",
+"name": "IchuenTurntable",
 "speed": 5.0
 } ]
 
@@ -46,57 +72,35 @@ script = ExtResource( 5 )
 texture = ExtResource( 3 )
 centered = false
 
-[node name="Click_" type="Label" parent="."]
-margin_left = 42.5199
-margin_top = 813.7
-margin_right = 62.5199
-margin_bottom = 860.7
-custom_fonts/font = ExtResource( 4 )
-custom_colors/font_color = Color( 0.772549, 0, 0.882353, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "0"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="HomeBT" type="TextureButton" parent="."]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 920.038
-margin_top = 1763.21
-margin_right = 1048.04
-margin_bottom = 1891.21
+margin_left = 496.0
+margin_top = 1756.0
+margin_right = 624.002
+margin_bottom = 1884.0
 texture_normal = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+
+[node name="Click_" type="Label" parent="."]
+margin_left = 78.0
+margin_top = 48.0
+margin_right = 106.0
+margin_bottom = 125.0
+custom_colors/font_color = Color( 0.772549, 0, 0.882353, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 7 )
+text = "0"
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 505.854, 1001.7 )
-frames = SubResource( 1 )
-animation = "IchuenAnim"
-frame = 4
+position = Vector2( 519, 927 )
+frames = SubResource( 12 )
+animation = "IchuenTurntable"
+speed_scale = 0.0
 playing = true
 
-[node name="Tek_abc3dz_ichuen" parent="." instance=ExtResource( 2 )]
+[node name="ichuen_right" parent="." instance=ExtResource( 2 )]
 position = Vector2( 336.466, 178.313 )
-
-[node name="Tek_abc3dz_ichuen2" parent="." instance=ExtResource( 2 )]
-modulate = Color( 1, 0, 0, 1 )
-position = Vector2( 181.671, 265.15 )
-
-[node name="Tek_abc3dz_ichuen3" parent="." instance=ExtResource( 2 )]
-modulate = Color( 1, 0, 0, 1 )
-position = Vector2( 506.364, 267.038 )
-
-[node name="Tek_abc3dz_ichuen4" parent="." instance=ExtResource( 2 )]
-modulate = Color( 1, 0, 0, 1 )
-position = Vector2( 396.874, 323.67 )
-
-[node name="Tek_abc3dz_ichuen5" parent="." instance=ExtResource( 2 )]
-modulate = Color( 1, 0, 0, 1 )
-position = Vector2( 283.609, 323.67 )
 
 [connection signal="pressed" from="HomeBT" to="." method="_on_HomeBT_pressed"]

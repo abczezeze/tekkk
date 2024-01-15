@@ -101,9 +101,6 @@ margin_top = 1780.62
 margin_right = 1065.35
 margin_bottom = 1908.62
 texture_normal = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Scores" type="Label" parent="."]
 margin_top = 640.0
