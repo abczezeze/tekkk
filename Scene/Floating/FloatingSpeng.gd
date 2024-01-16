@@ -14,18 +14,8 @@ func _process(delta):
 	#when click right
 	if $speng_right.hit_speng == true :
 		press_right()
-	#when click wrong
-#	if $speng_wrong.hit_speng == true :
-#		press_wrong()
-
-	#when click wrong, back to main scene
-#	if Global.wrong_scores>2:
-#		Global.FloatingStop()
-#		Global.wrong_scores = 0
-#		get_tree().change_scene("res://Scene/MainMenu.tscn")
 
 	$speng_right.hit_speng = false 
-#	$speng_wrong.hit_speng = false 
 
 	
 func _on_HomeBT_pressed():
@@ -40,13 +30,6 @@ func press_right():
 	$AnimatedSprite.speed_scale += 1
 	if $AnimatedSprite.speed_scale>=10:
 		_on_HomeBT_pressed()
-#	Global.GuitarP()
-#	$Bg.modulate = Color.white
-#	$speng_right.modulate = Color.white
 
-#func press_wrong():
-#	Global.wrong_scores += 1
-#	$AnimatedSprite.speed_scale -= 1
-#	Global.GuitarPitch()
-#	$Bg.modulate = Color.black
-#	$speng_right.modulate = Color.black
+func _on_Timer_timeout():
+	$Label.visible = false

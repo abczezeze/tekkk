@@ -12,7 +12,7 @@
 [ext_resource path="res://Font/SanamDeklen_chaya.ttf" type="DynamicFontData" id=11]
 
 [sub_resource type="DynamicFont" id=1]
-size = 30
+size = 55
 outline_size = 2
 use_filter = true
 font_data = ExtResource( 11 )
@@ -100,15 +100,6 @@ custom_fonts/font = ExtResource( 7 )
 text = " Total : 0"
 align = 1
 
-[node name="Label" type="Label" parent="HBoxContainer"]
-margin_left = 364.0
-margin_top = 12.0
-margin_right = 772.0
-margin_bottom = 64.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 1 )
-text = " right sprites there are only one"
-
 [node name="HomeBT" type="TextureButton" parent="."]
 anchor_left = 1.0
 anchor_top = 1.0
@@ -120,5 +111,22 @@ margin_right = 628.0
 margin_bottom = 1921.63
 texture_normal = ExtResource( 6 )
 
+[node name="Label" type="Label" parent="."]
+margin_left = 143.0
+margin_top = 757.0
+margin_right = 892.0
+margin_bottom = 851.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = " right sprites there are only one"
+align = 1
+valign = 1
+
+[node name="Timer" type="Timer" parent="Label"]
+wait_time = 4.0
+autostart = true
+
 [connection signal="pressed" from="HomeBT" to="." method="_on_HomeBT_pressed"]
 [connection signal="pressed" from="HomeBT" to="." method="_on_Level_pressed"]
+[connection signal="gui_input" from="Label" to="." method="_on_Label_gui_input"]
+[connection signal="timeout" from="Label/Timer" to="." method="_on_Timer_timeout"]

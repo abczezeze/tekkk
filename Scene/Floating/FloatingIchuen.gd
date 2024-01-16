@@ -19,7 +19,7 @@ func _on_HomeBT_pressed():
 	Global.FloatingStop()
 	Global.HomeAudioPlay()
 	Global.MenuAudioP()
-	get_tree().change_scene("res://Scene/Floating/FloatingAlternative.tscn")
+	get_tree().change_scene("res://Scene/MainMenu.tscn")
 
 func press_right():
 	Global.ichuen_scores += 1
@@ -28,4 +28,5 @@ func press_right():
 	Global.TurntableP()
 	if $AnimatedSprite.speed_scale>=10:
 		_on_HomeBT_pressed()
-
+func _on_Timer_timeout():
+	$HBoxContainer/Label.visible = false

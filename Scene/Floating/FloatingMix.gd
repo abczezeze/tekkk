@@ -17,6 +17,7 @@ func _ready():
 		var speng_duplicate = $Tek_abc3dz_speng.duplicate()
 		add_child(speng_duplicate)
 	
+	
 func _process(delta):
 	if $Tek_abc3dz_mno.hit_mno == true :
 		add_color()
@@ -46,10 +47,19 @@ func _process(delta):
 	$HBoxContainer/ClickT.text = " Total : "+ str(Global.total_scores)
 
 func _on_HomeBT_pressed():
-	get_tree().change_scene("res://Scene/MainMenu.tscn")
 	Global.FloatingStop()
+	Global.HomeAudioPlay()
+	Global.MenuAudioP()
+	get_tree().change_scene("res://Scene/MainMenu.tscn")
 func add_color():
 	if rgb<1:
 		rgb+=0.1
 	$Bg/musical_consert.modulate = Color(rgb,rgb,rgb,0.3)
-	
+
+#func _input(event: InputEvent) -> void:
+#	if event is InputEventMouseButton and event.pressed and event.button_index == BUTTON_LEFT:
+#		$HBoxContainer/Label.queue_free()
+#		print("clicked!")
+
+func _on_Timer_timeout():
+	$Label.visible = false

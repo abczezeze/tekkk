@@ -59,19 +59,19 @@ margin_right = 685.0
 margin_bottom = 1082.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer2"]
-margin_right = 615.0
+margin_right = 540.0
 margin_bottom = 97.0
 
 [node name="ClickLb" type="Label" parent="VBoxContainer2/HBoxContainer"]
-margin_top = 25.0
-margin_right = 80.0
-margin_bottom = 72.0
+margin_top = 47.0
+margin_right = 5.0
+margin_bottom = 49.0
 custom_fonts/font = SubResource( 5 )
 text = "Click"
 
 [node name="FloatingMix" type="Button" parent="VBoxContainer2/HBoxContainer"]
-margin_left = 84.0
-margin_right = 187.0
+margin_left = 9.0
+margin_right = 112.0
 margin_bottom = 97.0
 rect_min_size = Vector2( 100, 70 )
 custom_fonts/font = SubResource( 2 )
@@ -79,8 +79,8 @@ icon = ExtResource( 6 )
 flat = true
 
 [node name="FloatingMno" type="Button" parent="VBoxContainer2/HBoxContainer"]
-margin_left = 191.0
-margin_right = 294.0
+margin_left = 116.0
+margin_right = 219.0
 margin_bottom = 97.0
 rect_min_size = Vector2( 100, 70 )
 custom_fonts/font = SubResource( 2 )
@@ -88,41 +88,41 @@ icon = ExtResource( 2 )
 flat = true
 
 [node name="FloatingSpeng" type="Button" parent="VBoxContainer2/HBoxContainer"]
-margin_left = 298.0
-margin_right = 401.0
+margin_left = 223.0
+margin_right = 326.0
 margin_bottom = 97.0
 icon = ExtResource( 9 )
 flat = true
 
 [node name="FloatingIchuen" type="Button" parent="VBoxContainer2/HBoxContainer"]
-margin_left = 405.0
-margin_right = 508.0
+margin_left = 330.0
+margin_right = 433.0
 margin_bottom = 97.0
 icon = ExtResource( 3 )
 flat = true
 
 [node name="FloatingOlay" type="Button" parent="VBoxContainer2/HBoxContainer"]
-margin_left = 512.0
-margin_right = 615.0
+margin_left = 437.0
+margin_right = 540.0
 margin_bottom = 97.0
 icon = ExtResource( 7 )
 flat = true
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer2"]
 margin_top = 101.0
-margin_right = 615.0
+margin_right = 540.0
 margin_bottom = 538.0
 
 [node name="DragLb" type="Label" parent="VBoxContainer2/HBoxContainer3"]
-margin_top = 195.0
-margin_right = 83.0
-margin_bottom = 242.0
+margin_top = 217.0
+margin_right = 4.0
+margin_bottom = 219.0
 custom_fonts/font = SubResource( 5 )
 text = "Drag"
 
 [node name="lv3" type="Button" parent="VBoxContainer2/HBoxContainer3"]
-margin_left = 87.0
-margin_right = 422.0
+margin_left = 8.0
+margin_right = 343.0
 margin_bottom = 437.0
 rect_min_size = Vector2( 100, 70 )
 custom_fonts/font = SubResource( 2 )
@@ -131,20 +131,20 @@ flat = true
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer2"]
 margin_top = 542.0
-margin_right = 615.0
+margin_right = 540.0
 margin_bottom = 612.0
 
 [node name="SwipeLb" type="Label" parent="VBoxContainer2/HBoxContainer2"]
-margin_top = 11.0
-margin_right = 101.0
-margin_bottom = 58.0
+margin_top = 34.0
+margin_right = 5.0
+margin_bottom = 36.0
 custom_fonts/font = SubResource( 5 )
 text = "Swipe"
 
 [node name="lv4" type="Button" parent="VBoxContainer2/HBoxContainer2"]
 modulate = Color( 0, 1, 0, 1 )
-margin_left = 105.0
-margin_right = 205.0
+margin_left = 9.0
+margin_right = 109.0
 margin_bottom = 70.0
 rect_min_size = Vector2( 100, 70 )
 custom_fonts/font = SubResource( 2 )
