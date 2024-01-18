@@ -6,9 +6,14 @@
 [ext_resource path="res://Font/SanamDeklen_chaya.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://Scene/Floating/FloatingIchuen.gd" type="Script" id=5]
 [ext_resource path="res://Image/SequeneIchuen/SC_Icuen-min.png" type="Texture" id=6]
-[ext_resource path="res://Font/Sanamdeklen_chaya_45.tres" type="DynamicFont" id=7]
 
-[sub_resource type="AtlasTexture" id=13]
+[sub_resource type="DynamicFont" id=13]
+size = 55
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 4 )
+
+[sub_resource type="AtlasTexture" id=24]
 flags = 4
 atlas = ExtResource( 6 )
 region = Rect2( 0, 0, 300, 300 )
@@ -60,7 +65,7 @@ region = Rect2( 2700, 0, 300, 300 )
 
 [sub_resource type="SpriteFrames" id=12]
 animations = [ {
-"frames": [ SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ) ],
+"frames": [ SubResource( 24 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ) ],
 "loop": true,
 "name": "IchuenTurntable",
 "speed": 5.0
@@ -97,7 +102,7 @@ margin_right = 106.0
 margin_bottom = 125.0
 custom_colors/font_color = Color( 0.772549, 0, 0.882353, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_fonts/font = ExtResource( 7 )
+custom_fonts/font = SubResource( 13 )
 text = "0"
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
@@ -117,7 +122,7 @@ margin_right = 903.0
 margin_bottom = 840.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 23 )
-text = " right sprites there are only one"
+text = "There are only one"
 align = 1
 valign = 1
 

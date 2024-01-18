@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scene/Floating/OlayHead.gd" type="Script" id=2]
-[ext_resource path="res://Image/tekgameHead_olayzzz.png" type="Texture" id=3]
-[ext_resource path="res://Image/tekgame_MusicalDrum.png" type="Texture" id=4]
+[ext_resource path="res://Image/Head_olayzzz.png" type="Texture" id=3]
+[ext_resource path="res://Image/MusicalDrum.png" type="Texture" id=4]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 9.4941

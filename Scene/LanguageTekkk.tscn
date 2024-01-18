@@ -1,0 +1,57 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Font/SanamDeklen_chaya.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Scene/LanguageTekkk.gd" type="Script" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 44
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 44
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 44
+font_data = ExtResource( 1 )
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+margin_right = 1080.0
+margin_bottom = 1920.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+margin_left = 455.0
+margin_top = 798.0
+margin_right = 624.0
+margin_bottom = 1121.0
+
+[node name="Language" type="Label" parent="CenterContainer/VBoxContainer"]
+margin_right = 169.0
+margin_bottom = 153.0
+custom_fonts/font = SubResource( 1 )
+text = "Language
+"
+align = 1
+valign = 2
+
+[node name="EnglishBt" type="Button" parent="CenterContainer/VBoxContainer"]
+margin_top = 157.0
+margin_right = 169.0
+margin_bottom = 238.0
+custom_fonts/font = SubResource( 2 )
+text = "English"
+
+[node name="ThailandBt" type="Button" parent="CenterContainer/VBoxContainer"]
+margin_top = 242.0
+margin_right = 169.0
+margin_bottom = 323.0
+custom_fonts/font = SubResource( 3 )
+text = "Thailand"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/EnglishBt" to="." method="_on_EnglishBt_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/ThailandBt" to="." method="_on_ThailandBt_pressed"]

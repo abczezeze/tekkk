@@ -5,8 +5,8 @@ var mno_scores = 0
 var olay_scores = 0
 var speng_scores = 0
 var ichuen_scores = 0
-#var wrong_scores = 0
-	
+var tekkk_language = ""
+
 func HomeAudioPlay():
 	$HomeScene.play()
 

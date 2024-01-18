@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scene/Floating/IchuenHead.gd" type="Script" id=1]
-[ext_resource path="res://Image/tekgameHead_Ichuen.png" type="Texture" id=2]
-[ext_resource path="res://Image/tekgame_MusicalTurntable.png" type="Texture" id=3]
+[ext_resource path="res://Image/Head_Ichuen.png" type="Texture" id=2]
+[ext_resource path="res://Image/MusicalTurntable.png" type="Texture" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 9.4941

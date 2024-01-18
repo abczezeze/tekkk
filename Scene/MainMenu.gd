@@ -2,8 +2,14 @@ extends Control
 
 func _ready():
 	Global.MenuAudioP()
+	if Global.tekkk_language == "Th":
+		$VBoxContainer/TekLb.text="เต็กเคเค"
+		$VBoxContainer2/SelectLevel.text="เลือกด่าน"
+		$VBoxContainer2/HBoxContainer/ClickLb.text="คลิก"
+		$VBoxContainer2/HBoxContainer3/DragLb.text="ลาก"
+		$VBoxContainer2/HBoxContainer2/SwipeLb.text="ตวัด"
 
-func _on_FloatingMix_pressed():
+func _on_ClickLb_pressed():
 	Global.MenuAudioS()
 	Global.SceneSoundPlay()
 	get_tree().change_scene("res://Scene/Floating/FloatingMix.tscn")
@@ -12,14 +18,17 @@ func _on_FloatingMno_pressed():
 	Global.MenuAudioS()
 	Global.SceneSoundPlay()
 	get_tree().change_scene("res://Scene/Floating/FloatingMno.tscn")
+	
 func _on_FloatingSpeng_pressed():
 	Global.MenuAudioS()
 	Global.SceneSoundPlay()
 	get_tree().change_scene("res://Scene/Floating/FloatingSpeng.tscn")
+	
 func _on_FloatingIchuen_pressed():
 	Global.MenuAudioS()
 	Global.SceneSoundPlay()
 	get_tree().change_scene("res://Scene/Floating/FloatingIchuen.tscn")
+	
 func _on_FloatingOlay_pressed():
 	Global.MenuAudioS()
 	Global.SceneSoundPlay()
@@ -32,5 +41,8 @@ func _on_lv3_pressed():
 func _on_lv4_pressed():
 	Global.SceneSoundPlay()
 	get_tree().change_scene("res://Scene/Swipe/SwipeMix.tscn")
+
+
+
 
 

@@ -25,5 +25,8 @@ func press_right():
 	$AnimatedSprite.speed_scale += 1
 	if $AnimatedSprite.speed_scale>=10:
 		_on_HomeBT_pressed()
+	if $AnimatedSprite.speed_scale==9:
+		$AnimatedSprite.modulate = Color.black
+
 func _on_Timer_timeout():
 	$Label.visible = false

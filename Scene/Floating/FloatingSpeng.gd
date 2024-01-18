@@ -7,16 +7,11 @@ func _ready():
 	for n in 14:
 		var speng_add = $speng_right.duplicate()
 		add_child(speng_add)
-#		print_debug(spengred)
-	$AnimatedSprite.speed_scale = 0
 	
 func _process(delta):
-	#when click right
 	if $speng_right.hit_speng == true :
 		press_right()
-
 	$speng_right.hit_speng = false 
-
 	
 func _on_HomeBT_pressed():
 	Global.FloatingStop()
@@ -30,6 +25,8 @@ func press_right():
 	$AnimatedSprite.speed_scale += 1
 	if $AnimatedSprite.speed_scale>=10:
 		_on_HomeBT_pressed()
+	if $AnimatedSprite.speed_scale==9:
+		$AnimatedSprite.modulate = Color.black
 
 func _on_Timer_timeout():
 	$Label.visible = false
