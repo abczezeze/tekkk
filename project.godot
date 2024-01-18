@@ -15,7 +15,7 @@ _global_script_class_icons={
 [application]
 
 config/name="tekkk"
-run/main_scene="res://Scene/MainMenu.tscn"
+run/main_scene="res://Scene/LanguageTekkk.tscn"
 boot_splash/image="res://Image/splashScreen.png"
 boot_splash/bg_color=Color( 0.454902, 0.772549, 0.980392, 1 )
 config/icon="res://Image/ปก512x512.png"
