@@ -7,6 +7,8 @@ func _ready():
 	for n in 14:
 		var mno_add = $mno_right.duplicate()
 		add_child(mno_add)
+	if Global.tekkk_language=="Th":
+		$Label.text="มีเพืยงหนึ่งเดียว"	
 	
 func _process(delta):
 	if $mno_right.hit_mno == true :

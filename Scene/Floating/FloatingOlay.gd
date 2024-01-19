@@ -7,6 +7,8 @@ func _ready():
 	for n in 14:
 		var olay_add = $olay_right.duplicate()
 		add_child(olay_add)
+	if Global.tekkk_language=="Th":
+		$Label.text="มีเพืยงหนึ่งเดียว"
 	
 func _process(delta):
 	if $olay_right.hit_olay == true :

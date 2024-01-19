@@ -6,7 +6,6 @@ func _ready():
 	$HBoxContainer/ClickOlay.text = " "+str(Global.olay_scores)
 	$HBoxContainer/ClickIchuen.text = " "+str(Global.ichuen_scores)
 	$HBoxContainer/ClickSpeng.text = " "+str(Global.speng_scores)
-	
 	for n in 2:
 		var mno_duplicate = $Tek_abc3dz_mno.duplicate()
 		add_child(mno_duplicate)
@@ -16,7 +15,8 @@ func _ready():
 		add_child(ichuen_duplicate)
 		var speng_duplicate = $Tek_abc3dz_speng.duplicate()
 		add_child(speng_duplicate)
-	
+	if Global.tekkk_language=="Th":
+		$Label.text="แต่ละรูปมีเพืยงหนึ่งเดียว"
 	
 func _process(delta):
 	if $Tek_abc3dz_mno.hit_mno == true :

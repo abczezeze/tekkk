@@ -7,7 +7,9 @@ func _ready():
 	for n in 14:
 		var ichuen_add = $ichuen_right.duplicate()
 		add_child(ichuen_add)
-	
+	if Global.tekkk_language=="Th":
+		$Label.text="มีเพืยงหนึ่งเดียวอะ"
+		
 func _process(delta):
 	if $ichuen_right.hit_ichuen == true :
 		press_right()

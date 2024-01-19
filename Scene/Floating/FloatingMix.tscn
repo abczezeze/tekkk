@@ -149,7 +149,7 @@ valign = 1
 wait_time = 4.0
 autostart = true
 
-[connection signal="pressed" from="HomeBT" to="." method="_on_HomeBT_pressed"]
 [connection signal="pressed" from="HomeBT" to="." method="_on_Level_pressed"]
+[connection signal="pressed" from="HomeBT" to="." method="_on_HomeBT_pressed"]
 [connection signal="gui_input" from="Label" to="." method="_on_Label_gui_input"]
 [connection signal="timeout" from="Label/Timer" to="." method="_on_Timer_timeout"]

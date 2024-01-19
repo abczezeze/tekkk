@@ -7,7 +7,9 @@ func _ready():
 	for n in 14:
 		var speng_add = $speng_right.duplicate()
 		add_child(speng_add)
-	
+	if Global.tekkk_language=="Th":
+		$Label.text="มีเพืยงหนึ่งเดียวอะนะ"
+		
 func _process(delta):
 	if $speng_right.hit_speng == true :
 		press_right()
