@@ -28,14 +28,6 @@ func _on_FloatingOlay_pressed():
 	Global.MenuAudioS()
 	Global.SceneSoundPlay()
 	get_tree().change_scene("res://Scene/Floating/FloatingOlay.tscn")
-	
-func _on_lv3_pressed():
-	Global.SceneSoundPlay()
-	get_tree().change_scene("res://Scene/Drag/DragAlternative.tscn")
-
-func _on_lv4_pressed():
-	Global.SceneSoundPlay()
-	get_tree().change_scene("res://Scene/Swipe/SwipeMix.tscn")
 
 func _on_EnglishBt_pressed():
 	$VBoxContainer2/VBoxContainer/EnglishBt.disabled=true
@@ -62,3 +54,29 @@ func _on_ThailandBt_pressed():
 	$VBoxContainer2/VBoxContainer/Language.text="ภาษา"
 	$VBoxContainer2/VBoxContainer/EnglishBt.text="อังกฤษ"
 	$VBoxContainer2/VBoxContainer/ThailandBt.text="ไทย"
+
+
+func _on_DragLb_pressed():
+	Global.SceneSoundPlay()
+	get_tree().change_scene("res://Scene/Drag/DragMix.tscn")
+
+func _on_DragMno_pressed():
+	Global.SceneSoundPlay()
+	get_tree().change_scene("res://Scene/Drag/DragMno.tscn")
+
+func _on_DragSpeng_pressed():
+	Global.SceneSoundPlay()
+	get_tree().change_scene("res://Scene/Drag/DragSpeng.tscn")
+
+func _on_DragIchuen_pressed():
+	Global.SceneSoundPlay()
+	get_tree().change_scene("res://Scene/Drag/DragIchuen.tscn")
+
+func _on_DragOlay_pressed():
+	Global.SceneSoundPlay()
+	get_tree().change_scene("res://Scene/Drag/DragOlay.tscn")
+
+
+func _on_SwipeLb_pressed():
+	Global.SceneSoundPlay()
+	get_tree().change_scene("res://Scene/Swipe/SwipeMix.tscn")

@@ -3,6 +3,7 @@ extends Node2D
 var is_dragging = false
 
 func _ready():
+	Global.MenuAudioS()
 	Global.DragP()
 	$MnoRigidBody2D.position.x = rand_range(50,1000)
 	$OlayRigidBody2D.position.x = rand_range(50,1000)

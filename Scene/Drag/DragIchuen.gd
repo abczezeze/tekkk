@@ -3,7 +3,12 @@ extends Node2D
 var is_dragging = false
 
 func _ready():
+	Global.MenuAudioS()
 	Global.DragP()
+	$MnoRigidBody2D.position.x = rand_range(50,1000)
+	$OlayRigidBody2D.position.x = rand_range(50,1000)
+	$SpengRigidBody2D.position.x = rand_range(50,1000)
+	$IchuenRigidBody2D.position.x = rand_range(50,1000)
 	$Scores.text = str(Global.ichuen_scores)
 
 func _physics_process(delta):
@@ -24,7 +29,6 @@ func _physics_process(delta):
 		$IchuenRigidBody2D.global_position.y = 0
 		
 func _process(delta):
-#	print(Global.ichuen_scores)
 	$Scores.text = str(Global.ichuen_scores)
 
 func _on_Area2D_input_event(viewport, event, shape_idx):
