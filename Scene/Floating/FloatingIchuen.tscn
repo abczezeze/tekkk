@@ -72,8 +72,9 @@ animations = [ {
 } ]
 
 [sub_resource type="DynamicFont" id=23]
-size = 55
+size = 88
 outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 4 )
 
@@ -106,6 +107,7 @@ custom_fonts/font = SubResource( 13 )
 text = "0"
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+modulate = Color( 0, 0, 0, 1 )
 position = Vector2( 519, 927 )
 frames = SubResource( 12 )
 animation = "IchuenTurntable"
@@ -116,19 +118,15 @@ playing = true
 position = Vector2( 336.466, 178.313 )
 
 [node name="Label" type="Label" parent="."]
-margin_left = 154.0
-margin_top = 746.0
-margin_right = 903.0
-margin_bottom = 840.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+margin_left = 183.0
+margin_top = 796.0
+margin_right = 932.0
+margin_bottom = 1099.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
 custom_fonts/font = SubResource( 23 )
-text = "There are only one"
+text = "Click a cartoon head.
+There are only one."
 align = 1
 valign = 1
 
-[node name="Timer" type="Timer" parent="Label"]
-wait_time = 4.0
-autostart = true
-
 [connection signal="pressed" from="HomeBT" to="." method="_on_HomeBT_pressed"]
-[connection signal="timeout" from="Label/Timer" to="." method="_on_Timer_timeout"]

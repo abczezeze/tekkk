@@ -1,14 +1,15 @@
 extends Node2D
-
+var right_press=0
 func _ready():
 	Global.FloatingPlay()
 	$AnimatedSprite.speed_scale=0
+	$AnimatedSprite.visible=false
 	$Click_.text = str(Global.ichuen_scores)
-	for n in 14:
+	for n in 9:
 		var ichuen_add = $ichuen_right.duplicate()
 		add_child(ichuen_add)
 	if Global.tekkk_language=="Th":
-		$Label.text="มีเพืยงหนึ่งเดียวอะ"
+		$Label.text="คลิกที่หัวการ์ตูน\nมีเพืยงหนึ่งเดียว"
 		
 func _process(delta):
 	if $ichuen_right.hit_ichuen == true :
@@ -24,11 +25,11 @@ func _on_HomeBT_pressed():
 func press_right():
 	Global.ichuen_scores += 1
 	$Click_.text = str(Global.ichuen_scores)
-	$AnimatedSprite.speed_scale += 1
-	if $AnimatedSprite.speed_scale>=10:
-		_on_HomeBT_pressed()
-	if $AnimatedSprite.speed_scale==9:
-		$AnimatedSprite.modulate = Color.black
-
-func _on_Timer_timeout():
-	$Label.visible = false
+	$AnimatedSprite.visible=true
+	$Label.visible=false
+	right_press+=1
+	if right_press==2:
+		$AnimatedSprite.speed_scale += 1
+	if right_press>=3:
+		$AnimatedSprite.speed_scale += 1
+		$AnimatedSprite.modulate = Color.white

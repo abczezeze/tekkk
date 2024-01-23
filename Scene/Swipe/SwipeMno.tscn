@@ -5,8 +5,8 @@
 [ext_resource path="res://Image/bg1080x1920.jpg" type="Texture" id=4]
 [ext_resource path="res://Image/fullz-mno.png" type="Texture" id=5]
 [ext_resource path="res://Image/home.png" type="Texture" id=9]
-[ext_resource path="res://Image/tekgameHead_mno.png" type="Texture" id=12]
-[ext_resource path="res://Image/tekgame_MusicalBass.png" type="Texture" id=13]
+[ext_resource path="res://Image/Head_mno.png" type="Texture" id=12]
+[ext_resource path="res://Image/MusicalBass.png" type="Texture" id=13]
 
 [sub_resource type="Curve2D" id=1]
 _data = {

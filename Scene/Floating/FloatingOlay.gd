@@ -1,14 +1,15 @@
 extends Node2D
-
+var right_press=0
 func _ready():
 	Global.FloatingPlay()
 	$Click_.text = str(Global.olay_scores)
 	$AnimatedSprite.speed_scale=0
-	for n in 14:
+	$AnimatedSprite.visible=false
+	for n in 9:
 		var olay_add = $olay_right.duplicate()
 		add_child(olay_add)
 	if Global.tekkk_language=="Th":
-		$Label.text="มีเพืยงหนึ่งเดียว"
+		$Label.text="คลิกที่หัวการ์ตูน\nมีเพืยงหนึ่งเดียว"
 	
 func _process(delta):
 	if $olay_right.hit_olay == true :
@@ -24,11 +25,11 @@ func _on_HomeBT_pressed():
 func press_right():
 	Global.olay_scores += 1
 	$Click_.text = str(Global.olay_scores)
-	$AnimatedSprite.speed_scale += 1
-	if $AnimatedSprite.speed_scale>=10:
-		_on_HomeBT_pressed()
-	if $AnimatedSprite.speed_scale==9:
-		$AnimatedSprite.modulate = Color.black
-
-func _on_Timer_timeout():
-	$Label.visible = false
+	$AnimatedSprite.visible=true
+	$Label.visible=false
+	right_press+=1
+	if right_press==2:
+		$AnimatedSprite.speed_scale += 1
+	if right_press>=3:
+		$AnimatedSprite.speed_scale += 1
+		$AnimatedSprite.modulate = Color.white

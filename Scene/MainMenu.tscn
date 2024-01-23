@@ -108,23 +108,24 @@ margin_right = 86.0
 margin_bottom = 97.0
 custom_colors/font_color = Color( 0.392157, 0, 0, 1 )
 custom_fonts/font = SubResource( 6 )
+keep_pressed_outside = true
 text = "Click"
 
-[node name="FloatingMno" type="Button" parent="VBoxContainer2/HBoxContainer"]
+[node name="FloatingSpeng" type="Button" parent="VBoxContainer2/HBoxContainer"]
 modulate = Color( 1, 1, 1, 0.588235 )
 margin_left = 90.0
 margin_right = 193.0
 margin_bottom = 97.0
-rect_min_size = Vector2( 100, 70 )
-custom_fonts/font = SubResource( 2 )
-icon = ExtResource( 2 )
+icon = ExtResource( 9 )
 
-[node name="FloatingSpeng" type="Button" parent="VBoxContainer2/HBoxContainer"]
+[node name="FloatingMno" type="Button" parent="VBoxContainer2/HBoxContainer"]
 modulate = Color( 1, 1, 1, 0.588235 )
 margin_left = 197.0
 margin_right = 300.0
 margin_bottom = 97.0
-icon = ExtResource( 9 )
+rect_min_size = Vector2( 100, 70 )
+custom_fonts/font = SubResource( 2 )
+icon = ExtResource( 2 )
 
 [node name="FloatingIchuen" type="Button" parent="VBoxContainer2/HBoxContainer"]
 modulate = Color( 1, 1, 1, 0.588235 )
@@ -153,19 +154,19 @@ custom_colors/font_color = Color( 0, 0.392157, 0, 1 )
 custom_fonts/font = SubResource( 7 )
 text = "Drag"
 
-[node name="DragMno" type="Button" parent="VBoxContainer2/HBoxContainer3"]
+[node name="DragSpeng" type="Button" parent="VBoxContainer2/HBoxContainer3"]
 modulate = Color( 1, 1, 1, 0.588235 )
 margin_left = 100.0
 margin_right = 203.0
 margin_bottom = 153.0
-icon = ExtResource( 10 )
+icon = ExtResource( 11 )
 
-[node name="DragSpeng" type="Button" parent="VBoxContainer2/HBoxContainer3"]
+[node name="DragMno" type="Button" parent="VBoxContainer2/HBoxContainer3"]
 modulate = Color( 1, 1, 1, 0.588235 )
 margin_left = 207.0
 margin_right = 310.0
 margin_bottom = 153.0
-icon = ExtResource( 11 )
+icon = ExtResource( 10 )
 
 [node name="DragIchuen" type="Button" parent="VBoxContainer2/HBoxContainer3"]
 modulate = Color( 1, 1, 1, 0.588235 )
@@ -196,21 +197,21 @@ custom_colors/font_color = Color( 0, 0, 0.392157, 1 )
 custom_fonts/font = SubResource( 8 )
 text = "Swipe"
 
-[node name="SwipeBass" type="Button" parent="VBoxContainer2/HBoxContainer2"]
+[node name="SwipeGuitar" type="Button" parent="VBoxContainer2/HBoxContainer2"]
 modulate = Color( 1, 1, 1, 0.588235 )
 margin_left = 114.0
 margin_right = 217.0
 margin_bottom = 97.0
-rect_min_size = Vector2( 100, 70 )
-custom_fonts/font = SubResource( 2 )
-icon = ExtResource( 13 )
+icon = ExtResource( 16 )
 
-[node name="SwipeGuitar" type="Button" parent="VBoxContainer2/HBoxContainer2"]
+[node name="SwipeBass" type="Button" parent="VBoxContainer2/HBoxContainer2"]
 modulate = Color( 1, 1, 1, 0.588235 )
 margin_left = 221.0
 margin_right = 324.0
 margin_bottom = 97.0
-icon = ExtResource( 16 )
+rect_min_size = Vector2( 100, 70 )
+custom_fonts/font = SubResource( 2 )
+icon = ExtResource( 13 )
 
 [node name="SwipeTurntable" type="Button" parent="VBoxContainer2/HBoxContainer2"]
 modulate = Color( 1, 1, 1, 0.588235 )
@@ -245,6 +246,7 @@ margin_top = 98.0
 margin_right = 538.0
 margin_bottom = 179.0
 custom_fonts/font = SubResource( 11 )
+disabled = true
 text = "English"
 
 [node name="ThailandBt" type="Button" parent="VBoxContainer2/VBoxContainer"]
@@ -255,13 +257,13 @@ custom_fonts/font = SubResource( 12 )
 text = "Thailand"
 
 [connection signal="pressed" from="VBoxContainer2/HBoxContainer/ClickLb" to="." method="_on_ClickLb_pressed"]
-[connection signal="pressed" from="VBoxContainer2/HBoxContainer/FloatingMno" to="." method="_on_FloatingMno_pressed"]
 [connection signal="pressed" from="VBoxContainer2/HBoxContainer/FloatingSpeng" to="." method="_on_FloatingSpeng_pressed"]
+[connection signal="pressed" from="VBoxContainer2/HBoxContainer/FloatingMno" to="." method="_on_FloatingMno_pressed"]
 [connection signal="pressed" from="VBoxContainer2/HBoxContainer/FloatingIchuen" to="." method="_on_FloatingIchuen_pressed"]
 [connection signal="pressed" from="VBoxContainer2/HBoxContainer/FloatingOlay" to="." method="_on_FloatingOlay_pressed"]
 [connection signal="pressed" from="VBoxContainer2/HBoxContainer3/DragLb" to="." method="_on_DragLb_pressed"]
-[connection signal="pressed" from="VBoxContainer2/HBoxContainer3/DragMno" to="." method="_on_DragMno_pressed"]
 [connection signal="pressed" from="VBoxContainer2/HBoxContainer3/DragSpeng" to="." method="_on_DragSpeng_pressed"]
+[connection signal="pressed" from="VBoxContainer2/HBoxContainer3/DragMno" to="." method="_on_DragMno_pressed"]
 [connection signal="pressed" from="VBoxContainer2/HBoxContainer3/DragIchuen" to="." method="_on_DragIchuen_pressed"]
 [connection signal="pressed" from="VBoxContainer2/HBoxContainer3/DragOlay" to="." method="_on_DragOlay_pressed"]
 [connection signal="pressed" from="VBoxContainer2/HBoxContainer2/SwipeLb" to="." method="_on_SwipeLb_pressed"]

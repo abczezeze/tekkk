@@ -2,12 +2,7 @@ extends Control
 
 func _ready():
 	Global.MenuAudioP()
-	$VBoxContainer2/VBoxContainer/EnglishBt.disabled=true
-
-func _on_ClickLb_pressed():
-	Global.MenuAudioS()
-	Global.SceneSoundPlay()
-	get_tree().change_scene("res://Scene/Floating/FloatingMix.tscn")
+#	$VBoxContainer2/VBoxContainer/EnglishBt.disabled=true
 	
 func _on_FloatingMno_pressed():
 	Global.MenuAudioS()
@@ -55,11 +50,6 @@ func _on_ThailandBt_pressed():
 	$VBoxContainer2/VBoxContainer/EnglishBt.text="อังกฤษ"
 	$VBoxContainer2/VBoxContainer/ThailandBt.text="ไทย"
 
-
-func _on_DragLb_pressed():
-	Global.SceneSoundPlay()
-	get_tree().change_scene("res://Scene/Drag/DragMix.tscn")
-
 func _on_DragMno_pressed():
 	Global.SceneSoundPlay()
 	get_tree().change_scene("res://Scene/Drag/DragMno.tscn")
@@ -76,7 +66,3 @@ func _on_DragOlay_pressed():
 	Global.SceneSoundPlay()
 	get_tree().change_scene("res://Scene/Drag/DragOlay.tscn")
 
-
-func _on_SwipeLb_pressed():
-	Global.SceneSoundPlay()
-	get_tree().change_scene("res://Scene/Swipe/SwipeMix.tscn")
