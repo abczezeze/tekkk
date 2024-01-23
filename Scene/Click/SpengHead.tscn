@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scene/Click/SpengHead.gd" type="Script" id=1]
 [ext_resource path="res://Image/Head_Speng.png" type="Texture" id=2]
-[ext_resource path="res://Image/MusicalGuitar.png" type="Texture" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 9.4941
@@ -20,13 +19,4 @@ modulate = Color( 0.92549, 0.972549, 0.113725, 1 )
 position = Vector2( -0.880249, -1.7605 )
 texture = ExtResource( 2 )
 
-[node name="Sprite2_speng" type="Sprite" parent="."]
-visible = false
-position = Vector2( -0.880249, -1.7605 )
-texture = ExtResource( 3 )
-
-[node name="Timer" type="Timer" parent="."]
-wait_time = 2.0
-
 [connection signal="input_event" from="." to="." method="_on_Tek_abc3dz_input_event"]
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

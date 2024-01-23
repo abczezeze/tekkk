@@ -9,7 +9,7 @@ func _ready():
 	$Click_.text = str(Global.speng_scores)
 	$AnimatedSprite.speed_scale=0
 	$AnimatedSprite.visible=false
-	for n in 9:
+	for n in 2:
 		var speng_add = $speng_right.duplicate()
 		add_child(speng_add)
 		x=rand_range(0,get_viewport_rect().size.x)
@@ -30,8 +30,8 @@ func _on_HomeBT_pressed():
 	get_tree().change_scene("res://Scene/MainMenu.tscn")
 
 func press_right():
-	var rand_dup = rand_range(1,2)
-	for n in rand_dup:
+	$speng_right/GuitarSprite/Timer.start()
+	for n in 2:
 		var speng_add = $speng_right.duplicate()
 		add_child(speng_add)
 		x=rand_range(0,get_viewport_rect().size.x)
@@ -41,9 +41,13 @@ func press_right():
 	$Click_.text = str(Global.speng_scores)
 	$AnimatedSprite.visible=true
 	$Label.visible=false
+	$speng_right/GuitarSprite.visible=true
 	right_press+=1
 	if right_press==2:
 		$AnimatedSprite.speed_scale += 1
 	if right_press>=3:
 		$AnimatedSprite.speed_scale += 1
 		$AnimatedSprite.modulate = Color.white
+
+func _on_Timer_timeout():
+	$speng_right/GuitarSprite.visible=false
