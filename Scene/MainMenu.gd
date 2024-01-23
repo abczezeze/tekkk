@@ -4,25 +4,25 @@ func _ready():
 	Global.MenuAudioP()
 #	$VBoxContainer2/VBoxContainer/EnglishBt.disabled=true
 	
-func _on_FloatingMno_pressed():
+func _on_ClickMno_pressed():
 	Global.MenuAudioS()
 	Global.SceneSoundPlay()
-	get_tree().change_scene("res://Scene/Floating/FloatingMno.tscn")
+	get_tree().change_scene("res://Scene/Click/ClickMno.tscn")
 	
-func _on_FloatingSpeng_pressed():
+func _on_ClickSpeng_pressed():
 	Global.MenuAudioS()
 	Global.SceneSoundPlay()
-	get_tree().change_scene("res://Scene/Floating/FloatingSpeng.tscn")
+	get_tree().change_scene("res://Scene/Click/ClickSpeng.tscn")
 	
-func _on_FloatingIchuen_pressed():
+func _on_ClickIchuen_pressed():
 	Global.MenuAudioS()
 	Global.SceneSoundPlay()
-	get_tree().change_scene("res://Scene/Floating/FloatingIchuen.tscn")
+	get_tree().change_scene("res://Scene/Click/ClickIchuen.tscn")
 	
-func _on_FloatingOlay_pressed():
+func _on_ClickOlay_pressed():
 	Global.MenuAudioS()
 	Global.SceneSoundPlay()
-	get_tree().change_scene("res://Scene/Floating/FloatingOlay.tscn")
+	get_tree().change_scene("res://Scene/Click/ClickOlay.tscn")
 
 func _on_EnglishBt_pressed():
 	$VBoxContainer2/VBoxContainer/EnglishBt.disabled=true
@@ -65,4 +65,3 @@ func _on_DragIchuen_pressed():
 func _on_DragOlay_pressed():
 	Global.SceneSoundPlay()
 	get_tree().change_scene("res://Scene/Drag/DragOlay.tscn")
-

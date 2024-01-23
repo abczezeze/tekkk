@@ -111,14 +111,14 @@ custom_fonts/font = SubResource( 6 )
 keep_pressed_outside = true
 text = "Click"
 
-[node name="FloatingSpeng" type="Button" parent="VBoxContainer2/HBoxContainer"]
+[node name="ClickSpeng" type="Button" parent="VBoxContainer2/HBoxContainer"]
 modulate = Color( 1, 1, 1, 0.588235 )
 margin_left = 90.0
 margin_right = 193.0
 margin_bottom = 97.0
 icon = ExtResource( 9 )
 
-[node name="FloatingMno" type="Button" parent="VBoxContainer2/HBoxContainer"]
+[node name="ClickMno" type="Button" parent="VBoxContainer2/HBoxContainer"]
 modulate = Color( 1, 1, 1, 0.588235 )
 margin_left = 197.0
 margin_right = 300.0
@@ -127,14 +127,14 @@ rect_min_size = Vector2( 100, 70 )
 custom_fonts/font = SubResource( 2 )
 icon = ExtResource( 2 )
 
-[node name="FloatingIchuen" type="Button" parent="VBoxContainer2/HBoxContainer"]
+[node name="ClickIchuen" type="Button" parent="VBoxContainer2/HBoxContainer"]
 modulate = Color( 1, 1, 1, 0.588235 )
 margin_left = 304.0
 margin_right = 407.0
 margin_bottom = 97.0
 icon = ExtResource( 3 )
 
-[node name="FloatingOlay" type="Button" parent="VBoxContainer2/HBoxContainer"]
+[node name="ClickOlay" type="Button" parent="VBoxContainer2/HBoxContainer"]
 modulate = Color( 1, 1, 1, 0.588235 )
 margin_left = 411.0
 margin_right = 514.0
@@ -257,10 +257,10 @@ custom_fonts/font = SubResource( 12 )
 text = "Thailand"
 
 [connection signal="pressed" from="VBoxContainer2/HBoxContainer/ClickLb" to="." method="_on_ClickLb_pressed"]
-[connection signal="pressed" from="VBoxContainer2/HBoxContainer/FloatingSpeng" to="." method="_on_FloatingSpeng_pressed"]
-[connection signal="pressed" from="VBoxContainer2/HBoxContainer/FloatingMno" to="." method="_on_FloatingMno_pressed"]
-[connection signal="pressed" from="VBoxContainer2/HBoxContainer/FloatingIchuen" to="." method="_on_FloatingIchuen_pressed"]
-[connection signal="pressed" from="VBoxContainer2/HBoxContainer/FloatingOlay" to="." method="_on_FloatingOlay_pressed"]
+[connection signal="pressed" from="VBoxContainer2/HBoxContainer/ClickSpeng" to="." method="_on_ClickSpeng_pressed"]
+[connection signal="pressed" from="VBoxContainer2/HBoxContainer/ClickMno" to="." method="_on_ClickMno_pressed"]
+[connection signal="pressed" from="VBoxContainer2/HBoxContainer/ClickIchuen" to="." method="_on_ClickIchuen_pressed"]
+[connection signal="pressed" from="VBoxContainer2/HBoxContainer/ClickOlay" to="." method="_on_ClickOlay_pressed"]
 [connection signal="pressed" from="VBoxContainer2/HBoxContainer3/DragLb" to="." method="_on_DragLb_pressed"]
 [connection signal="pressed" from="VBoxContainer2/HBoxContainer3/DragSpeng" to="." method="_on_DragSpeng_pressed"]
 [connection signal="pressed" from="VBoxContainer2/HBoxContainer3/DragMno" to="." method="_on_DragMno_pressed"]
