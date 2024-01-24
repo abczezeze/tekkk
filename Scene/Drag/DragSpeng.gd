@@ -26,7 +26,6 @@ func _physics_process(delta):
 	if $SpengRigidBody2D.position.y >= 1860:
 		$SpengRigidBody2D.position.x = rand_range(50,1000)
 		$SpengRigidBody2D.global_position.y = 0
-		
 		tween_node.interpolate_property(sprity,"scale",Vector2(2,2),Vector2(1,1),5,Tween.TRANS_EXPO,Tween.EASE_OUT)
 		tween_node.start()
 	
@@ -34,8 +33,8 @@ func _process(delta):
 	n+=1
 	$SpengWrong.position.y += n*delta
 #	speng_add.position.y += n*delta
-	print("NNN ",$SpengWrong.global_position.y)
-	print("ggg ",$SpengWrong.global_position.y)
+#	print("NNN ",$SpengWrong.global_position.y)
+#	print("ggg ",$SpengWrong.global_position.y)
 	if $SpengWrong.position.y >= 1860:
 		$SpengWrong.position.x = rand_range(50,1000)
 		$SpengWrong.position.y = 0
@@ -76,3 +75,4 @@ func _on_MnoArea2D_body_entered(body):
 		Global.AccurateAudioPlay()
 		tween_node.interpolate_property(sprity,"scale",Vector2(1,1),Vector2(2,2),1,Tween.TRANS_EXPO,Tween.EASE_OUT)
 		tween_node.start()
+

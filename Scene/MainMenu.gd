@@ -2,8 +2,11 @@ extends Control
 
 func _ready():
 	Global.MenuAudioP()
-#	$VBoxContainer2/VBoxContainer/EnglishBt.disabled=true
-	
+	if Global.tekkk_language=="En":
+		_on_EnglishBt_pressed()
+	if Global.tekkk_language=="Th":
+		_on_ThailandBt_pressed()
+		
 func _on_ClickMno_pressed():
 	Global.MenuAudioS()
 	Global.SceneSoundPlay()
@@ -36,6 +39,8 @@ func _on_EnglishBt_pressed():
 	$VBoxContainer2/VBoxContainer/Language.text="Language"
 	$VBoxContainer2/VBoxContainer/EnglishBt.text="English"
 	$VBoxContainer2/VBoxContainer/ThailandBt.text="Thailand"
+	$VBoxContainer2/OtherLb.text="Other"
+	$VBoxContainer2/DetailBt.text="particulars"
 
 func _on_ThailandBt_pressed():
 	$VBoxContainer2/VBoxContainer/EnglishBt.disabled=false
@@ -49,6 +54,8 @@ func _on_ThailandBt_pressed():
 	$VBoxContainer2/VBoxContainer/Language.text="ภาษา"
 	$VBoxContainer2/VBoxContainer/EnglishBt.text="อังกฤษ"
 	$VBoxContainer2/VBoxContainer/ThailandBt.text="ไทย"
+	$VBoxContainer2/OtherLb.text="อื่นๆ"
+	$VBoxContainer2/DetailBt.text="รายละเอียด"
 
 func _on_DragMno_pressed():
 	Global.SceneSoundPlay()
@@ -65,3 +72,7 @@ func _on_DragIchuen_pressed():
 func _on_DragOlay_pressed():
 	Global.SceneSoundPlay()
 	get_tree().change_scene("res://Scene/Drag/DragOlay.tscn")
+
+
+func _on_SwipeLb_pressed():
+	get_tree().change_scene("res://Scene/Swipe/SwipeMix.tscn")

@@ -62,4 +62,4 @@ func _on_BackBT_pressed():
 	Global.DragS()
 	Global.HomeAudioPlay()
 	Global.MenuAudioP()
-	get_tree().change_scene("res://Scene/Drag/DragAlternative.tscn")
+	get_tree().change_scene("res://Scene/MainMenu.tscn")
