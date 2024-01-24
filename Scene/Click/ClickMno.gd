@@ -12,6 +12,14 @@ func _ready():
 		$Label.text="คลิกที่หัวการ์ตูน\nมีเพืยงหนึ่งเดียว"
 	
 func _process(delta):
+	if Global.mno_scores>=1 and Global.mno_scores<=3:
+		$Label.visible=false
+		$AnimatedSprite.visible=true
+	if Global.mno_scores>=4:
+		$Label.visible=false
+		$AnimatedSprite.visible=true
+		$AnimatedSprite.speed_scale=1
+		$AnimatedSprite.modulate=Color.white
 	if $mno_right.hit_mno == true :
 		press_right()
 	$mno_right.hit_mno = false 
@@ -27,7 +35,10 @@ func press_right():
 	$ClickMno.text = str(Global.mno_scores)
 	$AnimatedSprite.visible=true
 	$Label.visible=false
-	$Tween.interpolate_property($mno_right,"rotation_degees",-360,360,1,Tween.TRANS_EXPO,Tween.EASE_OUT)
+	for n in 2:
+		var mno_add = $mno_right.duplicate()
+		add_child(mno_add)
+	$Tween.interpolate_property($mno_right,"modulate",Color.black,Color.white,5,Tween.TRANS_EXPO,Tween.EASE_OUT)
 	$Tween.start()
 	right_press+=1
 	if right_press==2:

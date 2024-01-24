@@ -14,11 +14,19 @@ func _ready():
 		add_child(speng_add)
 		x=rand_range(0,get_viewport_rect().size.x)
 		y=rand_range(0,get_viewport_rect().size.y)
-		$speng_right.position = Vector2(x,y)
+		speng_add.position = Vector2(x,y)
 	if Global.tekkk_language=="Th":
 		$Label.text="คลิกที่หัวการ์ตูน\nมีเพืยงหนึ่งเดียวอะ"
 		
 func _process(delta):
+	if Global.speng_scores>=1 and Global.speng_scores<=3:
+		$Label.visible=false
+		$AnimatedSprite.visible=true
+	if Global.speng_scores>=4:
+		$Label.visible=false
+		$AnimatedSprite.visible=true
+		$AnimatedSprite.speed_scale=1
+		$AnimatedSprite.modulate=Color.white
 	if $speng_right.hit_speng == true :
 		press_right()
 	$speng_right.hit_speng = false 
@@ -36,7 +44,7 @@ func press_right():
 		add_child(speng_add)
 		x=rand_range(0,get_viewport_rect().size.x)
 		y=rand_range(0,get_viewport_rect().size.y)
-		$speng_right.position = Vector2(x,y)
+		speng_add.position = Vector2(x,y)
 	Global.speng_scores += 1
 	$Click_.text = str(Global.speng_scores)
 	$AnimatedSprite.visible=true
@@ -45,7 +53,7 @@ func press_right():
 	right_press+=1
 	if right_press==2:
 		$AnimatedSprite.speed_scale += 1
-	if right_press>=3:
+	if right_press>=4:
 		$AnimatedSprite.speed_scale += 1
 		$AnimatedSprite.modulate = Color.white
 
