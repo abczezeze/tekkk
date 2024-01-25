@@ -75,4 +75,10 @@ func _on_DragOlay_pressed():
 
 
 func _on_SwipeLb_pressed():
+	Global.SceneSoundPlay()
 	get_tree().change_scene("res://Scene/Swipe/SwipeMix.tscn")
+
+
+func _on_DetailBt_pressed():
+	Global.SceneSoundPlay()
+	get_tree().change_scene("res://Scene/Detail.tscn")

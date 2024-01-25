@@ -290,3 +290,4 @@ text = "particulars"
 [connection signal="pressed" from="VBoxContainer2/HBoxContainer2/SwipeLb" to="." method="_on_SwipeLb_pressed"]
 [connection signal="pressed" from="VBoxContainer2/VBoxContainer/EnglishBt" to="." method="_on_EnglishBt_pressed"]
 [connection signal="pressed" from="VBoxContainer2/VBoxContainer/ThailandBt" to="." method="_on_ThailandBt_pressed"]
+[connection signal="pressed" from="VBoxContainer2/DetailBt" to="." method="_on_DetailBt_pressed"]
