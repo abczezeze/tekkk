@@ -33,6 +33,11 @@ func DragP():
 	$DragScene.play()
 func DragS():
 	$DragScene.stop()
+	
+func SwipePlay():
+	$SwipeScene.play()
+func SwipeStop():
+	$SwipeScene.stop()
 
 func BassP():
 	$BassSound.play()

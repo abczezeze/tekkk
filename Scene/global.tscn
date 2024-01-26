@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Sound/SFX_home.ogg" type="AudioStream" id=1]
 [ext_resource path="res://Scene/global.gd" type="Script" id=2]
@@ -12,12 +12,10 @@
 [ext_resource path="res://Sound/SFX_turntable0.ogg" type="AudioStream" id=10]
 [ext_resource path="res://Sound/SFX_guitar0.ogg" type="AudioStream" id=11]
 [ext_resource path="res://Sound/SFX__drum0.ogg" type="AudioStream" id=12]
+[ext_resource path="res://Sound/BGM_Re&Ha.mp3" type="AudioStream" id=13]
 
 [node name="Node" type="Node"]
 script = ExtResource( 2 )
-
-[node name="HomeScene" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 1 )
 
 [node name="FloatingScene" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
@@ -27,6 +25,12 @@ stream = ExtResource( 6 )
 
 [node name="MenuAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
+
+[node name="SwipeScene" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 13 )
+
+[node name="HomeScene" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
 
 [node name="Accurate" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )

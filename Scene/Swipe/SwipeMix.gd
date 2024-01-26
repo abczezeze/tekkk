@@ -37,10 +37,9 @@ func _ready():
 	musicalGuitar_pos_y = musical_pos_y_arr[rand_range(0,2)]
 	musicalDrum_pos_y = musical_pos_y_arr[rand_range(0,2)]
 	musicalTurntable_pos_y = musical_pos_y_arr[rand_range(0,2)]
-	$ClickMno.text = str(Global.mno_scores)
-	$ClickOlay.text = str(Global.olay_scores)
-	$ClickIchuen.text = str(Global.ichuen_scores)
-	$ClickSpeng.text = str(Global.speng_scores)
+	Global.MenuAudioS()
+	Global.SwipePlay()
+	$CharacterScores.text = "Mno : "+str(Global.mno_scores)+"\nOlay : "+str(Global.olay_scores)+"\nIchuen : "+str(Global.ichuen_scores)+"\nSpeng : "+str(Global.speng_scores)
 	if randi() % 2:
 		movecheck = false
 
@@ -56,7 +55,7 @@ func  _physics_process(delta):
 	movemusicalTurntable(delta)
 	
 	Global.total_scores = Global.speng_scores+Global.ichuen_scores+Global.olay_scores+Global.mno_scores
-	$ClickT.text = "Total : "+ str(Global.total_scores)
+	$TotalScores.text = "Total : "+ str(Global.total_scores)
 
 func PathFollowMno(delta):
 	if is_swipe_down:
@@ -211,7 +210,9 @@ func _on_Timer_timeout():
 	var r = rand_range(0.0,1.0)
 	var g = rand_range(0.0,1.0)
 	var b = rand_range(0.0,1.0)
-	$bg.modulate = Color(r,g,b)
+#	$bg.modulate = Color(r,g,b)
+	$CharacterScores.modulate = Color(r,g,b)
+	
 
 func _on_Area2DMusicalBass_area_entered(area):
 	if area.is_in_group("Mno"):
@@ -239,6 +240,7 @@ func _on_Area2DMusicalTurntable_area_entered(area):
 
 func _on_HomeBT_pressed():
 	Global.HomeAudioPlay()
+	Global.SwipeStop()
 	get_tree().change_scene("res://Scene/MainMenu.tscn")
 
 func _on_Area2DHead_input_event(viewport, event, shape_idx):
