@@ -14,6 +14,8 @@ func _ready():
 	direction_olay = direction_olay.normalized()
 	width_olay = get_viewport_rect().size.x
 	height_olay = get_viewport_rect().size.y
+	$Tween.interpolate_property($Sprite_olay,"modulate",Color.black,Color.white,5,Tween.TRANS_EXPO,Tween.EASE_OUT)
+	$Tween.start()
 
 func _process(delta):
 	position += direction_olay * speed_olay * delta
@@ -37,9 +39,6 @@ func _on_Tek_abc3dz_input_event( viewport, event, shape_idx ):
 		position.y = rand_range(1,height_olay-1)
 		speed_olay += 15
 		hit_olay = true
-		$Timer.start()
-		$Sprite2_olay.visible = true
 		Global.DrumP()
-
-func _on_Timer_timeout():
-	$Sprite2_olay.visible = false
+		$Tween.interpolate_property($Sprite_olay,"modulate",Color.black,Color.white,5,Tween.TRANS_EXPO,Tween.EASE_OUT)
+		$Tween.start()

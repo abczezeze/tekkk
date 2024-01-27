@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Scene/Swipe/SwipeMix.gd" type="Script" id=1]
 [ext_resource path="res://Image/MusicalTurntable.png" type="Texture" id=2]
@@ -15,7 +15,7 @@
 
 [sub_resource type="Curve2D" id=1]
 _data = {
-"points": PoolVector2Array( -67.3611, 59.5225, 67.3611, -59.5225, 72.3857, 842.881, 0, 0, 0, 0, 481.026, 783.39, -51.8817, -68.1725, 51.8817, 68.1725, 1009.86, 843.884, 0, -61.4026, 0, 61.4026, 1052.28, 1070.16, 86.3647, -85.427, -86.3647, 85.427, 998.542, 1319.06, 0, 0, 0, 0, 517.088, 1370.56, 81.2715, 84.1635, -81.2715, -84.1635, 61.6022, 1325.61, 0, 0, 0, 0, 11.7728, 1071.86, -86.9237, 55.0452, 86.9237, -55.0452, 73.4862, 840.326 )
+"points": PoolVector2Array( -67.3611, 59.5225, 0, 0, 32, 442, -51.8817, -68.1725, 51.8817, 68.1725, 1069, 704, -71.9187, -97.362, 71.9187, 97.362, 29, 930, -92.8951, -98.8883, 92.8951, 98.8883, 1069, 1166, 0, 0, 86.9237, -55.0452, 9, 1308 )
 }
 
 [sub_resource type="CircleShape2D" id=2]
@@ -31,12 +31,24 @@ radius = 25.1722
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 33.0919, 20.1341 )
 
-[sub_resource type="DynamicFont" id=6]
-size = 44
+[sub_resource type="DynamicFont" id=7]
+size = 55
 font_data = ExtResource( 3 )
 
-[sub_resource type="DynamicFont" id=7]
-size = 44
+[sub_resource type="DynamicFont" id=8]
+size = 55
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 55
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=10]
+size = 55
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=11]
+size = 55
 font_data = ExtResource( 3 )
 
 [node name="path2D" type="Path2D"]
@@ -48,8 +60,21 @@ position = Vector2( 2.99658, 0 )
 texture = ExtResource( 4 )
 centered = false
 
+[node name="HomeBT" type="Button" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 500.0
+margin_top = 1850.0
+margin_right = 640.0
+margin_bottom = 1984.0
+rect_scale = Vector2( 0.5, 0.5 )
+icon = ExtResource( 9 )
+flat = true
+
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
-position = Vector2( 72.3857, 842.881 )
+position = Vector2( 32, 442 )
 rotate = false
 
 [node name="Area2DHead" type="Area2D" parent="PathFollow2D" groups=["Mno"]]
@@ -61,7 +86,7 @@ shape = SubResource( 2 )
 texture = ExtResource( 12 )
 
 [node name="PathFollow2DOlay" type="PathFollow2D" parent="."]
-position = Vector2( 713.558, 787.446 )
+position = Vector2( 665.726, 444 )
 offset = 649.55
 rotate = false
 
@@ -74,7 +99,7 @@ shape = SubResource( 2 )
 texture = ExtResource( 16 )
 
 [node name="PathFollow2DSpeng" type="PathFollow2D" parent="."]
-position = Vector2( 1036.41, 1268.01 )
+position = Vector2( 767.989, 444 )
 offset = 1391.91
 rotate = false
 
@@ -87,7 +112,7 @@ shape = SubResource( 2 )
 texture = ExtResource( 15 )
 
 [node name="PathFollow2DIchuen" type="PathFollow2D" parent="."]
-position = Vector2( 423.769, 1377.29 )
+position = Vector2( 123.663, 444 )
 offset = 2041.46
 rotate = false
 
@@ -100,7 +125,8 @@ shape = SubResource( 2 )
 texture = ExtResource( 14 )
 
 [node name="Area2DMusicalBass" type="Area2D" parent="."]
-position = Vector2( 286.179, 76.553 )
+position = Vector2( 286, 130 )
+scale = Vector2( 2, 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DMusicalBass"]
 shape = SubResource( 3 )
@@ -109,7 +135,8 @@ shape = SubResource( 3 )
 texture = ExtResource( 13 )
 
 [node name="Area2DMusicalGuitar" type="Area2D" parent="."]
-position = Vector2( 185.712, 79.4954 )
+position = Vector2( 185, 130 )
+scale = Vector2( 2, 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DMusicalGuitar"]
 shape = SubResource( 3 )
@@ -118,7 +145,8 @@ shape = SubResource( 3 )
 texture = ExtResource( 11 )
 
 [node name="Area2DMusicalDrum" type="Area2D" parent="."]
-position = Vector2( 410.207, 127.55 )
+position = Vector2( 410, 130 )
+scale = Vector2( 2, 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DMusicalDrum"]
 position = Vector2( 0, 5.99323 )
@@ -128,7 +156,8 @@ shape = SubResource( 4 )
 texture = ExtResource( 10 )
 
 [node name="Area2DMusicalTurntable" type="Area2D" parent="."]
-position = Vector2( 527.093, 138.038 )
+position = Vector2( 555, 130 )
+scale = Vector2( 2, 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DMusicalTurntable"]
 position = Vector2( 0, 5.99323 )
@@ -142,42 +171,75 @@ texture = ExtResource( 2 )
 wait_time = 2.0
 autostart = true
 
-[node name="CharacterScores" type="Label" parent="."]
-margin_left = 224.0
-margin_top = 916.0
-margin_right = 411.0
-margin_bottom = 1225.0
-custom_colors/font_color = Color( 0.878431, 0.537255, 0, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 6 )
-text = "Mno : 0
-Speng : 0
-Ichuen : 0
-Olay : 0"
-align = 1
-
 [node name="TotalScores" type="Label" parent="."]
-margin_left = 223.0
-margin_top = 1254.0
-margin_right = 413.0
-margin_bottom = 1329.0
+margin_left = 455.0
+margin_top = 1186.0
+margin_right = 645.0
+margin_bottom = 1261.0
 custom_colors/font_color = Color( 0.921875, 0.129639, 0.129639, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 7 )
 text = "Total : 0"
 align = 1
 
-[node name="HomeBT" type="TextureButton" parent="."]
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 449.0
-margin_top = 1615.0
-margin_right = 577.003
-margin_bottom = 1743.0
-texture_normal = ExtResource( 9 )
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 455.0
+margin_top = 800.0
+margin_right = 690.0
+margin_bottom = 1188.0
 
+[node name="ClickMno" type="Label" parent="VBoxContainer"]
+margin_right = 235.0
+margin_bottom = 94.0
+custom_colors/font_color = Color( 0.878431, 0.537255, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 8 )
+text = "Mno : 0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ClickOlay" type="Label" parent="VBoxContainer"]
+margin_top = 98.0
+margin_right = 235.0
+margin_bottom = 192.0
+custom_colors/font_color = Color( 0.419608, 0.498039, 0.988235, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 9 )
+text = "Olay : 0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ClickSpeng" type="Label" parent="VBoxContainer"]
+margin_top = 196.0
+margin_right = 235.0
+margin_bottom = 290.0
+custom_colors/font_color = Color( 0.92549, 0.972549, 0.113725, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 10 )
+text = "Speng : 0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ClickIchuen" type="Label" parent="VBoxContainer"]
+margin_top = 294.0
+margin_right = 235.0
+margin_bottom = 388.0
+custom_colors/font_color = Color( 0.772549, 0, 0.882353, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 11 )
+text = "Ichuen : 0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="HomeBT" to="." method="_on_HomeBT_pressed"]
 [connection signal="input_event" from="PathFollow2D/Area2DHead" to="." method="_on_Area2DHead_input_event"]
 [connection signal="input_event" from="PathFollow2DOlay/Area2DHeadOlay" to="." method="_on_Area2DHeadOlay_input_event"]
 [connection signal="input_event" from="PathFollow2DSpeng/Area2DHeadSpeng" to="." method="_on_Area2DHeadSpeng_input_event"]
@@ -187,4 +249,3 @@ texture_normal = ExtResource( 9 )
 [connection signal="area_entered" from="Area2DMusicalDrum" to="." method="_on_Area2DMusicalDrum_area_entered"]
 [connection signal="area_entered" from="Area2DMusicalTurntable" to="." method="_on_Area2DMusicalTurntable_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
-[connection signal="pressed" from="HomeBT" to="." method="_on_HomeBT_pressed"]

@@ -1,20 +1,9 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Image/bg1080x1920.jpg" type="Texture" id=1]
-[ext_resource path="res://Image/Head_mno.png" type="Texture" id=2]
-[ext_resource path="res://Image/Head_Ichuen.png" type="Texture" id=3]
+[ext_resource path="res://Image/splashScreen.png" type="Texture" id=2]
 [ext_resource path="res://Font/SanamDeklen_chaya.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://Scene/MainMenu.gd" type="Script" id=5]
-[ext_resource path="res://Image/Head_olayzzz.png" type="Texture" id=7]
-[ext_resource path="res://Image/bt_body_ichuen.png" type="Texture" id=8]
-[ext_resource path="res://Image/Head_Speng.png" type="Texture" id=9]
-[ext_resource path="res://Image/bt_body_mno.png" type="Texture" id=10]
-[ext_resource path="res://Image/bt_body_speng.png" type="Texture" id=11]
-[ext_resource path="res://Image/bt_body_olay.png" type="Texture" id=12]
-[ext_resource path="res://Image/MusicalBass.png" type="Texture" id=13]
-[ext_resource path="res://Image/MusicalTurntable.png" type="Texture" id=14]
-[ext_resource path="res://Image/MusicalDrum.png" type="Texture" id=15]
-[ext_resource path="res://Image/MusicalGuitar.png" type="Texture" id=16]
 
 [sub_resource type="DynamicFont" id=3]
 size = 117
@@ -27,13 +16,6 @@ font_data = ExtResource( 4 )
 [sub_resource type="DynamicFont" id=6]
 size = 44
 font_data = ExtResource( 4 )
-
-[sub_resource type="DynamicFontData" id=4]
-font_path = "res://Font/Unique.ttf"
-
-[sub_resource type="DynamicFont" id=2]
-size = 55
-font_data = SubResource( 4 )
 
 [sub_resource type="DynamicFont" id=7]
 size = 44
@@ -88,16 +70,13 @@ text = "Tekkk"
 align = 1
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="."]
-anchor_left = 0.5
-anchor_top = 0.25
-anchor_right = 0.5
-anchor_bottom = 0.35
-margin_left = -269.0
-margin_right = 269.0
-margin_bottom = -1199.0
+anchor_left = 0.366
+anchor_top = 0.571
+anchor_right = 0.385
+anchor_bottom = 0.58
 
 [node name="SelectLevel" type="Label" parent="VBoxContainer2"]
-margin_right = 538.0
+margin_right = 300.0
 margin_bottom = 94.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 9 )
@@ -106,141 +85,43 @@ valign = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer2"]
 margin_top = 98.0
-margin_right = 538.0
-margin_bottom = 195.0
+margin_right = 300.0
+margin_bottom = 179.0
 
 [node name="ClickLb" type="Button" parent="VBoxContainer2/HBoxContainer"]
 modulate = Color( 1, 1, 1, 0.588235 )
 margin_right = 86.0
-margin_bottom = 97.0
+margin_bottom = 81.0
 custom_colors/font_color = Color( 0.392157, 0, 0, 1 )
 custom_fonts/font = SubResource( 6 )
 keep_pressed_outside = true
 text = "Click"
 
-[node name="ClickSpeng" type="Button" parent="VBoxContainer2/HBoxContainer"]
+[node name="DragLb" type="Button" parent="VBoxContainer2/HBoxContainer"]
 modulate = Color( 1, 1, 1, 0.588235 )
 margin_left = 90.0
-margin_right = 193.0
-margin_bottom = 97.0
-icon = ExtResource( 9 )
-
-[node name="ClickMno" type="Button" parent="VBoxContainer2/HBoxContainer"]
-modulate = Color( 1, 1, 1, 0.588235 )
-margin_left = 197.0
-margin_right = 300.0
-margin_bottom = 97.0
-rect_min_size = Vector2( 100, 70 )
-custom_fonts/font = SubResource( 2 )
-icon = ExtResource( 2 )
-
-[node name="ClickIchuen" type="Button" parent="VBoxContainer2/HBoxContainer"]
-modulate = Color( 1, 1, 1, 0.588235 )
-margin_left = 304.0
-margin_right = 407.0
-margin_bottom = 97.0
-icon = ExtResource( 3 )
-
-[node name="ClickOlay" type="Button" parent="VBoxContainer2/HBoxContainer"]
-modulate = Color( 1, 1, 1, 0.588235 )
-margin_left = 411.0
-margin_right = 514.0
-margin_bottom = 97.0
-icon = ExtResource( 7 )
-
-[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer2"]
-margin_top = 199.0
-margin_right = 538.0
-margin_bottom = 352.0
-
-[node name="DragLb" type="Button" parent="VBoxContainer2/HBoxContainer3"]
-modulate = Color( 1, 1, 1, 0.588235 )
-margin_right = 96.0
-margin_bottom = 153.0
+margin_right = 186.0
+margin_bottom = 81.0
 custom_colors/font_color = Color( 0, 0.392157, 0, 1 )
 custom_fonts/font = SubResource( 7 )
 text = "Drag"
 
-[node name="DragSpeng" type="Button" parent="VBoxContainer2/HBoxContainer3"]
+[node name="SwipeLb" type="Button" parent="VBoxContainer2/HBoxContainer"]
 modulate = Color( 1, 1, 1, 0.588235 )
-margin_left = 100.0
-margin_right = 203.0
-margin_bottom = 153.0
-icon = ExtResource( 11 )
-
-[node name="DragMno" type="Button" parent="VBoxContainer2/HBoxContainer3"]
-modulate = Color( 1, 1, 1, 0.588235 )
-margin_left = 207.0
-margin_right = 310.0
-margin_bottom = 153.0
-icon = ExtResource( 10 )
-
-[node name="DragIchuen" type="Button" parent="VBoxContainer2/HBoxContainer3"]
-modulate = Color( 1, 1, 1, 0.588235 )
-margin_left = 314.0
-margin_right = 417.0
-margin_bottom = 153.0
-rect_min_size = Vector2( 100, 70 )
-custom_fonts/font = SubResource( 2 )
-icon = ExtResource( 8 )
-
-[node name="DragOlay" type="Button" parent="VBoxContainer2/HBoxContainer3"]
-modulate = Color( 1, 1, 1, 0.588235 )
-margin_left = 421.0
-margin_right = 524.0
-margin_bottom = 153.0
-icon = ExtResource( 12 )
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer2"]
-margin_top = 356.0
-margin_right = 538.0
-margin_bottom = 453.0
-
-[node name="SwipeLb" type="Button" parent="VBoxContainer2/HBoxContainer2"]
-modulate = Color( 1, 1, 1, 0.588235 )
-margin_right = 110.0
-margin_bottom = 97.0
+margin_left = 190.0
+margin_right = 300.0
+margin_bottom = 81.0
 custom_colors/font_color = Color( 0, 0, 0.392157, 1 )
 custom_fonts/font = SubResource( 8 )
 text = "Swipe"
 
-[node name="SwipeGuitar" type="Button" parent="VBoxContainer2/HBoxContainer2"]
-modulate = Color( 1, 1, 1, 0.588235 )
-margin_left = 114.0
-margin_right = 217.0
-margin_bottom = 97.0
-icon = ExtResource( 16 )
-
-[node name="SwipeBass" type="Button" parent="VBoxContainer2/HBoxContainer2"]
-modulate = Color( 1, 1, 1, 0.588235 )
-margin_left = 221.0
-margin_right = 324.0
-margin_bottom = 97.0
-rect_min_size = Vector2( 100, 70 )
-custom_fonts/font = SubResource( 2 )
-icon = ExtResource( 13 )
-
-[node name="SwipeTurntable" type="Button" parent="VBoxContainer2/HBoxContainer2"]
-modulate = Color( 1, 1, 1, 0.588235 )
-margin_left = 328.0
-margin_right = 431.0
-margin_bottom = 97.0
-icon = ExtResource( 14 )
-
-[node name="SwipeDrum" type="Button" parent="VBoxContainer2/HBoxContainer2"]
-modulate = Color( 1, 1, 1, 0.588235 )
-margin_left = 435.0
-margin_right = 538.0
-margin_bottom = 97.0
-icon = ExtResource( 15 )
-
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer2"]
-margin_top = 457.0
-margin_right = 538.0
-margin_bottom = 721.0
+margin_top = 183.0
+margin_right = 300.0
+margin_bottom = 447.0
 
 [node name="Language" type="Label" parent="VBoxContainer2/VBoxContainer"]
-margin_right = 538.0
+margin_right = 300.0
 margin_bottom = 94.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 10 )
@@ -249,7 +130,7 @@ valign = 2
 
 [node name="EnglishBt" type="Button" parent="VBoxContainer2/VBoxContainer"]
 margin_top = 98.0
-margin_right = 538.0
+margin_right = 300.0
 margin_bottom = 179.0
 custom_fonts/font = SubResource( 11 )
 disabled = true
@@ -257,37 +138,35 @@ text = "English"
 
 [node name="ThailandBt" type="Button" parent="VBoxContainer2/VBoxContainer"]
 margin_top = 183.0
-margin_right = 538.0
+margin_right = 300.0
 margin_bottom = 264.0
 custom_fonts/font = SubResource( 12 )
 text = "Thailand"
 
 [node name="OtherLb" type="Label" parent="VBoxContainer2"]
-margin_top = 725.0
-margin_right = 538.0
-margin_bottom = 819.0
+margin_top = 451.0
+margin_right = 300.0
+margin_bottom = 545.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 14 )
 text = "Other"
 
 [node name="DetailBt" type="Button" parent="VBoxContainer2"]
-margin_top = 823.0
-margin_right = 538.0
-margin_bottom = 923.0
+margin_top = 549.0
+margin_right = 300.0
+margin_bottom = 649.0
 custom_fonts/font = SubResource( 13 )
 text = "particulars"
 
+[node name="SplashScreen" type="Sprite" parent="."]
+position = Vector2( 563, 690 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 0, 400, 800, 800 )
+
 [connection signal="pressed" from="VBoxContainer2/HBoxContainer/ClickLb" to="." method="_on_ClickLb_pressed"]
-[connection signal="pressed" from="VBoxContainer2/HBoxContainer/ClickSpeng" to="." method="_on_ClickSpeng_pressed"]
-[connection signal="pressed" from="VBoxContainer2/HBoxContainer/ClickMno" to="." method="_on_ClickMno_pressed"]
-[connection signal="pressed" from="VBoxContainer2/HBoxContainer/ClickIchuen" to="." method="_on_ClickIchuen_pressed"]
-[connection signal="pressed" from="VBoxContainer2/HBoxContainer/ClickOlay" to="." method="_on_ClickOlay_pressed"]
-[connection signal="pressed" from="VBoxContainer2/HBoxContainer3/DragLb" to="." method="_on_DragLb_pressed"]
-[connection signal="pressed" from="VBoxContainer2/HBoxContainer3/DragSpeng" to="." method="_on_DragSpeng_pressed"]
-[connection signal="pressed" from="VBoxContainer2/HBoxContainer3/DragMno" to="." method="_on_DragMno_pressed"]
-[connection signal="pressed" from="VBoxContainer2/HBoxContainer3/DragIchuen" to="." method="_on_DragIchuen_pressed"]
-[connection signal="pressed" from="VBoxContainer2/HBoxContainer3/DragOlay" to="." method="_on_DragOlay_pressed"]
-[connection signal="pressed" from="VBoxContainer2/HBoxContainer2/SwipeLb" to="." method="_on_SwipeLb_pressed"]
+[connection signal="pressed" from="VBoxContainer2/HBoxContainer/DragLb" to="." method="_on_DragLb_pressed"]
+[connection signal="pressed" from="VBoxContainer2/HBoxContainer/SwipeLb" to="." method="_on_SwipeLb_pressed"]
 [connection signal="pressed" from="VBoxContainer2/VBoxContainer/EnglishBt" to="." method="_on_EnglishBt_pressed"]
 [connection signal="pressed" from="VBoxContainer2/VBoxContainer/ThailandBt" to="." method="_on_ThailandBt_pressed"]
 [connection signal="pressed" from="VBoxContainer2/DetailBt" to="." method="_on_DetailBt_pressed"]

@@ -1,7 +1,6 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scene/Swipe/SwipeMno.gd" type="Script" id=1]
-[ext_resource path="res://Font/FloatingMain.tres" type="DynamicFont" id=3]
 [ext_resource path="res://Image/bg1080x1920.jpg" type="Texture" id=4]
 [ext_resource path="res://Image/fullz-mno.png" type="Texture" id=5]
 [ext_resource path="res://Image/home.png" type="Texture" id=9]
@@ -10,7 +9,7 @@
 
 [sub_resource type="Curve2D" id=1]
 _data = {
-"points": PoolVector2Array( -67.3611, 59.5225, 67.3611, -59.5225, 72.3857, 842.881, 0, 0, 0, 0, 481.026, 783.39, -51.8817, -68.1725, 51.8817, 68.1725, 1009.86, 843.884, 0, -61.4026, 0, 61.4026, 1052.28, 1070.16, 86.3647, -85.427, -86.3647, 85.427, 998.542, 1319.06, 0, 0, 0, 0, 517.088, 1370.56, 81.2715, 84.1635, -81.2715, -84.1635, 61.6022, 1325.61, 0, 0, 0, 0, 11.7728, 1071.86, -86.9237, 55.0452, 86.9237, -55.0452, 73.4862, 840.326 )
+"points": PoolVector2Array( -67.3611, 59.5225, 67.3611, -59.5225, 72.3857, 842.881, 0, 0, 0, 0, 533.049, 649.407, -51.8817, -68.1725, 51.8817, 68.1725, 1009.86, 843.884, 0, -61.4026, 0, 61.4026, 1207.13, 1100.41, 86.3647, -85.427, -86.3647, 85.427, 998.542, 1319.06, 0, 0, 0, 0, 526.089, 1515.25, 81.2715, 84.1635, -81.2715, -84.1635, 61.6022, 1325.61, 0, 0, 0, 0, -118.168, 1070.27, -86.9237, 55.0452, 86.9237, -55.0452, 73.4862, 840.326 )
 }
 
 [sub_resource type="CircleShape2D" id=2]
@@ -64,7 +63,6 @@ margin_right = 583.981
 margin_bottom = 1017.85
 custom_colors/font_color = Color( 0.878431, 0.537255, 0, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_fonts/font = ExtResource( 3 )
 text = "999"
 align = 1
 
@@ -79,7 +77,6 @@ margin_right = 599.88
 margin_bottom = 1247.54
 custom_colors/font_color = Color( 0.921875, 0.129639, 0.129639, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_fonts/font = ExtResource( 3 )
 text = "Total : 0"
 align = 1
 

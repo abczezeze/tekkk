@@ -34,8 +34,8 @@ func _on_EnglishBt_pressed():
 	$TekLb.text="Tekkk"
 	$VBoxContainer2/SelectLevel.text="Select Level"
 	$VBoxContainer2/HBoxContainer/ClickLb.text="Click"
-	$VBoxContainer2/HBoxContainer3/DragLb.text="Drag"
-	$VBoxContainer2/HBoxContainer2/SwipeLb.text="Swipe"
+	$VBoxContainer2/HBoxContainer/DragLb.text="Drag"
+	$VBoxContainer2/HBoxContainer/SwipeLb.text="Swipe"
 	$VBoxContainer2/VBoxContainer/Language.text="Language"
 	$VBoxContainer2/VBoxContainer/EnglishBt.text="English"
 	$VBoxContainer2/VBoxContainer/ThailandBt.text="Thailand"
@@ -49,8 +49,8 @@ func _on_ThailandBt_pressed():
 	$TekLb.text="เต็กเคเค"
 	$VBoxContainer2/SelectLevel.text="เลือกด่าน"
 	$VBoxContainer2/HBoxContainer/ClickLb.text="คลิก"
-	$VBoxContainer2/HBoxContainer3/DragLb.text="ลาก"
-	$VBoxContainer2/HBoxContainer2/SwipeLb.text="ตวัด"
+	$VBoxContainer2/HBoxContainer/DragLb.text="ลาก"
+	$VBoxContainer2/HBoxContainer/SwipeLb.text="ตวัด"
 	$VBoxContainer2/VBoxContainer/Language.text="ภาษา"
 	$VBoxContainer2/VBoxContainer/EnglishBt.text="อังกฤษ"
 	$VBoxContainer2/VBoxContainer/ThailandBt.text="ไทย"
@@ -76,9 +76,22 @@ func _on_DragOlay_pressed():
 
 func _on_SwipeLb_pressed():
 	Global.SceneSoundPlay()
+	Global.MenuAudioS()
 	get_tree().change_scene("res://Scene/Swipe/SwipeMix.tscn")
 
 
 func _on_DetailBt_pressed():
 	Global.SceneSoundPlay()
 	get_tree().change_scene("res://Scene/Detail.tscn")
+
+
+func _on_ClickLb_pressed():
+	Global.SceneSoundPlay()
+	Global.MenuAudioS()
+	get_tree().change_scene("res://Scene/Click/ClickMix.tscn")
+
+
+func _on_DragLb_pressed():
+	Global.SceneSoundPlay()
+	Global.MenuAudioS()
+	get_tree().change_scene("res://Scene/Drag/DragMix.tscn")

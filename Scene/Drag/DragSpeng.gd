@@ -32,13 +32,14 @@ func _physics_process(delta):
 func _process(delta):
 	n+=1
 	$SpengWrong.position.y += n*delta
+	
 #	speng_add.position.y += n*delta
 #	print("NNN ",$SpengWrong.global_position.y)
 #	print("ggg ",$SpengWrong.global_position.y)
 	if $SpengWrong.position.y >= 1860:
 		$SpengWrong.position.x = rand_range(50,1000)
 		$SpengWrong.position.y = 0
-#		$SpengWrong.position = $SpengWrong.position.normalized()
+		$SpengWrong.position.normalized()
 #	if speng_add.position.y >= 1860:
 #		speng_add.position.x = rand_range(50,1000)
 #		speng_add.position.y = 0

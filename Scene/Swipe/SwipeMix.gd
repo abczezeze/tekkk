@@ -1,4 +1,6 @@
 extends Node2D
+var total_scores = 0
+
 var musical_pos_y_arr = [80,1800]
 var musical_pos_y = []
 var musicalGuitar_pos_y = []
@@ -39,9 +41,14 @@ func _ready():
 	musicalTurntable_pos_y = musical_pos_y_arr[rand_range(0,2)]
 	Global.MenuAudioS()
 	Global.SwipePlay()
-	$CharacterScores.text = "Mno : "+str(Global.mno_scores)+"\nOlay : "+str(Global.olay_scores)+"\nIchuen : "+str(Global.ichuen_scores)+"\nSpeng : "+str(Global.speng_scores)
-	if randi() % 2:
-		movecheck = false
+	$VBoxContainer/ClickMno.text="Mno : "+str(Global.mno_scores)
+	$VBoxContainer/ClickOlay.text="Olay : "+str(Global.olay_scores)
+	$VBoxContainer/ClickIchuen.text="Ichuen : "+str(Global.ichuen_scores)
+	$VBoxContainer/ClickSpeng.text="Speng : "+str(Global.speng_scores)
+	total_scores = Global.speng_scores+Global.ichuen_scores+Global.olay_scores+Global.mno_scores
+	$TotalScores.text = "Total : "+ str(total_scores)
+#	if randi() % 2:
+#		movecheck = false
 
 func  _physics_process(delta):
 	PathFollowMno(delta)
@@ -54,8 +61,8 @@ func  _physics_process(delta):
 	movemusicalDrum(delta)
 	movemusicalTurntable(delta)
 	
-	Global.total_scores = Global.speng_scores+Global.ichuen_scores+Global.olay_scores+Global.mno_scores
-	$TotalScores.text = "Total : "+ str(Global.total_scores)
+	total_scores = Global.speng_scores+Global.ichuen_scores+Global.olay_scores+Global.mno_scores
+	$TotalScores.text = "Total : "+ str(total_scores)
 
 func PathFollowMno(delta):
 	if is_swipe_down:
@@ -210,33 +217,40 @@ func _on_Timer_timeout():
 	var r = rand_range(0.0,1.0)
 	var g = rand_range(0.0,1.0)
 	var b = rand_range(0.0,1.0)
-#	$bg.modulate = Color(r,g,b)
-	$CharacterScores.modulate = Color(r,g,b)
+	$bg.modulate = Color(r,g,b)
 	
 
 func _on_Area2DMusicalBass_area_entered(area):
 	if area.is_in_group("Mno"):
 		Global.mno_scores += 1
 		Global.BassP()
-		$ClickMno.text = str(Global.mno_scores)
+		$VBoxContainer/ClickMno.text = "Mno : "+str(Global.mno_scores)
+	if area.is_in_group("Olay") or area.is_in_group("Ichuen") or area.is_in_group("Speng"):
+		Global.FailedAudioPlay()
 
 func _on_Area2DMusicalGuitar_area_entered(area):
 	if area.is_in_group("Speng"):
 		Global.speng_scores += 1
 		Global.GuitarP()
-		$ClickSpeng.text = str(Global.speng_scores)
+		$VBoxContainer/ClickSpeng.text = "Speng : "+str(Global.speng_scores)
+	if area.is_in_group("Olay") or area.is_in_group("Mno") or area.is_in_group("Ichuen"):
+		Global.FailedAudioPlay()
 
 func _on_Area2DMusicalDrum_area_entered(area):
 	if area.is_in_group("Olay"):
 		Global.olay_scores += 1
 		Global.DrumP()
-		$ClickOlay.text = str(Global.olay_scores)
+		$VBoxContainer/ClickOlay.text = "Olay : "+str(Global.olay_scores)
+	if area.is_in_group("Ichuen") or area.is_in_group("Mno") or area.is_in_group("Speng"):
+		Global.FailedAudioPlay()
 
 func _on_Area2DMusicalTurntable_area_entered(area):
 	if area.is_in_group("Ichuen"):
 		Global.ichuen_scores += 1
 		Global.TurntableP()
-		$ClickIchuen.text = str(Global.ichuen_scores)
+		$VBoxContainer/ClickIchuen.text = "Ichuen : "+str(Global.ichuen_scores)
+	if area.is_in_group("Olay") or area.is_in_group("Mno") or area.is_in_group("Speng"):
+		Global.FailedAudioPlay()
 
 func _on_HomeBT_pressed():
 	Global.HomeAudioPlay()
