@@ -23,6 +23,8 @@ wait_time = 3.0
 autostart = true
 
 [node name="Tween" type="Tween" parent="."]
+repeat = true
+playback/repeat = true
 
 [connection signal="input_event" from="." to="." method="_on_Tek_abc3dz_input_event"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

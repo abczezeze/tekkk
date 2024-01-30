@@ -19,5 +19,7 @@ position = Vector2( -0.880249, -1.7605 )
 texture = ExtResource( 4 )
 
 [node name="Tween" type="Tween" parent="."]
+repeat = true
+playback/repeat = true
 
 [connection signal="input_event" from="." to="." method="_on_Tek_abc3dz_input_event"]

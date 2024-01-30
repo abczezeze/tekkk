@@ -6,6 +6,11 @@ var speng_scores = 0
 var ichuen_scores = 0
 var tekkk_language = "En"
 
+var mno_animte_sprite = false
+var olay_animte_sprite = false
+var speng_animte_sprite = false
+var ichuen_animte_sprite = false
+
 func HomeAudioPlay():
 	$HomeScene.play()
 

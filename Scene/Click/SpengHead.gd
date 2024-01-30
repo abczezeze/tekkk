@@ -12,6 +12,8 @@ func _ready():
 	position = get_viewport_rect().size/2
 	width_speng = get_viewport_rect().size.x
 	height_speng = get_viewport_rect().size.y
+	$Tween.interpolate_property($SpengSprite,"modulate",Color.yellow,Color.white,1,Tween.TRANS_EXPO,Tween.EASE_OUT)
+	$Tween.start()
 
 func _on_Tek_abc3dz_input_event( viewport, event, shape_idx ):
 	if event is InputEventScreenTouch :
@@ -19,9 +21,10 @@ func _on_Tek_abc3dz_input_event( viewport, event, shape_idx ):
 		position.y = rand_range(1,height_speng-1)
 		hit_speng=true
 		Global.GuitarP()
+		Global.speng_animte_sprite=true
 
 func _on_Timer_timeout():
 	position.x = rand_range(1,width_speng-1)
 	position.y = rand_range(1,height_speng-1)
-	$Tween.interpolate_property($SpengSprite,"modulate",Color.black,Color.white,5,Tween.TRANS_EXPO,Tween.EASE_OUT)
-	$Tween.start()
+	
+	

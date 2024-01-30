@@ -10,7 +10,7 @@ func _ready():
 	direction_mno.x = rand_range(0,1)
 	direction_mno = direction_mno.normalized()
 	width_mno = get_viewport_rect().size.x
-	$Tween.interpolate_property($Sprite_mno,"modulate",Color.black,Color.white,5,Tween.TRANS_EXPO,Tween.EASE_OUT)
+	$Tween.interpolate_property($Sprite_mno,"modulate",Color.coral,Color.white,1,Tween.TRANS_EXPO,Tween.EASE_OUT)
 	$Tween.start()
 
 func _process(delta):
@@ -18,8 +18,6 @@ func _process(delta):
 	if position.x > width_mno:
 		position.x=0
 		position.y = rand_range(10,1900)
-		$Tween.interpolate_property($Sprite_mno,"modulate",Color.black,Color.white,5,Tween.TRANS_EXPO,Tween.EASE_OUT)
-		$Tween.start()
 
 func _on_Tek_abc3dz_input_event( viewport, event, shape_idx ):
 	if event is InputEventScreenTouch :
@@ -30,5 +28,4 @@ func _on_Tek_abc3dz_input_event( viewport, event, shape_idx ):
 		speed_mno += 15
 		hit_mno = true
 		Global.BassP()
-		$Tween.interpolate_property($Sprite_ichuen,"modulate",Color.black,Color.white,5,Tween.TRANS_EXPO,Tween.EASE_OUT)
-		$Tween.start()
+		Global.mno_animte_sprite=true
