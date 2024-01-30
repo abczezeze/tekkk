@@ -1,6 +1,10 @@
 # tekkk game 
 Touch the floating cartoon head and drag a body image to a cartoon head falling.
 
+## Shader
+https://godotshaders.com/shader/shining-sprite-effect/ <br>
+https://godotshaders.com/shader/rainbow-outline/ 
+
 ## Sound BGM
 https://soundcloud.com/abczezeze/2018-01-05hny<br>
 https://soundcloud.com/abczezeze/my-frist-game<br>
