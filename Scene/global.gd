@@ -1,16 +1,42 @@
 extends Node
 
-var mno_scores = 0
-var olay_scores = 0
-var speng_scores = 0
-var ichuen_scores = 0
 var tekkk_language = "En"
 
-var mno_animte_sprite = false
-var olay_animte_sprite = false
-var speng_animte_sprite = false
-var ichuen_animte_sprite = false
+var tekkk_logo = true
 
+const FILE_NAME = "user://game-data.json"
+
+var save_dict = {
+	"mno_scores" : 0,
+	"speng_scores" : 0,
+	"ichuen_scores" : 0,
+	"olay_scores" : 0,
+	"mno_anim" : false,
+	"speng_anim" : false,
+	"ichuen_anim" : false,
+	"olay_anim" : false
+	}
+
+func save_game():
+	var file = File.new()
+	file.open(FILE_NAME, File.WRITE)
+	file.store_string(to_json(save_dict))
+	file.close()
+
+func load_game():
+	var file = File.new()
+	if file.file_exists(FILE_NAME):
+		file.open(FILE_NAME, File.READ)
+		var data = parse_json(file.get_as_text())
+		print(data)
+		file.close()
+		if typeof(data) == TYPE_DICTIONARY:
+			save_dict = data
+		else:
+			printerr("Corrupted data!")
+	else:
+		printerr("No saved data!")
+	
 func HomeAudioPlay():
 	$HomeScene.play()
 

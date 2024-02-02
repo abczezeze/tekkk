@@ -42,4 +42,4 @@ func _on_Tek_abc3dz_input_event( viewport, event, shape_idx ):
 		speed_olay += 15
 		hit_olay = true
 		Global.DrumP()
-		Global.olay_animte_sprite=true
+		Global.save_dict["olay_anim"]=true

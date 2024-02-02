@@ -28,4 +28,4 @@ func _on_Tek_abc3dz_input_event( viewport, event, shape_idx ):
 		speed_ichuen += 15
 		hit_ichuen = true
 		Global.TurntableP()
-		Global.ichuen_animte_sprite=true
+		Global.save_dict["ichuen_anim"]=true

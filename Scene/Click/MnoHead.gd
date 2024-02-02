@@ -28,4 +28,4 @@ func _on_Tek_abc3dz_input_event( viewport, event, shape_idx ):
 		speed_mno += 15
 		hit_mno = true
 		Global.BassP()
-		Global.mno_animte_sprite=true
+		Global.save_dict["mno_anim"]=true

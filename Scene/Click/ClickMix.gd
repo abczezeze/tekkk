@@ -1,30 +1,40 @@
 extends Node2D
+
 var total_scores = 0
+
 func _ready():
 	Global.FloatingPlay()
+	$PanelContainer/MnoAnimatedSprite.playing=Global.save_dict["mno_anim"]
+	$PanelContainer/OlayAnimatedSprite.playing=Global.save_dict["olay_anim"]
+	$PanelContainer/IchuenAnimatedSprite.playing=Global.save_dict["ichuen_anim"]
+	$PanelContainer/SpengAnimatedSprite.playing=Global.save_dict["speng_anim"]
 	
 func _process(delta):
 	if $Tek_abc3dz_mno.hit_mno == true :
-		Global.mno_scores += 1
-		$PanelContainer/MnoAnimatedSprite.playing=Global.mno_animte_sprite
+		Global.save_dict["mno_scores"]+=1
+		Global.save_game()
+		$PanelContainer/MnoAnimatedSprite.playing=Global.save_dict["mno_anim"]
 
 	if $Tek_abc3dz_olay.hit_olay == true :
-		Global.olay_scores += 1
-		$PanelContainer/OlayAnimatedSprite.playing=Global.olay_animte_sprite
+		Global.save_dict["olay_scores"]+=1
+		Global.save_game()
+		$PanelContainer/OlayAnimatedSprite.playing=Global.save_dict["olay_anim"]
 		
 	if $Tek_abc3dz_ichuen.hit_ichuen == true :
-		Global.ichuen_scores += 1
-		$PanelContainer/IchuenAnimatedSprite.playing=Global.ichuen_animte_sprite
+		Global.save_dict["ichuen_scores"]+=1
+		Global.save_game()
+		$PanelContainer/IchuenAnimatedSprite.playing=Global.save_dict["ichuen_anim"]
 		
 	if $Tek_abc3dz_speng.hit_speng == true :
-		Global.speng_scores += 1
-		$PanelContainer/SpengAnimatedSprite.playing=Global.speng_animte_sprite
+		Global.save_dict["speng_scores"]+=1
+		Global.save_game()
+		$PanelContainer/SpengAnimatedSprite.playing=Global.save_dict["speng_anim"]
 
 	$Tek_abc3dz_olay.hit_olay = false
 	$Tek_abc3dz_mno.hit_mno = false
 	$Tek_abc3dz_ichuen.hit_ichuen = false
 	$Tek_abc3dz_speng.hit_speng = false
-	total_scores = Global.speng_scores+Global.ichuen_scores+Global.olay_scores+Global.mno_scores
+	total_scores = Global.save_dict["mno_scores"]+Global.save_dict["olay_scores"]+Global.save_dict["ichuen_scores"]+Global.save_dict["speng_scores"]
 	tekkk_language(Global.tekkk_language)
 
 func _on_HomeBT_pressed():
@@ -34,14 +44,14 @@ func _on_HomeBT_pressed():
 
 func tekkk_language(language):
 	if language == "En":
-		$VBoxContainer/ClickMno.text="Mno : "+str(Global.mno_scores)
-		$VBoxContainer/ClickOlay.text="Olay : "+str(Global.olay_scores)
-		$VBoxContainer/ClickIchuen.text="Ichuen : "+str(Global.ichuen_scores)
-		$VBoxContainer/ClickSpeng.text="Speng : "+str(Global.speng_scores)
+		$VBoxContainer/ClickMno.text="Mno : "+str(Global.save_dict["mno_scores"])
+		$VBoxContainer/ClickOlay.text="Olay : "+str(Global.save_dict["olay_scores"])
+		$VBoxContainer/ClickIchuen.text="Ichuen : "+str(Global.save_dict["ichuen_scores"])
+		$VBoxContainer/ClickSpeng.text="Speng : "+str(Global.save_dict["speng_scores"])
 		$TotalScores.text = "Total : "+ str(total_scores)
 	if language == "Th":
-		$VBoxContainer/ClickMno.text="คุณมโน : "+str(Global.mno_scores)
-		$VBoxContainer/ClickOlay.text="คุณโอเล : "+str(Global.olay_scores)
-		$VBoxContainer/ClickIchuen.text="คุณไอชื่น : "+str(Global.ichuen_scores)
-		$VBoxContainer/ClickSpeng.text="คุณสเปง : "+str(Global.speng_scores)
+		$VBoxContainer/ClickMno.text="คุณมโน : "+str(Global.save_dict["mno_scores"])
+		$VBoxContainer/ClickOlay.text="คุณโอเล : "+str(Global.save_dict["olay_scores"])
+		$VBoxContainer/ClickIchuen.text="คุณไอชื่น : "+str(Global.save_dict["ichuen_scores"])
+		$VBoxContainer/ClickSpeng.text="คุณสเปง : "+str(Global.save_dict["speng_scores"])
 		$TotalScores.text = "คะแนนรวม : "+ str(total_scores)

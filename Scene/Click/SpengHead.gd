@@ -21,7 +21,7 @@ func _on_Tek_abc3dz_input_event( viewport, event, shape_idx ):
 		position.y = rand_range(1,height_speng-1)
 		hit_speng=true
 		Global.GuitarP()
-		Global.speng_animte_sprite=true
+		Global.save_dict["speng_anim"]=true
 
 func _on_Timer_timeout():
 	position.x = rand_range(1,width_speng-1)

@@ -56,7 +56,7 @@ func _physics_process(delta):
 		$IchuenRigidBody2D.global_position.y = 0
 		
 func _process(delta):
-	total_scores = Global.speng_scores+Global.ichuen_scores+Global.olay_scores+Global.mno_scores
+	total_scores = Global.save_dict["mno_scores"]+Global.save_dict["olay_scores"]+Global.save_dict["ichuen_scores"]+Global.save_dict["speng_scores"]
 	tekkk_language(Global.tekkk_language)
 
 func _input(event):
@@ -114,43 +114,6 @@ func _on_BackBT_pressed():
 	Global.MenuAudioP()
 	get_tree().change_scene("res://Scene/MainMenu.tscn")
 
-#if selected the full img character for drag
-func _on_FullOlayArea2D_input_event(viewport, event, shape_idx):
-	if event is InputEventScreenTouch :
-		selected_olay=true
-		$IchuenBodyArea2D.position.y=3000
-		$SpengBodyArea2D.position.y=3000
-		$MnoBodyArea2D.position.y=3000
-		olay_tween_node.interpolate_property(olay_sprite,"position:y",3000,1800,1,Tween.TRANS_QUART,Tween.EASE_OUT)
-		olay_tween_node.start()
-
-func _on_FullIchuenArea2D_input_event(viewport, event, shape_idx):
-	if event is InputEventScreenTouch :
-		selected_ichuen=true
-		$OlayBodyArea2D.position.y=3000
-		$SpengBodyArea2D.position.y=3000
-		$MnoBodyArea2D.position.y=3000
-		ichuen_tween_node.interpolate_property(ichuen_sprite,"position:y",3000,1800,1,Tween.TRANS_QUINT,Tween.EASE_OUT)
-		ichuen_tween_node.start()
-
-func _on_FullSpengArea2D2_input_event(viewport, event, shape_idx):
-	if event is InputEventScreenTouch :
-		selected_speng=true
-		$IchuenBodyArea2D.position.y=3000
-		$OlayBodyArea2D.position.y=3000
-		$MnoBodyArea2D.position.y=3000
-		speng_tween_node.interpolate_property(speng_sprite,"position:y",3000,1800,1,Tween.TRANS_EXPO,Tween.EASE_OUT)
-		speng_tween_node.start()
-
-func _on_FullMnoArea2D_input_event(viewport, event, shape_idx):
-	if event is InputEventScreenTouch :
-		selected_mno=true
-		$IchuenBodyArea2D.position.y=3000
-		$SpengBodyArea2D.position.y=3000
-		$OlayBodyArea2D.position.y=3000
-		mno_tween_node.interpolate_property(mno_sprite,"position:y",3000,1800,1,Tween.TRANS_EXPO,Tween.EASE_OUT)
-		mno_tween_node.start()
-
 #body event
 func _on_Area2D_input_event(viewport, event, shape_idx):
 	if event.is_action_pressed("ui_click"):
@@ -171,45 +134,49 @@ func _on_SpengBodyArea2D_input_event(viewport, event, shape_idx):
 #body entered
 func _on_MnoBodyArea2D_body_entered(body):
 	if body.is_in_group("Mno"):
-		Global.mno_scores += 1
+		Global.save_dict["mno_scores"]+=1
 		Global.AccurateAudioPlay()
+		Global.save_game()
 	else:
 		Global.FailedAudioPlay()
 
 func _on_SpengBodyArea2D_body_entered(body):
 	if body.is_in_group("Speng"):
-		Global.speng_scores += 1
+		Global.save_dict["speng_scores"]+=1
 		Global.AccurateAudioPlay()
+		Global.save_game()
 	else:
 		Global.FailedAudioPlay()
 		
 func _on_IchuenArea2D_body_entered(body):
 	if body.is_in_group("Ichuen"):
-		Global.ichuen_scores += 1
+		Global.save_dict["ichuen_scores"]+=1
 		Global.AccurateAudioPlay()
+		Global.save_game()
 	else:
 		Global.FailedAudioPlay()
 		
 func _on_OlayBodyArea2D_body_entered(body):
 	if body.is_in_group("Olay"):
-		Global.olay_scores += 1
+		Global.save_dict["olay_scores"]+=1
 		Global.AccurateAudioPlay()
+		Global.save_game()
 	else:
 		Global.FailedAudioPlay()
 
 func tekkk_language(language):
 	if language == "En":
-		$VBoxContainer/ClickMno.text="Mno : "+str(Global.mno_scores)
-		$VBoxContainer/ClickOlay.text="Olay : "+str(Global.olay_scores)
-		$VBoxContainer/ClickIchuen.text="Ichuen : "+str(Global.ichuen_scores)
-		$VBoxContainer/ClickSpeng.text="Speng : "+str(Global.speng_scores)
-		$TotalScores.text = "Total : "+ str(total_scores)
+		$VBoxContainer/ClickMno.text="Mno : "+str(Global.save_dict["mno_scores"])
+		$VBoxContainer/ClickOlay.text="Olay : "+str(Global.save_dict["olay_scores"])
+		$VBoxContainer/ClickIchuen.text="Ichuen : "+str(Global.save_dict["ichuen_scores"])
+		$VBoxContainer/ClickSpeng.text="Speng : "+str(Global.save_dict["speng_scores"])
+		$TotalScores.text = "Total : "+str(total_scores)
 	if language == "Th":
-		$VBoxContainer/ClickMno.text="คุณมโน : "+str(Global.mno_scores)
-		$VBoxContainer/ClickOlay.text="คุณโอเล : "+str(Global.olay_scores)
-		$VBoxContainer/ClickIchuen.text="คุณไอชื่น : "+str(Global.ichuen_scores)
-		$VBoxContainer/ClickSpeng.text="คุณสเปง : "+str(Global.speng_scores)
-		$TotalScores.text = "คะแนนรวม : "+ str(total_scores)
+		$VBoxContainer/ClickMno.text="คุณมโน : "+str(Global.save_dict["mno_scores"])
+		$VBoxContainer/ClickOlay.text="คุณโอเล : "+str(Global.save_dict["olay_scores"])
+		$VBoxContainer/ClickIchuen.text="คุณไอชื่น : "+str(Global.save_dict["ichuen_scores"])
+		$VBoxContainer/ClickSpeng.text="คุณสเปง : "+str(Global.save_dict["speng_scores"])
+		$TotalScores.text = "คะแนนรวม : "+str(total_scores)
 
 func _on_Tween_speng_tween_completed(object, key):
 	$SpengBodyArea2D/Tween.stop(speng_sprite,"position:y")
@@ -219,3 +186,36 @@ func _on_Tween_olay_tween_completed(object, key):
 	$OlayBodyArea2D/Tween.stop(olay_sprite,"position:y")
 func _on_Tween_ichuen_tween_completed(object, key):
 	$IchuenBodyArea2D/Tween.stop(ichuen_sprite,"position:y")
+
+#if selected the full img character for drag
+func _on_FullMno_pressed():
+	selected_mno=true
+	$IchuenBodyArea2D.position.y=3000
+	$SpengBodyArea2D.position.y=3000
+	$OlayBodyArea2D.position.y=3000
+	mno_tween_node.interpolate_property(mno_sprite,"position:y",3000,1800,1,Tween.TRANS_EXPO,Tween.EASE_OUT)
+	mno_tween_node.start()
+
+func _on_FulOlay_pressed():
+	selected_olay=true
+	$IchuenBodyArea2D.position.y=3000
+	$SpengBodyArea2D.position.y=3000
+	$MnoBodyArea2D.position.y=3000
+	olay_tween_node.interpolate_property(olay_sprite,"position:y",3000,1800,1,Tween.TRANS_QUART,Tween.EASE_OUT)
+	olay_tween_node.start()
+
+func _on_FullIchuen_pressed():
+	selected_ichuen=true
+	$OlayBodyArea2D.position.y=3000
+	$SpengBodyArea2D.position.y=3000
+	$MnoBodyArea2D.position.y=3000
+	ichuen_tween_node.interpolate_property(ichuen_sprite,"position:y",3000,1800,1,Tween.TRANS_QUINT,Tween.EASE_OUT)
+	ichuen_tween_node.start()
+
+func _on_FullSpeng_pressed():
+	selected_speng=true
+	$IchuenBodyArea2D.position.y=3000
+	$OlayBodyArea2D.position.y=3000
+	$MnoBodyArea2D.position.y=3000
+	speng_tween_node.interpolate_property(speng_sprite,"position:y",3000,1800,1,Tween.TRANS_EXPO,Tween.EASE_OUT)
+	speng_tween_node.start()

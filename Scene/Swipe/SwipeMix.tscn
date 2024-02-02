@@ -1,9 +1,13 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://Scene/Swipe/SwipeMix.gd" type="Script" id=1]
 [ext_resource path="res://Image/MusicalTurntable.png" type="Texture" id=2]
 [ext_resource path="res://Font/SanamDeklen_chaya.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://Image/bg1080x1920.jpg" type="Texture" id=4]
+[ext_resource path="res://Material/cartoonhead_orange.material" type="Material" id=5]
+[ext_resource path="res://Material/cartoonhead_yellow.material" type="Material" id=6]
+[ext_resource path="res://Material/cartoonhead_blue.material" type="Material" id=7]
+[ext_resource path="res://Material/cartoonhead_violet.material" type="Material" id=8]
 [ext_resource path="res://Image/home.png" type="Texture" id=9]
 [ext_resource path="res://Image/MusicalDrum.png" type="Texture" id=10]
 [ext_resource path="res://Image/MusicalGuitar.png" type="Texture" id=11]
@@ -15,7 +19,7 @@
 
 [sub_resource type="Curve2D" id=1]
 _data = {
-"points": PoolVector2Array( -67.3611, 59.5225, 0, 0, 32, 442, -51.8817, -68.1725, 51.8817, 68.1725, 1069, 704, -71.9187, -97.362, 71.9187, 97.362, 29, 930, -92.8951, -98.8883, 92.8951, 98.8883, 1069, 1166, 0, 0, 86.9237, -55.0452, 9, 1308 )
+"points": PoolVector2Array( -67.3611, 59.5225, 0, 0, 1081, 1444, 4.23785, 156.801, -4.23785, -156.801, -8, 1194, 0, 139.849, 0, -139.849, 1098, 868, -12.7136, -4.23785, 12.7136, 4.23785, 5, 639 )
 }
 
 [sub_resource type="CircleShape2D" id=2]
@@ -30,6 +34,11 @@ radius = 25.1722
 
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 33.0919, 20.1341 )
+
+[sub_resource type="Shader" id=12]
+
+[sub_resource type="ShaderMaterial" id=13]
+shader = SubResource( 12 )
 
 [sub_resource type="DynamicFont" id=7]
 size = 55
@@ -74,7 +83,7 @@ icon = ExtResource( 9 )
 flat = true
 
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
-position = Vector2( 32, 442 )
+position = Vector2( 1081, 1444 )
 rotate = false
 
 [node name="Area2DHead" type="Area2D" parent="PathFollow2D" groups=["Mno"]]
@@ -83,10 +92,13 @@ rotate = false
 shape = SubResource( 2 )
 
 [node name="tekgameHead_mno" type="Sprite" parent="PathFollow2D/Area2DHead"]
+material = ExtResource( 5 )
 texture = ExtResource( 12 )
 
+[node name="Tween" type="Tween" parent="PathFollow2D"]
+
 [node name="PathFollow2DOlay" type="PathFollow2D" parent="."]
-position = Vector2( 665.726, 444 )
+position = Vector2( 437.999, 1361.03 )
 offset = 649.55
 rotate = false
 
@@ -96,10 +108,13 @@ rotate = false
 shape = SubResource( 2 )
 
 [node name="tekgameHeadOlay" type="Sprite" parent="PathFollow2DOlay/Area2DHeadOlay"]
+material = ExtResource( 7 )
 texture = ExtResource( 16 )
 
+[node name="Tween" type="Tween" parent="PathFollow2DOlay"]
+
 [node name="PathFollow2DSpeng" type="PathFollow2D" parent="."]
-position = Vector2( 767.989, 444 )
+position = Vector2( 205.428, 1086.18 )
 offset = 1391.91
 rotate = false
 
@@ -109,10 +124,13 @@ rotate = false
 shape = SubResource( 2 )
 
 [node name="tekgameHeadSpeng" type="Sprite" parent="PathFollow2DSpeng/Area2DHeadSpeng"]
+material = ExtResource( 6 )
 texture = ExtResource( 15 )
 
+[node name="Tween" type="Tween" parent="PathFollow2DSpeng"]
+
 [node name="PathFollow2DIchuen" type="PathFollow2D" parent="."]
-position = Vector2( 123.663, 444 )
+position = Vector2( 842.975, 973.533 )
 offset = 2041.46
 rotate = false
 
@@ -122,7 +140,10 @@ rotate = false
 shape = SubResource( 2 )
 
 [node name="tekgameHeadIchuen" type="Sprite" parent="PathFollow2DIchuen/Area2DHeadIchuen"]
+material = ExtResource( 8 )
 texture = ExtResource( 14 )
+
+[node name="Tween" type="Tween" parent="PathFollow2DIchuen"]
 
 [node name="Area2DMusicalBass" type="Area2D" parent="."]
 position = Vector2( 286, 130 )
@@ -164,6 +185,7 @@ position = Vector2( 0, 5.99323 )
 shape = SubResource( 5 )
 
 [node name="tekgame_MusicalTurntable" type="Sprite" parent="Area2DMusicalTurntable"]
+material = SubResource( 13 )
 position = Vector2( 0, 1.7818 )
 texture = ExtResource( 2 )
 

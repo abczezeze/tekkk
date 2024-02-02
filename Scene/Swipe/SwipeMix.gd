@@ -41,14 +41,6 @@ func _ready():
 	musicalTurntable_pos_y = musical_pos_y_arr[rand_range(0,2)]
 	Global.MenuAudioS()
 	Global.SwipePlay()
-	$VBoxContainer/ClickMno.text="Mno : "+str(Global.mno_scores)
-	$VBoxContainer/ClickOlay.text="Olay : "+str(Global.olay_scores)
-	$VBoxContainer/ClickIchuen.text="Ichuen : "+str(Global.ichuen_scores)
-	$VBoxContainer/ClickSpeng.text="Speng : "+str(Global.speng_scores)
-	total_scores = Global.speng_scores+Global.ichuen_scores+Global.olay_scores+Global.mno_scores
-	$TotalScores.text = "Total : "+ str(total_scores)
-#	if randi() % 2:
-#		movecheck = false
 
 func  _physics_process(delta):
 	PathFollowMno(delta)
@@ -61,8 +53,8 @@ func  _physics_process(delta):
 	movemusicalDrum(delta)
 	movemusicalTurntable(delta)
 	
-	total_scores = Global.speng_scores+Global.ichuen_scores+Global.olay_scores+Global.mno_scores
-	$TotalScores.text = "Total : "+ str(total_scores)
+	total_scores = Global.save_dict["mno_scores"]+Global.save_dict["olay_scores"]+Global.save_dict["ichuen_scores"]+Global.save_dict["speng_scores"]
+	tekkk_language(Global.tekkk_language)
 
 func PathFollowMno(delta):
 	if is_swipe_down:
@@ -212,43 +204,49 @@ func movemusicalTurntable(delta):
 			musicalTurntable_pos_y = musical_pos_y_arr[rand_range(0,2)]
 			movecheckTurntable = true
 			
-
 func _on_Timer_timeout():
 	var r = rand_range(0.0,1.0)
 	var g = rand_range(0.0,1.0)
 	var b = rand_range(0.0,1.0)
 	$bg.modulate = Color(r,g,b)
-	
 
 func _on_Area2DMusicalBass_area_entered(area):
 	if area.is_in_group("Mno"):
-		Global.mno_scores += 1
+		Global.save_dict["mno_scores"]+=2
 		Global.BassP()
-		$VBoxContainer/ClickMno.text = "Mno : "+str(Global.mno_scores)
+		Global.save_game()
+		$PathFollow2D/Tween.interpolate_property($PathFollow2D/Area2DHead/tekgameHead_mno,"scale",Vector2(2,2),Vector2(1,1),5,Tween.TRANS_EXPO,Tween.EASE_OUT)
+		$PathFollow2D/Tween.start()
 	if area.is_in_group("Olay") or area.is_in_group("Ichuen") or area.is_in_group("Speng"):
 		Global.FailedAudioPlay()
 
 func _on_Area2DMusicalGuitar_area_entered(area):
 	if area.is_in_group("Speng"):
-		Global.speng_scores += 1
+		Global.save_dict["speng_scores"]+=2
 		Global.GuitarP()
-		$VBoxContainer/ClickSpeng.text = "Speng : "+str(Global.speng_scores)
+		Global.save_game()
+		$PathFollow2DSpeng/Tween.interpolate_property($PathFollow2DSpeng/Area2DHeadSpeng/tekgameHeadSpeng,"scale",Vector2(2,2),Vector2(1,1),5,Tween.TRANS_EXPO,Tween.EASE_OUT)
+		$PathFollow2DSpeng/Tween.start()
 	if area.is_in_group("Olay") or area.is_in_group("Mno") or area.is_in_group("Ichuen"):
 		Global.FailedAudioPlay()
 
 func _on_Area2DMusicalDrum_area_entered(area):
 	if area.is_in_group("Olay"):
-		Global.olay_scores += 1
+		Global.save_dict["olay_scores"]+=2
 		Global.DrumP()
-		$VBoxContainer/ClickOlay.text = "Olay : "+str(Global.olay_scores)
+		Global.save_game()
+		$PathFollow2DOlay/Tween.interpolate_property($PathFollow2DOlay/Area2DHeadOlay/tekgameHeadOlay,"scale",Vector2(2,2),Vector2(1,1),5,Tween.TRANS_EXPO,Tween.EASE_OUT)
+		$PathFollow2DOlay/Tween.start()
 	if area.is_in_group("Ichuen") or area.is_in_group("Mno") or area.is_in_group("Speng"):
 		Global.FailedAudioPlay()
 
 func _on_Area2DMusicalTurntable_area_entered(area):
 	if area.is_in_group("Ichuen"):
-		Global.ichuen_scores += 1
+		Global.save_dict["ichuen_scores"]+=2
 		Global.TurntableP()
-		$VBoxContainer/ClickIchuen.text = "Ichuen : "+str(Global.ichuen_scores)
+		Global.save_game()
+		$PathFollow2DIchuen/Tween.interpolate_property($PathFollow2DIchuen/Area2DHeadIchuen/tekgameHeadIchuen,"scale",Vector2(2,2),Vector2(1,1),5,Tween.TRANS_EXPO,Tween.EASE_OUT)
+		$PathFollow2DIchuen/Tween.start()
 	if area.is_in_group("Olay") or area.is_in_group("Mno") or area.is_in_group("Speng"):
 		Global.FailedAudioPlay()
 
@@ -304,3 +302,17 @@ func _on_Area2DHeadIchuen_input_event(viewport, event, shape_idx):
 		if event.relative.x >= -8 and event.relative.x <= 8:
 			if event.relative.y <= -8:
 				is_swipe_upIchuen = true
+
+func tekkk_language(language):
+	if language == "En":
+		$VBoxContainer/ClickMno.text="Mno : "+str(Global.save_dict["mno_scores"])
+		$VBoxContainer/ClickOlay.text="Olay : "+str(Global.save_dict["olay_scores"])
+		$VBoxContainer/ClickIchuen.text="Ichuen : "+str(Global.save_dict["ichuen_scores"])
+		$VBoxContainer/ClickSpeng.text="Speng : "+str(Global.save_dict["speng_scores"])
+		$TotalScores.text = "Total : "+ str(total_scores)
+	if language == "Th":
+		$VBoxContainer/ClickMno.text="คุณมโน : "+str(Global.save_dict["mno_scores"])
+		$VBoxContainer/ClickOlay.text="คุณโอเล : "+str(Global.save_dict["olay_scores"])
+		$VBoxContainer/ClickIchuen.text="คุณไอชื่น : "+str(Global.save_dict["ichuen_scores"])
+		$VBoxContainer/ClickSpeng.text="คุณสเปง : "+str(Global.save_dict["speng_scores"])
+		$TotalScores.text = "คะแนนรวม : "+ str(total_scores)
