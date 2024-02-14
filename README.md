@@ -1,5 +1,10 @@
-# tekkk game 
-Touch the floating cartoon head and drag a body image to a cartoon head falling.
+# tekkk game
+Clicking the floating cartoon head image<br>
+Dragging a body image to a cartoon head image drop.<br>
+Swiping a cartoon head into an instrument move
+
+## addons
+https://github.com/murikistudio/game-jolt-api
 
 ## Shader
 https://godotshaders.com/shader/shining-sprite-effect/ <br>
