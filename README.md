@@ -1,6 +1,6 @@
 # tekkk game
 Clicking the floating cartoon head image.<br>
-Dragging a body image to a cartoon head image drop.<br>
+Dragging a body image to a cartoon head image drop down.<br>
 Swiping a cartoon head into an instrument move.
 
 ## This branch is published at https://gamejolt.com/games/tekkk/874075
