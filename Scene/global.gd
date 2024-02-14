@@ -6,6 +6,12 @@ var tekkk_logo = true
 
 const FILE_NAME = "user://game-data.json"
 
+var data_global = {
+	"game_id": "",
+	"username": "",
+	"user_token": ""
+}
+
 var save_dict = {
 	"mno_scores" : 0,
 	"speng_scores" : 0,
@@ -77,3 +83,38 @@ func DrumP():
 	$DrumSound.play()
 func TurntableP():
 	$TurntableSound.play()
+
+func AchieveTrophy():
+	var total = save_dict.mno_scores + save_dict.speng_scores + save_dict.ichuen_scores + save_dict.olay_scores
+	if total == 5:
+		GameJolt.trophies_add_achieved("223528")
+	elif total == 10:
+		GameJolt.trophies_add_achieved("223530")
+	elif save_dict.mno_scores == 10:
+		GameJolt.trophies_add_achieved("223539")
+	elif save_dict.speng_scores == 10:
+		GameJolt.trophies_add_achieved("223540")
+	elif save_dict.ichuen_scores == 10:
+		GameJolt.trophies_add_achieved("223541")
+	elif save_dict.olay_scores == 10:
+		GameJolt.trophies_add_achieved("223542")
+	elif total == 100:
+		GameJolt.trophies_add_achieved("223531")
+	elif save_dict.mno_scores == 100:
+		GameJolt.trophies_add_achieved("223535")
+	elif save_dict.speng_scores == 100:
+		GameJolt.trophies_add_achieved("223536")
+	elif save_dict.ichuen_scores == 100:
+		GameJolt.trophies_add_achieved("223537")
+	elif save_dict.olay_scores == 100:
+		GameJolt.trophies_add_achieved("223538")
+	elif total == 200:
+		GameJolt.trophies_add_achieved("223532")
+	elif save_dict.mno_scores == 200:
+		GameJolt.trophies_add_achieved("223534")
+	elif save_dict.speng_scores == 200:
+		GameJolt.trophies_add_achieved("223543")
+	elif save_dict.ichuen_scores == 200:
+		GameJolt.trophies_add_achieved("223544")
+	elif save_dict.olay_scores == 200:
+		GameJolt.trophies_add_achieved("223545")

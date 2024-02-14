@@ -36,6 +36,7 @@ func _process(delta):
 	$Tek_abc3dz_speng.hit_speng = false
 	total_scores = Global.save_dict["mno_scores"]+Global.save_dict["olay_scores"]+Global.save_dict["ichuen_scores"]+Global.save_dict["speng_scores"]
 	tekkk_language(Global.tekkk_language)
+	Global.AchieveTrophy()
 
 func _on_HomeBT_pressed():
 	get_tree().change_scene("res://Scene/MainMenu.tscn")

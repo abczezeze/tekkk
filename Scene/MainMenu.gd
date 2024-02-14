@@ -10,27 +10,6 @@ func _ready():
 	$LogoNocap.visible=Global.tekkk_logo
 	$LogoNocap/AnimationPlayer.play("scale_logo")
 
-		
-func _on_ClickMno_pressed():
-	Global.MenuAudioS()
-	Global.SceneSoundPlay()
-	get_tree().change_scene("res://Scene/Click/ClickMno.tscn")
-	
-func _on_ClickSpeng_pressed():
-	Global.MenuAudioS()
-	Global.SceneSoundPlay()
-	get_tree().change_scene("res://Scene/Click/ClickSpeng.tscn")
-	
-func _on_ClickIchuen_pressed():
-	Global.MenuAudioS()
-	Global.SceneSoundPlay()
-	get_tree().change_scene("res://Scene/Click/ClickIchuen.tscn")
-	
-func _on_ClickOlay_pressed():
-	Global.MenuAudioS()
-	Global.SceneSoundPlay()
-	get_tree().change_scene("res://Scene/Click/ClickOlay.tscn")
-
 func _on_EnglishBt_pressed():
 	$VBoxContainer2/VBoxContainer/EnglishBt.disabled=true
 	$VBoxContainer2/VBoxContainer/ThailandBt.disabled=false
@@ -46,7 +25,7 @@ func _on_EnglishBt_pressed():
 	$VBoxContainer2/OtherLb.text="Other"
 	$VBoxContainer2/DetailBt.text="particulars"
 	$VBoxContainer2/Reset.text="RESET!"
-	$VBoxContainer2/Reset.hint_tooltip="Reset the value"
+	$VBoxContainer2/GjLoginBt.text="GameJolt"
 
 func _on_ThailandBt_pressed():
 	$VBoxContainer2/VBoxContainer/EnglishBt.disabled=false
@@ -63,7 +42,7 @@ func _on_ThailandBt_pressed():
 	$VBoxContainer2/OtherLb.text="อื่นๆ"
 	$VBoxContainer2/DetailBt.text="รายละเอียด"
 	$VBoxContainer2/Reset.text="เริ่มค่าใหม่!"
-	$VBoxContainer2/Reset.hint_tooltip="Sorry"
+	$VBoxContainer2/GjLoginBt.text="เกมโจลท์"
 
 func _on_SwipeLb_pressed():
 	Global.SceneSoundPlay()
@@ -100,3 +79,6 @@ func _on_ResetScore_pressed():
 #	print(Global.save_dict)
 	Global.save_game()
 	Global.load_game()
+
+func _on_GjLoginBt_pressed():
+	$GjLoginScene.visible=true

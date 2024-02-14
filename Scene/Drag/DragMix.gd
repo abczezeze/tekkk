@@ -58,6 +58,7 @@ func _physics_process(delta):
 func _process(delta):
 	total_scores = Global.save_dict["mno_scores"]+Global.save_dict["olay_scores"]+Global.save_dict["ichuen_scores"]+Global.save_dict["speng_scores"]
 	tekkk_language(Global.tekkk_language)
+	Global.AchieveTrophy()
 
 func _input(event):
 	if selected_ichuen:
