@@ -1,7 +1,9 @@
 # tekkk game
-Clicking the floating cartoon head image<br>
+Clicking the floating cartoon head image.<br>
 Dragging a body image to a cartoon head image drop.<br>
-Swiping a cartoon head into an instrument move
+Swiping a cartoon head into an instrument move.
+
+## This branch is published at https://gamejolt.com/games/tekkk/874075
 
 ## addons
 https://github.com/murikistudio/game-jolt-api
