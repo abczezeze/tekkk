@@ -30,7 +30,7 @@ func _process(delta):
 	
 	
 
-func _on_Tek_abc3dz_input_event( viewport, event, shape_idx ):
+func _on_Tek_abc3dz_input_event(_viewport, event,_shape_idx ):
 	if lose_olay:
 		return
 	if event is InputEventScreenTouch :

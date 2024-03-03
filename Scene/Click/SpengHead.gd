@@ -5,8 +5,6 @@ var height_speng
 var scales=0
 var hit_speng = false
 var lose_speng = false
-onready var tween_node = $Sprite_speng/Tween
-onready var sprity = $Sprite_spengpeng
 
 func _ready():
 	position = get_viewport_rect().size/2
@@ -15,7 +13,7 @@ func _ready():
 	$Tween.interpolate_property($SpengSprite,"modulate",Color.yellow,Color.white,1,Tween.TRANS_EXPO,Tween.EASE_OUT)
 	$Tween.start()
 
-func _on_Tek_abc3dz_input_event( viewport, event, shape_idx ):
+func _on_Tek_abc3dz_input_event(_viewport, event,_shape_idx ):
 	if event is InputEventScreenTouch :
 		position.x = rand_range(1,width_speng-1)
 		position.y = rand_range(1,height_speng-1)

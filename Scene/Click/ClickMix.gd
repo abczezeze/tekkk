@@ -9,7 +9,7 @@ func _ready():
 	$PanelContainer/IchuenAnimatedSprite.playing=Global.save_dict["ichuen_anim"]
 	$PanelContainer/SpengAnimatedSprite.playing=Global.save_dict["speng_anim"]
 	
-func _process(delta):
+func _process(_delta):
 	if $Tek_abc3dz_mno.hit_mno == true :
 		Global.save_dict["mno_scores"]+=1
 		Global.save_game()
@@ -38,7 +38,7 @@ func _process(delta):
 	tekkk_language(Global.tekkk_language)
 
 func _on_HomeBT_pressed():
-	get_tree().change_scene("res://Scene/MainMenu.tscn")
+	var __ = get_tree().change_scene("res://Scene/MainMenu.tscn")
 	Global.HomeAudioPlay()
 	Global.FloatingStop()
 
