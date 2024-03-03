@@ -14,22 +14,22 @@ func _ready():
 func _on_ClickMno_pressed():
 	Global.MenuAudioS()
 	Global.SceneSoundPlay()
-	get_tree().change_scene("res://Scene/Click/ClickMno.tscn")
+	var __ = get_tree().change_scene("res://Scene/Click/ClickMno.tscn")
 	
 func _on_ClickSpeng_pressed():
 	Global.MenuAudioS()
 	Global.SceneSoundPlay()
-	get_tree().change_scene("res://Scene/Click/ClickSpeng.tscn")
+	var __ = get_tree().change_scene("res://Scene/Click/ClickSpeng.tscn")
 	
 func _on_ClickIchuen_pressed():
 	Global.MenuAudioS()
 	Global.SceneSoundPlay()
-	get_tree().change_scene("res://Scene/Click/ClickIchuen.tscn")
+	var __ = get_tree().change_scene("res://Scene/Click/ClickIchuen.tscn")
 	
 func _on_ClickOlay_pressed():
 	Global.MenuAudioS()
 	Global.SceneSoundPlay()
-	get_tree().change_scene("res://Scene/Click/ClickOlay.tscn")
+	var __ = get_tree().change_scene("res://Scene/Click/ClickOlay.tscn")
 
 func _on_EnglishBt_pressed():
 	$VBoxContainer2/VBoxContainer/EnglishBt.disabled=true
@@ -68,23 +68,23 @@ func _on_ThailandBt_pressed():
 func _on_SwipeLb_pressed():
 	Global.SceneSoundPlay()
 	Global.MenuAudioS()
-	get_tree().change_scene("res://Scene/Swipe/SwipeMix.tscn")
+	var __ = get_tree().change_scene("res://Scene/Swipe/SwipeMix.tscn")
 
 func _on_DetailBt_pressed():
 	Global.SceneSoundPlay()
-	get_tree().change_scene("res://Scene/Detail.tscn")
+	var __ = get_tree().change_scene("res://Scene/Detail.tscn")
 
 func _on_ClickLb_pressed():
 	Global.SceneSoundPlay()
 	Global.MenuAudioS()
-	get_tree().change_scene("res://Scene/Click/ClickMix.tscn")
+	var __ = get_tree().change_scene("res://Scene/Click/ClickMix.tscn")
 
 func _on_DragLb_pressed():
 	Global.SceneSoundPlay()
 	Global.MenuAudioS()
-	get_tree().change_scene("res://Scene/Drag/DragMix.tscn")
+	var __ = get_tree().change_scene("res://Scene/Drag/DragMix.tscn")
 
-func _on_AnimationPlayer_animation_finished(anim_name):
+func _on_AnimationPlayer_animation_finished(_anim_name):
 	Global.tekkk_logo=false
 	$LogoNocap.visible=false
 
