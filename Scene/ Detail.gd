@@ -12,7 +12,7 @@ func _on_Button_pressed():
 	Global.DragS()
 	Global.HomeAudioPlay()
 	Global.MenuAudioP()
-	get_tree().change_scene("res://Scene/MainMenu.tscn")
+	var __ = get_tree().change_scene("res://Scene/MainMenu.tscn")
 
 func tekkk_language(language):
 	if language == "En":

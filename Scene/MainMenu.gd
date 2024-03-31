@@ -7,7 +7,7 @@ func _ready():
 		_on_EnglishBt_pressed()
 	if Global.tekkk_language=="Th":
 		_on_ThailandBt_pressed()
-	$LogoNocap.visible=Global.tekkk_logo
+	$LogoNocap.visible = true 
 	$LogoNocap/AnimationPlayer.play("scale_logo")
 
 func _on_EnglishBt_pressed():
@@ -47,25 +47,21 @@ func _on_ThailandBt_pressed():
 func _on_SwipeLb_pressed():
 	Global.SceneSoundPlay()
 	Global.MenuAudioS()
-	get_tree().change_scene("res://Scene/Swipe/SwipeMix.tscn")
+	var __ = get_tree().change_scene("res://Scene/Swipe/SwipeMix.tscn")
 
 func _on_DetailBt_pressed():
 	Global.SceneSoundPlay()
-	get_tree().change_scene("res://Scene/Detail.tscn")
+	var __ = get_tree().change_scene("res://Scene/Detail.tscn")
 
 func _on_ClickLb_pressed():
 	Global.SceneSoundPlay()
 	Global.MenuAudioS()
-	get_tree().change_scene("res://Scene/Click/ClickMix.tscn")
+	var __ = get_tree().change_scene("res://Scene/Click/ClickMix.tscn")
 
 func _on_DragLb_pressed():
 	Global.SceneSoundPlay()
 	Global.MenuAudioS()
-	get_tree().change_scene("res://Scene/Drag/DragMix.tscn")
-
-func _on_AnimationPlayer_animation_finished(anim_name):
-	Global.tekkk_logo=false
-	$LogoNocap.visible=false
+	var __ = get_tree().change_scene("res://Scene/Drag/DragMix.tscn")
 
 func _on_ResetScore_pressed():
 	Global.save_dict["mno_scores"]=0
@@ -82,3 +78,4 @@ func _on_ResetScore_pressed():
 
 func _on_GjLoginBt_pressed():
 	$GjLoginScene.visible=true
+	$GjLoginScene/HBoxContainer/UserName.grab_focus()

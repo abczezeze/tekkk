@@ -1,14 +1,14 @@
 extends Control
 
-var response = ""
+var response : Dictionary
 
-var mouse_pos = Vector2()
+var mouse_pos : Vector2 = Vector2()
 
 func _ready():
 	Global.data_global.game_id=GameJolt.get_game_id()
-	$HTTPRequest.connect("request_completed", self, "_on_request_completed")
+	var __ = $HTTPRequest.connect("request_completed", self, "_on_request_completed")
 
-func _process(delta):
+func _process(_delta):
 	mouse_pos = get_viewport().get_mouse_position()
 	$WaitLb.rect_position = mouse_pos
 	
@@ -39,7 +39,7 @@ func _on_Login_pressed():
 	$WaitLb.visible=true
 	
 	
-func _on_request_completed(result, response_code, headers, body):
+func _on_request_completed(_result, _response_code, _headers, body):
 	var json = JSON.parse(body.get_string_from_utf8())
 	response = json.result
 	print(response.response.success)
@@ -67,7 +67,7 @@ func _on_Timer_timeout():
 			$HBoxContainer/Label.text="Again!"
 		$AnimationPlayer.play("shake")
 		
-func _on_AnimationPlayer_animation_finished(anim_name):
+func _on_AnimationPlayer_animation_finished(_anim_name):
 	$Timer.stop()
 	$AnimationPlayer.stop()
 	if Global.tekkk_language == "Th":

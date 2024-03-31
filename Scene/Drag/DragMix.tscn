@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://Image/body_ichuen.png" type="Texture" id=1]
 [ext_resource path="res://Image/Head_mno.png" type="Texture" id=2]
@@ -57,10 +57,41 @@ font_data = ExtResource( 9 )
 size = 55
 font_data = ExtResource( 9 )
 
+[sub_resource type="Animation" id=15]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 3, 3 ) ]
+}
+
+[sub_resource type="Animation" id=16]
+resource_name = "scaleFullBody"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 5.27803, 1.07177 ),
+"update": 0,
+"values": [ Vector2( 3, 3 ), Vector2( 1e-05, 1e-05 ) ]
+}
+
 [node name="Drag" type="Node2D"]
 script = ExtResource( 3 )
+sprite_textures = [ ExtResource( 16 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 13 ) ]
 
-[node name="bg" type="Sprite" parent="."]
+[node name="Bg" type="Sprite" parent="."]
 texture = ExtResource( 5 )
 centered = false
 
@@ -272,6 +303,17 @@ rect_scale = Vector2( 0.5, 0.5 )
 mouse_default_cursor_shape = 2
 icon = ExtResource( 15 )
 flat = true
+
+[node name="randomDrag" type="Sprite" parent="."]
+visible = false
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 515, 979 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 16 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="randomDrag"]
+anims/RESET = SubResource( 15 )
+anims/scaleFullBody = SubResource( 16 )
 
 [connection signal="body_entered" from="IchuenBodyArea2D" to="." method="_on_IchuenArea2D_body_entered"]
 [connection signal="input_event" from="IchuenBodyArea2D" to="." method="_on_Area2D_input_event"]

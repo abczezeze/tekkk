@@ -2,8 +2,6 @@ extends Node
 
 var tekkk_language = "En"
 
-var tekkk_logo = true
-
 const FILE_NAME = "user://game-data.json"
 
 var data_global = {
@@ -90,7 +88,7 @@ func AchieveTrophy():
 		GameJolt.trophies_add_achieved("223528")
 	elif total == 10:
 		GameJolt.trophies_add_achieved("223530")
-	elif save_dict.mno_scores == 10:
+	elif save_dict.mno_scores >= 10:
 		GameJolt.trophies_add_achieved("223539")
 	elif save_dict.speng_scores == 10:
 		GameJolt.trophies_add_achieved("223540")
