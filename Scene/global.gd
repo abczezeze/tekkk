@@ -2,8 +2,6 @@ extends Node
 
 var tekkk_language = "En"
 
-var tekkk_logo = true
-
 const FILE_NAME = "user://game-data.json"
 
 var save_dict = {
@@ -77,3 +75,5 @@ func DrumP():
 	$DrumSound.play()
 func TurntableP():
 	$TurntableSound.play()
+
+

@@ -1,6 +1,7 @@
 extends Node2D
 
 var total_scores = 0
+export (Array, Texture) var sprite_textures = []
 
 func _ready():
 	Global.FloatingPlay()
@@ -8,6 +9,9 @@ func _ready():
 	$PanelContainer/OlayAnimatedSprite.playing=Global.save_dict["olay_anim"]
 	$PanelContainer/IchuenAnimatedSprite.playing=Global.save_dict["ichuen_anim"]
 	$PanelContainer/SpengAnimatedSprite.playing=Global.save_dict["speng_anim"]
+	$clickScene.texture = sprite_textures[rand_range(1.0,4.0)]
+	$AnimationPlayer.play("scaleSprite")
+	$bg.modulate = Color(rand_range(0.0,1.0),rand_range(0.0,1.0),rand_range(0.0,1.0))
 	
 func _process(_delta):
 	if $Tek_abc3dz_mno.hit_mno == true :

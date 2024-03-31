@@ -34,6 +34,8 @@ var not_swipeIchuen = true
 var is_swipe_downIchuen = false
 var is_swipe_upIchuen = false
 
+export (Array, Texture) var sprite_textures = []
+
 func _ready():
 	musical_pos_y = musical_pos_y_arr[rand_range(0,2)]
 	musicalGuitar_pos_y = musical_pos_y_arr[rand_range(0,2)]
@@ -41,6 +43,9 @@ func _ready():
 	musicalTurntable_pos_y = musical_pos_y_arr[rand_range(0,2)]
 	Global.MenuAudioS()
 	Global.SwipePlay()
+	$swipeScene.texture = sprite_textures[rand_range(1.0,4.0)]
+	$swipeScene/AnimationPlayer.play("scaleMusical")
+	$bg.modulate = Color(rand_range(0.0,1.0),rand_range(0.0,1.0),rand_range(0.0,1.0))
 
 func  _physics_process(delta):
 	PathFollowMno(delta)
@@ -203,12 +208,6 @@ func movemusicalTurntable(delta):
 			$Area2DMusicalTurntable.position.x = 5
 			musicalTurntable_pos_y = musical_pos_y_arr[rand_range(0,2)]
 			movecheckTurntable = true
-			
-func _on_Timer_timeout():
-	var r = rand_range(0.0,1.0)
-	var g = rand_range(0.0,1.0)
-	var b = rand_range(0.0,1.0)
-	$bg.modulate = Color(r,g,b)
 
 func _on_Area2DMusicalBass_area_entered(area):
 	if area.is_in_group("Mno"):
@@ -253,9 +252,9 @@ func _on_Area2DMusicalTurntable_area_entered(area):
 func _on_HomeBT_pressed():
 	Global.HomeAudioPlay()
 	Global.SwipeStop()
-	get_tree().change_scene("res://Scene/MainMenu.tscn")
+	var __ = get_tree().change_scene("res://Scene/MainMenu.tscn")
 
-func _on_Area2DHead_input_event(viewport, event, shape_idx):
+func _on_Area2DHead_input_event(_viewport, event, _shape_idx):
 	if not event is InputEventScreenDrag:
 		return
 
@@ -267,7 +266,7 @@ func _on_Area2DHead_input_event(viewport, event, shape_idx):
 			if event.relative.y <= -8:
 				is_swipe_up = true
 
-func _on_Area2DHeadOlay_input_event(viewport, event, shape_idx):
+func _on_Area2DHeadOlay_input_event(_viewport, event, _shape_idx):
 	if not event is InputEventScreenDrag:
 		return
 
@@ -279,7 +278,7 @@ func _on_Area2DHeadOlay_input_event(viewport, event, shape_idx):
 			if event.relative.y <= -8:
 				is_swipe_upOlay = true
 
-func _on_Area2DHeadSpeng_input_event(viewport, event, shape_idx):
+func _on_Area2DHeadSpeng_input_event(_viewport, event, _shape_idx):
 	if not event is InputEventScreenDrag:
 		return
 
@@ -291,7 +290,7 @@ func _on_Area2DHeadSpeng_input_event(viewport, event, shape_idx):
 			if event.relative.y <= -8:
 				is_swipe_upSpeng = true
 
-func _on_Area2DHeadIchuen_input_event(viewport, event, shape_idx):
+func _on_Area2DHeadIchuen_input_event(_viewport, event, _shape_idx):
 	if not event is InputEventScreenDrag:
 		return
 

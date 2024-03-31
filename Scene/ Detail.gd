@@ -3,7 +3,7 @@ extends Control
 var total_scores
 
 func _ready():
-	
+#	Global.bgColor()
 	total_scores = Global.save_dict["mno_scores"]+Global.save_dict["olay_scores"]+Global.save_dict["ichuen_scores"]+Global.save_dict["speng_scores"]
 	$TextureProgress.value = total_scores
 	tekkk_language(Global.tekkk_language)
@@ -12,7 +12,7 @@ func _on_Button_pressed():
 	Global.DragS()
 	Global.HomeAudioPlay()
 	Global.MenuAudioP()
-	get_tree().change_scene("res://Scene/MainMenu.tscn")
+	var __ = get_tree().change_scene("res://Scene/MainMenu.tscn")
 
 func tekkk_language(language):
 	if language == "En":

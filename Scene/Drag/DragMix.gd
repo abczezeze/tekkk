@@ -22,6 +22,8 @@ onready var speng_sprite = $SpengBodyArea2D
 onready var ichuen_sprite = $IchuenBodyArea2D
 onready var olay_sprite = $OlayBodyArea2D
 
+export (Array, Texture) var sprite_textures = []
+
 func _ready():
 	Global.MenuAudioS()
 	Global.DragP()
@@ -29,16 +31,17 @@ func _ready():
 	$OlayRigidBody2D.position.x = rand_range(50,1000)
 	$SpengRigidBody2D.position.x = rand_range(50,1000)
 	$IchuenRigidBody2D.position.x = rand_range(50,1000)
-	mno_tween_node.interpolate_property(mno_sprite,"position:y",1800,3000,50,Tween.TRANS_EXPO,Tween.EASE_OUT)
+	$dragScene.texture = sprite_textures[rand_range(1.0,4.0)]
+	$bg.modulate = Color(rand_range(0.0,1.0),rand_range(0.0,1.0),rand_range(0.0,1.0))
+	$dragScene/AnimationPlayer.play("scaleBody")
 	speng_tween_node.interpolate_property(speng_sprite,"position:y",1800,3000,50,Tween.TRANS_EXPO,Tween.EASE_OUT)
 	ichuen_tween_node.interpolate_property(ichuen_sprite,"position:y",1800,3000,50,Tween.TRANS_EXPO,Tween.EASE_OUT)
 	olay_tween_node.interpolate_property(olay_sprite,"position:y",1800,3000,50,Tween.TRANS_EXPO,Tween.EASE_OUT)
-	mno_tween_node.start()
 	speng_tween_node.start()
 	ichuen_tween_node.start()
 	olay_tween_node.start()
 	
-func _physics_process(delta):
+func _physics_process(_delta):
 	if $MnoRigidBody2D.position.y >= 1860:
 		$MnoRigidBody2D.position.x = rand_range(50,1000)
 		$MnoRigidBody2D.global_position.y = 0
@@ -55,7 +58,7 @@ func _physics_process(delta):
 		$IchuenRigidBody2D.position.x = rand_range(50,1000)
 		$IchuenRigidBody2D.global_position.y = 0
 		
-func _process(delta):
+func _process(_delta):
 	total_scores = Global.save_dict["mno_scores"]+Global.save_dict["olay_scores"]+Global.save_dict["ichuen_scores"]+Global.save_dict["speng_scores"]
 	tekkk_language(Global.tekkk_language)
 
@@ -112,22 +115,22 @@ func _on_BackBT_pressed():
 	Global.DragS()
 	Global.HomeAudioPlay()
 	Global.MenuAudioP()
-	get_tree().change_scene("res://Scene/MainMenu.tscn")
+	var __ = get_tree().change_scene("res://Scene/MainMenu.tscn")
 
 #body event
-func _on_Area2D_input_event(viewport, event, shape_idx):
+func _on_Area2D_input_event(_viewport, event, _shape_idx):
 	if event.is_action_pressed("ui_click"):
 		is_dragging_ichuen = true
 		
-func _on_OlayBodyArea2D_input_event(viewport, event, shape_idx):
+func _on_OlayBodyArea2D_input_event(_viewport, event, _shape_idx):
 	if event.is_action_pressed("ui_click"):
 		is_dragging_olay = true
 
-func _on_MnoBodyArea2D_input_event(viewport, event, shape_idx):
+func _on_MnoBodyArea2D_input_event(_viewport, event, _shape_idx):
 	if event.is_action_pressed("ui_click"):
 		is_dragging_mno = true
 
-func _on_SpengBodyArea2D_input_event(viewport, event, shape_idx):
+func _on_SpengBodyArea2D_input_event(_viewport, event, _shape_idx):
 	if event.is_action_pressed("ui_click"):
 		is_dragging_speng = true
 
@@ -178,13 +181,13 @@ func tekkk_language(language):
 		$VBoxContainer/ClickSpeng.text="คุณสเปง : "+str(Global.save_dict["speng_scores"])
 		$TotalScores.text = "คะแนนรวม : "+str(total_scores)
 
-func _on_Tween_speng_tween_completed(object, key):
+func _on_Tween_speng_tween_completed(_object, _key):
 	$SpengBodyArea2D/Tween.stop(speng_sprite,"position:y")
-func _on_Tween_mno_tween_completed(object, key):
+func _on_Tween_mno_tween_completed(_object, _key):
 	$MnoBodyArea2D/Tween.stop(mno_sprite,"position:y")
-func _on_Tween_olay_tween_completed(object, key):
+func _on_Tween_olay_tween_completed(_object, _key):
 	$OlayBodyArea2D/Tween.stop(olay_sprite,"position:y")
-func _on_Tween_ichuen_tween_completed(object, key):
+func _on_Tween_ichuen_tween_completed(_object, _key):
 	$IchuenBodyArea2D/Tween.stop(ichuen_sprite,"position:y")
 
 #if selected the full img character for drag

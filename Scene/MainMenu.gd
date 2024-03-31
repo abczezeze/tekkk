@@ -1,37 +1,36 @@
 extends Control
 
-func _ready():
+func _ready() -> void:
 	Global.MenuAudioP()
 	Global.load_game()
+	$LogoNocap.visible = true
+	$AnimationPlayer.play("scale_logo")
 	if Global.tekkk_language=="En":
 		_on_EnglishBt_pressed()
 	if Global.tekkk_language=="Th":
 		_on_ThailandBt_pressed()
-	$LogoNocap.visible=Global.tekkk_logo
-	$LogoNocap/AnimationPlayer.play("scale_logo")
-
 		
-func _on_ClickMno_pressed():
+func _on_ClickMno_pressed() -> void:
 	Global.MenuAudioS()
 	Global.SceneSoundPlay()
 	var __ = get_tree().change_scene("res://Scene/Click/ClickMno.tscn")
 	
-func _on_ClickSpeng_pressed():
+func _on_ClickSpeng_pressed() -> void:
 	Global.MenuAudioS()
 	Global.SceneSoundPlay()
 	var __ = get_tree().change_scene("res://Scene/Click/ClickSpeng.tscn")
 	
-func _on_ClickIchuen_pressed():
+func _on_ClickIchuen_pressed() -> void:
 	Global.MenuAudioS()
 	Global.SceneSoundPlay()
 	var __ = get_tree().change_scene("res://Scene/Click/ClickIchuen.tscn")
 	
-func _on_ClickOlay_pressed():
+func _on_ClickOlay_pressed() -> void:
 	Global.MenuAudioS()
 	Global.SceneSoundPlay()
 	var __ = get_tree().change_scene("res://Scene/Click/ClickOlay.tscn")
 
-func _on_EnglishBt_pressed():
+func _on_EnglishBt_pressed() -> void:
 	$VBoxContainer2/VBoxContainer/EnglishBt.disabled=true
 	$VBoxContainer2/VBoxContainer/ThailandBt.disabled=false
 	Global.tekkk_language = "En"
@@ -48,7 +47,7 @@ func _on_EnglishBt_pressed():
 	$VBoxContainer2/Reset.text="RESET!"
 	$VBoxContainer2/Reset.hint_tooltip="Reset the value"
 
-func _on_ThailandBt_pressed():
+func _on_ThailandBt_pressed() -> void:
 	$VBoxContainer2/VBoxContainer/EnglishBt.disabled=false
 	$VBoxContainer2/VBoxContainer/ThailandBt.disabled=true
 	Global.tekkk_language = "Th"
@@ -65,30 +64,30 @@ func _on_ThailandBt_pressed():
 	$VBoxContainer2/Reset.text="เริ่มค่าใหม่!"
 	$VBoxContainer2/Reset.hint_tooltip="Sorry"
 
-func _on_SwipeLb_pressed():
+func _on_SwipeLb_pressed() -> void:
 	Global.SceneSoundPlay()
 	Global.MenuAudioS()
 	var __ = get_tree().change_scene("res://Scene/Swipe/SwipeMix.tscn")
 
-func _on_DetailBt_pressed():
+func _on_DetailBt_pressed() -> void:
 	Global.SceneSoundPlay()
 	var __ = get_tree().change_scene("res://Scene/Detail.tscn")
 
-func _on_ClickLb_pressed():
+func _on_ClickLb_pressed() -> void:
 	Global.SceneSoundPlay()
 	Global.MenuAudioS()
 	var __ = get_tree().change_scene("res://Scene/Click/ClickMix.tscn")
 
-func _on_DragLb_pressed():
+func _on_DragLb_pressed() -> void:
 	Global.SceneSoundPlay()
 	Global.MenuAudioS()
 	var __ = get_tree().change_scene("res://Scene/Drag/DragMix.tscn")
 
-func _on_AnimationPlayer_animation_finished(_anim_name):
+func _on_AnimationPlayer_animation_finished(_anim_name) -> void:
 	Global.tekkk_logo=false
 	$LogoNocap.visible=false
 
-func _on_ResetScore_pressed():
+func _on_ResetScore_pressed() -> void:
 	Global.save_dict["mno_scores"]=0
 	Global.save_dict["olay_scores"]=0
 	Global.save_dict["ichuen_scores"]=0

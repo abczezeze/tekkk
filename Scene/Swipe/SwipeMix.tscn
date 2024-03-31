@@ -3,7 +3,7 @@
 [ext_resource path="res://Scene/Swipe/SwipeMix.gd" type="Script" id=1]
 [ext_resource path="res://Image/MusicalTurntable.png" type="Texture" id=2]
 [ext_resource path="res://Font/SanamDeklen_chaya.ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://Image/bg1080x1920.jpg" type="Texture" id=4]
+[ext_resource path="res://Image/fullz-ichuen.png" type="Texture" id=4]
 [ext_resource path="res://Material/cartoonhead_orange.material" type="Material" id=5]
 [ext_resource path="res://Material/cartoonhead_yellow.material" type="Material" id=6]
 [ext_resource path="res://Material/cartoonhead_blue.material" type="Material" id=7]
@@ -11,11 +11,11 @@
 [ext_resource path="res://Image/home.png" type="Texture" id=9]
 [ext_resource path="res://Image/MusicalDrum.png" type="Texture" id=10]
 [ext_resource path="res://Image/MusicalGuitar.png" type="Texture" id=11]
-[ext_resource path="res://Image/Head_mno.png" type="Texture" id=12]
+[ext_resource path="res://Image/fullz-speng.png" type="Texture" id=12]
 [ext_resource path="res://Image/MusicalBass.png" type="Texture" id=13]
-[ext_resource path="res://Image/Head_Ichuen.png" type="Texture" id=14]
-[ext_resource path="res://Image/Head_Speng.png" type="Texture" id=15]
-[ext_resource path="res://Image/Head_olayzzz.png" type="Texture" id=16]
+[ext_resource path="res://Image/fullz-mno.png" type="Texture" id=14]
+[ext_resource path="res://Image/fullz-olay.png" type="Texture" id=15]
+[ext_resource path="res://Image/bg2.jpg" type="Texture" id=16]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -23,22 +23,19 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 50.5953
+radius = 46.8822
 
 [sub_resource type="CapsuleShape2D" id=3]
 radius = 20.3898
-height = 30.7156
+height = 48.2204
 
 [sub_resource type="CapsuleShape2D" id=4]
 radius = 25.1722
+height = 41.6421
 
-[sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 33.0919, 20.1341 )
-
-[sub_resource type="Shader" id=12]
-
-[sub_resource type="ShaderMaterial" id=13]
-shader = SubResource( 12 )
+[sub_resource type="CapsuleShape2D" id=12]
+radius = 18.9
+height = 68.1865
 
 [sub_resource type="DynamicFont" id=7]
 size = 55
@@ -60,14 +57,60 @@ font_data = ExtResource( 3 )
 size = 55
 font_data = ExtResource( 3 )
 
+[sub_resource type="Animation" id=13]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/path = NodePath(".:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath(".:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Animation" id=14]
+resource_name = "scaleMusical"
+tracks/0/type = "bezier"
+tracks/0/path = NodePath(".:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 5, -0.25, 0, 0.25, 0, 1e-05, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath(".:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 5, -0.25, 0, 0.25, 0, 1e-05, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+
 [node name="path2D" type="Path2D"]
 curve = SubResource( 1 )
 script = ExtResource( 1 )
+sprite_textures = [ ExtResource( 13 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 2 ) ]
 
 [node name="bg" type="Sprite" parent="."]
-position = Vector2( 2.99658, 0 )
-texture = ExtResource( 4 )
-centered = false
+position = Vector2( 540, 960 )
+texture = ExtResource( 16 )
 
 [node name="HomeBT" type="Button" parent="."]
 anchor_left = 1.0
@@ -84,6 +127,7 @@ flat = true
 
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
 position = Vector2( 1081, 1444 )
+scale = Vector2( 2, 2 )
 rotate = false
 
 [node name="Area2DHead" type="Area2D" parent="PathFollow2D" groups=["Mno"]]
@@ -93,12 +137,13 @@ shape = SubResource( 2 )
 
 [node name="tekgameHead_mno" type="Sprite" parent="PathFollow2D/Area2DHead"]
 material = ExtResource( 5 )
-texture = ExtResource( 12 )
+texture = ExtResource( 13 )
 
 [node name="Tween" type="Tween" parent="PathFollow2D"]
 
 [node name="PathFollow2DOlay" type="PathFollow2D" parent="."]
 position = Vector2( 437.999, 1361.03 )
+scale = Vector2( 2, 2 )
 offset = 649.55
 rotate = false
 
@@ -109,12 +154,13 @@ shape = SubResource( 2 )
 
 [node name="tekgameHeadOlay" type="Sprite" parent="PathFollow2DOlay/Area2DHeadOlay"]
 material = ExtResource( 7 )
-texture = ExtResource( 16 )
+texture = ExtResource( 10 )
 
 [node name="Tween" type="Tween" parent="PathFollow2DOlay"]
 
 [node name="PathFollow2DSpeng" type="PathFollow2D" parent="."]
 position = Vector2( 205.428, 1086.18 )
+scale = Vector2( 2, 2 )
 offset = 1391.91
 rotate = false
 
@@ -125,12 +171,13 @@ shape = SubResource( 2 )
 
 [node name="tekgameHeadSpeng" type="Sprite" parent="PathFollow2DSpeng/Area2DHeadSpeng"]
 material = ExtResource( 6 )
-texture = ExtResource( 15 )
+texture = ExtResource( 11 )
 
 [node name="Tween" type="Tween" parent="PathFollow2DSpeng"]
 
 [node name="PathFollow2DIchuen" type="PathFollow2D" parent="."]
 position = Vector2( 842.975, 973.533 )
+scale = Vector2( 2, 2 )
 offset = 2041.46
 rotate = false
 
@@ -141,7 +188,7 @@ shape = SubResource( 2 )
 
 [node name="tekgameHeadIchuen" type="Sprite" parent="PathFollow2DIchuen/Area2DHeadIchuen"]
 material = ExtResource( 8 )
-texture = ExtResource( 14 )
+texture = ExtResource( 2 )
 
 [node name="Tween" type="Tween" parent="PathFollow2DIchuen"]
 
@@ -153,7 +200,8 @@ scale = Vector2( 2, 2 )
 shape = SubResource( 3 )
 
 [node name="tekgame_MusicalBass" type="Sprite" parent="Area2DMusicalBass"]
-texture = ExtResource( 13 )
+scale = Vector2( 0.15, 0.15 )
+texture = ExtResource( 14 )
 
 [node name="Area2DMusicalGuitar" type="Area2D" parent="."]
 position = Vector2( 185, 130 )
@@ -163,7 +211,8 @@ scale = Vector2( 2, 2 )
 shape = SubResource( 3 )
 
 [node name="tekgame_MusicalGuitar" type="Sprite" parent="Area2DMusicalGuitar"]
-texture = ExtResource( 11 )
+scale = Vector2( 0.15, 0.15 )
+texture = ExtResource( 12 )
 
 [node name="Area2DMusicalDrum" type="Area2D" parent="."]
 position = Vector2( 410, 130 )
@@ -174,7 +223,8 @@ position = Vector2( 0, 5.99323 )
 shape = SubResource( 4 )
 
 [node name="tekgame_MusicalDrum" type="Sprite" parent="Area2DMusicalDrum"]
-texture = ExtResource( 10 )
+scale = Vector2( 0.15, 0.15 )
+texture = ExtResource( 15 )
 
 [node name="Area2DMusicalTurntable" type="Area2D" parent="."]
 position = Vector2( 555, 130 )
@@ -182,16 +232,11 @@ scale = Vector2( 2, 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DMusicalTurntable"]
 position = Vector2( 0, 5.99323 )
-shape = SubResource( 5 )
+shape = SubResource( 12 )
 
 [node name="tekgame_MusicalTurntable" type="Sprite" parent="Area2DMusicalTurntable"]
-material = SubResource( 13 )
-position = Vector2( 0, 1.7818 )
-texture = ExtResource( 2 )
-
-[node name="Timer" type="Timer" parent="."]
-wait_time = 2.0
-autostart = true
+scale = Vector2( 0.15, 0.15 )
+texture = ExtResource( 4 )
 
 [node name="TotalScores" type="Label" parent="."]
 margin_left = 455.0
@@ -261,6 +306,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="swipeScene" type="Sprite" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 540, 960 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="swipeScene"]
+anims/RESET = SubResource( 13 )
+anims/scaleMusical = SubResource( 14 )
+
 [connection signal="pressed" from="HomeBT" to="." method="_on_HomeBT_pressed"]
 [connection signal="input_event" from="PathFollow2D/Area2DHead" to="." method="_on_Area2DHead_input_event"]
 [connection signal="input_event" from="PathFollow2DOlay/Area2DHeadOlay" to="." method="_on_Area2DHeadOlay_input_event"]
@@ -270,4 +323,3 @@ __meta__ = {
 [connection signal="area_entered" from="Area2DMusicalGuitar" to="." method="_on_Area2DMusicalGuitar_area_entered"]
 [connection signal="area_entered" from="Area2DMusicalDrum" to="." method="_on_Area2DMusicalDrum_area_entered"]
 [connection signal="area_entered" from="Area2DMusicalTurntable" to="." method="_on_Area2DMusicalTurntable_area_entered"]
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
