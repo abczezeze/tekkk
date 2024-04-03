@@ -9,6 +9,7 @@ func _ready():
 		_on_ThailandBt_pressed()
 	$LogoNocap.visible = true 
 	$LogoNocap/AnimationPlayer.play("scale_logo")
+	_on_GjLoginBt_pressed()
 
 func _on_EnglishBt_pressed():
 	$VBoxContainer2/VBoxContainer/EnglishBt.disabled=true
@@ -79,3 +80,11 @@ func _on_ResetScore_pressed():
 func _on_GjLoginBt_pressed():
 	$GjLoginScene.visible=true
 	$GjLoginScene/HBoxContainer/UserName.grab_focus()
+
+func _process(_delta) -> void:
+	if Global.data_global["response"] == true:
+		$playerName.text = GameJolt.get_user_name()
+		$playerName.modulate = Color.green
+	else:
+		$playerName.text = "Visitor"
+		$playerName.modulate = Color.white

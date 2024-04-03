@@ -1,7 +1,6 @@
 extends Control
 
 var response : Dictionary
-
 var mouse_pos : Vector2 = Vector2()
 
 func _ready():
@@ -54,6 +53,7 @@ func _on_Timer_timeout():
 		$HBoxContainer/Label.visible=true
 		$HBoxContainer/Label.modulate=Color.green
 		$AnimationPlayer.stop()
+		Global.data_global["response"] = true
 		if Global.tekkk_language == "Th":
 			$HBoxContainer/Label.text="ไปกันเลย!"
 		else:
@@ -61,6 +61,7 @@ func _on_Timer_timeout():
 	else:
 		$HBoxContainer/Label.visible=true
 		$HBoxContainer/Label.modulate=Color.red
+		Global.data_global["response"] = false
 		if Global.tekkk_language == "Th":
 			$HBoxContainer/Label.text="อีกทีนะ!"
 		else:

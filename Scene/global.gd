@@ -7,7 +7,8 @@ const FILE_NAME = "user://game-data.json"
 var data_global = {
 	"game_id": "",
 	"username": "",
-	"user_token": ""
+	"user_token": "",
+	"response" : false
 }
 
 var save_dict = {
