@@ -2,11 +2,7 @@ extends Spatial
 
 func _ready():
 	Global.camera_scene_a = $Camera
+	$WorldEnvironment.environment.background_sky.sky_horizon_color = Color(0.05,0.28,0.58,1) 
 
-
-func _on_TextureButton_up_pressed():
-	Global.camera_scene_a.transform.origin.z -=5
-
-
-func _on_TextureButton2_down_pressed():
-	Global.camera_scene_a.transform.origin.z +=5
+func _process(delta):
+	pass

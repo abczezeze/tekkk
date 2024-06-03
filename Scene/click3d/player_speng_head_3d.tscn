@@ -141,6 +141,7 @@ tracks/0/keys = {
 script = ExtResource( 9 )
 
 [node name="SpeangBody" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 0, 0 )
 mesh = SubResource( 1 )
 blend_shapes/blink = 0.0
 blend_shapes/eyebrow = 0.0
@@ -165,6 +166,7 @@ anims/head_rotation = SubResource( 5 )
 anims/idle = SubResource( 4 )
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
 autostart = true
 
 [connection signal="input_event" from="." to="." method="_on_player_speng_head_input_event"]

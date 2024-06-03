@@ -158,6 +158,7 @@ height = 0.001
 
 [sub_resource type="Animation" id=4]
 resource_name = "head_rotation"
+length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("OlayCap:rotation_degrees")
 tracks/0/interp = 1
@@ -192,6 +193,7 @@ tracks/0/keys = {
 script = ExtResource( 13 )
 
 [node name="OlayCap" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 0, 0 )
 mesh = SubResource( 1 )
 blend_shapes/blink = 0.0
 blend_shapes/eyebrow = 0.0

@@ -9,26 +9,6 @@ func _ready() -> void:
 		_on_EnglishBt_pressed()
 	if Global.tekkk_language=="Th":
 		_on_ThailandBt_pressed()
-		
-func _on_ClickMno_pressed() -> void:
-	Global.MenuAudioS()
-	Global.SceneSoundPlay()
-	var __ = get_tree().change_scene("res://Scene/Click/ClickMno.tscn")
-	
-func _on_ClickSpeng_pressed() -> void:
-	Global.MenuAudioS()
-	Global.SceneSoundPlay()
-	var __ = get_tree().change_scene("res://Scene/Click/ClickSpeng.tscn")
-	
-func _on_ClickIchuen_pressed() -> void:
-	Global.MenuAudioS()
-	Global.SceneSoundPlay()
-	var __ = get_tree().change_scene("res://Scene/Click/ClickIchuen.tscn")
-	
-func _on_ClickOlay_pressed() -> void:
-	Global.MenuAudioS()
-	Global.SceneSoundPlay()
-	var __ = get_tree().change_scene("res://Scene/Click/ClickOlay.tscn")
 
 func _on_EnglishBt_pressed() -> void:
 	$VBoxContainer2/VBoxContainer/EnglishBt.disabled=true
@@ -62,7 +42,6 @@ func _on_ThailandBt_pressed() -> void:
 	$VBoxContainer2/OtherLb.text="อื่นๆ"
 	$VBoxContainer2/DetailBt.text="รายละเอียด"
 	$VBoxContainer2/Reset.text="เริ่มค่าใหม่!"
-	$VBoxContainer2/Reset.hint_tooltip="Sorry"
 
 func _on_SwipeLb_pressed() -> void:
 	Global.SceneSoundPlay()
@@ -99,3 +78,8 @@ func _on_ResetScore_pressed() -> void:
 #	print(Global.save_dict)
 	Global.save_game()
 	Global.load_game()
+
+
+func _on_click_3d_pressed():
+	Global.MenuAudioS()
+	var __ = get_tree().change_scene("res://Scene/click3d/click_mix_3d.tscn")

@@ -1,6 +1,7 @@
 extends Node
 
 var tekkk_language = "En"
+var camera_scene_a:Camera
 
 const FILE_NAME = "user://game-data.json"
 

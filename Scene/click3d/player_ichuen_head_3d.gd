@@ -18,24 +18,26 @@ func _process(delta):
 	elif transform.origin.x<-1:
 		dir_x = rand_range(0,1)
 
-	if transform.origin.y>2:
+	if transform.origin.y>3:
 		dir_y = rand_range(-1,0)
-	elif transform.origin.y<-2:
+	elif transform.origin.y<-3:
 		dir_y = rand_range(0,1)
 
 
 func _on_player_ichuen_head_input_event(camera, event, position, normal, shape_idx):
 	if event is InputEventMouseButton:
-		if event.is_action_pressed("ui_click") and not clicked and Global.camera_scene_a.transform.origin.z == 3:
+		if event.is_action_pressed("ui_click") and not clicked:
 			anim.play("head_rotation")
 			move_speed+=0.3
 			clicked = true
 			Global.save_dict["ichuen_scores"]+=1
 			Global.save_game()
 			$ICBd/CPUParticles.emitting = true
+			transform.origin = Vector3(rand_range(-1,1),rand_range(-3,3),0)
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	$ICBd/CPUParticles.emitting = false
 #	queue_free()
 	clicked = false
+	anim.play("idle")
