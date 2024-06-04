@@ -9,6 +9,7 @@ func _ready():
 	anim.play("idle")
 	dir_x = rand_range(-1,1)
 	dir_y = rand_range(-1,1)
+	$Label3D.text = str(Global.save_dict["ichuen_scores"])
 	transform.origin = Vector3(rand_range(-3,3),rand_range(-2,2),0)
 	
 func _process(delta):
@@ -34,6 +35,7 @@ func _on_player_ichuen_head_input_event(camera, event, position, normal, shape_i
 			Global.save_game()
 			$ICBd/CPUParticles.emitting = true
 			transform.origin = Vector3(rand_range(-1,1),rand_range(-3,3),0)
+			$Label3D.text = str(Global.save_dict["ichuen_scores"])
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):

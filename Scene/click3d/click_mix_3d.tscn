@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scene/click3d/player_ichuen_head_3d.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scene/click3d/click_mix_3d.gd" type="Script" id=2]
 [ext_resource path="res://Scene/click3d/player_mno_head_3d.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scene/click3d/player_olay_head_3d.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scene/click3d/player_speng_head_3d.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Image/home.png" type="Texture" id=6]
 [ext_resource path="res://Scene/click3d/Camera.gd" type="Script" id=7]
 
 [sub_resource type="ProceduralSky" id=1]
@@ -25,7 +26,6 @@ script = ExtResource( 7 )
 transform = Transform( 0.956071, 0.0799558, 0.282021, -0.164598, 0.942524, 0.290786, -0.242561, -0.324432, 0.91428, 0, 0, 0 )
 
 [node name="player_ichuen_head" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0 )
 
 [node name="player_mno_head" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.544, 0, 0 )
@@ -34,7 +34,21 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.544, 0, 0 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.603, 0, 0 )
 
 [node name="player_speng_head" parent="." instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.573, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.777879, 0 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 2 )
+
+[node name="HomeBT" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -70.0
+margin_top = -134.0
+margin_right = 70.0
+rect_scale = Vector2( 0.5, 0.5 )
+icon = ExtResource( 6 )
+flat = true
+
+[connection signal="pressed" from="HomeBT" to="." method="_on_HomeBT_pressed"]

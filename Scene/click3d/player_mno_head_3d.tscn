@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://model/player_mno/pupil_irit_001.material" type="Material" id=1]
 [ext_resource path="res://model/player_mno/tooth_003.material" type="Material" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://model/musical_bass/musical_bass.obj" type="ArrayMesh" id=6]
 [ext_resource path="res://model/player_mno/toung_003.material" type="Material" id=7]
 [ext_resource path="res://Scene/click3d/player_mno_head_3d.gd" type="Script" id=8]
+[ext_resource path="res://Font/SanamDeklen_chaya.ttf" type="DynamicFontData" id=9]
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "player_mno_head_Plane024"
@@ -124,6 +125,9 @@ tracks/0/keys = {
 "values": [ 0.0, 1.0, 0.0 ]
 }
 
+[sub_resource type="DynamicFont" id=6]
+font_data = ExtResource( 9 )
+
 [node name="player_mno_head" type="Area"]
 script = ExtResource( 8 )
 
@@ -151,6 +155,11 @@ shape = SubResource( 2 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/head_rotation = SubResource( 4 )
 anims/idle = SubResource( 5 )
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.330752, 0 )
+text = "0"
+font = SubResource( 6 )
 
 [connection signal="input_event" from="." to="." method="_on_player_mno_head_input_event"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

@@ -7,17 +7,17 @@ onready var anim:AnimationPlayer = $AnimationPlayer
 func _ready():
 	anim.play("idle")
 	dir_y = rand_range(-1,1)
+	$Label3D.text = str(Global.save_dict["olay_scores"])
 	transform.origin = Vector3(rand_range(-1,1),rand_range(-3,3),0)
 	
 func _process(delta):
 	translate(Vector3(0,dir_y*move_speed*delta,0))
 	if transform.origin.y>3:
 		dir_y = rand_range(-1,0)
-		transform.origin = Vector3(rand_range(-1,1),rand_range(-3,3),0)
+		transform.origin = Vector3(rand_range(-1,1),3,0)
 	elif transform.origin.y<-3:
 		dir_y = rand_range(0,1)
-		transform.origin = Vector3(rand_range(-1,1),rand_range(-3,3),0)
-
+		transform.origin = Vector3(rand_range(-1,1),-3,0)
 
 func _on_player_olay_head_input_event(camera, event, position, normal, shape_idx):
 	if event is InputEventMouseButton:
@@ -29,6 +29,7 @@ func _on_player_olay_head_input_event(camera, event, position, normal, shape_idx
 			Global.save_game()
 			$OlayCap/CPUParticles.emitting = true
 			transform.origin = Vector3(rand_range(-1,1),rand_range(-3,3),0)
+			$Label3D.text = str(Global.save_dict["olay_scores"])
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):

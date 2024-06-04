@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://model/player_olay/UleEarring.material" type="Material" id=1]
 [ext_resource path="res://model/player_olay/MnoEyebrow_002.material" type="Material" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://model/player_olay/UleEyeball_001.material" type="Material" id=11]
 [ext_resource path="res://model/player_olay/tooth_002.material" type="Material" id=12]
 [ext_resource path="res://Scene/click3d/player_olay_head_3d.gd" type="Script" id=13]
+[ext_resource path="res://Font/SanamDeklen_chaya.ttf" type="DynamicFontData" id=14]
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "player_olay_head_Circle"
@@ -189,6 +190,9 @@ tracks/0/keys = {
 "values": [ 0.0, 1.0, 0.0 ]
 }
 
+[sub_resource type="DynamicFont" id=6]
+font_data = ExtResource( 14 )
+
 [node name="player_olay_head" type="Area"]
 script = ExtResource( 13 )
 
@@ -218,6 +222,11 @@ shape = SubResource( 2 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/head_rotation = SubResource( 4 )
 anims/idle = SubResource( 5 )
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.377619, 0 )
+text = "0"
+font = SubResource( 6 )
 
 [connection signal="input_event" from="." to="." method="_on_player_olay_head_input_event"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
