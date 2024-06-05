@@ -9,7 +9,7 @@
 [ext_resource path="res://Scene/click3d/Camera.gd" type="Script" id=7]
 
 [sub_resource type="ProceduralSky" id=1]
-sky_top_color = Color( 0.584314, 0.0588235, 0.0588235, 1 )
+sky_top_color = Color( 1, 0, 0, 1 )
 
 [sub_resource type="Environment" id=2]
 background_mode = 2
@@ -51,4 +51,8 @@ rect_scale = Vector2( 0.5, 0.5 )
 icon = ExtResource( 6 )
 flat = true
 
+[connection signal="input_event" from="player_ichuen_head" to="." method="_on_player_ichuen_head_input_event"]
+[connection signal="input_event" from="player_mno_head" to="." method="_on_player_mno_head_input_event"]
+[connection signal="input_event" from="player_olay_head" to="." method="_on_player_olay_head_input_event"]
+[connection signal="input_event" from="player_speng_head" to="." method="_on_player_speng_head_input_event"]
 [connection signal="pressed" from="HomeBT" to="." method="_on_HomeBT_pressed"]
