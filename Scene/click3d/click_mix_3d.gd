@@ -2,8 +2,7 @@ extends Spatial
 
 func _ready():
 	Global.camera_scene_a = $Camera
-#	$Home.get_tree().change_scene("res://Scene/MainMenu.tscn")
-#	$WorldEnvironment.environment.background_sky.sky_horizon_color = Color(0.05,0.28,0.58,1) 
+	$click3d_sound.play()
 
 func _process(delta):
 	pass
@@ -12,7 +11,7 @@ func _process(delta):
 func _on_HomeBT_pressed():
 	var __ = get_tree().change_scene("res://Scene/MainMenu.tscn")
 	Global.HomeAudioPlay()
-	Global.FloatingStop()
+	$click3d_sound.stop()
 
 
 func _on_player_ichuen_head_input_event(camera, event, position, normal, shape_idx):

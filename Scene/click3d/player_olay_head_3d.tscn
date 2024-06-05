@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://model/player_olay/UleEarring.material" type="Material" id=1]
 [ext_resource path="res://model/player_olay/MnoEyebrow_002.material" type="Material" id=2]
@@ -14,6 +14,11 @@
 [ext_resource path="res://model/player_olay/tooth_002.material" type="Material" id=12]
 [ext_resource path="res://Scene/click3d/player_olay_head_3d.gd" type="Script" id=13]
 [ext_resource path="res://Font/SanamDeklen_chaya.ttf" type="DynamicFontData" id=14]
+[ext_resource path="res://Sound/sfx_drum3.ogg" type="AudioStream" id=15]
+[ext_resource path="res://Sound/sfx_drum2.ogg" type="AudioStream" id=16]
+[ext_resource path="res://Sound/sfx_drum1.ogg" type="AudioStream" id=17]
+[ext_resource path="res://Sound/sfx_drum5.ogg" type="AudioStream" id=18]
+[ext_resource path="res://Sound/sfx_drum4.ogg" type="AudioStream" id=19]
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "player_olay_head_Circle"
@@ -195,6 +200,7 @@ font_data = ExtResource( 14 )
 
 [node name="player_olay_head" type="Area"]
 script = ExtResource( 13 )
+sound_efx = [ ExtResource( 17 ), ExtResource( 16 ), ExtResource( 15 ), ExtResource( 19 ), ExtResource( 18 ) ]
 
 [node name="OlayCap" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 0, 0 )
@@ -227,6 +233,9 @@ anims/idle = SubResource( 5 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.377619, 0 )
 text = "0"
 font = SubResource( 6 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = 5.0
 
 [connection signal="input_event" from="." to="." method="_on_player_olay_head_input_event"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

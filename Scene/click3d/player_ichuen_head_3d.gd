@@ -4,6 +4,7 @@ var dir_y:float = 0.1
 var move_speed:float = 1
 var clicked:bool = false
 onready var anim:AnimationPlayer = $AnimationPlayer
+export (Array,AudioStreamOGGVorbis) var sound_efx = []
 
 func _ready():
 	anim.play("idle")
@@ -36,6 +37,9 @@ func _on_player_ichuen_head_input_event(camera, event, position, normal, shape_i
 			$ICBd/CPUParticles.emitting = true
 			transform.origin = Vector3(rand_range(-1,1),rand_range(-3,3),0)
 			$Label3D.text = str(Global.save_dict["ichuen_scores"])
+			$AudioStreamPlayer.stream = sound_efx[rand_range(0,4)]
+#			$AudioStreamPlayer.stream.loop = false
+			$AudioStreamPlayer.play()
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):
