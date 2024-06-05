@@ -12,6 +12,9 @@ func _ready():
 	height_speng = get_viewport_rect().size.y
 	$Tween.interpolate_property($SpengSprite,"modulate",Color.yellow,Color.white,1,Tween.TRANS_EXPO,Tween.EASE_OUT)
 	$Tween.start()
+	
+func _process(delta):
+	$Label.text = str(Global.save_dict["speng_scores"])
 
 func _on_Tek_abc3dz_input_event(_viewport, event,_shape_idx ):
 	if event is InputEventScreenTouch :

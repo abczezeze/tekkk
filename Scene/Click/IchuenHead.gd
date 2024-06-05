@@ -14,6 +14,7 @@ func _ready():
 	$Tween.start()
 
 func _process(delta):
+	$Label.text = str(Global.save_dict["ichuen_scores"])
 	position += direction_ichuen * speed_ichuen * delta
 	if position.x < 0:
 		position.x=1060

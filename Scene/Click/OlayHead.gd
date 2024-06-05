@@ -18,6 +18,7 @@ func _ready():
 	$Tween.start()
 
 func _process(delta):
+	$Label.text = str(Global.save_dict["olay_scores"])
 	position += direction_olay * speed_olay * delta
 	if position.x < 0:
 		direction_olay.x =- direction_olay.x

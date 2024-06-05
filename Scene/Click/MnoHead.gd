@@ -8,12 +8,12 @@ var hit_mno = false
 func _ready():
 	position.y = rand_range(20,1900)
 	direction_mno.x = rand_range(0,1)
-	direction_mno = direction_mno.normalized()
 	width_mno = get_viewport_rect().size.x
 	$Tween.interpolate_property($Sprite_mno,"modulate",Color.coral,Color.white,1,Tween.TRANS_EXPO,Tween.EASE_OUT)
 	$Tween.start()
 
 func _process(delta):
+	$Label.text = str(Global.save_dict["mno_scores"])
 	position += direction_mno * speed_mno * delta
 	if position.x > width_mno:
 		position.x=0
