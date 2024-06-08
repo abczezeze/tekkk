@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scene/drag3d/drag3d.gd" type="Script" id=1]
 [ext_resource path="res://Scene/drag3d/player_ichuen_full.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scene/drag3d/player_mno_full.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scene/drag3d/player_olay_full.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scene/drag3d/player_speng_full.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Sound/bgm_drag3d_Tididis.mp3" type="AudioStream" id=6]
+[ext_resource path="res://Image/home.png" type="Texture" id=7]
 
 [sub_resource type="ProceduralSky" id=1]
 sky_top_color = Color( 0.945098, 0.647059, 0.886275, 1 )
@@ -13,7 +15,7 @@ sky_top_color = Color( 0.945098, 0.647059, 0.886275, 1 )
 background_mode = 2
 background_sky = SubResource( 1 )
 
-[node name="Spatial" type="Spatial"]
+[node name="drag3d" type="Spatial"]
 script = ExtResource( 1 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -36,5 +38,27 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -1, 0 )
 [node name="player_speng_full" parent="." instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -1, 0 )
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+
+[node name="Button" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 1.025
+anchor_right = 0.5
+anchor_bottom = 1.05
+margin_left = -70.0
+margin_top = -134.0
+margin_right = 70.0
+rect_scale = Vector2( 0.5, 0.5 )
+icon = ExtResource( 7 )
+flat = true
+
 [connection signal="body_entered" from="player_ichuen_full" to="." method="_on_player_ichuen_full_body_entered"]
 [connection signal="input_event" from="player_ichuen_full" to="." method="_on_player_ichuen_full_input_event"]
+[connection signal="body_entered" from="player_mno_full" to="." method="_on_player_mno_full_body_entered"]
+[connection signal="input_event" from="player_mno_full" to="." method="_on_player_mno_full_input_event"]
+[connection signal="body_entered" from="player_olay_full" to="." method="_on_player_olay_full_body_entered"]
+[connection signal="input_event" from="player_olay_full" to="." method="_on_player_olay_full_input_event"]
+[connection signal="body_entered" from="player_speng_full" to="." method="_on_player_speng_full_body_entered"]
+[connection signal="input_event" from="player_speng_full" to="." method="_on_player_speng_full_input_event"]
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
