@@ -4,8 +4,8 @@
 [ext_resource path="res://Scene/ Detail.gd" type="Script" id=2]
 [ext_resource path="res://Image/home.png" type="Texture" id=3]
 [ext_resource path="res://Font/SanamDeklen_chaya.ttf" type="DynamicFontData" id=4]
-[ext_resource path="res://Image/themecover_crop-min.png" type="Texture" id=5]
-[ext_resource path="res://Image/themecover_crop_black.png" type="Texture" id=6]
+[ext_resource path="res://Image/concert_color-min.png" type="Texture" id=5]
+[ext_resource path="res://Image/concert_black.png" type="Texture" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 55
@@ -54,10 +54,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -403.0
-margin_top = -324.0
-margin_right = 343.0
-margin_bottom = 313.0
+margin_left = -514.0
+margin_top = -527.0
+margin_right = 486.0
+margin_bottom = 473.0
 texture_under = ExtResource( 6 )
 texture_progress = ExtResource( 5 )
 fill_mode = 3
@@ -118,10 +118,10 @@ __meta__ = {
 }
 
 [node name="TotalScores" type="Label" parent="."]
-margin_left = 381.218
-margin_top = 1300.16
-margin_right = 631.218
-margin_bottom = 1347.16
+margin_left = 375.0
+margin_top = 1386.0
+margin_right = 625.0
+margin_bottom = 1480.0
 custom_colors/font_color = Color( 0.921875, 0.129639, 0.129639, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 5 )
