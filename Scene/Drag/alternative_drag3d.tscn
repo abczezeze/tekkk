@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Image/gui_home.png" type="Texture" id=1]
+[ext_resource path="res://Image/sc_drag3d.jpg" type="Texture" id=2]
+[ext_resource path="res://Scene/drag3d/alternative_drag3d.gd" type="Script" id=3]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 100.0
+height = 252.0
+
+[node name="alternative_drag3d" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="TextureRect" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+centered = false
+
+[node name="home_Button" type="Button" parent="."]
+margin_left = 933.0
+margin_top = 1786.0
+margin_right = 1073.0
+margin_bottom = 1920.0
+icon = ExtResource( 1 )
+flat = true
+icon_align = 1
+
+[node name="mno_Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="mno_Area2D"]
+position = Vector2( 892, 256 )
+shape = SubResource( 1 )
+
+[node name="ichuen_Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ichuen_Area2D"]
+position = Vector2( 201, 739 )
+shape = SubResource( 1 )
+
+[node name="olay_Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="olay_Area2D"]
+position = Vector2( 756, 1200 )
+shape = SubResource( 1 )
+
+[node name="speng_Area2D" type="Area2D" parent="." groups=["ichuen"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="speng_Area2D"]
+position = Vector2( 156, 1687 )
+shape = SubResource( 1 )
+
+[connection signal="pressed" from="home_Button" to="." method="_on_home_Button_pressed"]
+[connection signal="input_event" from="mno_Area2D" to="." method="_on_mno_Area2D_input_event"]
+[connection signal="input_event" from="ichuen_Area2D" to="." method="_on_ichuen_Area2D_input_event"]
+[connection signal="input_event" from="olay_Area2D" to="." method="_on_olay_Area2D_input_event"]
+[connection signal="input_event" from="speng_Area2D" to="." method="_on_speng_Area2D_input_event"]
