@@ -23,9 +23,8 @@ func _on_EnglishBt_pressed() -> void:
 	$VBoxContainer2/VBoxContainer/EnglishBt.text="English"
 	$VBoxContainer2/VBoxContainer/ThailandBt.text="Thailand"
 	$VBoxContainer2/OtherLb.text="Other"
-	$VBoxContainer2/DetailBt.text="particulars"
-	$VBoxContainer2/Reset.text="RESET!"
-	$VBoxContainer2/Reset.hint_tooltip="Reset the value"
+	$VBoxContainer2/DetailBt.text="Detail"
+	$VBoxContainer2/reset_button.text="RESET!"
 
 func _on_ThailandBt_pressed() -> void:
 	$VBoxContainer2/VBoxContainer/EnglishBt.disabled=false
@@ -41,7 +40,7 @@ func _on_ThailandBt_pressed() -> void:
 	$VBoxContainer2/VBoxContainer/ThailandBt.text="ไทย"
 	$VBoxContainer2/OtherLb.text="อื่นๆ"
 	$VBoxContainer2/DetailBt.text="รายละเอียด"
-	$VBoxContainer2/Reset.text="เริ่มค่าใหม่!"
+	$VBoxContainer2/reset_button.text="เริ่มค่าใหม่!"
 
 func _on_SwipeLb_pressed() -> void:
 	Global.SceneSoundPlay()
@@ -66,7 +65,15 @@ func _on_AnimationPlayer_animation_finished(_anim_name) -> void:
 	Global.tekkk_logo=false
 	$LogoNocap.visible=false
 
-func _on_ResetScore_pressed() -> void:
+func _on_click_3d_pressed() -> void:
+	Global.MenuAudioS()
+	var __ = get_tree().change_scene("res://Scene/click3d/click_mix_3d.tscn")
+
+func _on_drag_3d_pressed() -> void:
+	Global.MenuAudioS()
+	var __ = get_tree().change_scene("res://Scene/drag3d/alternative_drag3d.tscn")
+
+func _on_reset_button_pressed() -> void:
 	Global.save_dict["mno_scores"]=0
 	Global.save_dict["olay_scores"]=0
 	Global.save_dict["ichuen_scores"]=0
@@ -75,11 +82,5 @@ func _on_ResetScore_pressed() -> void:
 	Global.save_dict["olay_anim"]=false
 	Global.save_dict["ichuen_anim"]=false
 	Global.save_dict["speng_anim"]=false
-#	print(Global.save_dict)
 	Global.save_game()
 	Global.load_game()
-
-
-func _on_click_3d_pressed():
-	Global.MenuAudioS()
-	var __ = get_tree().change_scene("res://Scene/click3d/click_mix_3d.tscn")

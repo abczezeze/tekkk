@@ -1,6 +1,6 @@
 [gd_scene load_steps=25 format=2]
 
-[ext_resource path="res://Image/LogoNocap.png" type="Texture" id=1]
+[ext_resource path="res://Image/gui_LogoNocap.png" type="Texture" id=1]
 [ext_resource path="res://Image/splashScreen.png" type="Texture" id=2]
 [ext_resource path="res://Image/bg1080x1920.jpg" type="Texture" id=3]
 [ext_resource path="res://Font/SanamDeklen_chaya.ttf" type="DynamicFontData" id=4]
@@ -35,11 +35,11 @@ size = 55
 font_data = ExtResource( 4 )
 
 [sub_resource type="DynamicFont" id=24]
-size = 55
+size = 44
 font_data = ExtResource( 4 )
 
 [sub_resource type="DynamicFont" id=25]
-size = 55
+size = 44
 font_data = ExtResource( 4 )
 
 [sub_resource type="DynamicFont" id=10]
@@ -182,14 +182,14 @@ text = "Tekkk"
 align = 1
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="."]
-anchor_left = 0.35
-anchor_top = 0.554
-anchor_right = 0.35
-anchor_bottom = 0.58
-margin_left = -18.0
-margin_top = -33.6801
-margin_right = 345.0
-margin_bottom = 774.4
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -181.5
+margin_top = -910.0
+margin_right = 181.5
+margin_bottom = -46.0
 
 [node name="SelectLevel" type="Label" parent="VBoxContainer2"]
 margin_right = 363.0
@@ -243,12 +243,11 @@ text = "Swipe"
 [node name="level_3d" type="HBoxContainer" parent="VBoxContainer2"]
 margin_top = 196.0
 margin_right = 363.0
-margin_bottom = 296.0
+margin_bottom = 290.0
 
 [node name="3d" type="Label" parent="VBoxContainer2/level_3d"]
-margin_top = 3.0
 margin_right = 57.0
-margin_bottom = 97.0
+margin_bottom = 94.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 23 )
 text = "3D"
@@ -256,24 +255,24 @@ valign = 1
 
 [node name="click_3d" type="Button" parent="VBoxContainer2/level_3d"]
 margin_left = 61.0
-margin_right = 165.0
-margin_bottom = 100.0
+margin_right = 147.0
+margin_bottom = 94.0
 custom_colors/font_color = Color( 1, 0.145098, 0.145098, 1 )
 custom_fonts/font = SubResource( 24 )
 text = "Click"
 
 [node name="drag_3d" type="Button" parent="VBoxContainer2/level_3d"]
-margin_left = 169.0
-margin_right = 286.0
-margin_bottom = 100.0
+margin_left = 151.0
+margin_right = 247.0
+margin_bottom = 94.0
 custom_colors/font_color = Color( 0.133333, 1, 0.207843, 1 )
 custom_fonts/font = SubResource( 25 )
 text = "Drag"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer2"]
-margin_top = 300.0
+margin_top = 294.0
 margin_right = 363.0
-margin_bottom = 564.0
+margin_bottom = 558.0
 
 [node name="Language" type="Label" parent="VBoxContainer2/VBoxContainer"]
 margin_right = 363.0
@@ -299,25 +298,25 @@ custom_fonts/font = SubResource( 12 )
 text = "Thailand"
 
 [node name="OtherLb" type="Label" parent="VBoxContainer2"]
-margin_top = 568.0
+margin_top = 562.0
 margin_right = 363.0
-margin_bottom = 662.0
+margin_bottom = 656.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 14 )
 text = "Other"
 
 [node name="DetailBt" type="Button" parent="VBoxContainer2"]
-margin_top = 666.0
+margin_top = 660.0
 margin_right = 363.0
-margin_bottom = 766.0
+margin_bottom = 760.0
 custom_fonts/font = SubResource( 13 )
-text = "particulars"
+text = "Detail"
 
-[node name="Reset" type="Button" parent="VBoxContainer2"]
+[node name="reset_button" type="Button" parent="VBoxContainer2"]
 modulate = Color( 0.698039, 0.211765, 0.211765, 1 )
-margin_top = 770.0
+margin_top = 764.0
 margin_right = 363.0
-margin_bottom = 864.0
+margin_bottom = 858.0
 mouse_default_cursor_shape = 8
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 13 )
@@ -346,7 +345,8 @@ texture = ExtResource( 1 )
 [connection signal="pressed" from="VBoxContainer2/HBoxContainer/DragLb" to="." method="_on_DragLb_pressed"]
 [connection signal="pressed" from="VBoxContainer2/HBoxContainer/SwipeLb" to="." method="_on_SwipeLb_pressed"]
 [connection signal="pressed" from="VBoxContainer2/level_3d/click_3d" to="." method="_on_click_3d_pressed"]
+[connection signal="pressed" from="VBoxContainer2/level_3d/drag_3d" to="." method="_on_drag_3d_pressed"]
 [connection signal="pressed" from="VBoxContainer2/VBoxContainer/EnglishBt" to="." method="_on_EnglishBt_pressed"]
 [connection signal="pressed" from="VBoxContainer2/VBoxContainer/ThailandBt" to="." method="_on_ThailandBt_pressed"]
 [connection signal="pressed" from="VBoxContainer2/DetailBt" to="." method="_on_DetailBt_pressed"]
-[connection signal="pressed" from="VBoxContainer2/Reset" to="." method="_on_ResetScore_pressed"]
+[connection signal="pressed" from="VBoxContainer2/reset_button" to="." method="_on_reset_button_pressed"]
