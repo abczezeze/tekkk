@@ -4,7 +4,11 @@ var total_scores
 
 func _ready():
 	total_scores = Global.save_dict["mno_scores"]+Global.save_dict["olay_scores"]+Global.save_dict["ichuen_scores"]+Global.save_dict["speng_scores"]
-	$TextureProgress.value = total_scores
+	$TextureProgress_musical_consert.value = total_scores
+	$TextureProgress_mno.value = Global.save_dict["mno_scores"]
+	$TextureProgress_olay.value = Global.save_dict["olay_scores"]
+	$TextureProgress_speng.value = Global.save_dict["speng_scores"]
+	$TextureProgress_ichuen.value = Global.save_dict["ichuen_scores"]
 	tekkk_language(Global.tekkk_language)
 	
 func _process(delta):
