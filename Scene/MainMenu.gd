@@ -66,10 +66,12 @@ func _on_AnimationPlayer_animation_finished(_anim_name) -> void:
 	$LogoNocap.visible=false
 
 func _on_click_3d_pressed() -> void:
+	Global.SceneSoundPlay()
 	Global.MenuAudioS()
 	var __ = get_tree().change_scene("res://Scene/click3d/click_mix_3d.tscn")
 
 func _on_drag_3d_pressed() -> void:
+	Global.SceneSoundPlay()
 	Global.MenuAudioS()
 	var __ = get_tree().change_scene("res://Scene/drag3d/alternative_drag3d.tscn")
 
