@@ -144,6 +144,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="DynamicFont" id=6]
+outline_size = 1
 font_data = ExtResource( 10 )
 
 [node name="player_speng_head" type="Area"]
@@ -189,3 +190,4 @@ volume_db = 5.0
 
 [connection signal="input_event" from="." to="." method="_on_player_speng_head_input_event"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

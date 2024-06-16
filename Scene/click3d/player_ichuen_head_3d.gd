@@ -29,14 +29,14 @@ func _process(delta):
 		dir_y = rand_range(0,1)
 		transform.origin = Vector3(rand_range(-2,2),rand_range(-4,4),0)
 		
-func _on_AnimationPlayer_animation_finished(anim_name):
+func _on_AnimationPlayer_animation_finished(_anim_name):
 	$ICBd/CPUParticles.emitting = false
 	clicked = false
 	anim.play("idle")
 
-func _on_player_ichuen_head_input_event(camera, event, position, normal, shape_idx):
+func _on_player_ichuen_head_input_event(_camera, event, _position, _normal, _shape_idx):
 	if event is InputEventMouseButton:
-		if event.is_action_pressed("ui_click") and not clicked:
+		if event.is_action_pressed("ui_click") and not clicked and Global.position_z_click3d == 6:
 			anim.play("head_rotation")
 			move_speed+=0.3
 			clicked = true

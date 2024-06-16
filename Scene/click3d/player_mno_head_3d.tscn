@@ -131,6 +131,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="DynamicFont" id=6]
+outline_size = 1
 font_data = ExtResource( 9 )
 
 [node name="player_mno_head" type="Area"]

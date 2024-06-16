@@ -184,6 +184,7 @@ tracks/1/keys = {
 }
 
 [sub_resource type="DynamicFont" id=6]
+outline_size = 1
 font_data = ExtResource( 11 )
 
 [node name="player_ichuen_head" type="Area"]
