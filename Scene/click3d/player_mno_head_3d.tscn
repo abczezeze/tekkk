@@ -129,6 +129,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [ 0.0, 1.0, 0.0 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("mnoTrouser:blend_shapes/smile")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.5, 1.5, 4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0, 0.0 ]
+}
 
 [sub_resource type="DynamicFont" id=6]
 outline_size = 1
@@ -139,12 +151,11 @@ script = ExtResource( 8 )
 sound_efx = [ ExtResource( 12 ), ExtResource( 14 ), ExtResource( 13 ), ExtResource( 11 ), ExtResource( 10 ) ]
 
 [node name="mnoTrouser" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 0, 0 )
 mesh = SubResource( 1 )
 blend_shapes/blink = 0.0
 blend_shapes/eyebrow = 0.0
 blend_shapes/openMouth = 0.0
-blend_shapes/smile = 0.0
+blend_shapes/smile = 0.526074
 
 [node name="CPUParticles" type="CPUParticles" parent="mnoTrouser"]
 emitting = false

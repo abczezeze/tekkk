@@ -142,6 +142,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [ 0.0, 1.0, 0.0 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("SpeangBody:blend_shapes/smile")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.2, 1, 4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0, 0.0 ]
+}
 
 [sub_resource type="DynamicFont" id=6]
 outline_size = 1
@@ -157,7 +169,7 @@ mesh = SubResource( 1 )
 blend_shapes/blink = 0.0
 blend_shapes/eyebrow = 0.0
 blend_shapes/openMouth = 0.0
-blend_shapes/smile = 0.0
+blend_shapes/smile = 0.0119676
 
 [node name="CPUParticles" type="CPUParticles" parent="SpeangBody"]
 emitting = false

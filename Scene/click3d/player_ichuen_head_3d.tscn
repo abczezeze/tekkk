@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://model/player_ichuen_head/Eyeout1_001.material" type="Material" id=1]
 [ext_resource path="res://model/player_ichuen_head/EyeballWhite_001.material" type="Material" id=2]
@@ -123,21 +123,6 @@ surfaces/7 = {
 radius = 0.221
 height = 0.035
 
-[sub_resource type="Animation" id=8]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath("ICBd:blend_shapes/smile")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 1.0 ]
-}
-
 [sub_resource type="Animation" id=4]
 resource_name = "head_rotation"
 length = 0.5
@@ -197,7 +182,7 @@ mesh = SubResource( 1 )
 blend_shapes/blink = 0.0
 blend_shapes/eyebrow = 0.0
 blend_shapes/openMouth = 0.0
-blend_shapes/smile = 1.0
+blend_shapes/smile = 0.627169
 
 [node name="CPUParticles" type="CPUParticles" parent="ICBd"]
 emitting = false
@@ -213,7 +198,6 @@ transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0
 shape = SubResource( 7 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/RESET = SubResource( 8 )
 anims/head_rotation = SubResource( 4 )
 anims/idle = SubResource( 5 )
 
