@@ -1,5 +1,4 @@
 extends Spatial
-var random_position_z:Array = [0,-10]
 
 func _ready():
 	Global.position_z_click3d = $Camera.transform.origin.z
