@@ -1,7 +1,8 @@
 extends Node
 
-var tekkk_language = "En"
-var camera_scene_a:Camera
+var tekkk_language:String = "En"
+var world_environment_scene_a:WorldEnvironment
+var position_z_click3d:int
 
 const FILE_NAME = "user://game-data.json"
 
@@ -27,7 +28,7 @@ func load_game():
 	if file.file_exists(FILE_NAME):
 		file.open(FILE_NAME, File.READ)
 		var data = parse_json(file.get_as_text())
-		print(data)
+#		print(data)
 		file.close()
 		if typeof(data) == TYPE_DICTIONARY:
 			save_dict = data
