@@ -242,7 +242,7 @@ tracks/1/keys = {
 "values": [ 0.0, 1.0 ]
 }
 
-[node name="player_ichuen_full" type="RigidBody"]
+[node name="player_ichuen_full" type="RigidBody" groups=["ichuen"]]
 mode = 1
 contacts_reported = 1
 contact_monitor = true

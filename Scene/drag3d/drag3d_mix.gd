@@ -25,7 +25,7 @@ func _ready():
 	new_drum()
 	new_bass()
 	
-func _physics_process(delta):
+func _physics_process(_delta):
 	$player_ichuen_full/Label3D.text = str(Global.save_dict["ichuen_scores"])
 	$player_mno_full/Label3D.text = str(Global.save_dict["mno_scores"])
 	$player_olay_full/Label3D.text = str(Global.save_dict["olay_scores"])
@@ -48,24 +48,52 @@ func new_turntable():
 	rigidbody_turntable = rigidbody_turntable_c.instance()
 	add_child(rigidbody_turntable)
 	rigidbody_turntable.transform.origin = Vector3(rand_range(-2,2),6,0)
+	rigidbody_turntable.connect("body_entered",self,"on_turnatable_body_entered")
 
+func on_turnatable_body_entered(body):
+	if body.is_in_group("ichuen"):
+		Global.save_dict["ichuen_scores"] += 1
+	else:
+		Global.save_dict["ichuen_scores"] -= 1
+	
 func new_guitar():
 	rigidbody_guitar = rigidbody_guitar_c.instance()
 	add_child(rigidbody_guitar)
 	rigidbody_guitar.transform.origin.y = 6
 	rigidbody_guitar.transform.origin.x = rand_range(-2,2)
+	rigidbody_guitar.connect("body_entered",self,"on_guitar_body_entered")
+
+func on_guitar_body_entered(body):
+	if body.is_in_group("speng"):
+		Global.save_dict["speng_scores"] += 1
+	else:
+		Global.save_dict["speng_scores"] -= 1
 
 func new_drum():
 	rigidbody_drum = rigidbody_drum_c.instance()
 	add_child(rigidbody_drum)
 	rigidbody_drum.transform.origin.y = 6
 	rigidbody_drum.transform.origin.x = rand_range(-2,2)
+	rigidbody_drum.connect("body_entered",self,"on_drum_body_entered")
+
+func on_drum_body_entered(body):
+	if body.is_in_group("olay"):
+		Global.save_dict["olay_scores"] += 1
+	else:
+		Global.save_dict["olay_scores"] -= 1
 	
 func new_bass():
 	rigidbody_bass = rigidbody_bass_c.instance()
 	add_child(rigidbody_bass)
 	rigidbody_bass.transform.origin.y = 6
 	rigidbody_bass.transform.origin.x = rand_range(-2,2)
+	rigidbody_bass.connect("body_entered",self,"on_bass_body_entered")
+
+func on_bass_body_entered(body):
+	if body.is_in_group("mno"):
+		Global.save_dict["mno_scores"] += 1
+	else:
+		Global.save_dict["mno_scores"] -= 1
 
 func _input(event: InputEvent) -> void:
 	if not is_dragging_ichuen and is_selected_ichuen:
@@ -168,46 +196,19 @@ func random_first():
 		$player_mno_full.transform.origin.x = 4
 		return
 
-func _on_player_ichuen_full_input_event(camera, event, position, normal, shape_idx):
+func _on_player_ichuen_full_input_event(_camera, event, _position, _normal, _shape_idx):
 	if event.is_action_pressed("ui_click"):
 		is_dragging_ichuen = true
 		
-func _on_player_ichuen_full_body_entered(body):
-	if body.is_in_group("turntable"):
-		Global.save_dict["ichuen_scores"]+=1
-	else:
-		Global.save_dict["ichuen_scores"]-=1
-	$player_ichuen_full/Label3D.text = str(Global.save_dict["ichuen_scores"])
-
-func _on_player_mno_full_input_event(camera, event, position, normal, shape_idx):
+func _on_player_mno_full_input_event(_camera, event, _position, _normal, _shape_idx):
 	if event.is_action_pressed("ui_click"):
 		is_dragging_mno = true
 		
-func _on_player_mno_full_body_exited(body):
-	if body.is_in_group("bass"):
-		Global.save_dict["mno_scores"]+=1
-	else:
-		Global.save_dict["mno_scores"]-=1
-	$player_mno_full/Label3D.text = str(Global.save_dict["mno_scores"])
-	
-func _on_player_olay_full_input_event(camera, event, position, normal, shape_idx):
+func _on_player_olay_full_input_event(_camera, event, _position, _normal, _shape_idx):
 	if event.is_action_pressed("ui_click"):
 		is_dragging_olay = true
 		
-func _on_player_olay_full_body_exited(body):
-	if body.is_in_group("drum"):
-		Global.save_dict["olay_scores"]+=1
-	else:
-		Global.save_dict["olay_scores"]-=1
-	$player_olay_full/Label3D.text = str(Global.save_dict["olay_scores"])
-	
-func _on_player_speng_full_input_event(camera, event, position, normal, shape_idx):
+func _on_player_speng_full_input_event(_camera, event, _position, _normal, _shape_idx):
 	if event.is_action_pressed("ui_click"):
 		is_dragging_speng = true
-		
-func _on_player_speng_full_body_exited(body):
-	if body.is_in_group("guitar"):
-		Global.save_dict["speng_scores"]+=1
-	else:
-		Global.save_dict["speng_scores"]-=1
-	$player_speng_full/Label3D.text = str(Global.save_dict["speng_scores"])
+
