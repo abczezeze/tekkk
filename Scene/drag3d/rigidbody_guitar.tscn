@@ -6,6 +6,9 @@
 extents = Vector3( 0.273388, 0.421772, 0.0498457 )
 
 [node name="rigidbody_guitar" type="RigidBody" groups=["guitar"]]
+gravity_scale = 0.5
+contacts_reported = 1
+contact_monitor = true
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
 mesh = ExtResource( 1 )

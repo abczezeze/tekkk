@@ -203,7 +203,10 @@ tracks/1/keys = {
 "values": [ 0.0, 0.5 ]
 }
 
-[node name="player_speng_full" type="Area"]
+[node name="player_speng_full" type="RigidBody"]
+mode = 1
+contacts_reported = 1
+contact_monitor = true
 
 [node name="SpeangBody" type="MeshInstance" parent="."]
 mesh = SubResource( 1 )

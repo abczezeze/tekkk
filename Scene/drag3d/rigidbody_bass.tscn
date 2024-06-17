@@ -5,7 +5,10 @@
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 0.241843, 0.350796, 0.0498457 )
 
-[node name="rigidbody_guitar" type="RigidBody" groups=["bass"]]
+[node name="rigidbody_bass" type="RigidBody" groups=["bass"]]
+gravity_scale = 0.5
+contacts_reported = 1
+contact_monitor = true
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
 mesh = ExtResource( 1 )

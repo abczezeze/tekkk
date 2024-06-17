@@ -242,7 +242,10 @@ tracks/1/keys = {
 "values": [ 0.0, 1.0 ]
 }
 
-[node name="player_ichuen_full" type="Area"]
+[node name="player_ichuen_full" type="RigidBody"]
+mode = 1
+contacts_reported = 1
+contact_monitor = true
 
 [node name="ICBd" type="MeshInstance" parent="."]
 mesh = SubResource( 1 )
