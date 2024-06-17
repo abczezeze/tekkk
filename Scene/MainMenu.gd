@@ -19,6 +19,9 @@ func _on_EnglishBt_pressed() -> void:
 	$VBoxContainer2/HBoxContainer/ClickLb.text="Click"
 	$VBoxContainer2/HBoxContainer/DragLb.text="Drag"
 	$VBoxContainer2/HBoxContainer/SwipeLb.text="Swipe"
+	$VBoxContainer2/level_3d/click_3d.text="click"
+	$VBoxContainer2/level_3d/drag_3d.text="drag"
+	$VBoxContainer2/level_3d/shoot_3d.text="shoot"
 	$VBoxContainer2/VBoxContainer/Language.text="Language"
 	$VBoxContainer2/VBoxContainer/EnglishBt.text="English"
 	$VBoxContainer2/VBoxContainer/ThailandBt.text="Thailand"
@@ -35,6 +38,9 @@ func _on_ThailandBt_pressed() -> void:
 	$VBoxContainer2/HBoxContainer/ClickLb.text="คลิก"
 	$VBoxContainer2/HBoxContainer/DragLb.text="ลาก"
 	$VBoxContainer2/HBoxContainer/SwipeLb.text="ตวัด"
+	$VBoxContainer2/level_3d/click_3d.text="คลิก"
+	$VBoxContainer2/level_3d/drag_3d.text="ลาก"
+	$VBoxContainer2/level_3d/shoot_3d.text=" ยิง "
 	$VBoxContainer2/VBoxContainer/Language.text="ภาษา"
 	$VBoxContainer2/VBoxContainer/EnglishBt.text="อังกฤษ"
 	$VBoxContainer2/VBoxContainer/ThailandBt.text="ไทย"
@@ -73,7 +79,7 @@ func _on_click_3d_pressed() -> void:
 func _on_drag_3d_pressed() -> void:
 	Global.SceneSoundPlay()
 	Global.MenuAudioS()
-	var __ = get_tree().change_scene("res://Scene/drag3d/alternative_drag3d.tscn")
+	var __ = get_tree().change_scene("res://Scene/drag3d/drag3d_mix.tscn")
 
 func _on_reset_button_pressed() -> void:
 	Global.save_dict["mno_scores"]=0
