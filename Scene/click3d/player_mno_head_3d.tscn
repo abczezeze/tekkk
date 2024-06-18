@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://model/player_mno_head/pupil_irit_001.material" type="Material" id=1]
 [ext_resource path="res://model/player_mno_head/tooth_003.material" type="Material" id=2]
@@ -7,13 +7,7 @@
 [ext_resource path="res://model/player_mno_head/surface_007.material" type="Material" id=5]
 [ext_resource path="res://model/musical_bass/musical_bass.obj" type="ArrayMesh" id=6]
 [ext_resource path="res://model/player_mno_head/toung_003.material" type="Material" id=7]
-[ext_resource path="res://Scene/click3d/player_mno_head_3d.gd" type="Script" id=8]
 [ext_resource path="res://Font/SanamDeklen_chaya.ttf" type="DynamicFontData" id=9]
-[ext_resource path="res://Sound/sfx_bass5.ogg" type="AudioStream" id=10]
-[ext_resource path="res://Sound/sfx_bass4.ogg" type="AudioStream" id=11]
-[ext_resource path="res://Sound/sfx_bass1.ogg" type="AudioStream" id=12]
-[ext_resource path="res://Sound/sfx_bass3.ogg" type="AudioStream" id=13]
-[ext_resource path="res://Sound/sfx_bass2.ogg" type="AudioStream" id=14]
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "player_mno_head_Plane024"
@@ -147,8 +141,6 @@ outline_size = 1
 font_data = ExtResource( 9 )
 
 [node name="player_mno_head" type="Area"]
-script = ExtResource( 8 )
-sound_efx = [ ExtResource( 12 ), ExtResource( 14 ), ExtResource( 13 ), ExtResource( 11 ), ExtResource( 10 ) ]
 
 [node name="mnoTrouser" type="MeshInstance" parent="."]
 mesh = SubResource( 1 )
@@ -181,6 +173,3 @@ font = SubResource( 6 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 volume_db = 5.0
-
-[connection signal="input_event" from="." to="." method="_on_player_mno_head_input_event"]
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

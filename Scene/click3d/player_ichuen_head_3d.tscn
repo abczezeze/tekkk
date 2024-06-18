@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://model/player_ichuen_head/Eyeout1_001.material" type="Material" id=1]
 [ext_resource path="res://model/player_ichuen_head/EyeballWhite_001.material" type="Material" id=2]
@@ -9,13 +9,7 @@
 [ext_resource path="res://model/player_ichuen_head/SkinHead1_001.material" type="Material" id=7]
 [ext_resource path="res://model/player_ichuen_head/mouthInsideSD1_001.material" type="Material" id=8]
 [ext_resource path="res://model/musical_turntable/musical_turntable.obj" type="ArrayMesh" id=9]
-[ext_resource path="res://Scene/click3d/player_ichuen_head_3d.gd" type="Script" id=10]
 [ext_resource path="res://Font/SanamDeklen_chaya.ttf" type="DynamicFontData" id=11]
-[ext_resource path="res://Sound/sfx_turntable5.ogg" type="AudioStream" id=12]
-[ext_resource path="res://Sound/sfx_turntable4.ogg" type="AudioStream" id=13]
-[ext_resource path="res://Sound/sfx_turntable3.ogg" type="AudioStream" id=14]
-[ext_resource path="res://Sound/sfx_turntable2.ogg" type="AudioStream" id=15]
-[ext_resource path="res://Sound/sfx_turntable1.ogg" type="AudioStream" id=16]
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "player_ichuen_head_Plane001"
@@ -173,8 +167,6 @@ outline_size = 1
 font_data = ExtResource( 11 )
 
 [node name="player_ichuen_head" type="Area"]
-script = ExtResource( 10 )
-sound_efx = [ ExtResource( 16 ), ExtResource( 15 ), ExtResource( 14 ), ExtResource( 13 ), ExtResource( 12 ) ]
 
 [node name="ICBd" type="MeshInstance" parent="."]
 transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0 )
@@ -182,7 +174,7 @@ mesh = SubResource( 1 )
 blend_shapes/blink = 0.0
 blend_shapes/eyebrow = 0.0
 blend_shapes/openMouth = 0.0
-blend_shapes/smile = 0.627169
+blend_shapes/smile = 0.196519
 
 [node name="CPUParticles" type="CPUParticles" parent="ICBd"]
 emitting = false
@@ -207,6 +199,3 @@ text = "0"
 font = SubResource( 6 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-
-[connection signal="input_event" from="." to="." method="_on_player_ichuen_head_input_event"]
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
