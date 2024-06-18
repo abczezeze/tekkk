@@ -1,8 +1,6 @@
 extends Node
 
 var tekkk_language:String = "En"
-var world_environment_scene_a:WorldEnvironment
-var position_z_click3d:int
 
 const FILE_NAME = "user://game-data.json"
 
