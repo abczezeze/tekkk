@@ -29,10 +29,6 @@ func _on_DragLb_pressed() -> void:
 	Global.MenuAudioS()
 	var __ = get_tree().change_scene("res://Scene/Drag/DragMix.tscn")
 
-func _on_AnimationPlayer_animation_finished(_anim_name) -> void:
-	Global.tekkk_logo=false
-	$LogoNocap.visible=false
-
 func _on_click_3d_pressed() -> void:
 	Global.SceneSoundPlay()
 	Global.MenuAudioS()
@@ -55,9 +51,7 @@ func _on_reset_button_pressed() -> void:
 	Global.save_game()
 	Global.load_game()
 
-
-func _on_TextureButton_toggled(button_pressed):
-	print(button_pressed)
+func _on_TextureButton_toggled(button_pressed) -> void:
 	if button_pressed:
 		$TextureButton_language.modulate = Color(1,1,1,2)
 		Global.tekkk_language = "Th"
@@ -70,6 +64,7 @@ func _on_TextureButton_toggled(button_pressed):
 		$VBoxContainer2/level_3d/drag_3d.text="ลาก"
 		$VBoxContainer2/level_3d/shoot_3d.text=" ยิง "
 		$VBoxContainer2/OtherLb.text="อื่นๆ"
+		$VBoxContainer2/achievement_button.text="ความสำเร็จ"
 		$VBoxContainer2/DetailBt.text="รายละเอียด"
 		$VBoxContainer2/reset_button.text="เริ่มค่าใหม่!"
 	else:
@@ -84,5 +79,6 @@ func _on_TextureButton_toggled(button_pressed):
 		$VBoxContainer2/level_3d/drag_3d.text="drag"
 		$VBoxContainer2/level_3d/shoot_3d.text="shoot"
 		$VBoxContainer2/OtherLb.text="Other"
+		$VBoxContainer2/achievement_button.text="Achievement"
 		$VBoxContainer2/DetailBt.text="Detail"
 		$VBoxContainer2/reset_button.text="RESET!"
