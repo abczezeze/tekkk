@@ -49,19 +49,29 @@ func _ready():
 	var __8 = $player_olay_head/AnimationPlayer.connect("animation_finished",self,"_on_AnimationPlayer_olay")
 		
 func _process(delta):
-	if Global.position_z_click3d == 6:
+	if $Camera.transform.origin.z == 6:
+		$VBoxContainer/TextureButton_up.modulate = Color.white
+		$VBoxContainer/TextureButton_down.modulate = Color.white
 		$WorldEnvironment.environment.background_sky.sky_top_color = Color(0.41,0.05,0.58,1)
-	elif Global.position_z_click3d == -1:
+	elif $Camera.transform.origin.z == -1:
+		$VBoxContainer/TextureButton_up.modulate = Color.white
+		$VBoxContainer/TextureButton_down.modulate = Color.white
 		$WorldEnvironment.environment.background_sky.sky_top_color = Color(1,0.51,0,1)
-	elif Global.position_z_click3d == -8:
+	elif $Camera.transform.origin.z == -8:
+		$VBoxContainer/TextureButton_up.modulate = Color.white
+		$VBoxContainer/TextureButton_down.modulate = Color.white
 		$WorldEnvironment.environment.background_sky.sky_top_color = Color(0,0.46,1,1)
-	elif Global.position_z_click3d == -15:
+	elif $Camera.transform.origin.z == -15:
+		$VBoxContainer/TextureButton_up.modulate = Color.white
+		$VBoxContainer/TextureButton_down.modulate = Color.white
 		$WorldEnvironment.environment.background_sky.sky_top_color = Color(0.95,1,0,1)
 	else:
 		$WorldEnvironment.environment.background_sky.sky_top_color = Color(0,0,0,1)
+		$VBoxContainer/TextureButton_up.modulate = Color.dimgray
+		$VBoxContainer/TextureButton_down.modulate = Color.dimgray
 	
 	#ichuen move
-	$player_ichuen_head.transform.origin += Vector3(dir_x_ichuen*move_speed_ichuen*delta,dir_y_ichuen*move_speed_ichuen*delta,0)
+	$player_ichuen_head.translation += Vector3(dir_x_ichuen*move_speed_ichuen*delta,dir_y_ichuen*move_speed_ichuen*delta,0)
 	if $player_ichuen_head.transform.origin.x>2:
 		dir_x_ichuen = rand_range(-1,0)
 		$player_ichuen_head.transform.origin = Vector3(rand_range(-2,2),rand_range(-4,4),0)
@@ -77,7 +87,7 @@ func _process(delta):
 		$player_ichuen_head.transform.origin = Vector3(rand_range(-2,2),rand_range(-4,4),0)
 		
 	#mno move
-	$player_mno_head.transform.origin.x += dir_x_mno*move_speed_mno*delta
+	$player_mno_head.translation.x += dir_x_mno*move_speed_mno*delta
 	if $player_mno_head.transform.origin.x>2:
 		dir_x_mno = rand_range(-2,0)
 		$player_mno_head.transform.origin = Vector3(1,rand_range(-3,3),-6)
@@ -86,7 +96,7 @@ func _process(delta):
 		$player_mno_head.transform.origin = Vector3(-1,rand_range(-3,3),-6)
 		
 	#olay move
-	$player_olay_head.transform.origin.y += dir_y_olay*move_speed_olay*delta
+	$player_olay_head.translation.y += dir_y_olay*move_speed_olay*delta
 	if $player_olay_head.transform.origin.y>4:
 		dir_y_olay = rand_range(-2,0)
 		$player_olay_head.transform.origin = Vector3(rand_range(-2,2),4,-14)
@@ -186,8 +196,6 @@ func _on_HomeBT_pressed():
 
 func _on_TextureButton_up_pressed():
 	$Camera.transform.origin.z -= 7 
-	Global.position_z_click3d = $Camera.transform.origin.z
 
 func _on_TextureButton_down_pressed():
-	$Camera.transform.origin.z += 7 
-	Global.position_z_click3d = $Camera.transform.origin.z
+	$Camera.transform.origin.z += 7

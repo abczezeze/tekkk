@@ -91,13 +91,13 @@ margin_top = -260.0
 margin_right = 128.0
 margin_bottom = 128.0
 texture_normal = ExtResource( 7 )
+texture_disabled = ExtResource( 9 )
 
 [node name="TextureButton_down" type="TextureButton" parent="VBoxContainer"]
 margin_top = 132.0
 margin_right = 128.0
 margin_bottom = 260.0
 texture_normal = ExtResource( 7 )
-texture_disabled = ExtResource( 9 )
 flip_v = true
 
 [connection signal="pressed" from="HomeBT" to="." method="_on_HomeBT_pressed"]
