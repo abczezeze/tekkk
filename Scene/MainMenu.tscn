@@ -340,6 +340,7 @@ texture = ExtResource( 1 )
 [connection signal="pressed" from="VBoxContainer2/HBoxContainer/SwipeLb" to="." method="_on_SwipeLb_pressed"]
 [connection signal="pressed" from="VBoxContainer2/level_3d/click_3d" to="." method="_on_click_3d_pressed"]
 [connection signal="pressed" from="VBoxContainer2/level_3d/drag_3d" to="." method="_on_drag_3d_pressed"]
+[connection signal="pressed" from="VBoxContainer2/level_3d/shoot_3d" to="." method="_on_shoot_3d_pressed"]
 [connection signal="pressed" from="VBoxContainer2/DetailBt" to="." method="_on_DetailBt_pressed"]
 [connection signal="pressed" from="VBoxContainer2/reset_button" to="." method="_on_reset_button_pressed"]
 [connection signal="toggled" from="TextureButton_language" to="." method="_on_TextureButton_toggled"]
