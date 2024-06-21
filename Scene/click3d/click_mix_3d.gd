@@ -51,7 +51,7 @@ func _ready():
 func _process(delta):
 	if $Camera.transform.origin.z == 6:
 		$VBoxContainer/TextureButton_up.modulate = Color.white
-		$VBoxContainer/TextureButton_down.modulate = Color.white
+		$VBoxContainer/TextureButton_down.modulate = Color.dimgray
 		$WorldEnvironment.environment.background_sky.sky_top_color = Color(0.41,0.05,0.58,1)
 	elif $Camera.transform.origin.z == -1:
 		$VBoxContainer/TextureButton_up.modulate = Color.white
@@ -62,7 +62,7 @@ func _process(delta):
 		$VBoxContainer/TextureButton_down.modulate = Color.white
 		$WorldEnvironment.environment.background_sky.sky_top_color = Color(0,0.46,1,1)
 	elif $Camera.transform.origin.z == -15:
-		$VBoxContainer/TextureButton_up.modulate = Color.white
+		$VBoxContainer/TextureButton_up.modulate = Color.dimgray
 		$VBoxContainer/TextureButton_down.modulate = Color.white
 		$WorldEnvironment.environment.background_sky.sky_top_color = Color(0.95,1,0,1)
 	else:
