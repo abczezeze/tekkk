@@ -85,11 +85,11 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -128.0
-margin_top = -260.0
+margin_left = -75.0
+margin_top = -252.0
 
 [node name="TextureButton_up" type="TextureButton" parent="VBoxContainer"]
-margin_right = 128.0
+margin_right = 75.0
 margin_bottom = 124.0
 texture_normal = ExtResource( 30 )
 texture_pressed = ExtResource( 7 )
@@ -97,7 +97,7 @@ texture_disabled = ExtResource( 9 )
 
 [node name="TextureButton_down" type="TextureButton" parent="VBoxContainer"]
 margin_top = 128.0
-margin_right = 128.0
+margin_right = 75.0
 margin_bottom = 252.0
 texture_normal = ExtResource( 30 )
 texture_pressed = ExtResource( 7 )
