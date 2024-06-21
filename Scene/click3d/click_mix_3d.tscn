@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://Scene/click3d/player_ichuen_head_3d.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scene/click3d/click_mix_3d.gd" type="Script" id=2]
@@ -6,7 +6,7 @@
 [ext_resource path="res://Scene/click3d/player_olay_head_3d.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scene/click3d/player_speng_head_3d.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Image/gui_home.png" type="Texture" id=6]
-[ext_resource path="res://Image/gui_arrow01.png" type="Texture" id=7]
+[ext_resource path="res://Image/gui_arrow01pressed.png" type="Texture" id=7]
 [ext_resource path="res://Sound/bgm_click3d_Sec.mp3" type="AudioStream" id=8]
 [ext_resource path="res://Image/gui_arrow01disabled.png" type="Texture" id=9]
 [ext_resource path="res://Sound/sfx_guitar5.ogg" type="AudioStream" id=10]
@@ -29,6 +29,7 @@
 [ext_resource path="res://Sound/sfx_drum5.ogg" type="AudioStream" id=27]
 [ext_resource path="res://Sound/sfx_drum3.ogg" type="AudioStream" id=28]
 [ext_resource path="res://Sound/sfx_drum1.ogg" type="AudioStream" id=29]
+[ext_resource path="res://Image/gui_arrow01nomal.png" type="Texture" id=30]
 
 [sub_resource type="ProceduralSky" id=1]
 sky_top_color = Color( 1, 0, 0, 1 )
@@ -89,15 +90,18 @@ margin_top = -260.0
 
 [node name="TextureButton_up" type="TextureButton" parent="VBoxContainer"]
 margin_right = 128.0
-margin_bottom = 128.0
-texture_normal = ExtResource( 7 )
+margin_bottom = 124.0
+texture_normal = ExtResource( 30 )
+texture_pressed = ExtResource( 7 )
 texture_disabled = ExtResource( 9 )
 
 [node name="TextureButton_down" type="TextureButton" parent="VBoxContainer"]
-margin_top = 132.0
+margin_top = 128.0
 margin_right = 128.0
-margin_bottom = 260.0
-texture_normal = ExtResource( 7 )
+margin_bottom = 252.0
+texture_normal = ExtResource( 30 )
+texture_pressed = ExtResource( 7 )
+texture_disabled = ExtResource( 9 )
 flip_v = true
 
 [connection signal="pressed" from="HomeBT" to="." method="_on_HomeBT_pressed"]
