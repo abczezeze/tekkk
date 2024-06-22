@@ -19,7 +19,7 @@ var rigidbody_bass:RigidBody
 var player_position:Array = [0,4]
 
 func _ready():
-	random_first()
+	random_player()
 	new_turntable()
 	new_guitar()
 	new_drum()
@@ -47,53 +47,49 @@ func _physics_process(_delta):
 func new_turntable():
 	rigidbody_turntable = rigidbody_turntable_c.instance()
 	add_child(rigidbody_turntable)
-	rigidbody_turntable.transform.origin = Vector3(rand_range(-2,2),6,0)
-	rigidbody_turntable.connect("body_entered",self,"on_turnatable_body_entered")
+	rigidbody_turntable.transform.origin = Vector3(rand_range(-2,2),8,0)
+	var __ = rigidbody_turntable.connect("body_entered",self,"on_turnatable_body_entered")
 
 func on_turnatable_body_entered(body):
 	if body.is_in_group("ichuen"):
+		random_player()
 		Global.save_dict["ichuen_scores"] += 1
-	else:
-		Global.save_dict["ichuen_scores"] -= 1
-	
+
 func new_guitar():
 	rigidbody_guitar = rigidbody_guitar_c.instance()
 	add_child(rigidbody_guitar)
-	rigidbody_guitar.transform.origin.y = 6
+	rigidbody_guitar.transform.origin.y = 8
 	rigidbody_guitar.transform.origin.x = rand_range(-2,2)
-	rigidbody_guitar.connect("body_entered",self,"on_guitar_body_entered")
+	var __ = rigidbody_guitar.connect("body_entered",self,"on_guitar_body_entered")
 
 func on_guitar_body_entered(body):
 	if body.is_in_group("speng"):
+		random_player()
 		Global.save_dict["speng_scores"] += 1
-	else:
-		Global.save_dict["speng_scores"] -= 1
 
 func new_drum():
 	rigidbody_drum = rigidbody_drum_c.instance()
 	add_child(rigidbody_drum)
-	rigidbody_drum.transform.origin.y = 6
+	rigidbody_drum.transform.origin.y = 8
 	rigidbody_drum.transform.origin.x = rand_range(-2,2)
-	rigidbody_drum.connect("body_entered",self,"on_drum_body_entered")
+	var __ = rigidbody_drum.connect("body_entered",self,"on_drum_body_entered")
 
 func on_drum_body_entered(body):
 	if body.is_in_group("olay"):
+		random_player()
 		Global.save_dict["olay_scores"] += 1
-	else:
-		Global.save_dict["olay_scores"] -= 1
 	
 func new_bass():
 	rigidbody_bass = rigidbody_bass_c.instance()
 	add_child(rigidbody_bass)
-	rigidbody_bass.transform.origin.y = 6
+	rigidbody_bass.transform.origin.y = 8
 	rigidbody_bass.transform.origin.x = rand_range(-2,2)
-	rigidbody_bass.connect("body_entered",self,"on_bass_body_entered")
+	var __ = rigidbody_bass.connect("body_entered",self,"on_bass_body_entered")
 
 func on_bass_body_entered(body):
 	if body.is_in_group("mno"):
+		random_player()
 		Global.save_dict["mno_scores"] += 1
-	else:
-		Global.save_dict["mno_scores"] -= 1
 
 func _input(event: InputEvent) -> void:
 	if not is_dragging_ichuen and is_selected_ichuen:
@@ -166,10 +162,14 @@ func _input(event: InputEvent) -> void:
 func _on_back_button_pressed():
 	var __ = get_tree().change_scene("res://Scene/MainMenu.tscn")
 	
-func random_first():
+func random_player() -> void:
 	$player_ichuen_full.transform.origin.x = player_position[randi() % player_position.size()]
 	if $player_ichuen_full.transform.origin.x == 0:
 		is_selected_ichuen = true
+		is_selected_mno = false
+		is_selected_olay = false
+		is_selected_speng = false
+		$WorldEnvironment.environment.background_sky.sky_top_color = Color(0.41,0.05,0.58,1)
 		$player_mno_full.transform.origin.x = 4
 		$player_olay_full.transform.origin.x = 4
 		$player_speng_full.transform.origin.x = 4
@@ -177,6 +177,10 @@ func random_first():
 	$player_mno_full.transform.origin.x = player_position[randi() % player_position.size()]
 	if $player_mno_full.transform.origin.x == 0:
 		is_selected_mno = true
+		is_selected_ichuen = false
+		is_selected_olay = false
+		is_selected_speng = false
+		$WorldEnvironment.environment.background_sky.sky_top_color = Color(1,0.51,0,1)
 		$player_ichuen_full.transform.origin.x = 4
 		$player_olay_full.transform.origin.x = 4
 		$player_speng_full.transform.origin.x = 4
@@ -184,12 +188,20 @@ func random_first():
 	$player_olay_full.transform.origin.x = player_position[randi() % player_position.size()]
 	if $player_olay_full.transform.origin.x == 0:
 		is_selected_olay = true
+		is_selected_mno = false
+		is_selected_ichuen = false
+		is_selected_speng = false
+		$WorldEnvironment.environment.background_sky.sky_top_color = Color(0,0.46,1,1)
 		$player_ichuen_full.transform.origin.x = 4
 		$player_mno_full.transform.origin.x = 4
 		$player_speng_full.transform.origin.x = 4
 		return
 	else:
 		is_selected_speng = true
+		is_selected_mno = false
+		is_selected_olay = false
+		is_selected_ichuen = false
+		$WorldEnvironment.environment.background_sky.sky_top_color = Color(0.95,1,0,1)
 		$player_speng_full.transform.origin.x = 0
 		$player_ichuen_full.transform.origin.x = 4
 		$player_olay_full.transform.origin.x = 4
@@ -199,16 +211,29 @@ func random_first():
 func _on_player_ichuen_full_input_event(_camera, event, _position, _normal, _shape_idx):
 	if event.is_action_pressed("ui_click"):
 		is_dragging_ichuen = true
+		is_dragging_mno = false
+		is_dragging_olay = false
+		is_dragging_speng = false
+		
 		
 func _on_player_mno_full_input_event(_camera, event, _position, _normal, _shape_idx):
 	if event.is_action_pressed("ui_click"):
 		is_dragging_mno = true
+		is_dragging_ichuen = false
+		is_dragging_olay = false
+		is_dragging_speng = false
 		
 func _on_player_olay_full_input_event(_camera, event, _position, _normal, _shape_idx):
 	if event.is_action_pressed("ui_click"):
 		is_dragging_olay = true
+		is_dragging_mno = false
+		is_dragging_ichuen = false
+		is_dragging_speng = false
 		
 func _on_player_speng_full_input_event(_camera, event, _position, _normal, _shape_idx):
 	if event.is_action_pressed("ui_click"):
 		is_dragging_speng = true
+		is_dragging_mno = false
+		is_dragging_olay = false
+		is_dragging_ichuen = false
 
