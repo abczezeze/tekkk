@@ -42,7 +42,7 @@ func _on_drag_3d_pressed() -> void:
 func _on_shoot_3d_pressed():
 	Global.SceneSoundPlay()
 	Global.MenuAudioS()
-	get_tree().change_scene("res://Scene/shoot3d/shoot3d_mix.tscn")
+	var __ =  get_tree().change_scene("res://Scene/shoot3d/shoot3d_mix.tscn")
 
 func _on_reset_button_pressed() -> void:
 	Global.save_dict["mno_scores"]=0
