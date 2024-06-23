@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scene/shoot3d/shoot3d_mix.gd" type="Script" id=1]
 [ext_resource path="res://Scene/shoot3d/player_ichuen_head_rigid.tscn" type="PackedScene" id=2]
@@ -8,6 +8,12 @@
 [sub_resource type="Environment" id=2]
 background_mode = 2
 background_sky = SubResource( 1 )
+
+[sub_resource type="Curve3D" id=3]
+_data = {
+"points": PoolVector3Array( 0, 0, 0, 0, 0, 0, -1.11873, -0.0315135, 1.80098, 0, 0, 0, 0, 0, 0, -0.441738, 1.80029, 0.688721, 0, 0, 0, 0, 0, 0, -1.17655, -0.783953, -0.60528, 0, 0, 0, 0, 0, 0, 1.01368, 0.241604, -0.975647, 0, 0, 0, 0, 0, 0, -0.775125, 1.20019, -4.32663, 0, 0, 0, 0, 0, 0, 0.258374, 1.53358, -2.12436, 0, 0, 0, 0, 0, 0, 0.89181, 0.883475, -0.145493, 0, 0, 0, 0, 0, 0, 0.358391, -0.683443, 2.37581, 0, 0, 0, 0, 0, 0, -0.299378, 0.766829, 1.86501, 0, 0, 0, 0, 0, 0, -0.856118, -0.0525225, 1.80098 ),
+"tilts": PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 )
+}
 
 [node name="shoot3d_mix" type="Spatial"]
 script = ExtResource( 1 )
@@ -23,5 +29,12 @@ environment = SubResource( 2 )
 
 [node name="player_ichuen_head" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3 )
+
+[node name="Path" type="Path" parent="."]
+curve = SubResource( 3 )
+
+[node name="PathFollow" type="PathFollow" parent="Path"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.11873, -0.0315135, 1.80098 )
+rotation_mode = 0
 
 [connection signal="body_entered" from="player_ichuen_head" to="." method="_on_player_ichuen_head_body_entered"]
