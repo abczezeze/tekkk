@@ -48,6 +48,7 @@ func new_turntable():
 	rigidbody_turntable = rigidbody_turntable_c.instance()
 	add_child(rigidbody_turntable)
 	rigidbody_turntable.transform.origin = Vector3(rand_range(-2,2),8,0)
+	rigidbody_turntable.gravity_scale = rand_range(0.1,0.3)
 	var __ = rigidbody_turntable.connect("body_entered",self,"on_turnatable_body_entered")
 
 func on_turnatable_body_entered(body):
@@ -58,8 +59,8 @@ func on_turnatable_body_entered(body):
 func new_guitar():
 	rigidbody_guitar = rigidbody_guitar_c.instance()
 	add_child(rigidbody_guitar)
-	rigidbody_guitar.transform.origin.y = 8
-	rigidbody_guitar.transform.origin.x = rand_range(-2,2)
+	rigidbody_guitar.transform.origin = Vector3(rand_range(-2,2),8,0)
+	rigidbody_guitar.gravity_scale = rand_range(0.1,0.3)
 	var __ = rigidbody_guitar.connect("body_entered",self,"on_guitar_body_entered")
 
 func on_guitar_body_entered(body):
@@ -70,8 +71,8 @@ func on_guitar_body_entered(body):
 func new_drum():
 	rigidbody_drum = rigidbody_drum_c.instance()
 	add_child(rigidbody_drum)
-	rigidbody_drum.transform.origin.y = 8
-	rigidbody_drum.transform.origin.x = rand_range(-2,2)
+	rigidbody_drum.transform.origin = Vector3(rand_range(-2,2),8,0)
+	rigidbody_drum.gravity_scale = rand_range(0.1,0.3)
 	var __ = rigidbody_drum.connect("body_entered",self,"on_drum_body_entered")
 
 func on_drum_body_entered(body):
@@ -82,8 +83,8 @@ func on_drum_body_entered(body):
 func new_bass():
 	rigidbody_bass = rigidbody_bass_c.instance()
 	add_child(rigidbody_bass)
-	rigidbody_bass.transform.origin.y = 8
-	rigidbody_bass.transform.origin.x = rand_range(-2,2)
+	rigidbody_bass.transform.origin = Vector3(rand_range(-2,2),8,0)
+	rigidbody_bass.gravity_scale = rand_range(0.1,0.3)
 	var __ = rigidbody_bass.connect("body_entered",self,"on_bass_body_entered")
 
 func on_bass_body_entered(body):

@@ -6,7 +6,6 @@
 extents = Vector3( 0.560091, 0.401021, 0.551224 )
 
 [node name="rigidbody_drum" type="RigidBody" groups=["drum"]]
-gravity_scale = 0.3
 contacts_reported = 1
 contact_monitor = true
 

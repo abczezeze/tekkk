@@ -6,7 +6,6 @@
 extents = Vector3( 0.408665, 0.0620361, 0.210885 )
 
 [node name="rigid_turntable" type="RigidBody" groups=["turntable"]]
-gravity_scale = 0.2
 contacts_reported = 1
 contact_monitor = true
 

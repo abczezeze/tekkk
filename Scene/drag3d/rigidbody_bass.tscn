@@ -6,7 +6,6 @@
 extents = Vector3( 0.241843, 0.350796, 0.0498457 )
 
 [node name="rigidbody_bass" type="RigidBody" groups=["bass"]]
-gravity_scale = 0.2
 contacts_reported = 1
 contact_monitor = true
 
