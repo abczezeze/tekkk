@@ -8,6 +8,9 @@ var rigidbody_drum:RigidBody
 var rigidbody_bass_c = preload("res://Scene/drag3d/rigidbody_bass.tscn")
 var rigidbody_bass:RigidBody
 
+var player_ichuen_head_rigid_c = preload("res://Scene/shoot3d/player_ichuen_head_rigid.tscn")
+var player_ichuen_head_rigid:RigidBody
+
 var dir_x_ichuen:float = 0.1
 var dir_y_ichuen:float = 0.1
 var move_speed_ichuen:float = 1
@@ -25,14 +28,14 @@ var clicked_mno:bool = false
 export (Array,AudioStreamOGGVorbis) var sound_efx_mno = []
 
 func _ready():
-#	rigidbody_turntable = rigidbody_turntable_c.instance()
+	new_player_ichue_head_rigid()
 	
-	$player_ichuen_head/AnimationPlayer.play("idle")
-	dir_x_ichuen = rand_range(-1,1)
-	dir_y_ichuen = rand_range(-1,1)
-	$player_ichuen_head/Label3D.text = str(Global.save_dict["ichuen_scores"])
-	$player_ichuen_head.transform.origin = Vector3(rand_range(-2,2),rand_range(-4,4),-3)
-	var __1 = $player_ichuen_head/AnimationPlayer.connect("animation_finished",self,"_on_AnimationPlayer_ichuen")
+#	$player_ichuen_head/AnimationPlayer.play("idle")
+#	dir_x_ichuen = rand_range(-1,1)
+#	dir_y_ichuen = rand_range(-1,1)
+#	$player_ichuen_head/Label3D.text = str(Global.save_dict["ichuen_scores"])
+##	$player_ichuen_head.transform.origin.x = rand_range(-2,2)
+#	var __1 = $player_ichuen_head/AnimationPlayer.connect("animation_finished",self,"_on_AnimationPlayer_ichuen")
 	
 #	$player_mno_head/AnimationPlayer.play("idle")
 #	dir_x_mno = rand_range(-2,2)
@@ -50,61 +53,46 @@ func _on_AnimationPlayer_ichuen(_anim_name):
 #	clicked_mno = false
 #	$player_mno_head/AnimationPlayer.play("idle")
 
-#func _process(delta):
-	#ichuen move
-#	$player_ichuen_head.transform = $Path/PathFollow.transform
-#
-#	timeMovePathFollow += delta
-#
-#	$Path/PathFollow.offset = timeMovePathFollow * 1
-#	$player_ichuen_head.translation += Vector3(dir_x_ichuen*move_speed_ichuen*delta,dir_y_ichuen*move_speed_ichuen*delta,0)
-#	if $player_ichuen_head.transform.origin.x>2:
-#		dir_x_ichuen = rand_range(-1,0)
-#		$player_ichuen_head.transform.origin = Vector3(rand_range(-2,2),rand_range(-4,4),-3)
-#	elif $player_ichuen_head.transform.origin.x<-2:
-#		dir_x_ichuen = rand_range(0,1)
-#		$player_ichuen_head.transform.origin = Vector3(rand_range(-2,2),rand_range(-4,4),-3)
-	#mno move
-#	$player_mno_head.translation.x += dir_x_mno*move_speed_mno*delta
-#	if $player_mno_head.transform.origin.x>2:
-#		dir_x_mno = rand_range(-2,0)
-#		$player_mno_head.transform.origin = Vector3(1,rand_range(-3,3),-2)
-#	elif $player_mno_head.transform.origin.x<-2:
-#		dir_x_mno = rand_range(0,2)
-#		$player_mno_head.transform.origin = Vector3(-1,rand_range(-3,3),-2)
-		
 func _physics_process(delta):
-	$player_ichuen_head.transform = $Path/PathFollow.transform
-	
-	timeMovePathFollow += delta
-
-	$Path/PathFollow.offset = timeMovePathFollow * 1 
 	
 	mouse_positon = get_viewport().get_mouse_position()
 	var origin = $Camera.project_ray_origin(mouse_positon)
-	var end = origin + $Camera.project_ray_normal(mouse_positon)
-#	var depth = origin.distance_to($player_ichuen_head.transform.origin)
-#	var final_pos = origin + end * depth
+	var end = origin + $Camera.project_ray_normal(mouse_positon) * 5
+	
 	if Input.is_action_just_pressed("ui_click"):
+#		var depth = origin.distance_to($player_ichuen_head.transform.origin)
+#		var final_pos = origin + end * depth
 		rigidbody_turntable = rigidbody_turntable_c.instance()
 #		rigidbody_turntable.transform.origin = final_pos
-		rigidbody_turntable.transform.origin = end
-		
-		self.add_child(rigidbody_turntable)
+		rigidbody_turntable.global_transform.origin = end
+		add_child(rigidbody_turntable)
 #		rigidbody_turntable.linear_velocity.z = -20
-		rigidbody_turntable.set_axis_velocity(Vector3(0,0,-100))
+		var forward = rigidbody_turntable.get_global_transform().basis.z
+		forward*=-1
+		rigidbody_turntable.apply_impulse(forward,forward*100)
+#		rigidbody_turntable.set_axis_velocity(Vector3(0,0,-100))
 #		rigidbody_turntable.gravity_scale = 1
-#		print(rigidbody_turntable.translation.z)
+		print(rigidbody_turntable.get_global_transform().basis.z)
 #	time_to_quere_free+=delta
 #	if time_to_quere_free>=5:
 #		rigidbody_turntable.queue_free()
-
+#	if has_node(rigidbody_turntable):
+#		print(rigidbody_turntable.translation.z)
+	if player_ichuen_head_rigid.translation.y < -13 or player_ichuen_head_rigid.translation.z < -20:
+		player_ichuen_head_rigid.free()
+		new_player_ichue_head_rigid()
+		
+		
 
 func _on_player_ichuen_head_body_entered(body):
 	print(body)
 	if body.is_in_group("turntable"):
 		Global.save_dict["ichuen_scores"]+=1
-		$player_ichuen_head/Label3D.text = str(Global.save_dict["ichuen_scores"])
-		if rigidbody_turntable.transform.origin.y<-1:
-			rigidbody_turntable.queue_free()
-		$player_ichuen_head.set_physics_process(false)
+		rigidbody_turntable.queue_free()
+#		$player_ichuen_head/ICBd/CPUParticles.emitting = true
+		
+func new_player_ichue_head_rigid():
+	player_ichuen_head_rigid = player_ichuen_head_rigid_c.instance()
+	add_child(player_ichuen_head_rigid)
+	var __ = player_ichuen_head_rigid.connect("body_entered",self,"_on_player_ichuen_head_body_entered")
+	player_ichuen_head_rigid.transform.origin = Vector3(rand_range(-2,2),5,-10)
