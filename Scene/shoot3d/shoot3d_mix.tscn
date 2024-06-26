@@ -1,6 +1,12 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scene/shoot3d/shoot3d_mix.gd" type="Script" id=1]
+[ext_resource path="res://Sound/sfx_turntable2.ogg" type="AudioStream" id=2]
+[ext_resource path="res://Sound/sfx_turntable1.ogg" type="AudioStream" id=3]
+[ext_resource path="res://Sound/sfx_turntable3.ogg" type="AudioStream" id=4]
+[ext_resource path="res://Sound/sfx_turntable5.ogg" type="AudioStream" id=5]
+[ext_resource path="res://Sound/sfx_turntable4.ogg" type="AudioStream" id=6]
+[ext_resource path="res://Image/gui_home.png" type="Texture" id=7]
 
 [sub_resource type="ProceduralSky" id=1]
 
@@ -10,6 +16,7 @@ background_sky = SubResource( 1 )
 
 [node name="shoot3d_mix" type="Spatial"]
 script = ExtResource( 1 )
+sound_efx_ichuen = [ ExtResource( 3 ), ExtResource( 2 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 5 ) ]
 
 [node name="Camera" type="Camera" parent="."]
 
@@ -18,3 +25,15 @@ transform = Transform( 0.92753, -0.178211, 0.328525, 0, 0.879, 0.476821, -0.3737
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 2 )
+
+[node name="home_button" type="TextureButton" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 7.0
+margin_top = -72.0
+margin_right = 147.0
+margin_bottom = 62.0
+rect_scale = Vector2( 0.5, 0.5 )
+texture_normal = ExtResource( 7 )
+
+[connection signal="pressed" from="home_button" to="." method="_on_home_button_pressed"]
