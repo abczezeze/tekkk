@@ -10,6 +10,8 @@ var rigidbody_bass:RigidBody
 
 var player_ichuen_head_rigid_c = preload("res://Scene/shoot3d/player_ichuen_head_rigid.tscn")
 var player_ichuen_head_rigid:RigidBody
+var animation_ichuen:AnimationPlayer
+var label_ichuen:Label3D
 
 var dir_x_ichuen:float = 0.1
 var dir_y_ichuen:float = 0.1
@@ -63,27 +65,23 @@ func _physics_process(delta):
 #		var depth = origin.distance_to($player_ichuen_head.transform.origin)
 #		var final_pos = origin + end * depth
 		rigidbody_turntable = rigidbody_turntable_c.instance()
-#		rigidbody_turntable.transform.origin = final_pos
 		rigidbody_turntable.global_transform.origin = end
 		add_child(rigidbody_turntable)
-#		rigidbody_turntable.linear_velocity.z = -20
 		var forward = rigidbody_turntable.get_global_transform().basis.z
 		forward*=-1
-		rigidbody_turntable.apply_impulse(forward,forward*100)
-#		rigidbody_turntable.set_axis_velocity(Vector3(0,0,-100))
-#		rigidbody_turntable.gravity_scale = 1
-		print(rigidbody_turntable.get_global_transform().basis.z)
-#	time_to_quere_free+=delta
-#	if time_to_quere_free>=5:
-#		rigidbody_turntable.queue_free()
-#	if has_node(rigidbody_turntable):
-#		print(rigidbody_turntable.translation.z)
-	if player_ichuen_head_rigid.translation.y < -13 or player_ichuen_head_rigid.translation.z < -20:
-		player_ichuen_head_rigid.free()
-		new_player_ichue_head_rigid()
-		
-		
+		rigidbody_turntable.apply_impulse(forward,forward*50)
+#		print(rigidbody_turntable.get_global_transform().basis.z)
 
+	if player_ichuen_head_rigid.translation.y < -13 or player_ichuen_head_rigid.translation.z < -20:
+		player_ichuen_head_rigid.queue_free()
+		new_player_ichue_head_rigid()
+	
+	label_ichuen.text = str(Global.save_dict["ichuen_scores"])
+	
+#	if has_rigidbody_turntable:
+#		if rigidbody_turntable.transform.origin.z < -20:
+#			rigidbody_turntable.queue_free()
+		
 func _on_player_ichuen_head_body_entered(body):
 	print(body)
 	if body.is_in_group("turntable"):
@@ -96,3 +94,7 @@ func new_player_ichue_head_rigid():
 	add_child(player_ichuen_head_rigid)
 	var __ = player_ichuen_head_rigid.connect("body_entered",self,"_on_player_ichuen_head_body_entered")
 	player_ichuen_head_rigid.transform.origin = Vector3(rand_range(-2,2),5,-10)
+	animation_ichuen = player_ichuen_head_rigid.get_node("AnimationPlayer")
+	animation_ichuen.play("idle")
+#	animation_ichuen.connect("animation_finished",self,"_on_AnimationPlayer_ichuen")
+	label_ichuen = player_ichuen_head_rigid.get_node("Label3D")
