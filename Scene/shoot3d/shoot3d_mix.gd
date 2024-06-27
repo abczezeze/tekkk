@@ -42,7 +42,10 @@ var mouse_positon:Vector2 = Vector2()
 var shoot_power:int = 60
 
 func _ready():
-	new_player_ichue_head_rigid()
+	new_player_ichuen_head_rigid()
+	new_player_mno_head_rigid()
+	new_player_olay_head_rigid()
+	new_player_speng_head_rigid()
 	
 func _process(delta):
 	$score_vbox/ClickMno.text=str(Global.save_dict["mno_scores"])
@@ -70,24 +73,18 @@ func _physics_process(delta):
 
 	if player_ichuen_head_rigid.translation.y < -13 or player_ichuen_head_rigid.translation.z < -20 or player_ichuen_head_rigid.translation.x>=3 or player_ichuen_head_rigid.translation.x<=-3:
 		player_ichuen_head_rigid.queue_free()
-		new_player_ichue_head_rigid()
+		new_player_ichuen_head_rigid()
+	if player_mno_head_rigid.translation.y < -13 or player_mno_head_rigid.translation.z < -20 or player_mno_head_rigid.translation.x>=3 or player_mno_head_rigid.translation.x<=-3:
+		player_mno_head_rigid.queue_free()
+		new_player_mno_head_rigid()
+	if player_olay_head_rigid.translation.y < -13 or player_olay_head_rigid.translation.z < -20 or player_olay_head_rigid.translation.x>=3 or player_olay_head_rigid.translation.x<=-3:
+		player_olay_head_rigid.queue_free()
+		new_player_olay_head_rigid()
+	if player_speng_head_rigid.translation.y < -13 or player_speng_head_rigid.translation.z < -20 or player_speng_head_rigid.translation.x>=3 or player_speng_head_rigid.translation.x<=-3:
+		player_speng_head_rigid.queue_free()
+		new_player_speng_head_rigid()
 	
-#	label_ichuen.text = str(Global.save_dict["ichuen_scores"])
-
-func _on_player_ichuen_head_body_entered(body):
-	print(body)
-	if body.is_in_group("turntable"):
-		Global.save_dict["ichuen_scores"]+=1
-		paticle_ichuen.emitting = true
-		animation_ichuen.play("head_rotation")
-		sfx_ichuen.stream = sound_efx_ichuen[rand_range(0,sound_efx_ichuen.size())]
-		sfx_ichuen.play()
-
-func _on_AnimationPlayer_ichuen(_anim_name):
-	paticle_ichuen.emitting = false
-	animation_ichuen.play("idle")
-
-func new_player_ichue_head_rigid():
+func new_player_ichuen_head_rigid():
 	player_ichuen_head_rigid = player_ichuen_head_rigid_c.instance()
 	add_child(player_ichuen_head_rigid)
 	player_ichuen_head_rigid.transform.origin = Vector3(rand_range(-2,2),5,-7)
@@ -98,14 +95,95 @@ func new_player_ichue_head_rigid():
 	animation_ichuen.play("idle")
 	var __2 = animation_ichuen.connect("animation_finished",self,"_on_AnimationPlayer_ichuen")
 	var __ = player_ichuen_head_rigid.connect("body_entered",self,"_on_player_ichuen_head_body_entered")
-	
 
+func new_player_mno_head_rigid():
+	player_mno_head_rigid = player_mno_head_rigid_c.instance()
+	add_child(player_mno_head_rigid)
+	player_mno_head_rigid.transform.origin = Vector3(rand_range(-2,2),5,-7)
+#	player_mno_head_rigid.set_axis_velocity(Vector3(rand_range(-3,3),0,0))
+	paticle_mno = player_mno_head_rigid.get_node("ICBd/CPUParticles")
+	sfx_mno = player_mno_head_rigid.get_node("AudioStreamPlayer")
+	animation_mno = player_mno_head_rigid.get_node("AnimationPlayer")
+	animation_mno.play("idle")
+	var __2 = animation_mno.connect("animation_finished",self,"_on_AnimationPlayer_mno")
+	var __ = player_mno_head_rigid.connect("body_entered",self,"_on_player_mno_head_body_entered")
+	
+func new_player_olay_head_rigid():
+	player_olay_head_rigid = player_olay_head_rigid_c.instance()
+	add_child(player_olay_head_rigid)
+	player_olay_head_rigid.transform.origin = Vector3(rand_range(-2,2),5,-7)
+#	player_olay_head_rigid.set_axis_velocity(Vector3(rand_range(-3,3),0,0))
+	paticle_olay = player_olay_head_rigid.get_node("ICBd/CPUParticles")
+	sfx_olay = player_olay_head_rigid.get_node("AudioStreamPlayer")
+	animation_olay = player_olay_head_rigid.get_node("AnimationPlayer")
+	animation_olay.play("idle")
+	var __2 = animation_olay.connect("animation_finished",self,"_on_AnimationPlayer_olay")
+	var __ = player_olay_head_rigid.connect("body_entered",self,"_on_player_olay_head_body_entered")
+	
+func new_player_speng_head_rigid():
+	player_speng_head_rigid = player_speng_head_rigid_c.instance()
+	add_child(player_speng_head_rigid)
+	player_speng_head_rigid.transform.origin = Vector3(rand_range(-2,2),5,-7)
+#	player_speng_head_rigid.set_axis_velocity(Vector3(rand_range(-3,3),0,0))
+	paticle_speng = player_speng_head_rigid.get_node("ICBd/CPUParticles")
+	sfx_speng = player_speng_head_rigid.get_node("AudioStreamPlayer")
+	animation_speng = player_speng_head_rigid.get_node("AnimationPlayer")
+	animation_speng.play("idle")
+	var __2 = animation_speng.connect("animation_finished",self,"_on_AnimationPlayer_speng")
+	var __ = player_speng_head_rigid.connect("body_entered",self,"_on_player_speng_head_body_entered")
+
+func _on_player_ichuen_head_body_entered(body):
+	if body.is_in_group("turntable"):
+		Global.save_dict["ichuen_scores"]+=1
+		paticle_ichuen.emitting = true
+		animation_ichuen.play("head_rotation")
+		sfx_ichuen.stream = sound_efx_ichuen[rand_range(0,sound_efx_ichuen.size())]
+		sfx_ichuen.play()
+		
+func _on_player_mno_head_body_entered(body):
+	if body.is_in_group("bass"):
+		Global.save_dict["mno_scores"]+=1
+		paticle_mno.emitting = true
+		animation_mno.play("head_rotation")
+		sfx_mno.stream = sound_efx_mno[rand_range(0,sound_efx_mno.size())]
+		sfx_mno.play()
+		
+func _on_player_olay_head_body_entered(body):
+	if body.is_in_group("drum"):
+		Global.save_dict["olay_scores"]+=1
+		paticle_olay.emitting = true
+		animation_olay.play("head_rotation")
+		sfx_olay.stream = sound_efx_olay[rand_range(0,sound_efx_olay.size())]
+		sfx_olay.play()
+		
+func _on_player_speng_head_body_entered(body):
+	if body.is_in_group("guitar"):
+		Global.save_dict["speng_scores"]+=1
+		paticle_speng.emitting = true
+		animation_speng.play("head_rotation")
+		sfx_speng.stream = sound_efx_speng[rand_range(0,sound_efx_speng.size())]
+		sfx_speng.play()
+
+func _on_AnimationPlayer_ichuen(_anim_name):
+	paticle_ichuen.emitting = false
+	animation_ichuen.play("idle")
+
+func _on_AnimationPlayer_mno(_anim_name):
+	paticle_mno.emitting = false
+	animation_mno.play("idle")
+	
+func _on_AnimationPlayer_olay(_anim_name):
+	paticle_olay.emitting = false
+	animation_olay.play("idle")
+	
+func _on_AnimationPlayer_speng(_anim_name):
+	paticle_speng.emitting = false
+	animation_speng.play("idle")
 
 func _on_home_button_pressed():
 	Global.HomeAudioPlay()
 	Global.MenuAudioP()
 	var __ = get_tree().change_scene("res://Scene/MainMenu.tscn")
-
 func _on_home_button_mouse_entered():
 	set_physics_process(false)
 func _on_home_button_mouse_exited():
