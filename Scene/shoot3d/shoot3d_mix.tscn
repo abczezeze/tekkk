@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://Scene/shoot3d/shoot3d_mix.gd" type="Script" id=1]
 [ext_resource path="res://Sound/sfx_turntable2.ogg" type="AudioStream" id=2]
@@ -7,6 +7,26 @@
 [ext_resource path="res://Sound/sfx_turntable5.ogg" type="AudioStream" id=5]
 [ext_resource path="res://Sound/sfx_turntable4.ogg" type="AudioStream" id=6]
 [ext_resource path="res://Image/gui_home.png" type="Texture" id=7]
+[ext_resource path="res://Image/player_Head_olayzzz.png" type="Texture" id=8]
+[ext_resource path="res://Image/player_Head_mno.png" type="Texture" id=9]
+[ext_resource path="res://Image/player_Head_Ichuen.png" type="Texture" id=10]
+[ext_resource path="res://Font/SanamDeklen_chaya.ttf" type="DynamicFontData" id=11]
+[ext_resource path="res://Image/player_Head_Speng.png" type="Texture" id=12]
+[ext_resource path="res://Sound/sfx_drum2.ogg" type="AudioStream" id=13]
+[ext_resource path="res://Sound/sfx_drum1.ogg" type="AudioStream" id=14]
+[ext_resource path="res://Sound/sfx_drum4.ogg" type="AudioStream" id=15]
+[ext_resource path="res://Sound/sfx_bass4.ogg" type="AudioStream" id=16]
+[ext_resource path="res://Sound/sfx_drum3.ogg" type="AudioStream" id=17]
+[ext_resource path="res://Sound/sfx_drum5.ogg" type="AudioStream" id=18]
+[ext_resource path="res://Sound/sfx_bass1.ogg" type="AudioStream" id=19]
+[ext_resource path="res://Sound/sfx_bass3.ogg" type="AudioStream" id=20]
+[ext_resource path="res://Sound/sfx_bass2.ogg" type="AudioStream" id=21]
+[ext_resource path="res://Sound/sfx_bass5.ogg" type="AudioStream" id=22]
+[ext_resource path="res://Sound/sfx_guitar3.ogg" type="AudioStream" id=23]
+[ext_resource path="res://Sound/sfx_guitar5.ogg" type="AudioStream" id=24]
+[ext_resource path="res://Sound/sfx_guitar1.ogg" type="AudioStream" id=25]
+[ext_resource path="res://Sound/sfx_guitar4.ogg" type="AudioStream" id=26]
+[ext_resource path="res://Sound/sfx_guitar2.ogg" type="AudioStream" id=27]
 
 [sub_resource type="ProceduralSky" id=1]
 
@@ -14,9 +34,28 @@
 background_mode = 2
 background_sky = SubResource( 1 )
 
+[sub_resource type="DynamicFont" id=3]
+size = 55
+font_data = ExtResource( 11 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 55
+font_data = ExtResource( 11 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 55
+font_data = ExtResource( 11 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 55
+font_data = ExtResource( 11 )
+
 [node name="shoot3d_mix" type="Spatial"]
 script = ExtResource( 1 )
 sound_efx_ichuen = [ ExtResource( 3 ), ExtResource( 2 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 5 ) ]
+sound_efx_mno = [ ExtResource( 19 ), ExtResource( 21 ), ExtResource( 20 ), ExtResource( 16 ), ExtResource( 22 ) ]
+sound_efx_olay = [ ExtResource( 14 ), ExtResource( 13 ), ExtResource( 17 ), ExtResource( 15 ), ExtResource( 18 ) ]
+sound_efx_speng = [ ExtResource( 25 ), ExtResource( 27 ), ExtResource( 23 ), ExtResource( 26 ), ExtResource( 24 ) ]
 
 [node name="Camera" type="Camera" parent="."]
 
@@ -36,4 +75,77 @@ margin_bottom = 62.0
 rect_scale = Vector2( 0.5, 0.5 )
 texture_normal = ExtResource( 7 )
 
+[node name="player_head_vbox" type="VBoxContainer" parent="."]
+margin_left = 50.0
+margin_top = 50.0
+margin_right = 400.0
+margin_bottom = 438.0
+
+[node name="PlayerHeadMno" type="Sprite" parent="player_head_vbox"]
+texture = ExtResource( 9 )
+
+[node name="PlayerHeadOlayzzz" type="Sprite" parent="player_head_vbox"]
+position = Vector2( 0, 98 )
+texture = ExtResource( 8 )
+
+[node name="PlayerHeadSpeng" type="Sprite" parent="player_head_vbox"]
+position = Vector2( 0, 196 )
+texture = ExtResource( 12 )
+
+[node name="PlayerHeadIchuen" type="Sprite" parent="player_head_vbox"]
+position = Vector2( 0, 294 )
+texture = ExtResource( 10 )
+
+[node name="score_vbox" type="VBoxContainer" parent="."]
+margin_left = 100.0
+margin_top = 20.0
+margin_right = 450.0
+margin_bottom = 408.0
+
+[node name="ClickMno" type="Label" parent="score_vbox"]
+margin_right = 350.0
+margin_bottom = 94.0
+custom_colors/font_color = Color( 0.878431, 0.537255, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "0"
+
+[node name="ClickOlay" type="Label" parent="score_vbox"]
+margin_top = 98.0
+margin_right = 350.0
+margin_bottom = 192.0
+custom_colors/font_color = Color( 0.419608, 0.498039, 0.988235, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ClickSpeng" type="Label" parent="score_vbox"]
+margin_top = 196.0
+margin_right = 350.0
+margin_bottom = 290.0
+custom_colors/font_color = Color( 0.92549, 0.972549, 0.113725, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 5 )
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ClickIchuen" type="Label" parent="score_vbox"]
+margin_top = 294.0
+margin_right = 350.0
+margin_bottom = 388.0
+custom_colors/font_color = Color( 0.772549, 0, 0.882353, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="mouse_entered" from="home_button" to="." method="_on_home_button_mouse_entered"]
+[connection signal="mouse_exited" from="home_button" to="." method="_on_home_button_mouse_exited"]
 [connection signal="pressed" from="home_button" to="." method="_on_home_button_pressed"]
