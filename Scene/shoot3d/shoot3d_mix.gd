@@ -38,6 +38,11 @@ export (Array,AudioStreamOGGVorbis) var sound_efx_mno = []
 export (Array,AudioStreamOGGVorbis) var sound_efx_olay = []
 export (Array,AudioStreamOGGVorbis) var sound_efx_speng = []
 
+var turntable_rigid:bool = false
+var bass_rigid:bool = false
+var drum_rigid:bool = false
+var guitar_rigid:bool = false
+
 var mouse_positon:Vector2 = Vector2()
 var shoot_power:int = 60
 
@@ -47,6 +52,9 @@ func _ready():
 	new_player_olay_head_rigid()
 	new_player_speng_head_rigid()
 	
+	turntable_rigid = true
+	$musical_HBoxContainer/turntable_button.disabled = true 
+	
 func _process(delta):
 	$score_vbox/ClickMno.text=str(Global.save_dict["mno_scores"])
 	$score_vbox/ClickOlay.text=str(Global.save_dict["olay_scores"])
@@ -54,33 +62,20 @@ func _process(delta):
 	$score_vbox/ClickSpeng.text=str(Global.save_dict["speng_scores"])
 	
 func _physics_process(delta):
-	mouse_positon = get_viewport().get_mouse_position()
-	var origin = $Camera.project_ray_origin(mouse_positon)
-	var end = origin + $Camera.project_ray_normal(mouse_positon) * 3
-	
-	if Input.is_action_just_pressed("ui_click"):
-		rigidbody_turntable = rigidbody_turntable_c.instance()
-		rigidbody_turntable.global_transform.origin = end
-		add_child(rigidbody_turntable)
-		var forward = rigidbody_turntable.get_global_transform().basis.z
-		
-		forward*=-1
-		rigidbody_turntable.apply_central_impulse(forward*shoot_power)
-		
 	if is_instance_valid(rigidbody_turntable):
 		if rigidbody_turntable.global_transform.origin.z < -20:
 			rigidbody_turntable.queue_free()
 
-	if player_ichuen_head_rigid.translation.y < -13 or player_ichuen_head_rigid.translation.z < -20 or player_ichuen_head_rigid.translation.x>=3 or player_ichuen_head_rigid.translation.x<=-3:
+	if player_ichuen_head_rigid.translation.y < -10 or player_ichuen_head_rigid.translation.z < -20 or player_ichuen_head_rigid.translation.x>=3 or player_ichuen_head_rigid.translation.x<=-3:
 		player_ichuen_head_rigid.queue_free()
 		new_player_ichuen_head_rigid()
-	if player_mno_head_rigid.translation.y < -13 or player_mno_head_rigid.translation.z < -20 or player_mno_head_rigid.translation.x>=3 or player_mno_head_rigid.translation.x<=-3:
+	if player_mno_head_rigid.translation.y < -10 or player_mno_head_rigid.translation.z < -20 or player_mno_head_rigid.translation.x>=3 or player_mno_head_rigid.translation.x<=-3:
 		player_mno_head_rigid.queue_free()
 		new_player_mno_head_rigid()
-	if player_olay_head_rigid.translation.y < -13 or player_olay_head_rigid.translation.z < -20 or player_olay_head_rigid.translation.x>=3 or player_olay_head_rigid.translation.x<=-3:
+	if player_olay_head_rigid.translation.y < -10 or player_olay_head_rigid.translation.z < -20 or player_olay_head_rigid.translation.x>=3 or player_olay_head_rigid.translation.x<=-3:
 		player_olay_head_rigid.queue_free()
 		new_player_olay_head_rigid()
-	if player_speng_head_rigid.translation.y < -13 or player_speng_head_rigid.translation.z < -20 or player_speng_head_rigid.translation.x>=3 or player_speng_head_rigid.translation.x<=-3:
+	if player_speng_head_rigid.translation.y < -10 or player_speng_head_rigid.translation.z < -20 or player_speng_head_rigid.translation.x>=3 or player_speng_head_rigid.translation.x<=-3:
 		player_speng_head_rigid.queue_free()
 		new_player_speng_head_rigid()
 	
@@ -180,6 +175,20 @@ func _on_AnimationPlayer_speng(_anim_name):
 	paticle_speng.emitting = false
 	animation_speng.play("idle")
 
+func _input(event):
+	var mouse_pos = get_viewport().get_mouse_position()
+	var origin = $Camera.project_ray_origin(mouse_pos)
+	var end = origin + $Camera.project_ray_normal(mouse_pos) * 3
+	if Input.is_action_just_pressed("ui_click") and turntable_rigid:
+		rigidbody_turntable = rigidbody_turntable_c.instance()
+		rigidbody_turntable.global_transform.origin = end
+		add_child(rigidbody_turntable)
+		var forward = rigidbody_turntable.get_global_transform().basis.z
+		forward*=-1
+		rigidbody_turntable.apply_central_impulse(forward*shoot_power)
+		rigidbody_turntable.orthonormalize()
+		
+
 func _on_home_button_pressed():
 	Global.HomeAudioPlay()
 	Global.MenuAudioP()
@@ -188,3 +197,43 @@ func _on_home_button_mouse_entered():
 	set_physics_process(false)
 func _on_home_button_mouse_exited():
 	set_physics_process(true)
+
+func _on_turntable_button_pressed():
+	$musical_HBoxContainer/turntable_button.disabled = true
+	$musical_HBoxContainer/bass_button.disabled = false
+	$musical_HBoxContainer/drum_button.disabled = false
+	$musical_HBoxContainer/guitar_button.disabled = false
+	turntable_rigid = true
+	bass_rigid = false
+	drum_rigid = false
+	guitar_rigid = false
+
+func _on_bass_button_pressed():
+	$musical_HBoxContainer/turntable_button.disabled = false
+	$musical_HBoxContainer/bass_button.disabled = true
+	$musical_HBoxContainer/drum_button.disabled = false
+	$musical_HBoxContainer/guitar_button.disabled = false
+	turntable_rigid = false
+	bass_rigid = true
+	drum_rigid = false
+	guitar_rigid = false
+
+func _on_drum_button_pressed():
+	$musical_HBoxContainer/turntable_button.disabled = false
+	$musical_HBoxContainer/bass_button.disabled = false
+	$musical_HBoxContainer/drum_button.disabled = true
+	$musical_HBoxContainer/guitar_button.disabled = false
+	turntable_rigid = false
+	bass_rigid = false
+	drum_rigid = true
+	guitar_rigid = false
+
+func _on_guitar_button_pressed():
+	$musical_HBoxContainer/turntable_button.disabled = false
+	$musical_HBoxContainer/bass_button.disabled = false
+	$musical_HBoxContainer/drum_button.disabled = false
+	$musical_HBoxContainer/guitar_button.disabled = true
+	turntable_rigid = false
+	bass_rigid = false
+	drum_rigid = false
+	guitar_rigid = true

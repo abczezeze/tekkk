@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://Scene/shoot3d/shoot3d_mix.gd" type="Script" id=1]
 [ext_resource path="res://Sound/sfx_turntable2.ogg" type="AudioStream" id=2]
@@ -27,6 +27,10 @@
 [ext_resource path="res://Sound/sfx_guitar1.ogg" type="AudioStream" id=25]
 [ext_resource path="res://Sound/sfx_guitar4.ogg" type="AudioStream" id=26]
 [ext_resource path="res://Sound/sfx_guitar2.ogg" type="AudioStream" id=27]
+[ext_resource path="res://Image/MusicalGuitar.png" type="Texture" id=28]
+[ext_resource path="res://Image/MusicalDrum.png" type="Texture" id=29]
+[ext_resource path="res://Image/MusicalTurntable.png" type="Texture" id=30]
+[ext_resource path="res://Image/MusicalBass.png" type="Texture" id=31]
 
 [sub_resource type="ProceduralSky" id=1]
 
@@ -146,6 +150,43 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="musical_HBoxContainer" type="HBoxContainer" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -424.0
+margin_bottom = 97.0
+
+[node name="turntable_button" type="Button" parent="musical_HBoxContainer"]
+margin_right = 103.0
+margin_bottom = 97.0
+icon = ExtResource( 30 )
+flat = true
+
+[node name="bass_button" type="Button" parent="musical_HBoxContainer"]
+margin_left = 107.0
+margin_right = 210.0
+margin_bottom = 97.0
+icon = ExtResource( 31 )
+flat = true
+
+[node name="drum_button" type="Button" parent="musical_HBoxContainer"]
+margin_left = 214.0
+margin_right = 317.0
+margin_bottom = 97.0
+icon = ExtResource( 29 )
+flat = true
+
+[node name="guitar_button" type="Button" parent="musical_HBoxContainer"]
+margin_left = 321.0
+margin_right = 424.0
+margin_bottom = 97.0
+icon = ExtResource( 28 )
+flat = true
+
 [connection signal="mouse_entered" from="home_button" to="." method="_on_home_button_mouse_entered"]
 [connection signal="mouse_exited" from="home_button" to="." method="_on_home_button_mouse_exited"]
 [connection signal="pressed" from="home_button" to="." method="_on_home_button_pressed"]
+[connection signal="pressed" from="musical_HBoxContainer/turntable_button" to="." method="_on_turntable_button_pressed"]
+[connection signal="pressed" from="musical_HBoxContainer/bass_button" to="." method="_on_bass_button_pressed"]
+[connection signal="pressed" from="musical_HBoxContainer/drum_button" to="." method="_on_drum_button_pressed"]
+[connection signal="pressed" from="musical_HBoxContainer/guitar_button" to="." method="_on_guitar_button_pressed"]
