@@ -38,10 +38,11 @@ export (Array,AudioStreamOGGVorbis) var sound_efx_mno = []
 export (Array,AudioStreamOGGVorbis) var sound_efx_olay = []
 export (Array,AudioStreamOGGVorbis) var sound_efx_speng = []
 
-var turntable_rigid:bool = false
-var bass_rigid:bool = false
-var drum_rigid:bool = false
-var guitar_rigid:bool = false
+var turntable_selected:bool = false
+var bass_selected:bool = false
+var drum_selected:bool = false
+var guitar_selected:bool = false
+var musical_selected:Array = [true,false,false,false]
 
 var mouse_positon:Vector2 = Vector2()
 var shoot_power:int = 60
@@ -52,8 +53,9 @@ func _ready():
 	new_player_olay_head_rigid()
 	new_player_speng_head_rigid()
 	
-	turntable_rigid = true
-	$musical_HBoxContainer/turntable_button.disabled = true 
+	random_musical()
+#	turntable_rigid = true
+#	$musical_HBoxContainer/turntable_button.disabled = true 
 	
 func _process(delta):
 	$score_vbox/ClickMno.text=str(Global.save_dict["mno_scores"])
@@ -96,7 +98,7 @@ func new_player_mno_head_rigid():
 	add_child(player_mno_head_rigid)
 	player_mno_head_rigid.transform.origin = Vector3(rand_range(-2,2),5,-7)
 #	player_mno_head_rigid.set_axis_velocity(Vector3(rand_range(-3,3),0,0))
-	paticle_mno = player_mno_head_rigid.get_node("ICBd/CPUParticles")
+	paticle_mno = player_mno_head_rigid.get_node("mnoTrouser/CPUParticles")
 	sfx_mno = player_mno_head_rigid.get_node("AudioStreamPlayer")
 	animation_mno = player_mno_head_rigid.get_node("AnimationPlayer")
 	animation_mno.play("idle")
@@ -108,7 +110,7 @@ func new_player_olay_head_rigid():
 	add_child(player_olay_head_rigid)
 	player_olay_head_rigid.transform.origin = Vector3(rand_range(-2,2),5,-7)
 #	player_olay_head_rigid.set_axis_velocity(Vector3(rand_range(-3,3),0,0))
-	paticle_olay = player_olay_head_rigid.get_node("ICBd/CPUParticles")
+	paticle_olay = player_olay_head_rigid.get_node("OlayCap/CPUParticles")
 	sfx_olay = player_olay_head_rigid.get_node("AudioStreamPlayer")
 	animation_olay = player_olay_head_rigid.get_node("AnimationPlayer")
 	animation_olay.play("idle")
@@ -120,7 +122,7 @@ func new_player_speng_head_rigid():
 	add_child(player_speng_head_rigid)
 	player_speng_head_rigid.transform.origin = Vector3(rand_range(-2,2),5,-7)
 #	player_speng_head_rigid.set_axis_velocity(Vector3(rand_range(-3,3),0,0))
-	paticle_speng = player_speng_head_rigid.get_node("ICBd/CPUParticles")
+	paticle_speng = player_speng_head_rigid.get_node("SpeangBody/CPUParticles")
 	sfx_speng = player_speng_head_rigid.get_node("AudioStreamPlayer")
 	animation_speng = player_speng_head_rigid.get_node("AnimationPlayer")
 	animation_speng.play("idle")
@@ -179,7 +181,7 @@ func _input(event):
 	var mouse_pos = get_viewport().get_mouse_position()
 	var origin = $Camera.project_ray_origin(mouse_pos)
 	var end = origin + $Camera.project_ray_normal(mouse_pos) * 3
-	if Input.is_action_just_pressed("ui_click") and turntable_rigid:
+	if Input.is_action_just_pressed("ui_click") and turntable_selected:
 		rigidbody_turntable = rigidbody_turntable_c.instance()
 		rigidbody_turntable.global_transform.origin = end
 		add_child(rigidbody_turntable)
@@ -187,6 +189,33 @@ func _input(event):
 		forward*=-1
 		rigidbody_turntable.apply_central_impulse(forward*shoot_power)
 		rigidbody_turntable.orthonormalize()
+		
+	if Input.is_action_just_pressed("ui_click") and bass_selected:
+		rigidbody_bass = rigidbody_bass_c.instance()
+		rigidbody_bass.global_transform.origin = end
+		add_child(rigidbody_bass)
+		var forward = rigidbody_bass.get_global_transform().basis.z
+		forward*=-1
+		rigidbody_bass.apply_central_impulse(forward*shoot_power)
+		rigidbody_bass.orthonormalize()
+		
+	if Input.is_action_just_pressed("ui_click") and drum_selected:
+		rigidbody_drum = rigidbody_drum_c.instance()
+		rigidbody_drum.global_transform.origin = end
+		add_child(rigidbody_drum)
+		var forward = rigidbody_drum.get_global_transform().basis.z
+		forward*=-1
+		rigidbody_drum.apply_central_impulse(forward*shoot_power)
+		rigidbody_drum.orthonormalize()
+		
+	if Input.is_action_just_pressed("ui_click") and guitar_selected:
+		rigidbody_guitar = rigidbody_guitar_c.instance()
+		rigidbody_guitar.global_transform.origin = end
+		add_child(rigidbody_guitar)
+		var forward = rigidbody_guitar.get_global_transform().basis.z
+		forward*=-1
+		rigidbody_guitar.apply_central_impulse(forward*shoot_power)
+		rigidbody_guitar.orthonormalize()
 		
 
 func _on_home_button_pressed():
@@ -203,37 +232,55 @@ func _on_turntable_button_pressed():
 	$musical_HBoxContainer/bass_button.disabled = false
 	$musical_HBoxContainer/drum_button.disabled = false
 	$musical_HBoxContainer/guitar_button.disabled = false
-	turntable_rigid = true
-	bass_rigid = false
-	drum_rigid = false
-	guitar_rigid = false
+	turntable_selected = true
+	bass_selected = false
+	drum_selected = false
+	guitar_selected = false
 
 func _on_bass_button_pressed():
 	$musical_HBoxContainer/turntable_button.disabled = false
 	$musical_HBoxContainer/bass_button.disabled = true
 	$musical_HBoxContainer/drum_button.disabled = false
 	$musical_HBoxContainer/guitar_button.disabled = false
-	turntable_rigid = false
-	bass_rigid = true
-	drum_rigid = false
-	guitar_rigid = false
+	turntable_selected = false
+	bass_selected = true
+	drum_selected = false
+	guitar_selected = false
 
 func _on_drum_button_pressed():
 	$musical_HBoxContainer/turntable_button.disabled = false
 	$musical_HBoxContainer/bass_button.disabled = false
 	$musical_HBoxContainer/drum_button.disabled = true
 	$musical_HBoxContainer/guitar_button.disabled = false
-	turntable_rigid = false
-	bass_rigid = false
-	drum_rigid = true
-	guitar_rigid = false
+	turntable_selected = false
+	bass_selected = false
+	drum_selected = true
+	guitar_selected = false
 
 func _on_guitar_button_pressed():
 	$musical_HBoxContainer/turntable_button.disabled = false
 	$musical_HBoxContainer/bass_button.disabled = false
 	$musical_HBoxContainer/drum_button.disabled = false
 	$musical_HBoxContainer/guitar_button.disabled = true
-	turntable_rigid = false
-	bass_rigid = false
-	drum_rigid = false
-	guitar_rigid = true
+	turntable_selected = false
+	bass_selected = false
+	drum_selected = false
+	guitar_selected = true
+	
+func random_musical() -> void:
+	var random_index = rand_range(0,musical_selected.size()-1)
+	turntable_selected = musical_selected[random_index]
+	musical_selected.remove(random_index)
+	
+	random_index = rand_range(0,musical_selected.size()-1)
+	bass_selected = musical_selected[random_index]
+	musical_selected.remove(random_index)
+	
+	random_index = rand_range(0,musical_selected.size()-1)
+	drum_selected = musical_selected[random_index]
+	musical_selected.remove(random_index)
+	
+	random_index = rand_range(0,musical_selected.size()-1)
+	guitar_selected = musical_selected[random_index]
+	musical_selected.remove(random_index)
+		
