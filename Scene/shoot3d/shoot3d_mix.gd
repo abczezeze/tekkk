@@ -38,6 +38,8 @@ export (Array,AudioStreamOGGVorbis) var sound_efx_mno = []
 export (Array,AudioStreamOGGVorbis) var sound_efx_olay = []
 export (Array,AudioStreamOGGVorbis) var sound_efx_speng = []
 
+export (Array,AudioStreamMP3) var sound_bgm_shoot = []
+
 var turntable_selected:bool = false
 var bass_selected:bool = false
 var drum_selected:bool = false
@@ -54,8 +56,7 @@ func _ready():
 	new_player_speng_head_rigid()
 	
 	random_musical()
-#	turntable_rigid = true
-#	$musical_HBoxContainer/turntable_button.disabled = true 
+	$shoot3d_sound.play()
 	
 func _process(delta):
 	$score_vbox/ClickMno.text=str(Global.save_dict["mno_scores"])
@@ -217,16 +218,6 @@ func _input(event):
 		rigidbody_guitar.apply_central_impulse(forward*shoot_power)
 		rigidbody_guitar.orthonormalize()
 		
-
-func _on_home_button_pressed():
-	Global.HomeAudioPlay()
-	Global.MenuAudioP()
-	var __ = get_tree().change_scene("res://Scene/MainMenu.tscn")
-func _on_home_button_mouse_entered():
-	set_physics_process(false)
-func _on_home_button_mouse_exited():
-	set_physics_process(true)
-
 func _on_turntable_button_pressed():
 	$musical_HBoxContainer/turntable_button.disabled = true
 	$musical_HBoxContainer/bass_button.disabled = false
@@ -236,6 +227,8 @@ func _on_turntable_button_pressed():
 	bass_selected = false
 	drum_selected = false
 	guitar_selected = false
+	$shoot3d_sound.stream = sound_bgm_shoot[3]
+	$shoot3d_sound.play()
 
 func _on_bass_button_pressed():
 	$musical_HBoxContainer/turntable_button.disabled = false
@@ -246,6 +239,8 @@ func _on_bass_button_pressed():
 	bass_selected = true
 	drum_selected = false
 	guitar_selected = false
+	$shoot3d_sound.stream = sound_bgm_shoot[0]
+	$shoot3d_sound.play()
 
 func _on_drum_button_pressed():
 	$musical_HBoxContainer/turntable_button.disabled = false
@@ -256,6 +251,8 @@ func _on_drum_button_pressed():
 	bass_selected = false
 	drum_selected = true
 	guitar_selected = false
+	$shoot3d_sound.stream = sound_bgm_shoot[1]
+	$shoot3d_sound.play()
 
 func _on_guitar_button_pressed():
 	$musical_HBoxContainer/turntable_button.disabled = false
@@ -266,7 +263,36 @@ func _on_guitar_button_pressed():
 	bass_selected = false
 	drum_selected = false
 	guitar_selected = true
-	
+	$shoot3d_sound.stream = sound_bgm_shoot[2]
+	$shoot3d_sound.play()
+		
+func _on_home_button_pressed():
+	Global.HomeAudioPlay()
+	Global.MenuAudioP()
+	var __ = get_tree().change_scene("res://Scene/MainMenu.tscn")
+func _on_home_button_mouse_entered():
+	set_process_input(false)
+func _on_home_button_mouse_exited():
+	set_process_input(true)
+
+func _on_turntable_button_mouse_entered():
+	set_process_input(false)
+func _on_bass_button_mouse_entered():
+	set_process_input(false)
+func _on_drum_button_mouse_entered():
+	set_process_input(false)
+func _on_guitar_button_mouse_entered():
+	set_process_input(false)
+
+func _on_turntable_button_mouse_exited():
+	set_process_input(true)
+func _on_bass_button_mouse_exited():
+	set_process_input(true)
+func _on_drum_button_mouse_exited():
+	set_process_input(true)
+func _on_guitar_button_mouse_exited():
+	set_process_input(true)
+
 func random_musical() -> void:
 	var random_index = rand_range(0,musical_selected.size()-1)
 	turntable_selected = musical_selected[random_index]
@@ -283,4 +309,28 @@ func random_musical() -> void:
 	random_index = rand_range(0,musical_selected.size()-1)
 	guitar_selected = musical_selected[random_index]
 	musical_selected.remove(random_index)
-		
+	
+	if turntable_selected:
+		$musical_HBoxContainer/turntable_button.disabled= true
+		$musical_HBoxContainer/bass_button.disabled = false
+		$musical_HBoxContainer/drum_button.disabled = false
+		$musical_HBoxContainer/guitar_button.disabled = false
+		$shoot3d_sound.stream = sound_bgm_shoot[3]
+	elif bass_selected:
+		$musical_HBoxContainer/turntable_button.disabled = false
+		$musical_HBoxContainer/bass_button.disabled = true
+		$musical_HBoxContainer/drum_button.disabled = false
+		$musical_HBoxContainer/guitar_button.disabled = false
+		$shoot3d_sound.stream = sound_bgm_shoot[0]
+	elif drum_selected:
+		$musical_HBoxContainer/turntable_button.disabled = false
+		$musical_HBoxContainer/bass_button.disabled = false
+		$musical_HBoxContainer/drum_button.disabled = true
+		$musical_HBoxContainer/guitar_button.disabled = false
+		$shoot3d_sound.stream = sound_bgm_shoot[1]
+	else:
+		$musical_HBoxContainer/turntable_button.disabled = false
+		$musical_HBoxContainer/bass_button.disabled = false
+		$musical_HBoxContainer/drum_button.disabled = false
+		$musical_HBoxContainer/guitar_button.disabled = true
+		$shoot3d_sound.stream = sound_bgm_shoot[2]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://Scene/shoot3d/shoot3d_mix.gd" type="Script" id=1]
 [ext_resource path="res://Sound/sfx_turntable2.ogg" type="AudioStream" id=2]
@@ -31,6 +31,10 @@
 [ext_resource path="res://Image/MusicalDrum.png" type="Texture" id=29]
 [ext_resource path="res://Image/MusicalTurntable.png" type="Texture" id=30]
 [ext_resource path="res://Image/MusicalBass.png" type="Texture" id=31]
+[ext_resource path="res://Sound/bgm_shoot3d_turntalble.mp3" type="AudioStream" id=32]
+[ext_resource path="res://Sound/bgm_shoot3d_bass.mp3" type="AudioStream" id=33]
+[ext_resource path="res://Sound/bgm_shoot3d_guitar.mp3" type="AudioStream" id=34]
+[ext_resource path="res://Sound/bgm_shoot3d_drum.mp3" type="AudioStream" id=35]
 
 [sub_resource type="ProceduralSky" id=1]
 
@@ -60,6 +64,7 @@ sound_efx_ichuen = [ ExtResource( 3 ), ExtResource( 2 ), ExtResource( 4 ), ExtRe
 sound_efx_mno = [ ExtResource( 19 ), ExtResource( 21 ), ExtResource( 20 ), ExtResource( 16 ), ExtResource( 22 ) ]
 sound_efx_olay = [ ExtResource( 14 ), ExtResource( 13 ), ExtResource( 17 ), ExtResource( 15 ), ExtResource( 18 ) ]
 sound_efx_speng = [ ExtResource( 25 ), ExtResource( 27 ), ExtResource( 23 ), ExtResource( 26 ), ExtResource( 24 ) ]
+sound_bgm_shoot = [ ExtResource( 33 ), ExtResource( 35 ), ExtResource( 34 ), ExtResource( 32 ) ]
 
 [node name="Camera" type="Camera" parent="."]
 
@@ -183,10 +188,20 @@ margin_bottom = 97.0
 icon = ExtResource( 28 )
 flat = true
 
+[node name="shoot3d_sound" type="AudioStreamPlayer" parent="."]
+
 [connection signal="mouse_entered" from="home_button" to="." method="_on_home_button_mouse_entered"]
 [connection signal="mouse_exited" from="home_button" to="." method="_on_home_button_mouse_exited"]
 [connection signal="pressed" from="home_button" to="." method="_on_home_button_pressed"]
+[connection signal="mouse_entered" from="musical_HBoxContainer/turntable_button" to="." method="_on_turntable_button_mouse_entered"]
+[connection signal="mouse_exited" from="musical_HBoxContainer/turntable_button" to="." method="_on_turntable_button_mouse_exited"]
 [connection signal="pressed" from="musical_HBoxContainer/turntable_button" to="." method="_on_turntable_button_pressed"]
+[connection signal="mouse_entered" from="musical_HBoxContainer/bass_button" to="." method="_on_bass_button_mouse_entered"]
+[connection signal="mouse_exited" from="musical_HBoxContainer/bass_button" to="." method="_on_bass_button_mouse_exited"]
 [connection signal="pressed" from="musical_HBoxContainer/bass_button" to="." method="_on_bass_button_pressed"]
+[connection signal="mouse_entered" from="musical_HBoxContainer/drum_button" to="." method="_on_drum_button_mouse_entered"]
+[connection signal="mouse_exited" from="musical_HBoxContainer/drum_button" to="." method="_on_drum_button_mouse_exited"]
 [connection signal="pressed" from="musical_HBoxContainer/drum_button" to="." method="_on_drum_button_pressed"]
+[connection signal="mouse_entered" from="musical_HBoxContainer/guitar_button" to="." method="_on_guitar_button_mouse_entered"]
+[connection signal="mouse_exited" from="musical_HBoxContainer/guitar_button" to="." method="_on_guitar_button_mouse_exited"]
 [connection signal="pressed" from="musical_HBoxContainer/guitar_button" to="." method="_on_guitar_button_pressed"]
