@@ -33,10 +33,10 @@ var animation_speng:AnimationPlayer
 var sfx_speng:AudioStreamPlayer
 var paticle_speng:CPUParticles
 
-export (Array,AudioStreamOGGVorbis) var sound_efx_ichuen = []
-export (Array,AudioStreamOGGVorbis) var sound_efx_mno = []
-export (Array,AudioStreamOGGVorbis) var sound_efx_olay = []
-export (Array,AudioStreamOGGVorbis) var sound_efx_speng = []
+export (Array,AudioStreamOGGVorbis) var sound_sfx_ichuen = []
+export (Array,AudioStreamOGGVorbis) var sound_sfx_mno = []
+export (Array,AudioStreamOGGVorbis) var sound_sfx_olay = []
+export (Array,AudioStreamOGGVorbis) var sound_sfx_speng = []
 
 export (Array,AudioStreamMP3) var sound_bgm_shoot = []
 
@@ -58,13 +58,13 @@ func _ready():
 	random_musical()
 	$shoot3d_sound.play()
 	
-func _process(delta):
+func _process(_delta):
 	$score_vbox/ClickMno.text=str(Global.save_dict["mno_scores"])
 	$score_vbox/ClickOlay.text=str(Global.save_dict["olay_scores"])
 	$score_vbox/ClickIchuen.text=str(Global.save_dict["ichuen_scores"])
 	$score_vbox/ClickSpeng.text=str(Global.save_dict["speng_scores"])
 	
-func _physics_process(delta):
+func _physics_process(_delta):
 	if is_instance_valid(rigidbody_turntable):
 		if rigidbody_turntable.global_transform.origin.z < -20:
 			rigidbody_turntable.queue_free()
@@ -135,7 +135,7 @@ func _on_player_ichuen_head_body_entered(body):
 		Global.save_dict["ichuen_scores"]+=1
 		paticle_ichuen.emitting = true
 		animation_ichuen.play("head_rotation")
-		sfx_ichuen.stream = sound_efx_ichuen[rand_range(0,sound_efx_ichuen.size())]
+		sfx_ichuen.stream = sound_sfx_ichuen[rand_range(0,sound_sfx_ichuen.size())]
 		sfx_ichuen.play()
 		
 func _on_player_mno_head_body_entered(body):
@@ -143,7 +143,7 @@ func _on_player_mno_head_body_entered(body):
 		Global.save_dict["mno_scores"]+=1
 		paticle_mno.emitting = true
 		animation_mno.play("head_rotation")
-		sfx_mno.stream = sound_efx_mno[rand_range(0,sound_efx_mno.size())]
+		sfx_mno.stream = sound_sfx_mno[rand_range(0,sound_sfx_mno.size())]
 		sfx_mno.play()
 		
 func _on_player_olay_head_body_entered(body):
@@ -151,7 +151,7 @@ func _on_player_olay_head_body_entered(body):
 		Global.save_dict["olay_scores"]+=1
 		paticle_olay.emitting = true
 		animation_olay.play("head_rotation")
-		sfx_olay.stream = sound_efx_olay[rand_range(0,sound_efx_olay.size())]
+		sfx_olay.stream = sound_sfx_olay[rand_range(0,sound_sfx_olay.size())]
 		sfx_olay.play()
 		
 func _on_player_speng_head_body_entered(body):
@@ -159,7 +159,7 @@ func _on_player_speng_head_body_entered(body):
 		Global.save_dict["speng_scores"]+=1
 		paticle_speng.emitting = true
 		animation_speng.play("head_rotation")
-		sfx_speng.stream = sound_efx_speng[rand_range(0,sound_efx_speng.size())]
+		sfx_speng.stream = sound_sfx_speng[rand_range(0,sound_sfx_speng.size())]
 		sfx_speng.play()
 
 func _on_AnimationPlayer_ichuen(_anim_name):
@@ -178,7 +178,7 @@ func _on_AnimationPlayer_speng(_anim_name):
 	paticle_speng.emitting = false
 	animation_speng.play("idle")
 
-func _input(event):
+func _input(_event):
 	var mouse_pos = get_viewport().get_mouse_position()
 	var origin = $Camera.project_ray_origin(mouse_pos)
 	var end = origin + $Camera.project_ray_normal(mouse_pos) * 3
@@ -188,8 +188,9 @@ func _input(event):
 		add_child(rigidbody_turntable)
 		var forward = rigidbody_turntable.get_global_transform().basis.z
 		forward*=-1
-		rigidbody_turntable.apply_central_impulse(forward*shoot_power)
 		rigidbody_turntable.orthonormalize()
+		rigidbody_turntable.apply_central_impulse(forward*shoot_power)
+		
 		
 	if Input.is_action_just_pressed("ui_click") and bass_selected:
 		rigidbody_bass = rigidbody_bass_c.instance()
@@ -229,6 +230,7 @@ func _on_turntable_button_pressed():
 	guitar_selected = false
 	$shoot3d_sound.stream = sound_bgm_shoot[3]
 	$shoot3d_sound.play()
+	$WorldEnvironment.environment.background_sky.sky_top_color = Color(0.41,0.05,0.58,1)
 
 func _on_bass_button_pressed():
 	$musical_HBoxContainer/turntable_button.disabled = false
@@ -241,6 +243,7 @@ func _on_bass_button_pressed():
 	guitar_selected = false
 	$shoot3d_sound.stream = sound_bgm_shoot[0]
 	$shoot3d_sound.play()
+	$WorldEnvironment.environment.background_sky.sky_top_color = Color(1,0.51,0,1)
 
 func _on_drum_button_pressed():
 	$musical_HBoxContainer/turntable_button.disabled = false
@@ -253,6 +256,7 @@ func _on_drum_button_pressed():
 	guitar_selected = false
 	$shoot3d_sound.stream = sound_bgm_shoot[1]
 	$shoot3d_sound.play()
+	$WorldEnvironment.environment.background_sky.sky_top_color = Color(0,0.46,1,1)
 
 func _on_guitar_button_pressed():
 	$musical_HBoxContainer/turntable_button.disabled = false
@@ -265,6 +269,7 @@ func _on_guitar_button_pressed():
 	guitar_selected = true
 	$shoot3d_sound.stream = sound_bgm_shoot[2]
 	$shoot3d_sound.play()
+	$WorldEnvironment.environment.background_sky.sky_top_color = Color(0.95,1,0,1)
 		
 func _on_home_button_pressed():
 	Global.HomeAudioPlay()
@@ -316,21 +321,25 @@ func random_musical() -> void:
 		$musical_HBoxContainer/drum_button.disabled = false
 		$musical_HBoxContainer/guitar_button.disabled = false
 		$shoot3d_sound.stream = sound_bgm_shoot[3]
+		$WorldEnvironment.environment.background_sky.sky_top_color = Color(0.41,0.05,0.58,1)
 	elif bass_selected:
 		$musical_HBoxContainer/turntable_button.disabled = false
 		$musical_HBoxContainer/bass_button.disabled = true
 		$musical_HBoxContainer/drum_button.disabled = false
 		$musical_HBoxContainer/guitar_button.disabled = false
 		$shoot3d_sound.stream = sound_bgm_shoot[0]
+		$WorldEnvironment.environment.background_sky.sky_top_color = Color(1,0.51,0,1)
 	elif drum_selected:
 		$musical_HBoxContainer/turntable_button.disabled = false
 		$musical_HBoxContainer/bass_button.disabled = false
 		$musical_HBoxContainer/drum_button.disabled = true
 		$musical_HBoxContainer/guitar_button.disabled = false
 		$shoot3d_sound.stream = sound_bgm_shoot[1]
+		$WorldEnvironment.environment.background_sky.sky_top_color = Color(0,0.46,1,1)
 	else:
 		$musical_HBoxContainer/turntable_button.disabled = false
 		$musical_HBoxContainer/bass_button.disabled = false
 		$musical_HBoxContainer/drum_button.disabled = false
 		$musical_HBoxContainer/guitar_button.disabled = true
 		$shoot3d_sound.stream = sound_bgm_shoot[2]
+		$WorldEnvironment.environment.background_sky.sky_top_color = Color(0.95,1,0,1)
