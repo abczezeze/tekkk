@@ -69,18 +69,39 @@ func _physics_process(_delta):
 		if rigidbody_turntable.global_transform.origin.z < -20:
 			rigidbody_turntable.queue_free()
 
-	if player_ichuen_head_rigid.translation.y < -10 or player_ichuen_head_rigid.translation.z < -20 or player_ichuen_head_rigid.translation.x>=3 or player_ichuen_head_rigid.translation.x<=-3:
+	var ichuen_check_y = player_ichuen_head_rigid.translation.y < -10
+	var ichuen_check_z = player_ichuen_head_rigid.translation.z < -20
+	var ichuen_check_x_more = player_ichuen_head_rigid.translation.x>=3
+	var ichuen_check_x_less = player_ichuen_head_rigid.translation.x<=-3
+	if ichuen_check_y or ichuen_check_z or ichuen_check_x_more or ichuen_check_x_less:
 		player_ichuen_head_rigid.queue_free()
 		new_player_ichuen_head_rigid()
-	if player_mno_head_rigid.translation.y < -10 or player_mno_head_rigid.translation.z < -20 or player_mno_head_rigid.translation.x>=3 or player_mno_head_rigid.translation.x<=-3:
+		
+	var mno_check_y = player_mno_head_rigid.translation.y < -10
+	var mno_check_z = player_mno_head_rigid.translation.z < -20
+	var mno_check_x_more = player_mno_head_rigid.translation.x>=3
+	var mno_check_x_less = player_mno_head_rigid.translation.x<=-3
+	if mno_check_y or mno_check_z or mno_check_x_more or mno_check_x_less:
 		player_mno_head_rigid.queue_free()
 		new_player_mno_head_rigid()
-	if player_olay_head_rigid.translation.y < -10 or player_olay_head_rigid.translation.z < -20 or player_olay_head_rigid.translation.x>=3 or player_olay_head_rigid.translation.x<=-3:
+		
+	var olay_check_y = player_olay_head_rigid.translation.y < -10
+	var olay_check_z = player_olay_head_rigid.translation.z < -20
+	var olay_check_x_more = player_olay_head_rigid.translation.x>=3
+	var olay_check_x_less = player_olay_head_rigid.translation.x<=-3
+	if olay_check_y or olay_check_z or olay_check_x_more or olay_check_x_less:
 		player_olay_head_rigid.queue_free()
 		new_player_olay_head_rigid()
-	if player_speng_head_rigid.translation.y < -10 or player_speng_head_rigid.translation.z < -20 or player_speng_head_rigid.translation.x>=3 or player_speng_head_rigid.translation.x<=-3:
+		
+	var speng_check_y = player_speng_head_rigid.translation.y < -10
+	var speng_check_z = player_speng_head_rigid.translation.z < -20
+	var speng_check_x_more = player_speng_head_rigid.translation.x>=3
+	var speng_check_x_less = player_speng_head_rigid.translation.x<=-3
+	if speng_check_y or speng_check_z or speng_check_x_more or speng_check_x_less:
 		player_speng_head_rigid.queue_free()
 		new_player_speng_head_rigid()
+		
+	
 	
 func new_player_ichuen_head_rigid():
 	player_ichuen_head_rigid = player_ichuen_head_rigid_c.instance()
@@ -181,20 +202,23 @@ func _on_AnimationPlayer_speng(_anim_name):
 func _input(_event):
 	var mouse_pos = get_viewport().get_mouse_position()
 	var origin = $Camera.project_ray_origin(mouse_pos)
-	var end = origin + $Camera.project_ray_normal(mouse_pos) * 3
+	var end = $Camera.project_ray_normal(mouse_pos)
 	if Input.is_action_just_pressed("ui_click") and turntable_selected:
+		var depth = origin.distance_to(player_ichuen_head_rigid.global_transform.origin)
+		var final_pos = origin + end * depth
 		rigidbody_turntable = rigidbody_turntable_c.instance()
-		rigidbody_turntable.global_transform.origin = end
+		rigidbody_turntable.global_transform.origin = final_pos
 		add_child(rigidbody_turntable)
 		var forward = rigidbody_turntable.get_global_transform().basis.z
 		forward*=-1
 		rigidbody_turntable.orthonormalize()
 		rigidbody_turntable.apply_central_impulse(forward*shoot_power)
 		
-		
 	if Input.is_action_just_pressed("ui_click") and bass_selected:
+		var depth = origin.distance_to(player_mno_head_rigid.global_transform.origin)
+		var final_pos = origin + end * depth
 		rigidbody_bass = rigidbody_bass_c.instance()
-		rigidbody_bass.global_transform.origin = end
+		rigidbody_bass.global_transform.origin = final_pos
 		add_child(rigidbody_bass)
 		var forward = rigidbody_bass.get_global_transform().basis.z
 		forward*=-1
@@ -202,8 +226,10 @@ func _input(_event):
 		rigidbody_bass.orthonormalize()
 		
 	if Input.is_action_just_pressed("ui_click") and drum_selected:
+		var depth = origin.distance_to(player_olay_head_rigid.global_transform.origin)
+		var final_pos = origin + end * depth
 		rigidbody_drum = rigidbody_drum_c.instance()
-		rigidbody_drum.global_transform.origin = end
+		rigidbody_drum.global_transform.origin = final_pos
 		add_child(rigidbody_drum)
 		var forward = rigidbody_drum.get_global_transform().basis.z
 		forward*=-1
@@ -211,8 +237,10 @@ func _input(_event):
 		rigidbody_drum.orthonormalize()
 		
 	if Input.is_action_just_pressed("ui_click") and guitar_selected:
+		var depth = origin.distance_to(player_speng_head_rigid.global_transform.origin)
+		var final_pos = origin + end * depth
 		rigidbody_guitar = rigidbody_guitar_c.instance()
-		rigidbody_guitar.global_transform.origin = end
+		rigidbody_guitar.global_transform.origin = final_pos
 		add_child(rigidbody_guitar)
 		var forward = rigidbody_guitar.get_global_transform().basis.z
 		forward*=-1
