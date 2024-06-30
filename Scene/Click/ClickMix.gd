@@ -2,12 +2,11 @@ extends Node2D
 
 var total_scores = 0
 export (Array, Texture) var sprite_textures = []
-onready var aa = Area2D
 
 func _ready():
 	Global.FloatingPlay()
 	$clickScene.texture = sprite_textures[rand_range(1.0,4.0)]
-	$AnimationPlayer.play("scaleSprite")
+	$clickScene/AnimationPlayer.play("scaleSprite")
 	$bg.modulate = Color(rand_range(0.0,1.0),rand_range(0.0,1.0),rand_range(0.0,1.0))
 	
 	
