@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://model/player_ichuen_head/SkinHead1_001.material" type="Material" id=1]
 [ext_resource path="res://model/player_ichuen_head/EyEin1_001.material" type="Material" id=2]
@@ -116,6 +116,19 @@ surfaces/7 = {
 radius = 0.221
 height = 0.035
 
+[sub_resource type="Animation" id=8]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/path = NodePath(".:translation:z")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( -5, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+
 [sub_resource type="Animation" id=4]
 resource_name = "head_rotation"
 length = 0.5
@@ -130,6 +143,16 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector3( 0, 0, 0 ), Vector3( 0, 360, 0 ) ]
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath(".:translation:z")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( -7, -0.25, 0, 0.25, 0, -12, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
 }
 
 [sub_resource type="Animation" id=5]
@@ -162,6 +185,7 @@ tracks/1/keys = {
 }
 
 [node name="player_ichuen_head_rigid" type="RigidBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5 )
 gravity_scale = 0.1
 contacts_reported = 1
 contact_monitor = true
@@ -188,6 +212,7 @@ transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0
 shape = SubResource( 7 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 8 )
 anims/head_rotation = SubResource( 4 )
 anims/idle = SubResource( 5 )
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://model/musical_guitar/musical_guitar.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://model/player_speng_head/UleEyeball.material" type="Material" id=3]
@@ -103,6 +103,19 @@ surfaces/6 = {
 radius = 0.238
 height = 0.015
 
+[sub_resource type="Animation" id=6]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/path = NodePath(".:translation:z")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( -12, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+
 [sub_resource type="Animation" id=5]
 resource_name = "head_rotation"
 length = 0.5
@@ -117,6 +130,16 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector3( 0, 0, 0 ), Vector3( 0, 360, 0 ) ]
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath(".:translation:z")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( -7, -0.25, 0, 0.25, 0, -12, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
 }
 
 [sub_resource type="Animation" id=4]
@@ -149,9 +172,12 @@ tracks/1/keys = {
 }
 
 [node name="player_speng_head_rigid" type="RigidBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12 )
+gravity_scale = 0.1
+contacts_reported = 1
+contact_monitor = true
 
 [node name="SpeangBody" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 0, 0 )
 mesh = SubResource( 1 )
 blend_shapes/blink = 0.0
 blend_shapes/eyebrow = 0.0
@@ -172,6 +198,7 @@ transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.03
 shape = SubResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 6 )
 anims/head_rotation = SubResource( 5 )
 anims/idle = SubResource( 4 )
 
