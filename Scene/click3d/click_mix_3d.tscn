@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://Scene/click3d/player_ichuen_head_3d.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scene/click3d/click_mix_3d.gd" type="Script" id=2]
@@ -30,6 +30,10 @@
 [ext_resource path="res://Sound/sfx_drum3.ogg" type="AudioStream" id=28]
 [ext_resource path="res://Sound/sfx_drum1.ogg" type="AudioStream" id=29]
 [ext_resource path="res://Image/gui_arrow01nomal.png" type="Texture" id=30]
+[ext_resource path="res://Image/player_Head_Speng.png" type="Texture" id=31]
+[ext_resource path="res://Image/player_Head_olayzzz.png" type="Texture" id=32]
+[ext_resource path="res://Image/player_Head_Ichuen.png" type="Texture" id=33]
+[ext_resource path="res://Image/player_Head_mno.png" type="Texture" id=34]
 
 [sub_resource type="ProceduralSky" id=1]
 sky_top_color = Color( 1, 0, 0, 1 )
@@ -38,12 +42,59 @@ sky_top_color = Color( 1, 0, 0, 1 )
 background_mode = 2
 background_sky = SubResource( 1 )
 
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("clickScene:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 3, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("clickScene:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 3, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "scaleSprite"
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("clickScene:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 3, -0.25, 0, 0.25, 0, 1e-05, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("clickScene:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 3, -0.25, 0, 0.25, 0, 1e-05, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+
 [node name="click_mix_3d" type="Spatial"]
 script = ExtResource( 2 )
 sound_efx_speng = [ ExtResource( 14 ), ExtResource( 11 ), ExtResource( 13 ), ExtResource( 12 ), ExtResource( 10 ) ]
 sound_efx_ichuen = [ ExtResource( 18 ), ExtResource( 17 ), ExtResource( 15 ), ExtResource( 19 ), ExtResource( 16 ) ]
 sound_efx_mno = [ ExtResource( 24 ), ExtResource( 23 ), ExtResource( 22 ), ExtResource( 21 ), ExtResource( 20 ) ]
 sound_efx_olay = [ ExtResource( 29 ), ExtResource( 26 ), ExtResource( 28 ), ExtResource( 25 ), ExtResource( 27 ) ]
+sprite_textures = [ ExtResource( 34 ), ExtResource( 31 ), ExtResource( 33 ), ExtResource( 32 ) ]
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6 )
@@ -103,6 +154,16 @@ texture_normal = ExtResource( 30 )
 texture_pressed = ExtResource( 7 )
 texture_disabled = ExtResource( 9 )
 flip_v = true
+
+[node name="clickScene" type="Sprite" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 540, 960 )
+scale = Vector2( 3, 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="clickScene"]
+root_node = NodePath("../..")
+anims/RESET = SubResource( 3 )
+anims/scaleSprite = SubResource( 4 )
 
 [connection signal="pressed" from="HomeBT" to="." method="_on_HomeBT_pressed"]
 [connection signal="pressed" from="VBoxContainer/TextureButton_up" to="." method="_on_TextureButton_up_pressed"]

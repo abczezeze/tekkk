@@ -18,6 +18,8 @@ var move_speed_olay:float = 1
 var clicked_olay:bool = false
 export (Array,AudioStreamOGGVorbis) var sound_efx_olay = []
 
+export (Array, Texture) var sprite_textures = []
+
 func _ready():
 	$player_speng_head/AnimationPlayer.play("idle")
 	$player_speng_head/Label3D.text = str(Global.save_dict["speng_scores"])
@@ -25,6 +27,8 @@ func _ready():
 	var __0 = $player_speng_head.connect("input_event",self,"_on_player_speng_head_input_event")
 	var __1 = $player_speng_head/AnimationPlayer.connect("animation_finished",self,"_on_AnimationPlayer_speng")
 	var __2 = $player_speng_head/Timer.connect("timeout",self,"_on_Timer_timeout")
+	$clickScene.texture = sprite_textures[rand_range(1.0,4.0)]
+	$clickScene/AnimationPlayer.play("scaleSprite")
 	
 	$player_ichuen_head/AnimationPlayer.play("idle")
 	dir_x_ichuen = rand_range(-1,1)
