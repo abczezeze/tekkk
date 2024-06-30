@@ -49,6 +49,8 @@ var musical_selected:Array = [true,false,false,false]
 var mouse_positon:Vector2 = Vector2()
 var shoot_power:int = 60
 
+export (Array, Texture) var sprite_textures = []
+
 func _ready():
 	new_player_ichuen_head_rigid()
 	new_player_mno_head_rigid()
@@ -57,6 +59,9 @@ func _ready():
 	
 	random_musical()
 	$shoot3d_sound.play()
+	
+	$swipeScene.texture = sprite_textures[rand_range(1.0,4.0)]
+	$swipeScene/AnimationPlayer.play("scaleMusical")
 	
 func _process(_delta):
 	$score_vbox/ClickMno.text=str(Global.save_dict["mno_scores"])

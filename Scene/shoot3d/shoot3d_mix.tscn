@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://Scene/shoot3d/shoot3d_mix.gd" type="Script" id=1]
 [ext_resource path="res://Sound/sfx_turntable2.ogg" type="AudioStream" id=2]
@@ -22,7 +22,6 @@
 [ext_resource path="res://Sound/sfx_bass3.ogg" type="AudioStream" id=20]
 [ext_resource path="res://Sound/sfx_bass2.ogg" type="AudioStream" id=21]
 [ext_resource path="res://Sound/sfx_bass5.ogg" type="AudioStream" id=22]
-[ext_resource path="res://Sound/sfx_guitar3.ogg" type="AudioStream" id=23]
 [ext_resource path="res://Sound/sfx_guitar5.ogg" type="AudioStream" id=24]
 [ext_resource path="res://Sound/sfx_guitar1.ogg" type="AudioStream" id=25]
 [ext_resource path="res://Sound/sfx_guitar4.ogg" type="AudioStream" id=26]
@@ -58,13 +57,60 @@ font_data = ExtResource( 11 )
 size = 55
 font_data = ExtResource( 11 )
 
+[sub_resource type="Animation" id=7]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/path = NodePath(".:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath(".:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "scaleMusical"
+tracks/0/type = "bezier"
+tracks/0/path = NodePath(".:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 5, -0.25, 0, 0.25, 0, 1e-05, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath(".:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 5, -0.25, 0, 0.25, 0, 1e-05, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+
 [node name="shoot3d_mix" type="Spatial"]
 script = ExtResource( 1 )
-sound_efx_ichuen = [ ExtResource( 3 ), ExtResource( 2 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 5 ) ]
-sound_efx_mno = [ ExtResource( 19 ), ExtResource( 21 ), ExtResource( 20 ), ExtResource( 16 ), ExtResource( 22 ) ]
-sound_efx_olay = [ ExtResource( 14 ), ExtResource( 13 ), ExtResource( 17 ), ExtResource( 15 ), ExtResource( 18 ) ]
-sound_efx_speng = [ ExtResource( 25 ), ExtResource( 27 ), ExtResource( 23 ), ExtResource( 26 ), ExtResource( 24 ) ]
+sound_sfx_ichuen = [ ExtResource( 3 ), ExtResource( 2 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 5 ) ]
+sound_sfx_mno = [ ExtResource( 19 ), ExtResource( 21 ), ExtResource( 20 ), ExtResource( 16 ), ExtResource( 22 ) ]
+sound_sfx_olay = [ ExtResource( 14 ), ExtResource( 13 ), ExtResource( 17 ), ExtResource( 15 ), ExtResource( 18 ) ]
+sound_sfx_speng = [ ExtResource( 25 ), ExtResource( 27 ), ExtResource( 17 ), ExtResource( 26 ), ExtResource( 24 ) ]
 sound_bgm_shoot = [ ExtResource( 33 ), ExtResource( 35 ), ExtResource( 34 ), ExtResource( 32 ) ]
+sprite_textures = [ ExtResource( 31 ), ExtResource( 29 ), ExtResource( 28 ), ExtResource( 30 ) ]
 
 [node name="Camera" type="Camera" parent="."]
 
@@ -189,6 +235,14 @@ icon = ExtResource( 28 )
 flat = true
 
 [node name="shoot3d_sound" type="AudioStreamPlayer" parent="."]
+
+[node name="swipeScene" type="Sprite" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 540, 960 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="swipeScene"]
+anims/RESET = SubResource( 7 )
+anims/scaleMusical = SubResource( 8 )
 
 [connection signal="mouse_entered" from="home_button" to="." method="_on_home_button_mouse_entered"]
 [connection signal="mouse_exited" from="home_button" to="." method="_on_home_button_mouse_exited"]
