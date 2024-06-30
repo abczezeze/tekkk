@@ -47,9 +47,12 @@ var guitar_selected:bool = false
 var musical_selected:Array = [true,false,false,false]
 
 var mouse_positon:Vector2 = Vector2()
-var shoot_power:int = 60
+var shoot_power:int = 50
 
 export (Array, Texture) var sprite_textures = []
+
+const KILL_TIMER = 10
+var timer = 0
 
 func _ready():
 	new_player_ichuen_head_rigid()
@@ -69,10 +72,28 @@ func _process(_delta):
 	$score_vbox/ClickIchuen.text=str(Global.save_dict["ichuen_scores"])
 	$score_vbox/ClickSpeng.text=str(Global.save_dict["speng_scores"])
 	
-func _physics_process(_delta):
+func _physics_process(delta):
+#	if is_instance_valid(rigidbody_turntable):
+#		if rigidbody_turntable.global_transform.origin.z < -20:
+#			rigidbody_turntable.queue_free()
+			
+	timer += delta
 	if is_instance_valid(rigidbody_turntable):
-		if rigidbody_turntable.global_transform.origin.z < -20:
+		if timer >= KILL_TIMER:
 			rigidbody_turntable.queue_free()
+			timer=0
+	if is_instance_valid(rigidbody_turntable):
+		if timer >= KILL_TIMER:
+			rigidbody_turntable.queue_free()
+			timer=0
+	if is_instance_valid(rigidbody_turntable):
+		if timer >= KILL_TIMER:
+			rigidbody_turntable.queue_free()
+			timer=0
+	if is_instance_valid(rigidbody_turntable):
+		if timer >= KILL_TIMER:
+			rigidbody_turntable.queue_free()
+			timer=0
 
 	var ichuen_check_y = player_ichuen_head_rigid.translation.y < -10
 	var ichuen_check_z = player_ichuen_head_rigid.translation.z < -20
@@ -106,8 +127,6 @@ func _physics_process(_delta):
 		player_speng_head_rigid.queue_free()
 		new_player_speng_head_rigid()
 		
-	
-	
 func new_player_ichuen_head_rigid():
 	player_ichuen_head_rigid = player_ichuen_head_rigid_c.instance()
 	add_child(player_ichuen_head_rigid)
@@ -207,7 +226,7 @@ func _on_AnimationPlayer_speng(_anim_name):
 func _input(_event):
 	var mouse_pos = get_viewport().get_mouse_position()
 	var origin = $Camera.project_ray_origin(mouse_pos)
-	var end = $Camera.project_ray_normal(mouse_pos)
+	var end = origin + $Camera.project_ray_normal(mouse_pos)
 	if Input.is_action_just_pressed("ui_click") and turntable_selected:
 		var depth = origin.distance_to(player_ichuen_head_rigid.global_transform.origin)
 		var final_pos = origin + end * depth
@@ -216,8 +235,8 @@ func _input(_event):
 		add_child(rigidbody_turntable)
 		var forward = rigidbody_turntable.get_global_transform().basis.z
 		forward*=-1
-		rigidbody_turntable.orthonormalize()
 		rigidbody_turntable.apply_central_impulse(forward*shoot_power)
+		rigidbody_turntable.orthonormalize()
 		
 	if Input.is_action_just_pressed("ui_click") and bass_selected:
 		var depth = origin.distance_to(player_mno_head_rigid.global_transform.origin)
