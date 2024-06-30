@@ -31,7 +31,8 @@ func _ready():
 	$OlayRigidBody2D.position.x = rand_range(50,1000)
 	$SpengRigidBody2D.position.x = rand_range(50,1000)
 	$IchuenRigidBody2D.position.x = rand_range(50,1000)
-	$dragScene.texture = sprite_textures[rand_range(1.0,4.0)]
+	$dragScene.visible = true
+	$dragScene.texture = sprite_textures[rand_range(1.0,sprite_textures.size())]
 	$bg.modulate = Color(rand_range(0.0,1.0),rand_range(0.0,1.0),rand_range(0.0,1.0))
 	$dragScene/AnimationPlayer.play("scaleBody")
 	speng_tween_node.interpolate_property(speng_sprite,"position:y",1800,3000,50,Tween.TRANS_EXPO,Tween.EASE_OUT)
@@ -40,15 +41,18 @@ func _ready():
 	speng_tween_node.start()
 	ichuen_tween_node.start()
 	olay_tween_node.start()
+	$player_full_hbox/mno_button.disabled = true
 	
 func _physics_process(_delta):
 	if $MnoRigidBody2D.position.y >= 1860:
 		$MnoRigidBody2D.position.x = rand_range(50,1000)
 		$MnoRigidBody2D.global_position.y = 0
+		$MnoRigidBody2D.position.normalized()
 		
 	if $OlayRigidBody2D.position.y >= 1860:
 		$OlayRigidBody2D.position.x = rand_range(50,1000)
 		$OlayRigidBody2D.global_position.y = 0
+		$OlayRigidBody2D.position.normalized()
 		
 	if $SpengRigidBody2D.position.y >= 1860:
 		$SpengRigidBody2D.position.x = rand_range(50,1000)
@@ -61,6 +65,11 @@ func _physics_process(_delta):
 func _process(_delta):
 	total_scores = Global.save_dict["mno_scores"]+Global.save_dict["olay_scores"]+Global.save_dict["ichuen_scores"]+Global.save_dict["speng_scores"]
 	tekkk_language(Global.tekkk_language)
+	
+	$MnoBodyArea2D/ClickMno.text = str(Global.save_dict["mno_scores"])
+	$SpengBodyArea2D/ClickSpeng.text = str(Global.save_dict["speng_scores"])
+	$OlayBodyArea2D/ClickOlay.text = str(Global.save_dict["olay_scores"])
+	$IchuenBodyArea2D/ClickIchuen.text = str(Global.save_dict["ichuen_scores"])
 
 func _input(event):
 	if selected_ichuen:
@@ -140,6 +149,7 @@ func _on_MnoBodyArea2D_body_entered(body):
 		Global.save_dict["mno_scores"]+=1
 		Global.AccurateAudioPlay()
 		Global.save_game()
+		$MnoRigidBody2D.scale = Vector2(3.0,3.0)
 	else:
 		Global.FailedAudioPlay()
 
@@ -148,6 +158,7 @@ func _on_SpengBodyArea2D_body_entered(body):
 		Global.save_dict["speng_scores"]+=1
 		Global.AccurateAudioPlay()
 		Global.save_game()
+		$SpengRigidBody2D.scale = Vector2(3,3)
 	else:
 		Global.FailedAudioPlay()
 		
@@ -156,6 +167,7 @@ func _on_IchuenArea2D_body_entered(body):
 		Global.save_dict["ichuen_scores"]+=1
 		Global.AccurateAudioPlay()
 		Global.save_game()
+		$IchuenRigidBody2D.scale = Vector2(3,3)
 	else:
 		Global.FailedAudioPlay()
 		
@@ -164,21 +176,14 @@ func _on_OlayBodyArea2D_body_entered(body):
 		Global.save_dict["olay_scores"]+=1
 		Global.AccurateAudioPlay()
 		Global.save_game()
+		$OlayRigidBody2D.scale = Vector2(3,3)
 	else:
 		Global.FailedAudioPlay()
 
 func tekkk_language(language):
 	if language == "En":
-		$VBoxContainer/ClickMno.text="Mno : "+str(Global.save_dict["mno_scores"])
-		$VBoxContainer/ClickOlay.text="Olay : "+str(Global.save_dict["olay_scores"])
-		$VBoxContainer/ClickIchuen.text="Ichuen : "+str(Global.save_dict["ichuen_scores"])
-		$VBoxContainer/ClickSpeng.text="Speng : "+str(Global.save_dict["speng_scores"])
 		$TotalScores.text = "Total : "+str(total_scores)
 	if language == "Th":
-		$VBoxContainer/ClickMno.text="คุณมโน : "+str(Global.save_dict["mno_scores"])
-		$VBoxContainer/ClickOlay.text="คุณโอเล : "+str(Global.save_dict["olay_scores"])
-		$VBoxContainer/ClickIchuen.text="คุณไอชื่น : "+str(Global.save_dict["ichuen_scores"])
-		$VBoxContainer/ClickSpeng.text="คุณสเปง : "+str(Global.save_dict["speng_scores"])
 		$TotalScores.text = "คะแนนรวม : "+str(total_scores)
 
 func _on_Tween_speng_tween_completed(_object, _key):
@@ -191,34 +196,51 @@ func _on_Tween_ichuen_tween_completed(_object, _key):
 	$IchuenBodyArea2D/Tween.stop(ichuen_sprite,"position:y")
 
 #if selected the full img character for drag
-func _on_FullMno_pressed():
+func _on_mno_button_pressed():
 	selected_mno=true
 	$IchuenBodyArea2D.position.y=3000
 	$SpengBodyArea2D.position.y=3000
 	$OlayBodyArea2D.position.y=3000
 	mno_tween_node.interpolate_property(mno_sprite,"position:y",3000,1800,1,Tween.TRANS_EXPO,Tween.EASE_OUT)
 	mno_tween_node.start()
+	$player_full_hbox/speng_button.disabled = false
+	$player_full_hbox/olay_button.disabled = false
+	$player_full_hbox/mno_button.disabled = true
+	$player_full_hbox/ichuen_button.disabled = false
 
-func _on_FulOlay_pressed():
+func _on_olay_button_pressed():
 	selected_olay=true
 	$IchuenBodyArea2D.position.y=3000
 	$SpengBodyArea2D.position.y=3000
 	$MnoBodyArea2D.position.y=3000
 	olay_tween_node.interpolate_property(olay_sprite,"position:y",3000,1800,1,Tween.TRANS_QUART,Tween.EASE_OUT)
 	olay_tween_node.start()
+	$player_full_hbox/speng_button.disabled = false
+	$player_full_hbox/olay_button.disabled = true
+	$player_full_hbox/mno_button.disabled = false
+	$player_full_hbox/ichuen_button.disabled = false
 
-func _on_FullIchuen_pressed():
+func _on_ichuen_button_pressed():
 	selected_ichuen=true
 	$OlayBodyArea2D.position.y=3000
 	$SpengBodyArea2D.position.y=3000
 	$MnoBodyArea2D.position.y=3000
 	ichuen_tween_node.interpolate_property(ichuen_sprite,"position:y",3000,1800,1,Tween.TRANS_QUINT,Tween.EASE_OUT)
 	ichuen_tween_node.start()
+	$player_full_hbox/speng_button.disabled = false
+	$player_full_hbox/olay_button.disabled = false
+	$player_full_hbox/mno_button.disabled = false
+	$player_full_hbox/ichuen_button.disabled = true
 
-func _on_FullSpeng_pressed():
+func _on_speng_button_pressed():
 	selected_speng=true
 	$IchuenBodyArea2D.position.y=3000
 	$OlayBodyArea2D.position.y=3000
 	$MnoBodyArea2D.position.y=3000
 	speng_tween_node.interpolate_property(speng_sprite,"position:y",3000,1800,1,Tween.TRANS_EXPO,Tween.EASE_OUT)
 	speng_tween_node.start()
+	$player_full_hbox/speng_button.disabled = true
+	$player_full_hbox/olay_button.disabled = false
+	$player_full_hbox/mno_button.disabled = false
+	$player_full_hbox/ichuen_button.disabled = false
+	
