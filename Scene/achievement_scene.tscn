@@ -266,6 +266,7 @@ margin_bottom = 308.0
 [node name="TextureProgress" type="TextureProgress" parent="VBoxContainer/bass_bronze_hbox"]
 margin_right = 100.0
 margin_bottom = 100.0
+max_value = 10.0
 texture_under = ExtResource( 10 )
 texture_progress = ExtResource( 9 )
 fill_mode = 3
@@ -277,8 +278,9 @@ margin_bottom = 100.0
 rect_min_size = Vector2( 300, 0 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 custom_fonts/normal_font = SubResource( 3 )
+bbcode_enabled = true
 bbcode_text = "Bass Bronze
-10 bass scores"
+10 mno scores"
 text = "Bass Bronze
 10 mno scores"
 
@@ -311,6 +313,7 @@ margin_bottom = 100.0
 rect_min_size = Vector2( 300, 0 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 custom_fonts/normal_font = SubResource( 3 )
+bbcode_enabled = true
 bbcode_text = "Guitar Bronze
 10 speng scores"
 text = "Guitar Bronze
@@ -368,7 +371,7 @@ margin_bottom = 620.0
 [node name="TextureProgress" type="TextureProgress" parent="VBoxContainer/drum_bronze_hbox"]
 margin_right = 100.0
 margin_bottom = 100.0
-max_value = 5.0
+max_value = 10.0
 texture_under = ExtResource( 14 )
 texture_progress = ExtResource( 15 )
 fill_mode = 3
@@ -382,9 +385,9 @@ custom_colors/default_color = Color( 0, 0, 0, 1 )
 custom_fonts/normal_font = SubResource( 3 )
 bbcode_enabled = true
 bbcode_text = "Drum Bronze
-10 drum scores"
+10 olay scores"
 text = "Drum Bronze
-10 drum scores"
+10 olay scores"
 
 [node name="Label" type="Label" parent="VBoxContainer/drum_bronze_hbox"]
 margin_left = 408.0
