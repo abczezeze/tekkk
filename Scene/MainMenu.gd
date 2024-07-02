@@ -9,15 +9,16 @@ func _ready() -> void:
 		_on_TextureButton_toggled(false)
 	if Global.tekkk_language=="Th":
 		_on_TextureButton_toggled(true)
+		
+	if OS.get_name() == "Web":
+		$VBoxContainer2/level_3d/click_3d.disabled = true
+		$VBoxContainer2/level_3d/drag_3d.disabled = true
+		$VBoxContainer2/level_3d/shoot_3d.disabled = true
 
 func _on_SwipeLb_pressed() -> void:
 	Global.SceneSoundPlay()
 	Global.MenuAudioS()
 	var __ = get_tree().change_scene("res://Scene/Swipe/SwipeMix.tscn")
-
-func _on_DetailBt_pressed() -> void:
-	Global.SceneSoundPlay()
-	var __ = get_tree().change_scene("res://Scene/Detail.tscn")
 
 func _on_ClickLb_pressed() -> void:
 	Global.SceneSoundPlay()
@@ -43,6 +44,11 @@ func _on_shoot_3d_pressed():
 	Global.SceneSoundPlay()
 	Global.MenuAudioS()
 	var __ =  get_tree().change_scene("res://Scene/shoot3d/shoot3d_mix.tscn")
+
+func _on_achievement_button_pressed():
+	Global.SceneSoundPlay()
+	Global.MenuAudioS()
+	var __ =  get_tree().change_scene("res://Scene/achievement_scene.tscn")
 
 func _on_reset_button_pressed() -> void:
 	Global.save_dict["mno_scores"]=0
@@ -70,7 +76,6 @@ func _on_TextureButton_toggled(button_pressed) -> void:
 		$VBoxContainer2/level_3d/shoot_3d.text=" ยิง "
 		$VBoxContainer2/OtherLb.text="อื่นๆ"
 		$VBoxContainer2/achievement_button.text="ความสำเร็จ"
-		$VBoxContainer2/DetailBt.text="รายละเอียด"
 		$VBoxContainer2/reset_button.text="เริ่มค่าใหม่!"
 	else:
 		$TextureButton_language.modulate = Color(1,1,1,1)
@@ -85,5 +90,4 @@ func _on_TextureButton_toggled(button_pressed) -> void:
 		$VBoxContainer2/level_3d/shoot_3d.text="shoot"
 		$VBoxContainer2/OtherLb.text="Other"
 		$VBoxContainer2/achievement_button.text="Achievement"
-		$VBoxContainer2/DetailBt.text="Detail"
 		$VBoxContainer2/reset_button.text="RESET!"

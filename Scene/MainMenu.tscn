@@ -291,18 +291,11 @@ margin_bottom = 492.0
 custom_fonts/font = SubResource( 27 )
 text = "Achievement"
 
-[node name="DetailBt" type="Button" parent="VBoxContainer2"]
-margin_top = 496.0
-margin_right = 375.0
-margin_bottom = 596.0
-custom_fonts/font = SubResource( 13 )
-text = "Detail"
-
 [node name="reset_button" type="Button" parent="VBoxContainer2"]
 modulate = Color( 0.698039, 0.211765, 0.211765, 1 )
-margin_top = 600.0
+margin_top = 496.0
 margin_right = 375.0
-margin_bottom = 694.0
+margin_bottom = 590.0
 mouse_default_cursor_shape = 8
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 13 )
@@ -341,6 +334,6 @@ texture = ExtResource( 1 )
 [connection signal="pressed" from="VBoxContainer2/level_3d/click_3d" to="." method="_on_click_3d_pressed"]
 [connection signal="pressed" from="VBoxContainer2/level_3d/drag_3d" to="." method="_on_drag_3d_pressed"]
 [connection signal="pressed" from="VBoxContainer2/level_3d/shoot_3d" to="." method="_on_shoot_3d_pressed"]
-[connection signal="pressed" from="VBoxContainer2/DetailBt" to="." method="_on_DetailBt_pressed"]
+[connection signal="pressed" from="VBoxContainer2/achievement_button" to="." method="_on_achievement_button_pressed"]
 [connection signal="pressed" from="VBoxContainer2/reset_button" to="." method="_on_reset_button_pressed"]
 [connection signal="toggled" from="TextureButton_language" to="." method="_on_TextureButton_toggled"]
