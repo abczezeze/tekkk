@@ -1,0 +1,193 @@
+[gd_scene load_steps=24 format=2]
+
+[ext_resource path="res://Image/bg1080x1920.jpg" type="Texture" id=1]
+[ext_resource path="res://Scene/ Detail.gd" type="Script" id=2]
+[ext_resource path="res://Image/gui_home.png" type="Texture" id=3]
+[ext_resource path="res://Font/SanamDeklen_chaya.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Image/musical_consert_black.png" type="Texture" id=5]
+[ext_resource path="res://Image/musical_consert_color.png" type="Texture" id=6]
+[ext_resource path="res://Image/player_Head_Ichuen.png" type="Texture" id=7]
+[ext_resource path="res://Image/player_Head_mno.png" type="Texture" id=8]
+[ext_resource path="res://Image/player_Head_Speng.png" type="Texture" id=9]
+[ext_resource path="res://Image/player_Head_olayzzz.png" type="Texture" id=10]
+[ext_resource path="res://Image/player_fullz-mno.png" type="Texture" id=11]
+[ext_resource path="res://Image/player_fullz-ichuen_black.png" type="Texture" id=12]
+[ext_resource path="res://Image/player_fullz-speng.png" type="Texture" id=13]
+[ext_resource path="res://Image/player_fullz-speng_black.png" type="Texture" id=14]
+[ext_resource path="res://Image/player_fullz-ichuen.png" type="Texture" id=15]
+[ext_resource path="res://Image/player_fullz-olay.png" type="Texture" id=16]
+[ext_resource path="res://Image/player_fullz-mno_black.png" type="Texture" id=17]
+[ext_resource path="res://Image/player_fullz-olay_black.png" type="Texture" id=18]
+
+[sub_resource type="DynamicFont" id=5]
+size = 55
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=1]
+size = 55
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 55
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 55
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 55
+font_data = ExtResource( 4 )
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 635, 897 )
+script = ExtResource( 2 )
+
+[node name="bg" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+centered = false
+
+[node name="Button" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 1.025
+anchor_right = 0.5
+anchor_bottom = 1.05
+margin_left = -70.0
+margin_top = -134.0
+margin_right = 70.0
+rect_scale = Vector2( 0.5, 0.5 )
+icon = ExtResource( 3 )
+flat = true
+
+[node name="TextureProgress_musical_consert" type="TextureProgress" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -361.0
+margin_top = -556.0
+margin_right = 384.0
+margin_bottom = 60.0
+texture_under = ExtResource( 5 )
+texture_progress = ExtResource( 6 )
+fill_mode = 3
+
+[node name="TextureProgress_mno" type="TextureProgress" parent="."]
+margin_left = 314.0
+margin_top = 1181.0
+margin_right = 552.0
+margin_bottom = 1734.0
+texture_under = ExtResource( 17 )
+texture_progress = ExtResource( 11 )
+fill_mode = 3
+
+[node name="TextureProgress_olay" type="TextureProgress" parent="."]
+margin_left = 63.0
+margin_top = 1209.0
+margin_right = 294.0
+margin_bottom = 1733.0
+texture_under = ExtResource( 18 )
+texture_progress = ExtResource( 16 )
+fill_mode = 3
+
+[node name="TextureProgress_speng" type="TextureProgress" parent="."]
+margin_left = 591.0
+margin_top = 1258.0
+margin_right = 799.0
+margin_bottom = 1728.0
+texture_under = ExtResource( 14 )
+texture_progress = ExtResource( 13 )
+fill_mode = 3
+
+[node name="TextureProgress_ichuen" type="TextureProgress" parent="."]
+margin_left = 865.0
+margin_top = 1251.0
+margin_right = 1029.0
+margin_bottom = 1732.0
+texture_under = ExtResource( 12 )
+texture_progress = ExtResource( 15 )
+fill_mode = 3
+
+[node name="TotalScores" type="Label" parent="."]
+margin_top = 410.0
+margin_right = 350.0
+margin_bottom = 504.0
+custom_colors/font_color = Color( 0.921875, 0.129639, 0.129639, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 5 )
+text = "Total : 0"
+
+[node name="player_head_vbox" type="VBoxContainer" parent="."]
+margin_left = 50.0
+margin_top = 50.0
+margin_right = 400.0
+margin_bottom = 438.0
+
+[node name="PlayerHeadMno" type="Sprite" parent="player_head_vbox"]
+texture = ExtResource( 8 )
+
+[node name="PlayerHeadOlayzzz" type="Sprite" parent="player_head_vbox"]
+position = Vector2( 0, 98 )
+texture = ExtResource( 10 )
+
+[node name="PlayerHeadSpeng" type="Sprite" parent="player_head_vbox"]
+position = Vector2( 0, 196 )
+texture = ExtResource( 9 )
+
+[node name="PlayerHeadIchuen" type="Sprite" parent="player_head_vbox"]
+position = Vector2( 0, 294 )
+texture = ExtResource( 7 )
+
+[node name="score_vbox" type="VBoxContainer" parent="."]
+margin_left = 100.0
+margin_top = 20.0
+margin_right = 450.0
+margin_bottom = 408.0
+
+[node name="ClickMno" type="Label" parent="score_vbox"]
+margin_right = 350.0
+margin_bottom = 94.0
+custom_colors/font_color = Color( 0.878431, 0.537255, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "0"
+
+[node name="ClickOlay" type="Label" parent="score_vbox"]
+margin_top = 98.0
+margin_right = 350.0
+margin_bottom = 192.0
+custom_colors/font_color = Color( 0.419608, 0.498039, 0.988235, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ClickSpeng" type="Label" parent="score_vbox"]
+margin_top = 196.0
+margin_right = 350.0
+margin_bottom = 290.0
+custom_colors/font_color = Color( 0.92549, 0.972549, 0.113725, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ClickIchuen" type="Label" parent="score_vbox"]
+margin_top = 294.0
+margin_right = 350.0
+margin_bottom = 388.0
+custom_colors/font_color = Color( 0.772549, 0, 0.882353, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
