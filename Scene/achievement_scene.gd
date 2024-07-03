@@ -12,6 +12,7 @@ func _ready():
 	$score_vbox/ClickIchuen.text=str(ichuen_scores)
 	$score_vbox/ClickSpeng.text=str(speng_scores)
 	$score_vbox/TotalScores.text=str(total_scores)
+	tekkk_language(Global.tekkk_language)
 
 func _process(_delta):
 #	bronze trophies
@@ -74,3 +75,45 @@ func gold_achieveement(scores:float) -> float:
 func _on_HomeBT_pressed():
 	var __ = get_tree().change_scene("res://Scene/MainMenu.tscn")
 	Global.HomeAudioPlay()
+
+func tekkk_language(language):
+	if language == "En":
+#		bronze
+		$VBoxContainer/yo_hbox/RichTextLabel.bbcode_text = "Yo! JaTuRas\n5 total scores"
+		$VBoxContainer/total_bronze_hbox/RichTextLabel.bbcode_text = "Total Bronze\n10 total scores"
+		$VBoxContainer/bass_bronze_hbox/RichTextLabel.bbcode_text = "Bass Bronze\n10 mno scores"
+		$VBoxContainer/guitar_bronze_hbox/RichTextLabel.bbcode_text = "Guitar Bronze\n10 speng scores"
+		$VBoxContainer/turntable_bronze_hbox/RichTextLabel.bbcode_text = "Turtable Bronze\n10 ichuen scores"
+		$VBoxContainer/drum_bronze_hbox/RichTextLabel.bbcode_text = "Drum Bronze\n10 olay scores"
+#		silver
+		$VBoxContainer/total_silver_hbox/RichTextLabel.bbcode_text = "Total Silver\n100 total scores"
+		$VBoxContainer/mno_silver_hbox/RichTextLabel.bbcode_text = "Mno Silver\n100 mno scores"
+		$VBoxContainer/speng_silver_hbox/RichTextLabel.bbcode_text = "Speng Silver\n100 speng scores"
+		$VBoxContainer/ichuen_silver_hbox/RichTextLabel.bbcode_text = "Ichuen Silver\n100 ichuen scores"
+		$VBoxContainer/olay_silver_hbox/RichTextLabel.bbcode_text = "Olay Silver\n100 olay scores"
+#		gold
+		$VBoxContainer/total_gold_hbox/RichTextLabel.bbcode_text = "Total Gold\n200 total scores"
+		$VBoxContainer/mno_bass_gold_hbox/RichTextLabel.bbcode_text = "Mno Gold\n200 mno scores"
+		$VBoxContainer/speng_guitar_gold_hbox/RichTextLabel.bbcode_text = "Speng Gold\n200 speng scores"
+		$VBoxContainer/ichuen_turntable_gold_hbox/RichTextLabel.bbcode_text = "Ichuen Gold\n200 ichuen scores"
+		$VBoxContainer/olay_drum_gold_hbox/RichTextLabel.bbcode_text = "Olay Gold\n200 olay scores"
+	if language == "Th":
+#		bronze
+		$VBoxContainer/yo_hbox/RichTextLabel.bbcode_text = "โย่ว! จตุรัส\n5คะแนน คะแนนรวม"
+		$VBoxContainer/total_bronze_hbox/RichTextLabel.bbcode_text = "คะแนนรวมถ้วยทองแดง\n10คะแนน-คะแนนรวม"
+		$VBoxContainer/bass_bronze_hbox/RichTextLabel.bbcode_text = "เบสถ้วยทองแดง\n10คะแนน-คุณมะโน"
+		$VBoxContainer/guitar_bronze_hbox/RichTextLabel.bbcode_text = "กีต้าร์ถ้วยทองแดง\n10คะนน-คุณสะเปง"
+		$VBoxContainer/turntable_bronze_hbox/RichTextLabel.bbcode_text = "เครื่องเล่นแผ่นเสียงถ้วยทองแดง\n10คะแนน-คุณไอชื่น"
+		$VBoxContainer/drum_bronze_hbox/RichTextLabel.bbcode_text = "กลองชุดถ้วยทองแดง\n10คะแนน-คุณฌโอเล"
+#		silver
+		$VBoxContainer/total_silver_hbox/RichTextLabel.bbcode_text = "คะแนนรวมถ้วยเงิน\n100คะแนน-คะแนนรวม"
+		$VBoxContainer/mno_silver_hbox/RichTextLabel.bbcode_text = "คุณมะโนถ้วยเงิน\n100คะแนน-คุณมะโน"
+		$VBoxContainer/speng_silver_hbox/RichTextLabel.bbcode_text = "คุณสะปงถ้วยเงิน\n100คะแนน-คุณสะเปง"
+		$VBoxContainer/ichuen_silver_hbox/RichTextLabel.bbcode_text = "คุณไอชื่นถ้วยเงิน\n100คะแนน-คุณไอชื่น"
+		$VBoxContainer/olay_silver_hbox/RichTextLabel.bbcode_text = "คุณโอเลถ้วยเงิน\n100คะแนน-คุณโอเล"
+#		gold
+		$VBoxContainer/total_gold_hbox/RichTextLabel.bbcode_text = "คะแนนรวมถ้วยทอง\n200คะแนน-คะแนนรวม"
+		$VBoxContainer/mno_bass_gold_hbox/RichTextLabel.bbcode_text = "คุณมะโนถ้วยทอง\n200คะแนน-คุณมะโน"
+		$VBoxContainer/speng_guitar_gold_hbox/RichTextLabel.bbcode_text = "คุณสะปงถ้วยทอง\n200คะแนน-คุณสะเปง"
+		$VBoxContainer/ichuen_turntable_gold_hbox/RichTextLabel.bbcode_text = "คุณไอชื่นถ้วยทอง\n200คะแนน-คุณไอชื่น"
+		$VBoxContainer/olay_drum_gold_hbox/RichTextLabel.bbcode_text = "คุณโอเลถ้วยทอง\n200คะแนน-คุณโอเล"
