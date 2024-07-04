@@ -1,7 +1,8 @@
 extends Node
 
 var tekkk_language:String = "En"
-const FILE_NAME = "user://game-data.json"
+const FILE_NAME:String = "user://game-data.json"
+var total_score:float
 
 var save_dict = {
 	"mno_scores" : 0,
@@ -14,6 +15,9 @@ var save_dict = {
 	"olay_anim" : false
 	}
 
+func _process(_delta):
+	total_score = save_dict.mno_scores+save_dict.speng_scores+save_dict.ichuen_scores+save_dict.olay_scores
+	
 func save_game():
 	var file = File.new()
 	file.open(FILE_NAME, File.WRITE)
