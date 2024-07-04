@@ -9,7 +9,6 @@ func _ready():
 	$clickScene/AnimationPlayer.play("scaleSprite")
 	$bg.modulate = Color(rand_range(0.0,1.0),rand_range(0.0,1.0),rand_range(0.0,1.0))
 	
-	
 func _process(_delta):
 	if $Tek_abc3dz_mno.hit_mno == true :
 		Global.save_dict["mno_scores"]+=1
@@ -35,16 +34,12 @@ func _process(_delta):
 	$Tek_abc3dz_mno.hit_mno = false
 	$Tek_abc3dz_ichuen.hit_ichuen = false
 	$Tek_abc3dz_speng.hit_speng = false
-	total_scores = Global.save_dict["mno_scores"]+Global.save_dict["olay_scores"]+Global.save_dict["ichuen_scores"]+Global.save_dict["speng_scores"]
-	tekkk_language(Global.tekkk_language)
+	total_scores = Global.save_dict["mno_scores"]+Global.save_dict["olay_scores"]\
+	+Global.save_dict["ichuen_scores"]+Global.save_dict["speng_scores"]
+	$HBoxContainer/TotalScores.text = str(total_scores)
 
 func _on_HomeBT_pressed():
 	var __ = get_tree().change_scene("res://Scene/MainMenu.tscn")
 	Global.HomeAudioPlay()
 	Global.FloatingStop()
 
-func tekkk_language(language):
-	if language == "En":
-		$TotalScores.text = "Total : "+ str(total_scores)
-	if language == "Th":
-		$TotalScores.text = "คะแนนรวม : "+ str(total_scores)

@@ -1,7 +1,5 @@
 extends Node2D
-var total_scores = 0
-
-var musical_pos_y_arr = [80,1800]
+var musical_pos_y_arr = [80,1000]
 var musical_pos_y = []
 var musicalGuitar_pos_y = []
 var musicalDrum_pos_y = []
@@ -11,10 +9,10 @@ var movecheck = true #เพื่อไรฟะ
 var movecheckGuitar = true
 var movecheckDrum = true
 var movecheckTurntable = true
-var movelr = rand_range(0,1900)
-var movelrGuitar = rand_range(0,1900)
-var movelrDrum = rand_range(0,1900)
-var movelrTurntable = rand_range(0,1900)
+var movelr = rand_range(0,1060)
+var movelrGuitar = rand_range(0,1060)
+var movelrDrum = rand_range(0,1060)
+var movelrTurntable = rand_range(0,1060)
 
 var movespeedhead = 4
 var movespeedmusical = 200
@@ -58,9 +56,12 @@ func  _physics_process(delta):
 	movemusicalDrum(delta)
 	movemusicalTurntable(delta)
 	
-	total_scores = Global.save_dict["mno_scores"]+Global.save_dict["olay_scores"]+Global.save_dict["ichuen_scores"]+Global.save_dict["speng_scores"]
-	tekkk_language(Global.tekkk_language)
-
+	$PathFollow2D/Area2DHead/Label.text=str(Global.save_dict["mno_scores"])
+	$PathFollow2DOlay/Area2DHeadOlay/Label.text=str(Global.save_dict["olay_scores"])
+	$PathFollow2DIchuen/Area2DHeadIchuen/Label.text=str(Global.save_dict["ichuen_scores"])
+	$PathFollow2DSpeng/Area2DHeadSpeng/Label.text=str(Global.save_dict["speng_scores"])
+	$HBoxContainer/TotalScores.text=str(Global.total_score)
+	
 func PathFollowMno(delta):
 	if is_swipe_down:
 		movedown += movespeedhead*delta
@@ -153,7 +154,7 @@ func movemusicalBass(delta):
 	if $Area2DMusicalBass.position.x > 0 and movecheck:
 		movelr += movespeedmusical*delta
 		$Area2DMusicalBass.position = Vector2(movelr,musical_pos_y)
-		if $Area2DMusicalBass.position.x >= 1080:
+		if $Area2DMusicalBass.position.x >= 1920:
 			musical_pos_y = musical_pos_y_arr[rand_range(0,2)]
 			movecheck = false
 	else:
@@ -168,7 +169,7 @@ func movemusicalGuitar(delta):
 	if $Area2DMusicalGuitar.position.x > 0 and movecheckGuitar:
 		movelrGuitar += movespeedmusical*delta
 		$Area2DMusicalGuitar.position = Vector2(movelrGuitar,musicalGuitar_pos_y)
-		if $Area2DMusicalGuitar.position.x >= 1080:
+		if $Area2DMusicalGuitar.position.x >= 1920:
 			musicalGuitar_pos_y = musical_pos_y_arr[rand_range(0,2)]
 			movecheckGuitar = false
 	else:
@@ -183,7 +184,7 @@ func movemusicalDrum(delta):
 	if $Area2DMusicalDrum.position.x > 0 and movecheckDrum:
 		movelrDrum += movespeedmusical*delta
 		$Area2DMusicalDrum.position = Vector2(movelrDrum,musicalDrum_pos_y)
-		if $Area2DMusicalDrum.position.x >= 1080:
+		if $Area2DMusicalDrum.position.x >= 1920:
 			musicalDrum_pos_y = musical_pos_y_arr[rand_range(0,2)]
 			movecheckDrum = false
 	else:
@@ -198,7 +199,7 @@ func movemusicalTurntable(delta):
 	if $Area2DMusicalTurntable.position.x > 0 and movecheckTurntable:
 		movelrTurntable += movespeedmusical*delta
 		$Area2DMusicalTurntable.position = Vector2(movelrTurntable,musicalTurntable_pos_y)
-		if $Area2DMusicalTurntable.position.x >= 1080:
+		if $Area2DMusicalTurntable.position.x >= 1920:
 			musicalTurntable_pos_y = musical_pos_y_arr[rand_range(0,2)]
 			movecheckTurntable = false
 	else:
@@ -301,17 +302,3 @@ func _on_Area2DHeadIchuen_input_event(_viewport, event, _shape_idx):
 		if event.relative.x >= -8 and event.relative.x <= 8:
 			if event.relative.y <= -8:
 				is_swipe_upIchuen = true
-
-func tekkk_language(language):
-	if language == "En":
-		$VBoxContainer/ClickMno.text="Mno : "+str(Global.save_dict["mno_scores"])
-		$VBoxContainer/ClickOlay.text="Olay : "+str(Global.save_dict["olay_scores"])
-		$VBoxContainer/ClickIchuen.text="Ichuen : "+str(Global.save_dict["ichuen_scores"])
-		$VBoxContainer/ClickSpeng.text="Speng : "+str(Global.save_dict["speng_scores"])
-		$TotalScores.text = "Total : "+ str(total_scores)
-	if language == "Th":
-		$VBoxContainer/ClickMno.text="คุณมโน : "+str(Global.save_dict["mno_scores"])
-		$VBoxContainer/ClickOlay.text="คุณโอเล : "+str(Global.save_dict["olay_scores"])
-		$VBoxContainer/ClickIchuen.text="คุณไอชื่น : "+str(Global.save_dict["ichuen_scores"])
-		$VBoxContainer/ClickSpeng.text="คุณสเปง : "+str(Global.save_dict["speng_scores"])
-		$TotalScores.text = "คะแนนรวม : "+ str(total_scores)
