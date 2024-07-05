@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://Scene/click3d/player_ichuen_head_3d.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scene/click3d/click_mix_3d.gd" type="Script" id=2]
@@ -34,6 +34,8 @@
 [ext_resource path="res://Image/player_Head_olayzzz.png" type="Texture" id=32]
 [ext_resource path="res://Image/player_Head_Ichuen.png" type="Texture" id=33]
 [ext_resource path="res://Image/player_Head_mno.png" type="Texture" id=34]
+[ext_resource path="res://Font/SanamDeklen_chaya.ttf" type="DynamicFontData" id=35]
+[ext_resource path="res://Image/player_bt4Head.png" type="Texture" id=36]
 
 [sub_resource type="ProceduralSky" id=1]
 sky_top_color = Color( 1, 0, 0, 1 )
@@ -87,6 +89,10 @@ tracks/1/keys = {
 "points": PoolRealArray( 3, -0.25, 0, 0.25, 0, 1e-05, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0, 1 )
 }
+
+[sub_resource type="DynamicFont" id=5]
+size = 55
+font_data = ExtResource( 35 )
 
 [node name="click_mix_3d" type="Spatial"]
 script = ExtResource( 2 )
@@ -157,13 +163,32 @@ flip_v = true
 
 [node name="clickScene" type="Sprite" parent="."]
 modulate = Color( 0, 0, 0, 1 )
-position = Vector2( 540, 960 )
+position = Vector2( 934, 544 )
 scale = Vector2( 3, 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="clickScene"]
 root_node = NodePath("../..")
 anims/RESET = SubResource( 3 )
 anims/scaleSprite = SubResource( 4 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_right = 265.0
+margin_bottom = 94.0
+
+[node name="Sprite" type="TextureRect" parent="HBoxContainer"]
+margin_right = 91.0
+margin_bottom = 94.0
+texture = ExtResource( 36 )
+
+[node name="TotalScores" type="Label" parent="HBoxContainer"]
+margin_left = 95.0
+margin_right = 129.0
+margin_bottom = 94.0
+custom_colors/font_color = Color( 0.921875, 0.129639, 0.129639, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 5 )
+text = "0"
+align = 1
 
 [connection signal="pressed" from="HomeBT" to="." method="_on_HomeBT_pressed"]
 [connection signal="pressed" from="VBoxContainer/TextureButton_up" to="." method="_on_TextureButton_up_pressed"]
