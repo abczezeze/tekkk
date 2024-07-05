@@ -17,12 +17,10 @@ var rigidbody_drum:RigidBody
 var rigidbody_bass_c = preload("res://Scene/drag3d/rigidbody_bass.tscn")
 var rigidbody_bass:RigidBody
 
-var ichuen_selected:bool = false
-var mno_selected:bool = false
-var olay_selected:bool = false
-var speng_selected:bool = false
-var player_selected:Array = [true,false,false,false]
-var random_index:int
+var random_index_mno:int
+var random_index_speng:int
+var random_index_ichuen:int
+var random_index_olay:int
 export (Array, Texture) var sprite_textures = []
 
 func _ready():
@@ -36,10 +34,11 @@ func _ready():
 	$dragScene/AnimationPlayer.play("scaleBody")
 	
 func _physics_process(_delta):
-	$player_ichuen_full/Label3D.text = str(Global.save_dict["ichuen_scores"])
-	$player_mno_full/Label3D.text = str(Global.save_dict["mno_scores"])
-	$player_olay_full/Label3D.text = str(Global.save_dict["olay_scores"])
-	$player_speng_full/Label3D.text = str(Global.save_dict["speng_scores"])
+	$score_vbox/ClickMno.text=str(Global.save_dict["mno_scores"])
+	$score_vbox/ClickOlay.text=str(Global.save_dict["olay_scores"])
+	$score_vbox/ClickIchuen.text=str(Global.save_dict["ichuen_scores"])
+	$score_vbox/ClickSpeng.text=str(Global.save_dict["speng_scores"])
+	$score_vbox/TotalScores.text=str(Global.total_scores)
 	
 	if rigidbody_turntable.transform.origin.y<-1:
 		rigidbody_turntable.queue_free()
@@ -57,7 +56,7 @@ func _physics_process(_delta):
 func new_turntable():
 	rigidbody_turntable = rigidbody_turntable_c.instance()
 	add_child(rigidbody_turntable)
-	rigidbody_turntable.transform.origin = Vector3(rand_range(-2,2),8,0)
+	rigidbody_turntable.transform.origin = Vector3(rand_range(-7,7),8,0)
 	rigidbody_turntable.gravity_scale = rand_range(0.1,0.3)
 	var __ = rigidbody_turntable.connect("body_entered",self,"on_turnatable_body_entered")
 
@@ -67,11 +66,12 @@ func on_turnatable_body_entered(body):
 		Global.AccurateAudioPlay()
 	elif body.is_in_group("mno") or body.is_in_group("olay") or body.is_in_group("speng"):
 		Global.FailedAudioPlay()
+		Global.save_dict["ichuen_scores"] -= 1
 		
 func new_guitar():
 	rigidbody_guitar = rigidbody_guitar_c.instance()
 	add_child(rigidbody_guitar)
-	rigidbody_guitar.transform.origin = Vector3(rand_range(-2,2),8,0)
+	rigidbody_guitar.transform.origin = Vector3(rand_range(-7,7),8,0)
 	rigidbody_guitar.gravity_scale = rand_range(0.1,0.3)
 	var __ = rigidbody_guitar.connect("body_entered",self,"on_guitar_body_entered")
 
@@ -81,11 +81,12 @@ func on_guitar_body_entered(body):
 		Global.AccurateAudioPlay()
 	elif body.is_in_group("mno") or body.is_in_group("olay") or body.is_in_group("ichuen"):
 		Global.FailedAudioPlay()
+		Global.save_dict["speng_scores"] -= 1
 
 func new_drum():
 	rigidbody_drum = rigidbody_drum_c.instance()
 	add_child(rigidbody_drum)
-	rigidbody_drum.transform.origin = Vector3(rand_range(-2,2),8,0)
+	rigidbody_drum.transform.origin = Vector3(rand_range(-7,7),8,0)
 	rigidbody_drum.gravity_scale = rand_range(0.1,0.3)
 	var __ = rigidbody_drum.connect("body_entered",self,"on_drum_body_entered")
 
@@ -95,11 +96,12 @@ func on_drum_body_entered(body):
 		Global.AccurateAudioPlay()
 	elif body.is_in_group("mno") or body.is_in_group("ichuen") or body.is_in_group("speng"):
 		Global.FailedAudioPlay()
+		Global.save_dict["olay_scores"] -= 1
 	
 func new_bass():
 	rigidbody_bass = rigidbody_bass_c.instance()
 	add_child(rigidbody_bass)
-	rigidbody_bass.transform.origin = Vector3(rand_range(-2,2),8,0)
+	rigidbody_bass.transform.origin = Vector3(rand_range(-7,7),8,0)
 	rigidbody_bass.gravity_scale = rand_range(0.1,0.3)
 	var __ = rigidbody_bass.connect("body_entered",self,"on_bass_body_entered")
 
@@ -109,6 +111,7 @@ func on_bass_body_entered(body):
 		Global.AccurateAudioPlay()
 	elif body.is_in_group("ichuen") or body.is_in_group("olay") or body.is_in_group("speng"):
 		Global.FailedAudioPlay()
+		Global.save_dict["mno_scores"] -= 1
 
 func _input(event: InputEvent) -> void:
 	if not is_dragging_ichuen and is_selected_ichuen:
@@ -137,11 +140,11 @@ func _input(event: InputEvent) -> void:
 		var depth = origin.distance_to($player_ichuen_full.transform.origin)
 		var final_pos = origin + end * depth
 		$player_ichuen_full.transform.origin.x = final_pos.x
-		player_selected.append_array([true,false,false,false])
-		if $player_ichuen_full.transform.origin.x<=-2:
-			$player_ichuen_full.transform.origin.x=-2
-		elif $player_ichuen_full.transform.origin.x>=2:
-			$player_ichuen_full.transform.origin.x=2
+		
+		if $player_ichuen_full.transform.origin.x<=-7:
+			$player_ichuen_full.transform.origin.x=-7
+		elif $player_ichuen_full.transform.origin.x>=7:
+			$player_ichuen_full.transform.origin.x=7
 			
 	if is_dragging_mno and event is InputEventMouseMotion:
 		var mouse_pos = get_viewport().get_mouse_position()
@@ -150,11 +153,10 @@ func _input(event: InputEvent) -> void:
 		var depth = origin.distance_to($player_mno_full.transform.origin)
 		var final_pos = origin + end * depth
 		$player_mno_full.transform.origin.x = final_pos.x
-		player_selected.append_array([true,false,false,false])
-		if $player_mno_full.transform.origin.x<=-2:
-			$player_mno_full.transform.origin.x=-2
-		elif $player_mno_full.transform.origin.x>=2:
-			$player_mno_full.transform.origin.x=2
+		if $player_mno_full.transform.origin.x<=-7:
+			$player_mno_full.transform.origin.x=-7
+		elif $player_mno_full.transform.origin.x>=7:
+			$player_mno_full.transform.origin.x=7
 			
 	if is_dragging_olay and event is InputEventMouseMotion:
 		var mouse_pos = get_viewport().get_mouse_position()
@@ -163,11 +165,10 @@ func _input(event: InputEvent) -> void:
 		var depth = origin.distance_to($player_mno_full.transform.origin)
 		var final_pos = origin + end * depth
 		$player_olay_full.transform.origin.x = final_pos.x
-		player_selected.append_array([true,false,false,false])
-		if $player_olay_full.transform.origin.x<=-2:
-			$player_olay_full.transform.origin.x=-2
-		elif $player_olay_full.transform.origin.x>=2:
-			$player_olay_full.transform.origin.x=2
+		if $player_olay_full.transform.origin.x<=-7:
+			$player_olay_full.transform.origin.x=-7
+		elif $player_olay_full.transform.origin.x>=7:
+			$player_olay_full.transform.origin.x=7
 			
 	if is_dragging_speng and event is InputEventMouseMotion:
 		var mouse_pos = get_viewport().get_mouse_position()
@@ -176,62 +177,10 @@ func _input(event: InputEvent) -> void:
 		var depth = origin.distance_to($player_speng_full.transform.origin)
 		var final_pos = origin + end * depth
 		$player_speng_full.transform.origin.x = final_pos.x
-		player_selected.append_array([true,false,false,false])
-		if $player_speng_full.transform.origin.x<=-2:
-			$player_speng_full.transform.origin.x=-2
-		elif $player_speng_full.transform.origin.x>=2:
-			$player_speng_full.transform.origin.x=2
-
-func _on_back_button_pressed():
-	Global.HomeAudioPlay()
-	Global.MenuAudioP()
-	var __ = get_tree().change_scene("res://Scene/MainMenu.tscn")
-#
-#func random_player() -> void:
-#	$player_ichuen_full.transform.origin.x = player_position[randi() % player_position.size()]
-#	if $player_ichuen_full.transform.origin.x == 0:
-#		is_selected_ichuen = true
-#		is_selected_mno = false
-#		is_selected_olay = false
-#		is_selected_speng = false
-#		$WorldEnvironment.environment.background_sky.sky_top_color = Color(0.41,0.05,0.58,1)
-#		$player_mno_full.transform.origin.x = 4
-#		$player_olay_full.transform.origin.x = 4
-#		$player_speng_full.transform.origin.x = 4
-#		return
-#	$player_mno_full.transform.origin.x = player_position[randi() % player_position.size()]
-#	if $player_mno_full.transform.origin.x == 0:
-#		is_selected_mno = true
-#		is_selected_ichuen = false
-#		is_selected_olay = false
-#		is_selected_speng = false
-#		$WorldEnvironment.environment.background_sky.sky_top_color = Color(1,0.51,0,1)
-#		$player_ichuen_full.transform.origin.x = 4
-#		$player_olay_full.transform.origin.x = 4
-#		$player_speng_full.transform.origin.x = 4
-#		return
-#	$player_olay_full.transform.origin.x = player_position[randi() % player_position.size()]
-#	if $player_olay_full.transform.origin.x == 0:
-#		is_selected_olay = true
-#		is_selected_mno = false
-#		is_selected_ichuen = false
-#		is_selected_speng = false
-#		$WorldEnvironment.environment.background_sky.sky_top_color = Color(0,0.46,1,1)
-#		$player_ichuen_full.transform.origin.x = 4
-#		$player_mno_full.transform.origin.x = 4
-#		$player_speng_full.transform.origin.x = 4
-#		return
-#	else:
-#		is_selected_speng = true
-#		is_selected_mno = false
-#		is_selected_olay = false
-#		is_selected_ichuen = false
-#		$WorldEnvironment.environment.background_sky.sky_top_color = Color(0.95,1,0,1)
-#		$player_speng_full.transform.origin.x = 0
-#		$player_ichuen_full.transform.origin.x = 4
-#		$player_olay_full.transform.origin.x = 4
-#		$player_mno_full.transform.origin.x = 4
-#		return
+		if $player_speng_full.transform.origin.x<=-7:
+			$player_speng_full.transform.origin.x=-7
+		elif $player_speng_full.transform.origin.x>=7:
+			$player_speng_full.transform.origin.x=7
 
 func _on_player_ichuen_full_input_event(_camera, event, _position, _normal, _shape_idx):
 	if event.is_action_pressed("ui_click"):
@@ -262,84 +211,60 @@ func _on_player_speng_full_input_event(_camera, event, _position, _normal, _shap
 		is_dragging_ichuen = false
 		
 func random_player() -> void:
-	random_index = floor(rand_range(0,player_selected.size()-1))
-	is_selected_ichuen = player_selected[random_index]
-	player_selected.remove(random_index)
-	
-	random_index = floor(rand_range(0,player_selected.size()-1))
-	is_selected_mno = player_selected[random_index]
-	player_selected.remove(random_index)
-	
-	random_index = floor(rand_range(0,player_selected.size()-1))
-	is_selected_olay = player_selected[random_index]
-	player_selected.remove(random_index)
-	
-	random_index = floor(rand_range(0,player_selected.size()-1))
-	is_selected_speng = player_selected[random_index]
-	player_selected.remove(random_index)
-	
 	if is_selected_ichuen:
-		ichuen_selected()
+		_on_ichuen_button_pressed()
 	elif is_selected_mno:
-		mno_selected()
+		_on_mno_button_pressed()
 	elif is_selected_olay:
-		olay_selected()
+		_on_olay_button_pressed()
 	else:
-		speng_selected()
-
+		_on_speng_button_pressed()
 
 func _on_ichuen_button_pressed():
-	ichuen_selected()
-
-func _on_mno_button_pressed():
-	mno_selected()
-
-func _on_olay_button_pressed():
-	olay_selected()
-
-func _on_speng_button_pressed():
-	speng_selected()
-
-func ichuen_selected() -> void:
 	$player_full_hbox/ichuen_button.disabled= true
 	$player_full_hbox/mno_button.disabled = false
 	$player_full_hbox/olay_button.disabled = false
 	$player_full_hbox/speng_button.disabled = false
 	$player_ichuen_full.transform.origin.x = 0
-	$player_olay_full.transform.origin.x = 4
-	$player_mno_full.transform.origin.x = 4
-	$player_speng_full.transform.origin.x = 4
+	$player_olay_full.transform.origin.x = 10
+	$player_mno_full.transform.origin.x = 10
+	$player_speng_full.transform.origin.x = 10
 	$WorldEnvironment.environment.background_sky.sky_top_color = Color(0.41,0.05,0.58,1)
-	
-func mno_selected() -> void:
+
+func _on_mno_button_pressed():
 	$player_full_hbox/ichuen_button.disabled = false
 	$player_full_hbox/mno_button.disabled = true
 	$player_full_hbox/olay_button.disabled = false
 	$player_full_hbox/speng_button.disabled = false
-	$player_ichuen_full.transform.origin.x = 4
-	$player_olay_full.transform.origin.x = 4
+	$player_ichuen_full.transform.origin.x = 10
+	$player_olay_full.transform.origin.x = 10
 	$player_mno_full.transform.origin.x = 0
-	$player_speng_full.transform.origin.x = 4
+	$player_speng_full.transform.origin.x = 10
 	$WorldEnvironment.environment.background_sky.sky_top_color = Color(1,0.51,0,1)
-	
-func olay_selected() -> void:
+
+func _on_olay_button_pressed():
 	$player_full_hbox/ichuen_button.disabled = false
 	$player_full_hbox/mno_button.disabled = false
 	$player_full_hbox/olay_button.disabled = true
 	$player_full_hbox/speng_button.disabled = false
-	$player_ichuen_full.transform.origin.x = 4
+	$player_ichuen_full.transform.origin.x = 10
 	$player_olay_full.transform.origin.x = 0
-	$player_mno_full.transform.origin.x = 4
-	$player_speng_full.transform.origin.x = 4
+	$player_mno_full.transform.origin.x = 10
+	$player_speng_full.transform.origin.x = 10
 	$WorldEnvironment.environment.background_sky.sky_top_color = Color(0,0.46,1,1)
-	
-func speng_selected() -> void:
+
+func _on_speng_button_pressed():
 	$player_full_hbox/ichuen_button.disabled = false
 	$player_full_hbox/mno_button.disabled = false
 	$player_full_hbox/olay_button.disabled = false
 	$player_full_hbox/speng_button.disabled = true
-	$player_ichuen_full.transform.origin.x = 4
-	$player_olay_full.transform.origin.x = 4
-	$player_mno_full.transform.origin.x = 4
+	$player_ichuen_full.transform.origin.x = 10
+	$player_olay_full.transform.origin.x = 10
+	$player_mno_full.transform.origin.x = 10
 	$player_speng_full.transform.origin.x = 0
 	$WorldEnvironment.environment.background_sky.sky_top_color = Color(0.95,1,0,1)
+
+func _on_home_button_pressed():
+	Global.HomeAudioPlay()
+	Global.MenuAudioP()
+	var __ = get_tree().change_scene("res://Scene/MainMenu.tscn")

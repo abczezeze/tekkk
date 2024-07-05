@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://Scene/drag3d/drag3d_mix.gd" type="Script" id=1]
 [ext_resource path="res://Image/gui_home.png" type="Texture" id=2]
@@ -7,10 +7,28 @@
 [ext_resource path="res://Scene/drag3d/player_speng_full.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scene/drag3d/player_mno_full.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scene/drag3d/player_olay_full.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Image/player_fullz-speng.png" type="Texture" id=8]
-[ext_resource path="res://Image/player_fullz-ichuen.png" type="Texture" id=9]
-[ext_resource path="res://Image/player_fullz-mno.png" type="Texture" id=10]
-[ext_resource path="res://Image/player_fullz-olay.png" type="Texture" id=11]
+[ext_resource path="res://Font/SanamDeklen_chaya.ttf" type="DynamicFontData" id=12]
+[ext_resource path="res://Image/player_bt4Head.png" type="Texture" id=13]
+[ext_resource path="res://Image/player_Head_Ichuen.png" type="Texture" id=14]
+[ext_resource path="res://Image/player_Head_olayzzz.png" type="Texture" id=15]
+[ext_resource path="res://Image/player_Head_Speng.png" type="Texture" id=16]
+[ext_resource path="res://Image/player_Head_mno.png" type="Texture" id=17]
+
+[sub_resource type="StreamTexture" id=10]
+flags = 4
+load_path = "res://.import/player_fullz-mno.png-c3c9f540f07777f6ebbfb74d7c904279.stex"
+
+[sub_resource type="StreamTexture" id=11]
+flags = 4
+load_path = "res://.import/player_fullz-olay.png-9368cd799c864e538d2dc93262405784.stex"
+
+[sub_resource type="StreamTexture" id=12]
+flags = 4
+load_path = "res://.import/player_fullz-ichuen.png-11b37454c676d9de2995cf242dfe4075.stex"
+
+[sub_resource type="StreamTexture" id=13]
+flags = 4
+load_path = "res://.import/player_fullz-speng.png-5e84d717fdfc6c1fcff80e51cad583c4.stex"
 
 [sub_resource type="ProceduralSky" id=1]
 sky_top_color = Color( 0.490196, 0.384314, 0.784314, 1 )
@@ -65,9 +83,29 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 1 )
 }
 
+[sub_resource type="DynamicFont" id=5]
+size = 55
+font_data = ExtResource( 12 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 55
+font_data = ExtResource( 12 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 55
+font_data = ExtResource( 12 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 55
+font_data = ExtResource( 12 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 55
+font_data = ExtResource( 12 )
+
 [node name="drag3d" type="Spatial"]
 script = ExtResource( 1 )
-sprite_textures = [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 9 ), ExtResource( 8 ) ]
+sprite_textures = [ SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ) ]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 2 )
@@ -114,39 +152,132 @@ rect_scale = Vector2( 0.5, 0.5 )
 [node name="ichuen_button" type="Button" parent="player_full_hbox"]
 margin_right = 176.0
 margin_bottom = 559.0
-icon = ExtResource( 9 )
+icon = SubResource( 12 )
 flat = true
 
 [node name="mno_button" type="Button" parent="player_full_hbox"]
 margin_left = 180.0
 margin_right = 430.0
 margin_bottom = 559.0
-icon = ExtResource( 10 )
+icon = SubResource( 10 )
 flat = true
 
 [node name="olay_button" type="Button" parent="player_full_hbox"]
 margin_left = 434.0
 margin_right = 677.0
 margin_bottom = 559.0
-icon = ExtResource( 11 )
+icon = SubResource( 11 )
 flat = true
 
 [node name="speng_button" type="Button" parent="player_full_hbox"]
 margin_left = 681.0
 margin_right = 901.0
 margin_bottom = 559.0
-icon = ExtResource( 8 )
+icon = SubResource( 13 )
 flat = true
 
 [node name="dragScene" type="Sprite" parent="."]
-visible = false
 modulate = Color( 0, 0, 0, 1 )
-position = Vector2( 540, 960 )
-texture = ExtResource( 10 )
+position = Vector2( 934, 547 )
+texture = SubResource( 10 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="dragScene"]
 anims/RESET = SubResource( 3 )
 anims/scaleBody = SubResource( 4 )
+
+[node name="player_head_vbox" type="VBoxContainer" parent="."]
+margin_left = 50.0
+margin_top = 50.0
+margin_right = 400.0
+margin_bottom = 438.0
+
+[node name="PlayerHeadMno" type="TextureRect" parent="player_head_vbox"]
+margin_right = 350.0
+margin_bottom = 91.0
+texture = ExtResource( 17 )
+
+[node name="PlayerHeadOlayzzz" type="TextureRect" parent="player_head_vbox"]
+margin_top = 95.0
+margin_right = 350.0
+margin_bottom = 186.0
+texture = ExtResource( 15 )
+
+[node name="PlayerHeadSpeng" type="TextureRect" parent="player_head_vbox"]
+margin_top = 190.0
+margin_right = 350.0
+margin_bottom = 281.0
+texture = ExtResource( 16 )
+
+[node name="PlayerHeadIchuen" type="TextureRect" parent="player_head_vbox"]
+margin_top = 285.0
+margin_right = 350.0
+margin_bottom = 376.0
+texture = ExtResource( 14 )
+
+[node name="TextureRect" type="TextureRect" parent="player_head_vbox"]
+margin_top = 380.0
+margin_right = 350.0
+margin_bottom = 471.0
+texture = ExtResource( 13 )
+
+[node name="score_vbox" type="VBoxContainer" parent="."]
+margin_left = 162.0
+margin_top = 57.0
+margin_right = 512.0
+margin_bottom = 543.0
+
+[node name="ClickMno" type="Label" parent="score_vbox"]
+margin_right = 350.0
+margin_bottom = 94.0
+custom_colors/font_color = Color( 0.878431, 0.537255, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 5 )
+text = "0"
+
+[node name="ClickOlay" type="Label" parent="score_vbox"]
+margin_top = 98.0
+margin_right = 350.0
+margin_bottom = 192.0
+custom_colors/font_color = Color( 0.419608, 0.498039, 0.988235, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ClickSpeng" type="Label" parent="score_vbox"]
+margin_top = 196.0
+margin_right = 350.0
+margin_bottom = 290.0
+custom_colors/font_color = Color( 0.92549, 0.972549, 0.113725, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ClickIchuen" type="Label" parent="score_vbox"]
+margin_top = 294.0
+margin_right = 350.0
+margin_bottom = 388.0
+custom_colors/font_color = Color( 0.772549, 0, 0.882353, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 8 )
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TotalScores" type="Label" parent="score_vbox"]
+margin_top = 392.0
+margin_right = 350.0
+margin_bottom = 486.0
+custom_colors/font_color = Color( 0.921875, 0.129639, 0.129639, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 9 )
+text = "0"
 
 [connection signal="body_entered" from="player_ichuen_full" to="." method="_on_player_ichuen_full_body_entered"]
 [connection signal="input_event" from="player_ichuen_full" to="." method="_on_player_ichuen_full_input_event"]
@@ -156,7 +287,7 @@ anims/scaleBody = SubResource( 4 )
 [connection signal="input_event" from="player_olay_full" to="." method="_on_player_olay_full_input_event"]
 [connection signal="body_exited" from="player_speng_full" to="." method="_on_player_speng_full_body_exited"]
 [connection signal="input_event" from="player_speng_full" to="." method="_on_player_speng_full_input_event"]
-[connection signal="pressed" from="home_button" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="home_button" to="." method="_on_home_button_pressed"]
 [connection signal="pressed" from="player_full_hbox/ichuen_button" to="." method="_on_ichuen_button_pressed"]
 [connection signal="pressed" from="player_full_hbox/mno_button" to="." method="_on_mno_button_pressed"]
 [connection signal="pressed" from="player_full_hbox/olay_button" to="." method="_on_olay_button_pressed"]
