@@ -60,7 +60,7 @@ func  _physics_process(delta):
 	$PathFollow2DOlay/Area2DHeadOlay/Label.text=str(Global.save_dict["olay_scores"])
 	$PathFollow2DIchuen/Area2DHeadIchuen/Label.text=str(Global.save_dict["ichuen_scores"])
 	$PathFollow2DSpeng/Area2DHeadSpeng/Label.text=str(Global.save_dict["speng_scores"])
-	$HBoxContainer/TotalScores.text=str(Global.total_score)
+	$HBoxContainer/TotalScores.text=str(Global.total_scores)
 	
 func PathFollowMno(delta):
 	if is_swipe_down:
@@ -219,6 +219,7 @@ func _on_Area2DMusicalBass_area_entered(area):
 		$PathFollow2D/Tween.start()
 	if area.is_in_group("Olay") or area.is_in_group("Ichuen") or area.is_in_group("Speng"):
 		Global.FailedAudioPlay()
+		Global.save_dict["mno_scores"]-=1
 
 func _on_Area2DMusicalGuitar_area_entered(area):
 	if area.is_in_group("Speng"):
@@ -229,6 +230,7 @@ func _on_Area2DMusicalGuitar_area_entered(area):
 		$PathFollow2DSpeng/Tween.start()
 	if area.is_in_group("Olay") or area.is_in_group("Mno") or area.is_in_group("Ichuen"):
 		Global.FailedAudioPlay()
+		Global.save_dict["speng_scores"]-=1
 
 func _on_Area2DMusicalDrum_area_entered(area):
 	if area.is_in_group("Olay"):
@@ -239,6 +241,7 @@ func _on_Area2DMusicalDrum_area_entered(area):
 		$PathFollow2DOlay/Tween.start()
 	if area.is_in_group("Ichuen") or area.is_in_group("Mno") or area.is_in_group("Speng"):
 		Global.FailedAudioPlay()
+		Global.save_dict["olay_scores"]-=1
 
 func _on_Area2DMusicalTurntable_area_entered(area):
 	if area.is_in_group("Ichuen"):
@@ -249,6 +252,7 @@ func _on_Area2DMusicalTurntable_area_entered(area):
 		$PathFollow2DIchuen/Tween.start()
 	if area.is_in_group("Olay") or area.is_in_group("Mno") or area.is_in_group("Speng"):
 		Global.FailedAudioPlay()
+		Global.save_dict["ichuen_scores"]-=1
 
 func _on_HomeBT_pressed():
 	Global.HomeAudioPlay()

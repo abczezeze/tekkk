@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://Scene/Swipe/SwipeMix.gd" type="Script" id=1]
 [ext_resource path="res://Image/MusicalTurntable.png" type="Texture" id=2]
@@ -50,28 +50,9 @@ extents = Vector2( 28.5, 31 )
 [sub_resource type="RectangleShape2D" id=20]
 extents = Vector2( 32.5, 23 )
 
-[sub_resource type="Animation" id=13]
-length = 0.001
-tracks/0/type = "bezier"
-tracks/0/path = NodePath(".:scale:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0 )
-}
-tracks/1/type = "bezier"
-tracks/1/path = NodePath(".:scale:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0 )
-}
+[sub_resource type="DynamicFont" id=21]
+size = 55
+font_data = ExtResource( 3 )
 
 [sub_resource type="Animation" id=14]
 resource_name = "scaleMusical"
@@ -95,10 +76,6 @@ tracks/1/keys = {
 "points": PoolRealArray( 5, -0.25, 0, 0.25, 0, 1e-05, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0, 1 )
 }
-
-[sub_resource type="DynamicFont" id=21]
-size = 55
-font_data = ExtResource( 3 )
 
 [node name="path2D" type="Path2D"]
 curve = SubResource( 1 )
@@ -267,22 +244,9 @@ shape = SubResource( 20 )
 [node name="tekgame_MusicalTurntable" type="Sprite" parent="Area2DMusicalTurntable"]
 texture = ExtResource( 2 )
 
-[node name="swipeScene" type="Sprite" parent="."]
-modulate = Color( 0, 0, 0, 1 )
-position = Vector2( 900, 570 )
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="swipeScene"]
-anims/RESET = SubResource( 13 )
-anims/scaleMusical = SubResource( 14 )
-
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = 812.0
-margin_top = 507.0
-margin_right = 941.0
-margin_bottom = 601.0
+margin_right = 129.0
+margin_bottom = 94.0
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
 margin_right = 91.0
@@ -299,6 +263,15 @@ custom_fonts/font = SubResource( 21 )
 text = "0"
 align = 1
 valign = 1
+
+[node name="swipeScene" type="Sprite" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 900, 570 )
+scale = Vector2( 5, 5 )
+texture = ExtResource( 10 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="swipeScene"]
+anims/scaleMusical = SubResource( 14 )
 
 [connection signal="pressed" from="HomeBT" to="." method="_on_HomeBT_pressed"]
 [connection signal="input_event" from="PathFollow2D/Area2DHead" to="." method="_on_Area2DHead_input_event"]

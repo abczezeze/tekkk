@@ -65,14 +65,11 @@ func _physics_process(_delta):
 		$IchuenRigidBody2D.global_position.normalized()
 		
 func _process(_delta):
-	total_scores = Global.save_dict["mno_scores"]+Global.save_dict["olay_scores"]\
-		+Global.save_dict["ichuen_scores"]+Global.save_dict["speng_scores"]
-	
 	$MnoBodyArea2D/ClickMno.text = str(Global.save_dict["mno_scores"])
 	$SpengBodyArea2D/ClickSpeng.text = str(Global.save_dict["speng_scores"])
 	$OlayBodyArea2D/ClickOlay.text = str(Global.save_dict["olay_scores"])
 	$IchuenBodyArea2D/ClickIchuen.text = str(Global.save_dict["ichuen_scores"])
-	$HBoxContainer/TotalScores.text = str(total_scores)
+	$HBoxContainer/TotalScores.text = str(Global.total_scores)
 
 func _input(event):
 	if selected_ichuen:
@@ -146,8 +143,9 @@ func _on_MnoBodyArea2D_body_entered(body):
 		Global.AccurateAudioPlay()
 		Global.save_game()
 		$MnoRigidBody2D.scale = Vector2(3.0,3.0)
-	else:
+	elif body.is_in_group("Ichuen") or body.is_in_group("Olay") or body.is_in_group("Speng"):
 		Global.FailedAudioPlay()
+		Global.save_dict["mno_scores"]-=1
 
 func _on_SpengBodyArea2D_body_entered(body):
 	if body.is_in_group("Speng"):
@@ -155,8 +153,9 @@ func _on_SpengBodyArea2D_body_entered(body):
 		Global.AccurateAudioPlay()
 		Global.save_game()
 		$SpengRigidBody2D.scale = Vector2(3,3)
-	else:
+	elif body.is_in_group("Mno") or body.is_in_group("Olay") or body.is_in_group("Ichuen"):
 		Global.FailedAudioPlay()
+		Global.save_dict["speng_scores"]-=1
 		
 func _on_IchuenArea2D_body_entered(body):
 	if body.is_in_group("Ichuen"):
@@ -164,8 +163,9 @@ func _on_IchuenArea2D_body_entered(body):
 		Global.AccurateAudioPlay()
 		Global.save_game()
 		$IchuenRigidBody2D.scale = Vector2(3,3)
-	else:
+	elif body.is_in_group("Mno") or body.is_in_group("Olay") or body.is_in_group("Speng"):
 		Global.FailedAudioPlay()
+		Global.save_dict["ichuen_scores"]-=1
 		
 func _on_OlayBodyArea2D_body_entered(body):
 	if body.is_in_group("Olay"):
@@ -173,8 +173,9 @@ func _on_OlayBodyArea2D_body_entered(body):
 		Global.AccurateAudioPlay()
 		Global.save_game()
 		$OlayRigidBody2D.scale = Vector2(3,3)
-	else:
+	elif body.is_in_group("Mno") or body.is_in_group("Ichuen") or body.is_in_group("Speng"):
 		Global.FailedAudioPlay()
+		Global.save_dict["olay_scores"]-=1
 
 func _on_Tween_speng_tween_completed(_object, _key):
 	$SpengBodyArea2D/Tween.stop(speng_sprite,"position:y")

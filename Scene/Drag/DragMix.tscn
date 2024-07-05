@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://Image/player_body_ichuen.png" type="Texture" id=1]
 [ext_resource path="res://Image/player_Head_mno.png" type="Texture" id=2]
@@ -20,7 +20,7 @@
 [ext_resource path="res://Image/player_bt4Head.png" type="Texture" id=18]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 25.5708
+radius = 36.1197
 
 [sub_resource type="CapsuleShape2D" id=5]
 radius = 29.0598
@@ -53,29 +53,6 @@ height = 112.0
 [sub_resource type="DynamicFont" id=8]
 size = 55
 font_data = ExtResource( 9 )
-
-[sub_resource type="Animation" id=15]
-length = 0.001
-tracks/0/type = "bezier"
-tracks/0/path = NodePath(".:scale:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0 )
-}
-tracks/1/type = "bezier"
-tracks/1/path = NodePath(".:scale:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0 )
-}
 
 [sub_resource type="Animation" id=16]
 resource_name = "scaleBody"
@@ -270,7 +247,6 @@ position = Vector2( 960, 504 )
 texture = ExtResource( 16 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="dragScene"]
-anims/RESET = SubResource( 15 )
 anims/scaleBody = SubResource( 16 )
 
 [node name="player_full_hbox" type="HBoxContainer" parent="."]

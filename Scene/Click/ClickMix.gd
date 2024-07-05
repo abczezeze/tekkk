@@ -1,6 +1,5 @@
 extends Node2D
 
-var total_scores = 0
 export (Array, Texture) var sprite_textures = []
 
 func _ready():
@@ -34,9 +33,7 @@ func _process(_delta):
 	$Tek_abc3dz_mno.hit_mno = false
 	$Tek_abc3dz_ichuen.hit_ichuen = false
 	$Tek_abc3dz_speng.hit_speng = false
-	total_scores = Global.save_dict["mno_scores"]+Global.save_dict["olay_scores"]\
-	+Global.save_dict["ichuen_scores"]+Global.save_dict["speng_scores"]
-	$HBoxContainer/TotalScores.text = str(total_scores)
+	$HBoxContainer/TotalScores.text = str(Global.total_scores)
 
 func _on_HomeBT_pressed():
 	var __ = get_tree().change_scene("res://Scene/MainMenu.tscn")
