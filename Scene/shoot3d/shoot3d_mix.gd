@@ -63,16 +63,16 @@ func _ready():
 	random_musical()
 	$shoot3d_sound.play()
 	
-	$swipeScene.texture = sprite_textures[rand_range(1.0,4.0)]
-	$swipeScene/AnimationPlayer.play("scaleMusical")
+	$shootScene.texture = sprite_textures[rand_range(1.0,4.0)]
+	$shootScene/AnimationPlayer.play("scaleMusical")
 	
-func _process(_delta):
+func _physics_process(delta):
 	$score_vbox/ClickMno.text=str(Global.save_dict["mno_scores"])
 	$score_vbox/ClickOlay.text=str(Global.save_dict["olay_scores"])
 	$score_vbox/ClickIchuen.text=str(Global.save_dict["ichuen_scores"])
 	$score_vbox/ClickSpeng.text=str(Global.save_dict["speng_scores"])
+	$score_vbox/TotalScores.text=str(Global.total_scores)
 	
-func _physics_process(delta):
 #	if is_instance_valid(rigidbody_turntable):
 #		if rigidbody_turntable.global_transform.origin.z < -20:
 #			rigidbody_turntable.queue_free()
@@ -182,6 +182,9 @@ func _on_player_ichuen_head_body_entered(body):
 		animation_ichuen.play("head_rotation")
 		sfx_ichuen.stream = sound_sfx_ichuen[rand_range(0,sound_sfx_ichuen.size())]
 		sfx_ichuen.play()
+	elif body.is_in_group("bass") or body.is_in_group("drum") or body.is_in_group("guitar"):
+		Global.FailedAudioPlay()
+		Global.save_dict["ichuen_scores"] -= 1
 		
 func _on_player_mno_head_body_entered(body):
 	if body.is_in_group("bass"):
@@ -190,6 +193,9 @@ func _on_player_mno_head_body_entered(body):
 		animation_mno.play("head_rotation")
 		sfx_mno.stream = sound_sfx_mno[rand_range(0,sound_sfx_mno.size())]
 		sfx_mno.play()
+	elif body.is_in_group("turntable") or body.is_in_group("drum") or body.is_in_group("guitar"):
+		Global.FailedAudioPlay()
+		Global.save_dict["mno_scores"] -= 1
 		
 func _on_player_olay_head_body_entered(body):
 	if body.is_in_group("drum"):
@@ -198,6 +204,9 @@ func _on_player_olay_head_body_entered(body):
 		animation_olay.play("head_rotation")
 		sfx_olay.stream = sound_sfx_olay[rand_range(0,sound_sfx_olay.size())]
 		sfx_olay.play()
+	elif body.is_in_group("bass") or body.is_in_group("turntable") or body.is_in_group("guitar"):
+		Global.FailedAudioPlay()
+		Global.save_dict["olay_scores"] -= 1
 		
 func _on_player_speng_head_body_entered(body):
 	if body.is_in_group("guitar"):
@@ -206,6 +215,9 @@ func _on_player_speng_head_body_entered(body):
 		animation_speng.play("head_rotation")
 		sfx_speng.stream = sound_sfx_speng[rand_range(0,sound_sfx_speng.size())]
 		sfx_speng.play()
+	elif body.is_in_group("bass") or body.is_in_group("drum") or body.is_in_group("turntable"):
+		Global.FailedAudioPlay()
+		Global.save_dict["speng_scores"] -= 1
 
 func _on_AnimationPlayer_ichuen(_anim_name):
 	paticle_ichuen.emitting = false
