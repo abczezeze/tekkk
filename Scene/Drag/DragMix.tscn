@@ -12,10 +12,10 @@
 [ext_resource path="res://Image/player_body_olay.png" type="Texture" id=10]
 [ext_resource path="res://Image/player_body_speng.png" type="Texture" id=11]
 [ext_resource path="res://Image/player_body_mno.png" type="Texture" id=12]
-[ext_resource path="res://Image/player_fullz-ichuen.png" type="Texture" id=13]
-[ext_resource path="res://Image/player_fullz-olay.png" type="Texture" id=14]
-[ext_resource path="res://Image/player_fullz-speng.png" type="Texture" id=15]
-[ext_resource path="res://Image/player_fullz-mno.png" type="Texture" id=16]
+[ext_resource path="res://Image/player_full_ichuen_button91x91.png" type="Texture" id=13]
+[ext_resource path="res://Image/player_full_speng_button91x91.png" type="Texture" id=14]
+[ext_resource path="res://Image/player_full_olay_button91x91.png" type="Texture" id=15]
+[ext_resource path="res://Image/player_full_mno_button91x91.png" type="Texture" id=16]
 [ext_resource path="res://Material/body_in_drag_scene.material" type="Material" id=17]
 [ext_resource path="res://Image/player_bt4Head.png" type="Texture" id=18]
 
@@ -83,7 +83,7 @@ font_data = ExtResource( 9 )
 
 [node name="Drag" type="Node2D"]
 script = ExtResource( 3 )
-sprite_textures = [ ExtResource( 16 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 13 ) ]
+sprite_textures = [ ExtResource( 13 ), ExtResource( 16 ), ExtResource( 15 ), ExtResource( 14 ) ]
 
 [node name="bg" type="Sprite" parent="."]
 rotation = 1.5708
@@ -244,7 +244,8 @@ flat = true
 [node name="dragScene" type="Sprite" parent="."]
 modulate = Color( 0, 0, 0, 1 )
 position = Vector2( 960, 504 )
-texture = ExtResource( 16 )
+scale = Vector2( 5, 5 )
+texture = ExtResource( 13 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="dragScene"]
 anims/scaleBody = SubResource( 16 )
@@ -253,35 +254,34 @@ anims/scaleBody = SubResource( 16 )
 modulate = Color( 1, 1, 1, 0.352941 )
 margin_left = 1465.0
 margin_top = 14.0
-margin_right = 2366.0
-margin_bottom = 573.0
-rect_scale = Vector2( 0.5, 0.5 )
+margin_right = 1798.0
+margin_bottom = 111.0
 
 [node name="ichuen_button" type="Button" parent="player_full_hbox"]
-margin_right = 176.0
-margin_bottom = 559.0
+margin_right = 103.0
+margin_bottom = 97.0
 icon = ExtResource( 13 )
 flat = true
 
 [node name="mno_button" type="Button" parent="player_full_hbox"]
-margin_left = 180.0
-margin_right = 430.0
-margin_bottom = 559.0
+margin_left = 107.0
+margin_right = 210.0
+margin_bottom = 97.0
 icon = ExtResource( 16 )
 flat = true
 
 [node name="olay_button" type="Button" parent="player_full_hbox"]
-margin_left = 434.0
-margin_right = 677.0
-margin_bottom = 559.0
-icon = ExtResource( 14 )
+margin_left = 214.0
+margin_right = 317.0
+margin_bottom = 97.0
+icon = ExtResource( 15 )
 flat = true
 
 [node name="speng_button" type="Button" parent="player_full_hbox"]
-margin_left = 681.0
-margin_right = 901.0
-margin_bottom = 559.0
-icon = ExtResource( 15 )
+margin_left = 321.0
+margin_right = 424.0
+margin_bottom = 97.0
+icon = ExtResource( 14 )
 flat = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
