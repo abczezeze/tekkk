@@ -47,8 +47,11 @@ func _on_shoot_3d_pressed():
 
 func _on_achievement_button_pressed():
 	Global.SceneSoundPlay()
-	Global.MenuAudioS()
 	var __ =  get_tree().change_scene("res://Scene/achievement_scene.tscn")
+	
+func _on_option_button_pressed():
+	Global.SceneSoundPlay()
+	var __ =  get_tree().change_scene("res://Scene/option_scene.tscn")
 
 func _on_reset_button_pressed() -> void:
 	Global.save_dict["mno_scores"]=0

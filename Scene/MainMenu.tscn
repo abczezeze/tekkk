@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Image/gui_LogoNocap.png" type="Texture" id=1]
 [ext_resource path="res://Image/splashScreen.png" type="Texture" id=2]
@@ -52,6 +52,10 @@ size = 55
 font_data = ExtResource( 4 )
 
 [sub_resource type="DynamicFont" id=27]
+size = 55
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=28]
 size = 55
 font_data = ExtResource( 4 )
 
@@ -165,6 +169,7 @@ script = ExtResource( 5 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 3 )
+expand = true
 
 [node name="TekLb" type="Label" parent="."]
 margin_left = 423.0
@@ -183,10 +188,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -181.5
-margin_top = -910.0
-margin_right = 181.5
-margin_bottom = -46.0
+margin_left = 177.0
+margin_top = -928.0
+margin_right = 552.0
+margin_bottom = -64.0
 
 [node name="SelectLevel" type="Label" parent="VBoxContainer2"]
 margin_right = 375.0
@@ -291,11 +296,18 @@ margin_bottom = 492.0
 custom_fonts/font = SubResource( 27 )
 text = "Achievement"
 
-[node name="reset_button" type="Button" parent="VBoxContainer2"]
-modulate = Color( 0.698039, 0.211765, 0.211765, 1 )
+[node name="option_button" type="Button" parent="VBoxContainer2"]
 margin_top = 496.0
 margin_right = 375.0
-margin_bottom = 590.0
+margin_bottom = 596.0
+custom_fonts/font = SubResource( 28 )
+text = "Option"
+
+[node name="reset_button" type="Button" parent="VBoxContainer2"]
+modulate = Color( 0.698039, 0.211765, 0.211765, 1 )
+margin_top = 600.0
+margin_right = 375.0
+margin_bottom = 694.0
 mouse_default_cursor_shape = 8
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 13 )
@@ -335,5 +347,6 @@ texture = ExtResource( 1 )
 [connection signal="pressed" from="VBoxContainer2/level_3d/drag_3d" to="." method="_on_drag_3d_pressed"]
 [connection signal="pressed" from="VBoxContainer2/level_3d/shoot_3d" to="." method="_on_shoot_3d_pressed"]
 [connection signal="pressed" from="VBoxContainer2/achievement_button" to="." method="_on_achievement_button_pressed"]
+[connection signal="pressed" from="VBoxContainer2/option_button" to="." method="_on_option_button_pressed"]
 [connection signal="pressed" from="VBoxContainer2/reset_button" to="." method="_on_reset_button_pressed"]
 [connection signal="toggled" from="TextureButton_language" to="." method="_on_TextureButton_toggled"]

@@ -79,6 +79,10 @@ script = ExtResource( 5 )
 [node name="TextureRect" type="TextureRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 1920.0
+margin_right = 1080.0
+margin_bottom = 840.0
+rect_rotation = 90.0
 texture = ExtResource( 1 )
 
 [node name="HomeBT" type="Button" parent="."]
@@ -95,7 +99,7 @@ flat = true
 margin_left = 50.0
 margin_top = 50.0
 margin_right = 400.0
-margin_bottom = 438.0
+margin_bottom = 521.0
 
 [node name="PlayerHeadMno" type="TextureRect" parent="player_head_vbox"]
 margin_right = 350.0
@@ -185,17 +189,22 @@ custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 5 )
 text = "0"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-margin_left = 400.0
-margin_top = 75.0
-margin_right = 859.0
-margin_bottom = 695.0
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 300.0
+margin_right = -20.0
+size_flags_vertical = 3
 
-[node name="yo_hbox" type="HBoxContainer" parent="VBoxContainer"]
-margin_right = 459.0
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+margin_right = 1159.0
+margin_bottom = 1660.0
+
+[node name="yo_hbox" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+margin_right = 1159.0
 margin_bottom = 100.0
 
-[node name="TextureProgress" type="TextureProgress" parent="VBoxContainer/yo_hbox"]
+[node name="TextureProgress" type="TextureProgress" parent="ScrollContainer/VBoxContainer/yo_hbox"]
 margin_right = 100.0
 margin_bottom = 100.0
 max_value = 5.0
@@ -203,33 +212,32 @@ texture_under = ExtResource( 4 )
 texture_progress = ExtResource( 3 )
 fill_mode = 3
 
-[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/yo_hbox"]
+[node name="RichTextLabel" type="RichTextLabel" parent="ScrollContainer/VBoxContainer/yo_hbox"]
 margin_left = 104.0
-margin_right = 404.0
+margin_right = 1104.0
 margin_bottom = 100.0
-rect_min_size = Vector2( 300, 0 )
+rect_min_size = Vector2( 1000, 0 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 custom_fonts/normal_font = SubResource( 3 )
-bbcode_text = "Yo! Jaturas
-5 total scores"
-text = "Yo! Jaturas
-5 total scores"
+bbcode_enabled = true
+bbcode_text = "[color=blue]Yo! Tekkk[/color] [img]res://Image/player_bt4Head.png[/img] 5 scores"
+text = "Yo! Tekkk  5 scores"
 
-[node name="Label" type="Label" parent="VBoxContainer/yo_hbox"]
-margin_left = 408.0
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/yo_hbox"]
+margin_left = 1108.0
 margin_top = 12.0
-margin_right = 459.0
+margin_right = 1159.0
 margin_bottom = 87.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 4 )
 text = "0%"
 
-[node name="total_bronze_hbox" type="HBoxContainer" parent="VBoxContainer"]
+[node name="total_bronze_hbox" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
 margin_top = 104.0
-margin_right = 459.0
+margin_right = 1159.0
 margin_bottom = 204.0
 
-[node name="TextureProgress" type="TextureProgress" parent="VBoxContainer/total_bronze_hbox"]
+[node name="TextureProgress" type="TextureProgress" parent="ScrollContainer/VBoxContainer/total_bronze_hbox"]
 margin_right = 100.0
 margin_bottom = 100.0
 max_value = 10.0
@@ -237,33 +245,32 @@ texture_under = ExtResource( 8 )
 texture_progress = ExtResource( 7 )
 fill_mode = 3
 
-[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/total_bronze_hbox"]
+[node name="RichTextLabel" type="RichTextLabel" parent="ScrollContainer/VBoxContainer/total_bronze_hbox"]
 margin_left = 104.0
-margin_right = 404.0
+margin_right = 1104.0
 margin_bottom = 100.0
-rect_min_size = Vector2( 300, 0 )
+rect_min_size = Vector2( 1000, 0 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 custom_fonts/normal_font = SubResource( 3 )
-bbcode_text = "Total Bronze
-10 total scores"
-text = "Total Bronze
-10 total scores"
+bbcode_enabled = true
+bbcode_text = "[color=blue][img]res://Image/player_bt4Head.png[/img]Bronze[/color]  10 scores"
+text = "Bronze  10 scores"
 
-[node name="Label" type="Label" parent="VBoxContainer/total_bronze_hbox"]
-margin_left = 408.0
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/total_bronze_hbox"]
+margin_left = 1108.0
 margin_top = 12.0
-margin_right = 459.0
+margin_right = 1159.0
 margin_bottom = 87.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 4 )
 text = "0%"
 
-[node name="bass_bronze_hbox" type="HBoxContainer" parent="VBoxContainer"]
+[node name="bass_bronze_hbox" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
 margin_top = 208.0
-margin_right = 459.0
+margin_right = 1159.0
 margin_bottom = 308.0
 
-[node name="TextureProgress" type="TextureProgress" parent="VBoxContainer/bass_bronze_hbox"]
+[node name="TextureProgress" type="TextureProgress" parent="ScrollContainer/VBoxContainer/bass_bronze_hbox"]
 margin_right = 100.0
 margin_bottom = 100.0
 max_value = 10.0
@@ -271,34 +278,32 @@ texture_under = ExtResource( 10 )
 texture_progress = ExtResource( 9 )
 fill_mode = 3
 
-[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/bass_bronze_hbox"]
+[node name="RichTextLabel" type="RichTextLabel" parent="ScrollContainer/VBoxContainer/bass_bronze_hbox"]
 margin_left = 104.0
-margin_right = 404.0
+margin_right = 1104.0
 margin_bottom = 100.0
-rect_min_size = Vector2( 300, 0 )
+rect_min_size = Vector2( 1000, 0 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 custom_fonts/normal_font = SubResource( 3 )
 bbcode_enabled = true
-bbcode_text = "Bass Bronze
-10 mno scores"
-text = "Bass Bronze
-10 mno scores"
+bbcode_text = "[img]res://Image/player_Head_mno.png[/img][color=blue]Bronze[/color] 10 scores"
+text = "Bronze 10 scores"
 
-[node name="Label" type="Label" parent="VBoxContainer/bass_bronze_hbox"]
-margin_left = 408.0
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/bass_bronze_hbox"]
+margin_left = 1108.0
 margin_top = 12.0
-margin_right = 459.0
+margin_right = 1159.0
 margin_bottom = 87.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 4 )
 text = "0%"
 
-[node name="guitar_bronze_hbox" type="HBoxContainer" parent="VBoxContainer"]
+[node name="guitar_bronze_hbox" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
 margin_top = 312.0
-margin_right = 459.0
+margin_right = 1159.0
 margin_bottom = 412.0
 
-[node name="TextureProgress" type="TextureProgress" parent="VBoxContainer/guitar_bronze_hbox"]
+[node name="TextureProgress" type="TextureProgress" parent="ScrollContainer/VBoxContainer/guitar_bronze_hbox"]
 margin_right = 100.0
 margin_bottom = 100.0
 max_value = 10.0
@@ -306,34 +311,32 @@ texture_under = ExtResource( 12 )
 texture_progress = ExtResource( 11 )
 fill_mode = 3
 
-[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/guitar_bronze_hbox"]
+[node name="RichTextLabel" type="RichTextLabel" parent="ScrollContainer/VBoxContainer/guitar_bronze_hbox"]
 margin_left = 104.0
-margin_right = 404.0
+margin_right = 1104.0
 margin_bottom = 100.0
-rect_min_size = Vector2( 300, 0 )
+rect_min_size = Vector2( 1000, 0 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 custom_fonts/normal_font = SubResource( 3 )
 bbcode_enabled = true
-bbcode_text = "Guitar Bronze
-10 speng scores"
-text = "Guitar Bronze
-10 speng scores"
+bbcode_text = "[img]res://Image/player_Head_Speng.png[/img][color=blue]Bronze[/color] 10 scores"
+text = "Bronze 10 scores"
 
-[node name="Label" type="Label" parent="VBoxContainer/guitar_bronze_hbox"]
-margin_left = 408.0
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/guitar_bronze_hbox"]
+margin_left = 1108.0
 margin_top = 12.0
-margin_right = 459.0
+margin_right = 1159.0
 margin_bottom = 87.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 4 )
 text = "0%"
 
-[node name="turntable_bronze_hbox" type="HBoxContainer" parent="VBoxContainer"]
+[node name="turntable_bronze_hbox" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
 margin_top = 416.0
-margin_right = 459.0
+margin_right = 1159.0
 margin_bottom = 516.0
 
-[node name="TextureProgress" type="TextureProgress" parent="VBoxContainer/turntable_bronze_hbox"]
+[node name="TextureProgress" type="TextureProgress" parent="ScrollContainer/VBoxContainer/turntable_bronze_hbox"]
 margin_right = 100.0
 margin_bottom = 100.0
 max_value = 10.0
@@ -341,34 +344,32 @@ texture_under = ExtResource( 13 )
 texture_progress = ExtResource( 16 )
 fill_mode = 3
 
-[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/turntable_bronze_hbox"]
+[node name="RichTextLabel" type="RichTextLabel" parent="ScrollContainer/VBoxContainer/turntable_bronze_hbox"]
 margin_left = 104.0
-margin_right = 404.0
+margin_right = 1104.0
 margin_bottom = 100.0
-rect_min_size = Vector2( 300, 0 )
+rect_min_size = Vector2( 1000, 0 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 custom_fonts/normal_font = SubResource( 3 )
 bbcode_enabled = true
-bbcode_text = "Turntable Bronze
-10 ichuen scores"
-text = "Turntable Bronze
-10 ichuen scores"
+bbcode_text = "[img]res://Image/player_Head_Ichuen.png[/img][color=blue]Bronze[/color] 10 scores"
+text = "Bronze 10 scores"
 
-[node name="Label" type="Label" parent="VBoxContainer/turntable_bronze_hbox"]
-margin_left = 408.0
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/turntable_bronze_hbox"]
+margin_left = 1108.0
 margin_top = 12.0
-margin_right = 459.0
+margin_right = 1159.0
 margin_bottom = 87.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 4 )
 text = "0%"
 
-[node name="drum_bronze_hbox" type="HBoxContainer" parent="VBoxContainer"]
+[node name="drum_bronze_hbox" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
 margin_top = 520.0
-margin_right = 459.0
+margin_right = 1159.0
 margin_bottom = 620.0
 
-[node name="TextureProgress" type="TextureProgress" parent="VBoxContainer/drum_bronze_hbox"]
+[node name="TextureProgress" type="TextureProgress" parent="ScrollContainer/VBoxContainer/drum_bronze_hbox"]
 margin_right = 100.0
 margin_bottom = 100.0
 max_value = 10.0
@@ -376,45 +377,43 @@ texture_under = ExtResource( 14 )
 texture_progress = ExtResource( 15 )
 fill_mode = 3
 
-[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/drum_bronze_hbox"]
+[node name="RichTextLabel" type="RichTextLabel" parent="ScrollContainer/VBoxContainer/drum_bronze_hbox"]
 margin_left = 104.0
-margin_right = 404.0
+margin_right = 1104.0
 margin_bottom = 100.0
-rect_min_size = Vector2( 300, 0 )
+rect_min_size = Vector2( 1000, 0 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 custom_fonts/normal_font = SubResource( 3 )
 bbcode_enabled = true
-bbcode_text = "Drum Bronze
-10 olay scores"
-text = "Drum Bronze
-10 olay scores"
+bbcode_text = "[img]res://Image/player_Head_olayzzz.png[/img][color=blue]Bronze[/color] 10 scores"
+text = "Bronze 10 scores"
 
-[node name="Label" type="Label" parent="VBoxContainer/drum_bronze_hbox"]
-margin_left = 408.0
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/drum_bronze_hbox"]
+margin_left = 1108.0
 margin_top = 12.0
-margin_right = 459.0
+margin_right = 1159.0
 margin_bottom = 87.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 4 )
 text = "0%"
 
-[node name="total_silver_hbox" type="HBoxContainer" parent="VBoxContainer"]
+[node name="total_silver_hbox" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
 margin_top = 624.0
-margin_right = 459.0
+margin_right = 1159.0
 margin_bottom = 724.0
 
-[node name="TextureProgress" type="TextureProgress" parent="VBoxContainer/total_silver_hbox"]
+[node name="TextureProgress" type="TextureProgress" parent="ScrollContainer/VBoxContainer/total_silver_hbox"]
 margin_right = 100.0
 margin_bottom = 100.0
 texture_under = ExtResource( 24 )
 texture_progress = ExtResource( 22 )
 fill_mode = 8
 
-[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/total_silver_hbox"]
+[node name="RichTextLabel" type="RichTextLabel" parent="ScrollContainer/VBoxContainer/total_silver_hbox"]
 margin_left = 104.0
-margin_right = 404.0
+margin_right = 1104.0
 margin_bottom = 100.0
-rect_min_size = Vector2( 300, 0 )
+rect_min_size = Vector2( 1000, 0 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 custom_fonts/normal_font = SubResource( 3 )
 bbcode_enabled = true
@@ -423,32 +422,32 @@ bbcode_text = "Total Silver
 text = "Total Silver
 100 total scores"
 
-[node name="Label" type="Label" parent="VBoxContainer/total_silver_hbox"]
-margin_left = 408.0
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/total_silver_hbox"]
+margin_left = 1108.0
 margin_top = 12.0
-margin_right = 459.0
+margin_right = 1159.0
 margin_bottom = 87.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 4 )
 text = "0%"
 
-[node name="mno_silver_hbox" type="HBoxContainer" parent="VBoxContainer"]
+[node name="mno_silver_hbox" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
 margin_top = 728.0
-margin_right = 459.0
+margin_right = 1159.0
 margin_bottom = 828.0
 
-[node name="TextureProgress" type="TextureProgress" parent="VBoxContainer/mno_silver_hbox"]
+[node name="TextureProgress" type="TextureProgress" parent="ScrollContainer/VBoxContainer/mno_silver_hbox"]
 margin_right = 100.0
 margin_bottom = 100.0
 texture_under = ExtResource( 25 )
 texture_progress = ExtResource( 23 )
 fill_mode = 8
 
-[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/mno_silver_hbox"]
+[node name="RichTextLabel" type="RichTextLabel" parent="ScrollContainer/VBoxContainer/mno_silver_hbox"]
 margin_left = 104.0
-margin_right = 404.0
+margin_right = 1104.0
 margin_bottom = 100.0
-rect_min_size = Vector2( 300, 0 )
+rect_min_size = Vector2( 1000, 0 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 custom_fonts/normal_font = SubResource( 3 )
 bbcode_enabled = true
@@ -457,32 +456,32 @@ bbcode_text = "Mno Silver
 text = "Mno Silver
 100 mno scores"
 
-[node name="Label" type="Label" parent="VBoxContainer/mno_silver_hbox"]
-margin_left = 408.0
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/mno_silver_hbox"]
+margin_left = 1108.0
 margin_top = 12.0
-margin_right = 459.0
+margin_right = 1159.0
 margin_bottom = 87.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 4 )
 text = "0%"
 
-[node name="speng_silver_hbox" type="HBoxContainer" parent="VBoxContainer"]
+[node name="speng_silver_hbox" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
 margin_top = 832.0
-margin_right = 459.0
+margin_right = 1159.0
 margin_bottom = 932.0
 
-[node name="TextureProgress" type="TextureProgress" parent="VBoxContainer/speng_silver_hbox"]
+[node name="TextureProgress" type="TextureProgress" parent="ScrollContainer/VBoxContainer/speng_silver_hbox"]
 margin_right = 100.0
 margin_bottom = 100.0
 texture_under = ExtResource( 31 )
 texture_progress = ExtResource( 29 )
 fill_mode = 8
 
-[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/speng_silver_hbox"]
+[node name="RichTextLabel" type="RichTextLabel" parent="ScrollContainer/VBoxContainer/speng_silver_hbox"]
 margin_left = 104.0
-margin_right = 404.0
+margin_right = 1104.0
 margin_bottom = 100.0
-rect_min_size = Vector2( 300, 0 )
+rect_min_size = Vector2( 1000, 0 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 custom_fonts/normal_font = SubResource( 3 )
 bbcode_enabled = true
@@ -491,32 +490,32 @@ bbcode_text = "Speng Silver
 text = "Speng Silver
 10 speng scores"
 
-[node name="Label" type="Label" parent="VBoxContainer/speng_silver_hbox"]
-margin_left = 408.0
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/speng_silver_hbox"]
+margin_left = 1108.0
 margin_top = 12.0
-margin_right = 459.0
+margin_right = 1159.0
 margin_bottom = 87.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 4 )
 text = "0%"
 
-[node name="ichuen_silver_hbox" type="HBoxContainer" parent="VBoxContainer"]
+[node name="ichuen_silver_hbox" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
 margin_top = 936.0
-margin_right = 459.0
+margin_right = 1159.0
 margin_bottom = 1036.0
 
-[node name="TextureProgress" type="TextureProgress" parent="VBoxContainer/ichuen_silver_hbox"]
+[node name="TextureProgress" type="TextureProgress" parent="ScrollContainer/VBoxContainer/ichuen_silver_hbox"]
 margin_right = 100.0
 margin_bottom = 100.0
 texture_under = ExtResource( 28 )
 texture_progress = ExtResource( 30 )
 fill_mode = 8
 
-[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/ichuen_silver_hbox"]
+[node name="RichTextLabel" type="RichTextLabel" parent="ScrollContainer/VBoxContainer/ichuen_silver_hbox"]
 margin_left = 104.0
-margin_right = 404.0
+margin_right = 1104.0
 margin_bottom = 100.0
-rect_min_size = Vector2( 300, 0 )
+rect_min_size = Vector2( 1000, 0 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 custom_fonts/normal_font = SubResource( 3 )
 bbcode_enabled = true
@@ -525,32 +524,32 @@ bbcode_text = "Ichuen Silver
 text = "Ichuen Silver
 100 ichuen scores"
 
-[node name="Label" type="Label" parent="VBoxContainer/ichuen_silver_hbox"]
-margin_left = 408.0
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/ichuen_silver_hbox"]
+margin_left = 1108.0
 margin_top = 12.0
-margin_right = 459.0
+margin_right = 1159.0
 margin_bottom = 87.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 4 )
 text = "0%"
 
-[node name="olay_silver_hbox" type="HBoxContainer" parent="VBoxContainer"]
+[node name="olay_silver_hbox" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
 margin_top = 1040.0
-margin_right = 459.0
+margin_right = 1159.0
 margin_bottom = 1140.0
 
-[node name="TextureProgress" type="TextureProgress" parent="VBoxContainer/olay_silver_hbox"]
+[node name="TextureProgress" type="TextureProgress" parent="ScrollContainer/VBoxContainer/olay_silver_hbox"]
 margin_right = 100.0
 margin_bottom = 100.0
 texture_under = ExtResource( 33 )
 texture_progress = ExtResource( 27 )
 fill_mode = 8
 
-[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/olay_silver_hbox"]
+[node name="RichTextLabel" type="RichTextLabel" parent="ScrollContainer/VBoxContainer/olay_silver_hbox"]
 margin_left = 104.0
-margin_right = 404.0
+margin_right = 1104.0
 margin_bottom = 100.0
-rect_min_size = Vector2( 300, 0 )
+rect_min_size = Vector2( 1000, 0 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 custom_fonts/normal_font = SubResource( 3 )
 bbcode_enabled = true
@@ -559,21 +558,21 @@ bbcode_text = "Olay Bronze
 text = "Olay Bronze
 10 olay scores"
 
-[node name="Label" type="Label" parent="VBoxContainer/olay_silver_hbox"]
-margin_left = 408.0
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/olay_silver_hbox"]
+margin_left = 1108.0
 margin_top = 12.0
-margin_right = 459.0
+margin_right = 1159.0
 margin_bottom = 87.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 4 )
 text = "0%"
 
-[node name="total_gold_hbox" type="HBoxContainer" parent="VBoxContainer"]
+[node name="total_gold_hbox" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
 margin_top = 1144.0
-margin_right = 459.0
+margin_right = 1159.0
 margin_bottom = 1244.0
 
-[node name="TextureProgress" type="TextureProgress" parent="VBoxContainer/total_gold_hbox"]
+[node name="TextureProgress" type="TextureProgress" parent="ScrollContainer/VBoxContainer/total_gold_hbox"]
 margin_right = 100.0
 margin_bottom = 100.0
 max_value = 200.0
@@ -581,11 +580,11 @@ texture_under = ExtResource( 26 )
 texture_progress = ExtResource( 32 )
 fill_mode = 7
 
-[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/total_gold_hbox"]
+[node name="RichTextLabel" type="RichTextLabel" parent="ScrollContainer/VBoxContainer/total_gold_hbox"]
 margin_left = 104.0
-margin_right = 404.0
+margin_right = 1104.0
 margin_bottom = 100.0
-rect_min_size = Vector2( 300, 0 )
+rect_min_size = Vector2( 1000, 0 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 custom_fonts/normal_font = SubResource( 3 )
 bbcode_enabled = true
@@ -594,21 +593,21 @@ bbcode_text = "Total Gold
 text = "Total Gold
 200 total scores"
 
-[node name="Label" type="Label" parent="VBoxContainer/total_gold_hbox"]
-margin_left = 408.0
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/total_gold_hbox"]
+margin_left = 1108.0
 margin_top = 12.0
-margin_right = 459.0
+margin_right = 1159.0
 margin_bottom = 87.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 4 )
 text = "0%"
 
-[node name="mno_bass_gold_hbox" type="HBoxContainer" parent="VBoxContainer"]
+[node name="mno_bass_gold_hbox" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
 margin_top = 1248.0
-margin_right = 459.0
+margin_right = 1159.0
 margin_bottom = 1348.0
 
-[node name="TextureProgress" type="TextureProgress" parent="VBoxContainer/mno_bass_gold_hbox"]
+[node name="TextureProgress" type="TextureProgress" parent="ScrollContainer/VBoxContainer/mno_bass_gold_hbox"]
 margin_right = 100.0
 margin_bottom = 100.0
 max_value = 200.0
@@ -616,11 +615,11 @@ texture_under = ExtResource( 34 )
 texture_progress = ExtResource( 35 )
 fill_mode = 7
 
-[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/mno_bass_gold_hbox"]
+[node name="RichTextLabel" type="RichTextLabel" parent="ScrollContainer/VBoxContainer/mno_bass_gold_hbox"]
 margin_left = 104.0
-margin_right = 404.0
+margin_right = 1104.0
 margin_bottom = 100.0
-rect_min_size = Vector2( 300, 0 )
+rect_min_size = Vector2( 1000, 0 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 custom_fonts/normal_font = SubResource( 3 )
 bbcode_enabled = true
@@ -629,21 +628,21 @@ bbcode_text = "Mno Bass Gold
 text = "Mno Bass Gold
 200 mno scores"
 
-[node name="Label" type="Label" parent="VBoxContainer/mno_bass_gold_hbox"]
-margin_left = 408.0
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/mno_bass_gold_hbox"]
+margin_left = 1108.0
 margin_top = 12.0
-margin_right = 459.0
+margin_right = 1159.0
 margin_bottom = 87.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 4 )
 text = "0%"
 
-[node name="speng_guitar_gold_hbox" type="HBoxContainer" parent="VBoxContainer"]
+[node name="speng_guitar_gold_hbox" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
 margin_top = 1352.0
-margin_right = 459.0
+margin_right = 1159.0
 margin_bottom = 1452.0
 
-[node name="TextureProgress" type="TextureProgress" parent="VBoxContainer/speng_guitar_gold_hbox"]
+[node name="TextureProgress" type="TextureProgress" parent="ScrollContainer/VBoxContainer/speng_guitar_gold_hbox"]
 margin_right = 100.0
 margin_bottom = 100.0
 max_value = 200.0
@@ -651,11 +650,11 @@ texture_under = ExtResource( 37 )
 texture_progress = ExtResource( 36 )
 fill_mode = 7
 
-[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/speng_guitar_gold_hbox"]
+[node name="RichTextLabel" type="RichTextLabel" parent="ScrollContainer/VBoxContainer/speng_guitar_gold_hbox"]
 margin_left = 104.0
-margin_right = 404.0
+margin_right = 1104.0
 margin_bottom = 100.0
-rect_min_size = Vector2( 300, 0 )
+rect_min_size = Vector2( 1000, 0 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 custom_fonts/normal_font = SubResource( 3 )
 bbcode_enabled = true
@@ -664,21 +663,21 @@ bbcode_text = "Speng Guitar Gold
 text = "Speng Guitar Gold
 200 speng scores"
 
-[node name="Label" type="Label" parent="VBoxContainer/speng_guitar_gold_hbox"]
-margin_left = 408.0
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/speng_guitar_gold_hbox"]
+margin_left = 1108.0
 margin_top = 12.0
-margin_right = 459.0
+margin_right = 1159.0
 margin_bottom = 87.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 4 )
 text = "0%"
 
-[node name="ichuen_turntable_gold_hbox" type="HBoxContainer" parent="VBoxContainer"]
+[node name="ichuen_turntable_gold_hbox" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
 margin_top = 1456.0
-margin_right = 459.0
+margin_right = 1159.0
 margin_bottom = 1556.0
 
-[node name="TextureProgress" type="TextureProgress" parent="VBoxContainer/ichuen_turntable_gold_hbox"]
+[node name="TextureProgress" type="TextureProgress" parent="ScrollContainer/VBoxContainer/ichuen_turntable_gold_hbox"]
 margin_right = 100.0
 margin_bottom = 100.0
 max_value = 200.0
@@ -686,11 +685,11 @@ texture_under = ExtResource( 38 )
 texture_progress = ExtResource( 40 )
 fill_mode = 7
 
-[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/ichuen_turntable_gold_hbox"]
+[node name="RichTextLabel" type="RichTextLabel" parent="ScrollContainer/VBoxContainer/ichuen_turntable_gold_hbox"]
 margin_left = 104.0
-margin_right = 404.0
+margin_right = 1104.0
 margin_bottom = 100.0
-rect_min_size = Vector2( 300, 0 )
+rect_min_size = Vector2( 1000, 0 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 custom_fonts/normal_font = SubResource( 3 )
 bbcode_enabled = true
@@ -699,21 +698,21 @@ bbcode_text = "Ichuen Turntable Gold
 text = "Ichuen Turntable Gold
 200 ichuen scores"
 
-[node name="Label" type="Label" parent="VBoxContainer/ichuen_turntable_gold_hbox"]
-margin_left = 408.0
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/ichuen_turntable_gold_hbox"]
+margin_left = 1108.0
 margin_top = 12.0
-margin_right = 459.0
+margin_right = 1159.0
 margin_bottom = 87.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 4 )
 text = "0%"
 
-[node name="olay_drum_gold_hbox" type="HBoxContainer" parent="VBoxContainer"]
+[node name="olay_drum_gold_hbox" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
 margin_top = 1560.0
-margin_right = 459.0
+margin_right = 1159.0
 margin_bottom = 1660.0
 
-[node name="TextureProgress" type="TextureProgress" parent="VBoxContainer/olay_drum_gold_hbox"]
+[node name="TextureProgress" type="TextureProgress" parent="ScrollContainer/VBoxContainer/olay_drum_gold_hbox"]
 margin_right = 100.0
 margin_bottom = 100.0
 max_value = 200.0
@@ -721,11 +720,11 @@ texture_under = ExtResource( 39 )
 texture_progress = ExtResource( 41 )
 fill_mode = 7
 
-[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/olay_drum_gold_hbox"]
+[node name="RichTextLabel" type="RichTextLabel" parent="ScrollContainer/VBoxContainer/olay_drum_gold_hbox"]
 margin_left = 104.0
-margin_right = 404.0
+margin_right = 1104.0
 margin_bottom = 100.0
-rect_min_size = Vector2( 300, 0 )
+rect_min_size = Vector2( 1000, 0 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 custom_fonts/normal_font = SubResource( 3 )
 bbcode_enabled = true
@@ -734,10 +733,10 @@ bbcode_text = "Olay Drum Gold
 text = "Olay Drum Gold
 200 olay scores"
 
-[node name="Label" type="Label" parent="VBoxContainer/olay_drum_gold_hbox"]
-margin_left = 408.0
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/olay_drum_gold_hbox"]
+margin_left = 1108.0
 margin_top = 12.0
-margin_right = 459.0
+margin_right = 1159.0
 margin_bottom = 87.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 4 )

@@ -19,38 +19,52 @@ script = ExtResource( 2 )
 
 [node name="FloatingScene" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
+bus = "BGM"
 
 [node name="DragScene" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
+bus = "BGM"
 
 [node name="MenuAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
+volume_db = -5.0
+bus = "BGM"
 
 [node name="SwipeScene" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 13 )
+bus = "BGM"
 
 [node name="HomeScene" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 1 )
+bus = "SFX"
 
 [node name="Accurate" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
+bus = "SFX"
 
 [node name="Failed" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
 volume_db = 10.0
+bus = "SFX"
 
 [node name="SceneSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
+volume_db = -5.0
+bus = "SFX"
 
 [node name="TurntableSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 10 )
+bus = "SFX"
 
 [node name="BassSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
+bus = "SFX"
 
 [node name="GuitarSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 11 )
+bus = "SFX"
 
 [node name="DrumSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 12 )
 volume_db = 10.0
+bus = "SFX"

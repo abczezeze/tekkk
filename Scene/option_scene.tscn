@@ -1,0 +1,208 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Scene/option_scene.gd" type="Script" id=1]
+[ext_resource path="res://Image/gui_home.png" type="Texture" id=2]
+[ext_resource path="res://Image/bg1080x1920.jpg" type="Texture" id=3]
+[ext_resource path="res://Font/SanamDeklen_chaya.ttf" type="DynamicFontData" id=4]
+
+[sub_resource type="DynamicFont" id=4]
+size = 55
+outline_size = 1
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=1]
+size = 55
+outline_size = 1
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 55
+outline_size = 1
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 55
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 55
+outline_size = 1
+font_data = ExtResource( 4 )
+
+[node name="option_scene" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="bg" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 3 )
+expand = true
+
+[node name="HomeBT" type="Button" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 12.0
+margin_top = 995.0
+margin_right = -1768.0
+margin_bottom = 49.0
+rect_scale = Vector2( 0.5, 0.5 )
+icon = ExtResource( 2 )
+flat = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 414.0
+margin_top = 96.0
+margin_right = 1306.0
+margin_bottom = 392.0
+
+[node name="video_Label" type="Label" parent="VBoxContainer"]
+margin_right = 892.0
+margin_bottom = 94.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "Video Setting"
+align = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 98.0
+margin_right = 892.0
+margin_bottom = 192.0
+
+[node name="full_screen_Label" type="Label" parent="VBoxContainer/HBoxContainer"]
+margin_right = 236.0
+margin_bottom = 94.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Full Screen"
+
+[node name="CheckButton" type="CheckButton" parent="VBoxContainer/HBoxContainer"]
+margin_left = 240.0
+margin_right = 316.0
+margin_bottom = 94.0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 196.0
+margin_right = 892.0
+margin_bottom = 296.0
+
+[node name="resolution_Label" type="Label" parent="VBoxContainer/HBoxContainer2"]
+margin_top = 3.0
+margin_right = 228.0
+margin_bottom = 97.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Resolution"
+
+[node name="1080p_Button" type="Button" parent="VBoxContainer/HBoxContainer2"]
+margin_left = 232.0
+margin_right = 391.0
+margin_bottom = 100.0
+custom_fonts/font = SubResource( 3 )
+text = "1080p"
+
+[node name="720p_Button" type="Button" parent="VBoxContainer/HBoxContainer2"]
+margin_left = 395.0
+margin_right = 526.0
+margin_bottom = 100.0
+custom_fonts/font = SubResource( 3 )
+text = "720p"
+
+[node name="VGA_Button" type="Button" parent="VBoxContainer/HBoxContainer2"]
+margin_left = 530.0
+margin_right = 630.0
+margin_bottom = 100.0
+custom_fonts/font = SubResource( 3 )
+text = "VGA"
+
+[node name="SVGA_Button" type="Button" parent="VBoxContainer/HBoxContainer2"]
+margin_left = 634.0
+margin_right = 762.0
+margin_bottom = 100.0
+custom_fonts/font = SubResource( 3 )
+text = "SVGA"
+
+[node name="XVGA_Button" type="Button" parent="VBoxContainer/HBoxContainer2"]
+margin_left = 766.0
+margin_right = 892.0
+margin_bottom = 100.0
+custom_fonts/font = SubResource( 3 )
+text = "XVGA"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+margin_left = 423.0
+margin_top = 592.0
+margin_right = 1290.0
+margin_bottom = 882.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="sound_Label" type="Label" parent="VBoxContainer2"]
+margin_right = 867.0
+margin_bottom = 94.0
+size_flags_horizontal = 3
+size_flags_vertical = 7
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 5 )
+text = "Sound Setting"
+align = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer2"]
+margin_top = 98.0
+margin_right = 867.0
+margin_bottom = 192.0
+
+[node name="bgm_volume_Label" type="Label" parent="VBoxContainer2/HBoxContainer3"]
+margin_right = 84.0
+margin_bottom = 94.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "BGM"
+
+[node name="bgm_volume_HSlider" type="HSlider" parent="VBoxContainer2/HBoxContainer3"]
+margin_left = 88.0
+margin_right = 867.0
+margin_bottom = 94.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = -10.0
+max_value = 10.0
+step = 0.01
+value = 5.0
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer2"]
+margin_top = 196.0
+margin_right = 867.0
+margin_bottom = 290.0
+
+[node name="sfx_volume_Label" type="Label" parent="VBoxContainer2/HBoxContainer4"]
+margin_right = 80.0
+margin_bottom = 94.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "SFX"
+
+[node name="sfx_volume_HSlider" type="HSlider" parent="VBoxContainer2/HBoxContainer4"]
+margin_left = 84.0
+margin_right = 867.0
+margin_bottom = 94.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = -10.0
+max_value = 10.0
+step = 0.01
+value = 2.0
+
+[connection signal="pressed" from="HomeBT" to="." method="_on_HomeBT_pressed"]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer/CheckButton" to="." method="_on_CheckButton_toggled"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer2/1080p_Button" to="." method="_on_1080p_Button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer2/720p_Button" to="." method="_on_720p_Button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer2/VGA_Button" to="." method="_on_VGA_Button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer2/SVGA_Button" to="." method="_on_SVGA_Button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer2/XVGA_Button" to="." method="_on_XVGA_Button_pressed"]
+[connection signal="value_changed" from="VBoxContainer2/HBoxContainer3/bgm_volume_HSlider" to="." method="_on_bgm_volume_HSlider_value_changed"]
+[connection signal="value_changed" from="VBoxContainer2/HBoxContainer4/sfx_volume_HSlider" to="." method="_on_sfx_volume_HSlider_value_changed"]
+[connection signal="value_changed" from="VBoxContainer2/HBoxContainer4/sfx_volume_HSlider" to="." method="_on_HSlider_value_changed"]
