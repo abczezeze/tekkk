@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://Scene/click3d/player_ichuen_head_3d.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scene/click3d/click_mix_3d.gd" type="Script" id=2]
@@ -6,9 +6,7 @@
 [ext_resource path="res://Scene/click3d/player_olay_head_3d.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scene/click3d/player_speng_head_3d.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Image/gui_home.png" type="Texture" id=6]
-[ext_resource path="res://Image/gui_arrow01pressed.png" type="Texture" id=7]
 [ext_resource path="res://Sound/bgm_click3d_Sec.mp3" type="AudioStream" id=8]
-[ext_resource path="res://Image/gui_arrow01disabled.png" type="Texture" id=9]
 [ext_resource path="res://Sound/sfx_guitar5.ogg" type="AudioStream" id=10]
 [ext_resource path="res://Sound/sfx_guitar2.ogg" type="AudioStream" id=11]
 [ext_resource path="res://Sound/sfx_guitar4.ogg" type="AudioStream" id=12]
@@ -29,7 +27,6 @@
 [ext_resource path="res://Sound/sfx_drum5.ogg" type="AudioStream" id=27]
 [ext_resource path="res://Sound/sfx_drum3.ogg" type="AudioStream" id=28]
 [ext_resource path="res://Sound/sfx_drum1.ogg" type="AudioStream" id=29]
-[ext_resource path="res://Image/gui_arrow01nomal.png" type="Texture" id=30]
 [ext_resource path="res://Image/player_Head_Speng.png" type="Texture" id=31]
 [ext_resource path="res://Image/player_Head_olayzzz.png" type="Texture" id=32]
 [ext_resource path="res://Image/player_Head_Ichuen.png" type="Texture" id=33]
@@ -37,35 +34,12 @@
 [ext_resource path="res://Font/SanamDeklen_chaya.ttf" type="DynamicFontData" id=35]
 [ext_resource path="res://Image/player_bt4Head.png" type="Texture" id=36]
 
-[sub_resource type="ProceduralSky" id=1]
+[sub_resource type="ProceduralSky" id=6]
 sky_top_color = Color( 1, 0, 0, 1 )
 
 [sub_resource type="Environment" id=2]
 background_mode = 2
-background_sky = SubResource( 1 )
-
-[sub_resource type="Animation" id=3]
-length = 0.001
-tracks/0/type = "bezier"
-tracks/0/path = NodePath("clickScene:scale:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"points": PoolRealArray( 3, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0 )
-}
-tracks/1/type = "bezier"
-tracks/1/path = NodePath("clickScene:scale:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"points": PoolRealArray( 3, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0 )
-}
+background_sky = SubResource( 6 )
 
 [sub_resource type="Animation" id=4]
 resource_name = "scaleSprite"
@@ -89,6 +63,48 @@ tracks/1/keys = {
 "points": PoolRealArray( 3, -0.25, 0, 0.25, 0, 1e-05, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0, 1 )
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("player_head_hbox:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 691, 521 ), Vector2( 1485, 19 ) ]
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("Camera:translation:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("Camera:translation:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/5/type = "bezier"
+tracks/5/path = NodePath("Camera:translation:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"points": PoolRealArray( 12, -0.25, 0, 0.25, 0, 6, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
 
 [sub_resource type="DynamicFont" id=5]
 size = 55
@@ -103,7 +119,7 @@ sound_efx_olay = [ ExtResource( 29 ), ExtResource( 26 ), ExtResource( 28 ), ExtR
 sprite_textures = [ ExtResource( 34 ), ExtResource( 31 ), ExtResource( 33 ), ExtResource( 32 ) ]
 
 [node name="Camera" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12 )
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 0.956071, 0.0799558, 0.282021, -0.164598, 0.942524, 0.290786, -0.242561, -0.324432, 0.91428, 0, 0, 0 )
@@ -137,38 +153,14 @@ flat = true
 stream = ExtResource( 8 )
 autoplay = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -75.0
-margin_top = -252.0
-
-[node name="TextureButton_up" type="TextureButton" parent="VBoxContainer"]
-margin_right = 75.0
-margin_bottom = 124.0
-texture_normal = ExtResource( 30 )
-texture_pressed = ExtResource( 7 )
-texture_disabled = ExtResource( 9 )
-
-[node name="TextureButton_down" type="TextureButton" parent="VBoxContainer"]
-margin_top = 128.0
-margin_right = 75.0
-margin_bottom = 252.0
-texture_normal = ExtResource( 30 )
-texture_pressed = ExtResource( 7 )
-texture_disabled = ExtResource( 9 )
-flip_v = true
-
 [node name="clickScene" type="Sprite" parent="."]
 modulate = Color( 0, 0, 0, 1 )
 position = Vector2( 934, 544 )
 scale = Vector2( 3, 3 )
+texture = ExtResource( 34 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="clickScene"]
 root_node = NodePath("../..")
-anims/RESET = SubResource( 3 )
 anims/scaleSprite = SubResource( 4 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
@@ -190,6 +182,44 @@ custom_fonts/font = SubResource( 5 )
 text = "0"
 align = 1
 
+[node name="player_head_hbox" type="HBoxContainer" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -1229.0
+margin_top = 521.0
+margin_right = -805.0
+margin_bottom = 618.0
+
+[node name="ichuen_button" type="Button" parent="player_head_hbox"]
+margin_right = 103.0
+margin_bottom = 97.0
+icon = ExtResource( 33 )
+flat = true
+
+[node name="mno_button" type="Button" parent="player_head_hbox"]
+margin_left = 107.0
+margin_right = 210.0
+margin_bottom = 97.0
+icon = ExtResource( 34 )
+flat = true
+
+[node name="olay_button" type="Button" parent="player_head_hbox"]
+margin_left = 214.0
+margin_right = 317.0
+margin_bottom = 97.0
+icon = ExtResource( 32 )
+flat = true
+
+[node name="speng_button" type="Button" parent="player_head_hbox"]
+margin_left = 321.0
+margin_right = 424.0
+margin_bottom = 97.0
+icon = ExtResource( 31 )
+flat = true
+
 [connection signal="pressed" from="HomeBT" to="." method="_on_HomeBT_pressed"]
-[connection signal="pressed" from="VBoxContainer/TextureButton_up" to="." method="_on_TextureButton_up_pressed"]
-[connection signal="pressed" from="VBoxContainer/TextureButton_down" to="." method="_on_TextureButton_down_pressed"]
+[connection signal="animation_finished" from="clickScene/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="pressed" from="player_head_hbox/ichuen_button" to="." method="_on_ichuen_button_pressed"]
+[connection signal="pressed" from="player_head_hbox/mno_button" to="." method="_on_mno_button_pressed"]
+[connection signal="pressed" from="player_head_hbox/olay_button" to="." method="_on_olay_button_pressed"]
+[connection signal="pressed" from="player_head_hbox/speng_button" to="." method="_on_speng_button_pressed"]

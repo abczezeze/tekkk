@@ -21,6 +21,7 @@ export (Array,AudioStreamOGGVorbis) var sound_efx_olay = []
 export (Array, Texture) var sprite_textures = []
 
 func _ready():
+	$click3d_sound.volume_db = Global.bgm_volume
 	$player_speng_head/AnimationPlayer.play("idle")
 	$player_speng_head/Label3D.text = str(Global.save_dict["speng_scores"])
 	$player_speng_head.transform.origin = Vector3(rand_range(-7,7),rand_range(-4,4),-21)
@@ -53,28 +54,6 @@ func _ready():
 	var __8 = $player_olay_head/AnimationPlayer.connect("animation_finished",self,"_on_AnimationPlayer_olay")
 		
 func _process(delta):
-	 #check camera transform z axis
-	if $Camera.transform.origin.z == 6:
-		$VBoxContainer/TextureButton_up.disabled = false
-		$VBoxContainer/TextureButton_down.disabled = true
-		$WorldEnvironment.environment.background_sky.sky_top_color = Color(0.41,0.05,0.58,1)
-	elif $Camera.transform.origin.z == -1:
-		$VBoxContainer/TextureButton_up.disabled = false
-		$VBoxContainer/TextureButton_down.disabled = false
-		$WorldEnvironment.environment.background_sky.sky_top_color = Color(1,0.51,0,1)
-	elif $Camera.transform.origin.z == -8:
-		$VBoxContainer/TextureButton_up.disabled = false
-		$VBoxContainer/TextureButton_down.disabled = false
-		$WorldEnvironment.environment.background_sky.sky_top_color = Color(0,0.46,1,1)
-	elif $Camera.transform.origin.z == -15:
-		$VBoxContainer/TextureButton_up.disabled = true
-		$VBoxContainer/TextureButton_down.disabled = false
-		$WorldEnvironment.environment.background_sky.sky_top_color = Color(0.95,1,0,1)
-	else:
-		$VBoxContainer/TextureButton_up.disabled = true
-		$VBoxContainer/TextureButton_down.disabled = true
-		$WorldEnvironment.environment.background_sky.sky_top_color = Color(0,0,0,1)
-		
 	#ichuen move
 	$player_ichuen_head.translation += Vector3(dir_x_ichuen*move_speed_ichuen*delta,dir_y_ichuen*move_speed_ichuen*delta,0)
 	if $player_ichuen_head.transform.origin.x>7:
@@ -107,7 +86,7 @@ func _process(delta):
 		dir_y_olay = rand_range(0,2)
 		$player_olay_head.transform.origin = Vector3(rand_range(-7,7),-4,-14)
 		
-	$HBoxContainer/TotalScores.text = str(Global.total_score)
+	$HBoxContainer/TotalScores.text = str(Global.total_scores)
 
 func _on_AnimationPlayer_ichuen(_anim_name):
 	$player_ichuen_head/ICBd/CPUParticles.emitting = false
@@ -136,6 +115,7 @@ func _on_player_ichuen_head_input_event(_camera, event, _position, _normal, _sha
 			$player_ichuen_head.transform.origin = Vector3(rand_range(-7,7),rand_range(-4,4),0)
 			$player_ichuen_head/Label3D.text = str(Global.save_dict["ichuen_scores"])
 			$player_ichuen_head/AudioStreamPlayer.stream = sound_efx_ichuen[rand_range(0,sound_efx_ichuen.size())]
+			$player_ichuen_head/AudioStreamPlayer.volume_db = Global.sfx_volume
 			$player_ichuen_head/AudioStreamPlayer.stream.loop = false
 			$player_ichuen_head/AudioStreamPlayer.play()
 			
@@ -151,6 +131,7 @@ func _on_player_mno_head_input_event(_camera, event, _position, _normal, _shape_
 			$player_mno_head.transform.origin = Vector3(rand_range(-7,7),rand_range(-4,4),-6)
 			$player_mno_head/Label3D.text = str(Global.save_dict["mno_scores"])
 			$player_mno_head/AudioStreamPlayer.stream = sound_efx_mno[rand_range(0,sound_efx_mno.size())]
+			$player_mno_head/AudioStreamPlayer.volume_db = Global.sfx_volume
 			$player_mno_head/AudioStreamPlayer.stream.loop = false
 			$player_mno_head/AudioStreamPlayer.play()
 			
@@ -166,6 +147,7 @@ func _on_player_olay_head_input_event(_camera, event, _position, _normal, _shape
 			$player_olay_head.transform.origin = Vector3(rand_range(-7,7),rand_range(-4,4),-14)
 			$player_olay_head/Label3D.text = str(Global.save_dict["olay_scores"])
 			$player_olay_head/AudioStreamPlayer.stream = sound_efx_olay[rand_range(0,sound_efx_olay.size())]
+			$player_olay_head/AudioStreamPlayer.volume_db = Global.sfx_volume
 			$player_olay_head/AudioStreamPlayer.stream.loop = false
 			$player_olay_head/AudioStreamPlayer.play()
 
@@ -183,6 +165,7 @@ func _on_player_speng_head_input_event(_camera, event, _position, _normal, _shap
 			$player_speng_head.transform.origin = Vector3(rand_range(-7,7),rand_range(-4,4),-21)
 			$player_speng_head/Label3D.text = str(Global.save_dict["speng_scores"])
 			$player_speng_head/AudioStreamPlayer.stream = sound_efx_speng[rand_range(0,sound_efx_speng.size())]
+			$player_speng_head/AudioStreamPlayer.volume_db = Global.sfx_volume
 			$player_speng_head/AudioStreamPlayer.stream.loop = false
 			$player_speng_head/AudioStreamPlayer.play()
 
@@ -199,8 +182,22 @@ func _on_HomeBT_pressed():
 	Global.HomeAudioPlay()
 	$click3d_sound.stop()
 
-func _on_TextureButton_up_pressed():
-	$Camera.transform.origin.z -= 7 
+func _on_ichuen_button_pressed():
+	$Camera.transform.origin.z = 6
+	$WorldEnvironment.environment.background_sky.sky_top_color = Color(0.41,0.05,0.58,1)
 
-func _on_TextureButton_down_pressed():
-	$Camera.transform.origin.z += 7
+func _on_mno_button_pressed():
+	$Camera.transform.origin.z = -1
+	$WorldEnvironment.environment.background_sky.sky_top_color = Color(1,0.51,0,1)
+
+func _on_olay_button_pressed():
+	$Camera.transform.origin.z = -8
+	$WorldEnvironment.environment.background_sky.sky_top_color = Color(0,0.46,1,1)
+
+func _on_speng_button_pressed():
+	$Camera.transform.origin.z = -15
+	$WorldEnvironment.environment.background_sky.sky_top_color = Color(0.95,1,0,1)
+
+
+func _on_AnimationPlayer_animation_finished(_anim_name):
+	$WorldEnvironment.environment.background_sky.sky_top_color = Color(0.41,0.05,0.58,1)
