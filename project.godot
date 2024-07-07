@@ -14,12 +14,12 @@ _global_script_class_icons={
 
 [application]
 
-config/name="tekkk"
+config/name="Tekkk"
 run/main_scene="res://Scene/MainMenu.tscn"
 boot_splash/image="res://Image/splashScreen.png"
 boot_splash/bg_color=Color( 0.454902, 0.772549, 0.980392, 1 )
-config/icon="res://Image/ปก512x512.png"
-config/windows_native_icon="res://Image/Yo.ico"
+config/icon="res://Image/cover512x512.png"
+config/windows_native_icon="res://Image/iconlogoTekkk.ico"
 
 [autoload]
 
@@ -27,11 +27,10 @@ Global="*res://Scene/global.tscn"
 
 [display]
 
-window/size/width=1080
-window/size/height=1920
-window/size/test_width=540
-window/size/test_height=960
-window/handheld/orientation="portrait"
+window/size/width=1920
+window/size/height=1080
+window/size/test_width=1280
+window/size/test_height=720
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
 
@@ -47,7 +46,6 @@ ui_accept={
 , Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777222,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
 , Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":0,"pressure":0.0,"pressed":false,"script":null)
-, Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
  ]
 }
 ui_click={
