@@ -3,6 +3,8 @@ extends Node
 var tekkk_language:String = "En"
 const FILE_NAME:String = "user://game-data.json"
 var total_scores:float
+var bgm_volume:float
+var sfx_volume:float
 
 var save_dict = {
 	"mno_scores" : 0,
