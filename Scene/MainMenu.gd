@@ -9,11 +9,11 @@ func _ready() -> void:
 		_on_TextureButton_toggled(false)
 	if Global.tekkk_language=="Th":
 		_on_TextureButton_toggled(true)
-		
-	if OS.get_name() == "Web":
+	if OS.has_feature("web"):
 		$VBoxContainer2/level_3d/click_3d.disabled = true
 		$VBoxContainer2/level_3d/drag_3d.disabled = true
 		$VBoxContainer2/level_3d/shoot_3d.disabled = true
+		$LinkButton.visible = true
 
 func _on_SwipeLb_pressed() -> void:
 	Global.SceneSoundPlay()
@@ -96,3 +96,6 @@ func _on_TextureButton_toggled(button_pressed) -> void:
 		$VBoxContainer2/achievement_button.text="Achievement"
 		$VBoxContainer2/option_button.text="Option"
 		$VBoxContainer2/reset_button.text="RESET!"
+
+func _on_LinkButton_pressed():
+	OS.shell_open("https://abczezeze.itch.io/tekkk/purchase")
