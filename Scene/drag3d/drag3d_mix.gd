@@ -24,6 +24,7 @@ var random_index_olay:int
 export (Array, Texture) var sprite_textures = []
 
 func _ready():
+	$AudioStreamPlayer.volume_db = Global.bgm_volume
 	random_player()
 	new_turntable()
 	new_guitar()

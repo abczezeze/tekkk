@@ -39,6 +39,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Vector2( 5, 5 ), Vector2( 1e-05, 1e-05 ) ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("../player_full_hbox:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 732, 530 ), Vector2( 1488, 19 ) ]
+}
 
 [sub_resource type="DynamicFont" id=5]
 size = 55
@@ -97,41 +109,6 @@ margin_right = 147.0
 margin_bottom = 62.0
 rect_scale = Vector2( 0.5, 0.5 )
 texture_normal = ExtResource( 2 )
-
-[node name="player_full_hbox" type="HBoxContainer" parent="."]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -423.0
-margin_top = 10.0
-margin_right = 1.0
-margin_bottom = 107.0
-
-[node name="ichuen_button" type="Button" parent="player_full_hbox"]
-margin_right = 103.0
-margin_bottom = 97.0
-icon = ExtResource( 10 )
-flat = true
-
-[node name="mno_button" type="Button" parent="player_full_hbox"]
-margin_left = 107.0
-margin_right = 210.0
-margin_bottom = 97.0
-icon = ExtResource( 11 )
-flat = true
-
-[node name="olay_button" type="Button" parent="player_full_hbox"]
-margin_left = 214.0
-margin_right = 317.0
-margin_bottom = 97.0
-icon = ExtResource( 8 )
-flat = true
-
-[node name="speng_button" type="Button" parent="player_full_hbox"]
-margin_left = 321.0
-margin_right = 424.0
-margin_bottom = 97.0
-icon = ExtResource( 9 )
-flat = true
 
 [node name="dragScene" type="Sprite" parent="."]
 modulate = Color( 0, 0, 0, 1 )
@@ -235,6 +212,41 @@ custom_colors/font_color = Color( 0.921875, 0.129639, 0.129639, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 9 )
 text = "0"
+
+[node name="player_full_hbox" type="HBoxContainer" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -1188.0
+margin_top = 530.0
+margin_right = -764.0
+margin_bottom = 627.0
+
+[node name="ichuen_button" type="Button" parent="player_full_hbox"]
+margin_right = 103.0
+margin_bottom = 97.0
+icon = ExtResource( 10 )
+flat = true
+
+[node name="mno_button" type="Button" parent="player_full_hbox"]
+margin_left = 107.0
+margin_right = 210.0
+margin_bottom = 97.0
+icon = ExtResource( 11 )
+flat = true
+
+[node name="olay_button" type="Button" parent="player_full_hbox"]
+margin_left = 214.0
+margin_right = 317.0
+margin_bottom = 97.0
+icon = ExtResource( 8 )
+flat = true
+
+[node name="speng_button" type="Button" parent="player_full_hbox"]
+margin_left = 321.0
+margin_right = 424.0
+margin_bottom = 97.0
+icon = ExtResource( 9 )
+flat = true
 
 [connection signal="body_entered" from="player_ichuen_full" to="." method="_on_player_ichuen_full_body_entered"]
 [connection signal="input_event" from="player_ichuen_full" to="." method="_on_player_ichuen_full_input_event"]
