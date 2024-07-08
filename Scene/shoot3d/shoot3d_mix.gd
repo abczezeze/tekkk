@@ -55,6 +55,7 @@ const KILL_TIMER = 10
 var timer = 0
 
 func _ready():
+	$shoot3d_sound.volume_db = Global.bgm_volume
 	new_player_ichuen_head_rigid()
 	new_player_mno_head_rigid()
 	new_player_olay_head_rigid()
@@ -73,10 +74,6 @@ func _physics_process(delta):
 	$score_vbox/ClickSpeng.text=str(Global.save_dict["speng_scores"])
 	$score_vbox/TotalScores.text=str(Global.total_scores)
 	
-#	if is_instance_valid(rigidbody_turntable):
-#		if rigidbody_turntable.global_transform.origin.z < -20:
-#			rigidbody_turntable.queue_free()
-			
 	timer += delta
 	if is_instance_valid(rigidbody_turntable):
 		if timer >= KILL_TIMER:
@@ -134,6 +131,7 @@ func new_player_ichuen_head_rigid():
 #	player_ichuen_head_rigid.set_axis_velocity(Vector3(rand_range(-3,3),0,0))
 	paticle_ichuen = player_ichuen_head_rigid.get_node("ICBd/CPUParticles")
 	sfx_ichuen = player_ichuen_head_rigid.get_node("AudioStreamPlayer")
+	sfx_ichuen.volume_db = Global.sfx_volume
 	animation_ichuen = player_ichuen_head_rigid.get_node("AnimationPlayer")
 	animation_ichuen.play("idle")
 	var __2 = animation_ichuen.connect("animation_finished",self,"_on_AnimationPlayer_ichuen")
@@ -146,6 +144,7 @@ func new_player_mno_head_rigid():
 #	player_mno_head_rigid.set_axis_velocity(Vector3(rand_range(-3,3),0,0))
 	paticle_mno = player_mno_head_rigid.get_node("mnoTrouser/CPUParticles")
 	sfx_mno = player_mno_head_rigid.get_node("AudioStreamPlayer")
+	sfx_mno.volume_db = Global.sfx_volume
 	animation_mno = player_mno_head_rigid.get_node("AnimationPlayer")
 	animation_mno.play("idle")
 	var __2 = animation_mno.connect("animation_finished",self,"_on_AnimationPlayer_mno")
@@ -158,6 +157,7 @@ func new_player_olay_head_rigid():
 #	player_olay_head_rigid.set_axis_velocity(Vector3(rand_range(-3,3),0,0))
 	paticle_olay = player_olay_head_rigid.get_node("OlayCap/CPUParticles")
 	sfx_olay = player_olay_head_rigid.get_node("AudioStreamPlayer")
+	sfx_olay.volume_db = Global.sfx_volume
 	animation_olay = player_olay_head_rigid.get_node("AnimationPlayer")
 	animation_olay.play("idle")
 	var __2 = animation_olay.connect("animation_finished",self,"_on_AnimationPlayer_olay")
@@ -170,6 +170,7 @@ func new_player_speng_head_rigid():
 #	player_speng_head_rigid.set_axis_velocity(Vector3(rand_range(-3,3),0,0))
 	paticle_speng = player_speng_head_rigid.get_node("SpeangBody/CPUParticles")
 	sfx_speng = player_speng_head_rigid.get_node("AudioStreamPlayer")
+	sfx_speng.volume_db = Global.sfx_volume
 	animation_speng = player_speng_head_rigid.get_node("AnimationPlayer")
 	animation_speng.play("idle")
 	var __2 = animation_speng.connect("animation_finished",self,"_on_AnimationPlayer_speng")
