@@ -31,12 +31,12 @@ https://www.f0nt.com/release/sanamdeklen-chaya/
 
 ## screenshot
 <img src="https://github.com/abczezeze/tekkk/blob/main/ss/tekkk_click2d_itch_pc.gif" width="320" height="240">
-https://github.com/abczezeze/tekkk/blob/main/ss/tekkk_drag2d_itch_pc.gif
-https://github.com/abczezeze/tekkk/blob/main/ss/tekkk_swipe2d_itch_pc.gif
+<img src="https://github.com/abczezeze/tekkk/blob/main/ss/tekkk_drag2d_itch_pc.gif" width="320" height="240">
+<img src="https://github.com/abczezeze/tekkk/blob/main/ss/tekkk_swipe2d_itch_pc.gif" width="320" height="240">
 
 <img src="https://github.com/abczezeze/tekkk/blob/main/ss/tekkk_click3d_itch_pc.gif" width="320" height="240">
-https://github.com/abczezeze/tekkk/blob/main/ss/tekkk_drag3d_itch_pc.gif
-https://github.com/abczezeze/tekkk/blob/main/ss/tekkk_shoot3d_itch_pc.gif
+<img src="https://github.com/abczezeze/tekkk/blob/main/ss/tekkk_drag3d_itch_pc.gif" width="320" height="240">
+<img src="https://github.com/abczezeze/tekkk/blob/main/ss/tekkk_shoot3d_itch_pc.gif" width="320" height="240">
 
 
 
