@@ -32,15 +32,9 @@ https://www.f0nt.com/release/sanamdeklen-chaya/
 # sheenshot Main menu
 <img src="https://github.com/abczezeze/tekkk/blob/main/ss/01_main.gif" width="320" height="240">
 
-## screenshot 2D
-<img src="https://github.com/abczezeze/tekkk/blob/main/ss/tekkk_click2d_itch_pc.gif" width="320" height="240">
-<img src="https://github.com/abczezeze/tekkk/blob/main/ss/tekkk_drag2d_itch_pc.gif" width="320" height="240">
-<img src="https://github.com/abczezeze/tekkk/blob/main/ss/tekkk_swipe2d_itch_pc.gif" width="320" height="240">
+## screenshot scene
+<img src="https://github.com/abczezeze/tekkk/blob/main/ss/mix2d3d.gif" width="320" height="240">
 
-## screenshot 3D
-<img src="https://github.com/abczezeze/tekkk/blob/main/ss/tekkk_click3d_itch_pc.gif" width="320" height="240">
-<img src="https://github.com/abczezeze/tekkk/blob/main/ss/tekkk_drag3d_itch_pc.gif" width="320" height="240">
-<img src="https://github.com/abczezeze/tekkk/blob/main/ss/tekkk_shoot3d_itch_pc.gif" width="320" height="240">
 
 
 
