@@ -24,7 +24,13 @@ https://soundcloud.com/abczezeze/2018-01-05hny<br>
 https://soundcloud.com/abczezeze/my-frist-game<br>
 https://soundcloud.com/abczezeze/2017-12-20skbanimation<br>
 https://soundcloud.com/abczezeze/reha<br>
-https://sfbgames.itch.io/chiptone
+https://sfbgames.itch.io/chiptone<br>
+https://soundcloud.com/abczezeze/bgm-click3d-sec<br>
+https://soundcloud.com/abczezeze/bgm-drag3d-tididis<br>
+https://soundcloud.com/abczezeze/bgm-shoot3d-bass<br>
+https://soundcloud.com/abczezeze/bgm-shoot3d-drum<br>
+https://soundcloud.com/abczezeze/bgm-shoot3d-guitar<br>
+https://soundcloud.com/abczezeze/bgm-shoot3d-turntalble
 
 ## Font
 https://www.f0nt.com/release/sanamdeklen-chaya/
