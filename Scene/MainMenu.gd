@@ -81,6 +81,7 @@ func _on_TextureButton_toggled(button_pressed) -> void:
 		$VBoxContainer2/achievement_button.text="ความสำเร็จ"
 		$VBoxContainer2/option_button.text="ตั้งค่า"
 		$VBoxContainer2/reset_button.text="เริ่มค่าใหม่!"
+		$LinkButton.text="ดาว์นโหลด"
 	else:
 		$TextureButton_language.modulate = Color(1,1,1,1)
 		Global.tekkk_language = "En"
@@ -96,6 +97,8 @@ func _on_TextureButton_toggled(button_pressed) -> void:
 		$VBoxContainer2/achievement_button.text="Achievement"
 		$VBoxContainer2/option_button.text="Option"
 		$VBoxContainer2/reset_button.text="RESET!"
+		$LinkButton.text="Download"
+		
 
 func _on_LinkButton_pressed():
-	OS.shell_open("https://abczezeze.itch.io/tekkk/purchase")
+	var __ = OS.shell_open("https://abczezeze.itch.io/tekkk/purchase")
