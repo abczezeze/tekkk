@@ -17,7 +17,8 @@ Shootting a musical instument model fly to collide a cartoon head model.
 <img src="https://github.com/abczezeze/tekkk/blob/main/ss/MainManu.gif" width="320" height="240">
 
 ## screenshot scene
-<img src="https://github.com/abczezeze/tekkk/blob/main/ss/Mix3D.gif" width="320" height="240">
+<img src="https://github.com/abczezeze/tekkk/blob/main/ss/Mix3D.gif" width="320" height="240"><br>
+<img scr="https://github.com/abczezeze/tekkk/blob/main/ss/Mix2D.gif" width="320" height="240">
 
 ## screehsot android mobile
 <img src="https://github.com/abczezeze/tekkk/blob/main/ss/DragingMobileAndroid_0001-0420-ezgif.com-video-to-gif-converter.gif" width="320" height="240">
