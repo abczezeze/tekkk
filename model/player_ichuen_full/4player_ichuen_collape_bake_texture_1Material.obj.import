@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/4player_ichuen_collape_bake_texture_1Material.obj-e27b928e952f2d9522fdaa089953b5fb.mesh"
+
+[deps]
+
+files=[ "res://.import/4player_ichuen_collape_bake_texture_1Material.obj-e27b928e952f2d9522fdaa089953b5fb.mesh" ]
+
+source_file="res://model/player_ichuen_full/4player_ichuen_collape_bake_texture_1Material.obj"
+dest_files=[ "res://.import/4player_ichuen_collape_bake_texture_1Material.obj-e27b928e952f2d9522fdaa089953b5fb.mesh", "res://.import/4player_ichuen_collape_bake_texture_1Material.obj-e27b928e952f2d9522fdaa089953b5fb.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286
