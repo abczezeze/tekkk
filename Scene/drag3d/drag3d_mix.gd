@@ -269,3 +269,7 @@ func _on_home_button_pressed():
 	Global.HomeAudioPlay()
 	Global.MenuAudioP()
 	var __ = get_tree().change_scene("res://Scene/MainMenu.tscn")
+
+
+func _on_AnimationPlayer_animation_finished(_anim_name):
+	$dragScene/AnimationPlayer.play("RotateLight")

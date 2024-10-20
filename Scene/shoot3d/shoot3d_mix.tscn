@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://Scene/shoot3d/shoot3d_mix.gd" type="Script" id=1]
 [ext_resource path="res://Sound/sfx_turntable2.ogg" type="AudioStream" id=2]
@@ -36,11 +36,37 @@
 [ext_resource path="res://Sound/bgm_shoot3d_guitar.mp3" type="AudioStream" id=34]
 [ext_resource path="res://Sound/bgm_shoot3d_drum.mp3" type="AudioStream" id=35]
 
-[sub_resource type="ProceduralSky" id=1]
+[sub_resource type="Animation" id=16]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("../DirectionalLight:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
 
-[sub_resource type="Environment" id=2]
-background_mode = 2
-background_sky = SubResource( 1 )
+[sub_resource type="Animation" id=17]
+resource_name = "RotateLight"
+length = 10.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("../DirectionalLight:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 5.1, 10 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 360, 0 ), Vector3( 360, 360, 0 ) ]
+}
 
 [sub_resource type="Animation" id=8]
 resource_name = "scaleMusical"
@@ -97,6 +123,12 @@ font_data = ExtResource( 11 )
 size = 55
 font_data = ExtResource( 11 )
 
+[sub_resource type="ProceduralSky" id=14]
+
+[sub_resource type="Environment" id=15]
+background_mode = 2
+background_sky = SubResource( 14 )
+
 [node name="shoot3d_mix" type="Spatial"]
 script = ExtResource( 1 )
 sound_sfx_ichuen = [ ExtResource( 3 ), ExtResource( 2 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 5 ) ]
@@ -109,10 +141,8 @@ sprite_textures = [ ExtResource( 31 ), ExtResource( 29 ), ExtResource( 28 ), Ext
 [node name="Camera" type="Camera" parent="."]
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
-transform = Transform( 0.92753, -0.178211, 0.328525, 0, 0.879, 0.476821, -0.373749, -0.442266, 0.815299, 0, 5, 0 )
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 2 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0 )
+light_energy = 0.3
 
 [node name="home_button" type="TextureButton" parent="."]
 anchor_top = 1.0
@@ -125,14 +155,17 @@ rect_scale = Vector2( 0.5, 0.5 )
 texture_normal = ExtResource( 7 )
 
 [node name="shoot3d_sound" type="AudioStreamPlayer" parent="."]
+bus = "BGM"
 
 [node name="shootScene" type="Sprite" parent="."]
 modulate = Color( 0, 0, 0, 1 )
 position = Vector2( 921, 601 )
-scale = Vector2( 5, 5 )
+scale = Vector2( 1e-05, 1e-05 )
 texture = ExtResource( 31 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="shootScene"]
+anims/RESET = SubResource( 16 )
+anims/RotateLight = SubResource( 17 )
 anims/scaleMusical = SubResource( 8 )
 
 [node name="player_head_vbox" type="VBoxContainer" parent="."]
@@ -232,10 +265,10 @@ text = "0"
 [node name="musical_HBoxContainer" type="HBoxContainer" parent="."]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -1209.0
-margin_top = 547.0
-margin_right = -785.0
-margin_bottom = 644.0
+margin_left = -427.0
+margin_top = 3.0
+margin_right = -3.0
+margin_bottom = 100.0
 
 [node name="turntable_button" type="Button" parent="musical_HBoxContainer"]
 margin_right = 103.0
@@ -264,9 +297,13 @@ margin_bottom = 97.0
 icon = ExtResource( 28 )
 flat = true
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 15 )
+
 [connection signal="mouse_entered" from="home_button" to="." method="_on_home_button_mouse_entered"]
 [connection signal="mouse_exited" from="home_button" to="." method="_on_home_button_mouse_exited"]
 [connection signal="pressed" from="home_button" to="." method="_on_home_button_pressed"]
+[connection signal="animation_finished" from="shootScene/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="mouse_entered" from="musical_HBoxContainer/turntable_button" to="." method="_on_turntable_button_mouse_entered"]
 [connection signal="mouse_exited" from="musical_HBoxContainer/turntable_button" to="." method="_on_turntable_button_mouse_exited"]
 [connection signal="pressed" from="musical_HBoxContainer/turntable_button" to="." method="_on_turntable_button_pressed"]

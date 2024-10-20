@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Scene/drag3d/drag3d_mix.gd" type="Script" id=1]
 [ext_resource path="res://Image/gui_home.png" type="Texture" id=2]
@@ -18,12 +18,37 @@
 [ext_resource path="res://Image/player_Head_Speng.png" type="Texture" id=16]
 [ext_resource path="res://Image/player_Head_mno.png" type="Texture" id=17]
 
-[sub_resource type="ProceduralSky" id=1]
-sky_top_color = Color( 0.490196, 0.384314, 0.784314, 1 )
+[sub_resource type="Animation" id=12]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("../DirectionalLight:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( -28.378, 0, 0 ) ]
+}
 
-[sub_resource type="Environment" id=2]
-background_mode = 2
-background_sky = SubResource( 1 )
+[sub_resource type="Animation" id=13]
+resource_name = "RotateLight"
+length = 10.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("../DirectionalLight:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 5, 9.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( -28.378, 0, 0 ), Vector3( -28.378, 360, 0 ), Vector3( -360, 7.2, 0 ) ]
+}
 
 [sub_resource type="Animation" id=4]
 resource_name = "scaleBody"
@@ -72,17 +97,23 @@ font_data = ExtResource( 12 )
 size = 55
 font_data = ExtResource( 12 )
 
+[sub_resource type="ProceduralSky" id=10]
+
+[sub_resource type="Environment" id=11]
+background_mode = 2
+background_sky = SubResource( 10 )
+
 [node name="drag3d" type="Spatial"]
 script = ExtResource( 1 )
 sprite_textures = [ ExtResource( 11 ), ExtResource( 8 ), ExtResource( 10 ), ExtResource( 9 ) ]
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 2 )
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 7 )
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.879831, 0.475286, 0, -0.475286, 0.879831, 0, 0, 0 )
+light_energy = 0.3
+shadow_enabled = true
 
 [node name="player_ichuen_full" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0 )
@@ -99,6 +130,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -2, 0 )
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
 autoplay = true
+bus = "BGM"
 
 [node name="home_button" type="TextureButton" parent="."]
 anchor_top = 1.0
@@ -117,6 +149,8 @@ scale = Vector2( 5, 5 )
 texture = ExtResource( 11 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="dragScene"]
+anims/RESET = SubResource( 12 )
+anims/RotateLight = SubResource( 13 )
 anims/scaleBody = SubResource( 4 )
 
 [node name="player_head_vbox" type="VBoxContainer" parent="."]
@@ -248,6 +282,9 @@ margin_bottom = 97.0
 icon = ExtResource( 9 )
 flat = true
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 11 )
+
 [connection signal="body_entered" from="player_ichuen_full" to="." method="_on_player_ichuen_full_body_entered"]
 [connection signal="input_event" from="player_ichuen_full" to="." method="_on_player_ichuen_full_input_event"]
 [connection signal="body_exited" from="player_mno_full" to="." method="_on_player_mno_full_body_exited"]
@@ -257,6 +294,7 @@ flat = true
 [connection signal="body_exited" from="player_speng_full" to="." method="_on_player_speng_full_body_exited"]
 [connection signal="input_event" from="player_speng_full" to="." method="_on_player_speng_full_input_event"]
 [connection signal="pressed" from="home_button" to="." method="_on_home_button_pressed"]
+[connection signal="animation_finished" from="dragScene/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="pressed" from="player_full_hbox/ichuen_button" to="." method="_on_ichuen_button_pressed"]
 [connection signal="pressed" from="player_full_hbox/mno_button" to="." method="_on_mno_button_pressed"]
 [connection signal="pressed" from="player_full_hbox/olay_button" to="." method="_on_olay_button_pressed"]
