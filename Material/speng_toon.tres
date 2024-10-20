@@ -1,0 +1,13 @@
+[gd_resource type="SpatialMaterial" load_steps=3 format=2]
+
+[ext_resource path="res://model/player_speng_full/SpengTt.png" type="Texture" id=1]
+[ext_resource path="res://Material/toonline_nextpass.tres" type="Material" id=2]
+
+[resource]
+resource_name = "SpengTt"
+next_pass = ExtResource( 2 )
+params_diffuse_mode = 4
+params_specular_mode = 3
+albedo_texture = ExtResource( 1 )
+metallic_specular = 0.02
+roughness = 0.02
