@@ -11,27 +11,13 @@ Cliking a floating cartoon hend model.<br>
 Dragging a body model to a musical model drop down.<br>
 Shootting a musical instument model fly to collide a cartoon head model.
 
-
-
 ## This branch is published at https://abczezeze.itch.io/tekkk
 
-## Shader
-https://godotshaders.com/shader/shining-sprite-effect/ <br>
-https://godotshaders.com/shader/rainbow-outline/ 
-
-## Sound
-https://sfbgames.itch.io/chiptone
-
-
-## Font
-https://www.f0nt.com/release/sanamdeklen-chaya/
-
 # sheenshot Main menu
-<img src="https://github.com/abczezeze/tekkk/blob/main/ss/01_main.gif" width="320" height="240">
+<img src="https://github.com/abczezeze/tekkk/blob/main/ss/MainManu.gif" width="320" height="240">
 
 ## screenshot scene
-<img src="https://github.com/abczezeze/tekkk/blob/main/ss/mix2d3d.gif" width="320" height="240">
+<img src="https://github.com/abczezeze/tekkk/blob/main/ss/Mix3D.gif" width="320" height="240">
 
-
-
-
+## screehsot android mobile
+<img src="https://github.com/abczezeze/tekkk/blob/main/ss/DragingMobileAndroid_0001-0420-ezgif.com-video-to-gif-converter.gif" width="320" height="240">
