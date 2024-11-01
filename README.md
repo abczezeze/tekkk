@@ -13,6 +13,8 @@ Shootting a musical instument model fly to collide a cartoon head model.
 
 ## This branch is published at https://abczezeze.itch.io/tekkk
 
+## Casual game on Play store as well https://play.google.com/store/apps/details?id=com.abczezeze.tek
+
 # sheenshot Main menu
 <img src="https://github.com/abczezeze/tekkk/blob/main/ss/MainManu.gif" width="320" height="240">
 
