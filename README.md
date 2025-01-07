@@ -18,9 +18,13 @@ Shootting a musical instument model fly to collide a cartoon head model.
 # sheenshot Main menu
 <img src="https://github.com/abczezeze/tekkk/blob/main/ss/MainManu.gif" width="320" height="240">
 
-## screenshot scene
-<img src="https://github.com/abczezeze/tekkk/blob/main/ss/Mix3D.gif" width="320" height="240"><br>
-<img scr="https://github.com/abczezeze/tekkk/blob/main/ss/Mix2D.gif" width="320" height="240">
+## screenshot 3D scene 
+<img src="https://github.com/abczezeze/tekkk/blob/main/ss/Mix3D.gif" width="320" height="240">
+
+## screenshot 2D
+[Click](https://github.com/abczezeze/tekkk/blob/main/ss/tekkk_click2d_itch_pc.gif)
+[Drag](https://github.com/abczezeze/tekkk/blob/main/ss/tekkk_drag2d_itch_pc.gif)
+[Swipe](https://github.com/abczezeze/tekkk/blob/main/ss/tekkk_swipe2d_itch_pc.gif)
 
 ## screehsot android mobile
 <img src="https://github.com/abczezeze/tekkk/blob/main/ss/DragingMobileAndroid_0001-0420-ezgif.com-video-to-gif-converter.gif" width="320" height="240">
